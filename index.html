@@ -1008,32 +1008,56 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+  const SUPABASE_URL = 'https://ohkfwtlsbrhqjhphytua.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_zBXlRSgd3hIm7Fqky6Z5Ew_-8cAJPBp';
+
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  let verifiedMemberId = null;
+
   function selectStub(which){
     const stubNew = document.getElementById('stub-new');
     const stubMember = document.getElementById('stub-member');
     const panelNew = document.getElementById('panel-new');
     const panelMember = document.getElementById('panel-member');
 
-    stubNew.classList.toggle('active', which==='new');
-    stubMember.classList.toggle('active', which==='member');
-    panelNew.classList.toggle('open', which==='new');
-    panelMember.classList.toggle('open', which==='member');
+    stubNew.classList.toggle('active', which === 'new');
+    stubMember.classList.toggle('active', which === 'member');
+    panelNew.classList.toggle('open', which === 'new');
+    panelMember.classList.toggle('open', which === 'member');
   }
 
-  // 🔧 DATOS DE DEMOSTRACIÓN — esta función simula la respuesta de un backend.
-  // Cuando exista la base de datos real de miembros, reemplazar el contenido
-  // de esta función por una llamada a la API (fetch) que devuelva el mismo
-  // conjunto de campos: name, memberId, status, since, referrals, bonuses, level.
-  function fetchMemberData(memberId){
+  async function fetchMemberData(memberId) {
+    const { data, error } = await supabaseClient.rpc(
+      'verificar_miembro',
+      { p_member_id: memberId }
+    );
+
+    if (error) {
+      console.error('Error al verificar miembro:', error);
+      throw new Error('No fue posible consultar la membresía.');
+    }
+
+    if (!data || data.length === 0) {
+      return null;
+    }
+
+    const member = data[0];
+
     return {
-      name: 'Miembro Preferente',
-      memberId: memberId,
-      status: 'Activa',
-      since: '—',
-      referrals: '—',
-      bonuses: '—',
-      level: 'Preferente'
+      name: member.nombre || 'Miembro Preferente',
+      memberId: member.member_id || memberId,
+      status: member.estado || 'Activa',
+      since: member.fecha_activacion || '—',
+      referrals: member.referidos ?? 0,
+      bonuses: member.bonos ?? 0,
+      level: member.nivel || 'Preferente'
     };
   }
 
@@ -1047,71 +1071,155 @@
     document.getElementById('mc-level').textContent = data.level;
   }
 
-  function verifyMember(){
+  async function verifyMember() {
     const input = document.getElementById('member-id-input');
     const errorMsg = document.getElementById('error-msg');
     const loading = document.getElementById('verify-loading');
     const verified = document.getElementById('verified-block');
+    const memberId = input.value.trim().toUpperCase();
 
     verified.classList.remove('show');
-    if(!input.value.trim()){
+    errorMsg.classList.remove('show');
+    verifiedMemberId = null;
+
+    if (!memberId) {
       input.classList.add('error');
+      errorMsg.textContent = 'Ingresa tu Member ID para continuar.';
       errorMsg.classList.add('show');
-      setTimeout(()=>input.classList.remove('error'),300);
+      setTimeout(() => input.classList.remove('error'), 300);
       return;
     }
-    errorMsg.classList.remove('show');
+
     loading.classList.add('show');
 
-    setTimeout(()=>{
+    try {
+      const memberData = await fetchMemberData(memberId);
       loading.classList.remove('show');
-      renderMemberCard(fetchMemberData(input.value.trim().toUpperCase()));
+
+      if (!memberData) {
+        input.classList.add('error');
+        errorMsg.textContent =
+          'Member ID no encontrado o membresía inactiva. Verifica el código o comunícate con tu asesor.';
+        errorMsg.classList.add('show');
+        setTimeout(() => input.classList.remove('error'), 300);
+        return;
+      }
+
+      verifiedMemberId = memberData.memberId;
+      renderMemberCard(memberData);
       verified.classList.add('show');
-    }, 900);
+    } catch (error) {
+      loading.classList.remove('show');
+      errorMsg.textContent =
+        'No pudimos verificar tu membresía en este momento. Inténtalo nuevamente.';
+      errorMsg.classList.add('show');
+    }
   }
 
-  function saveEmail(){
+  async function saveEmail() {
     const input = document.getElementById('member-email-input');
     const msg = document.getElementById('email-msg');
+    const email = input.value.trim().toLowerCase();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if(!emailPattern.test(input.value.trim())){
-      msg.textContent = 'Ingresa un correo válido.';
-      msg.classList.add('show','error');
+    msg.classList.remove('show', 'error');
+
+    if (!verifiedMemberId) {
+      msg.textContent = 'Primero debes verificar tu Member ID.';
+      msg.classList.add('show', 'error');
       return;
     }
-    msg.classList.remove('error');
-    msg.textContent = '¡Gracias! Te escribiremos pronto con tus beneficios.';
-    msg.classList.add('show');
+
+    if (!emailPattern.test(email)) {
+      msg.textContent = 'Ingresa un correo válido.';
+      msg.classList.add('show', 'error');
+      return;
+    }
+
+    try {
+      const { data, error } = await supabaseClient.rpc(
+        'guardar_correo_miembro',
+        {
+          p_member_id: verifiedMemberId,
+          p_email: email
+        }
+      );
+
+      if (error) {
+        console.error('Error al guardar correo:', error);
+        throw error;
+      }
+
+      if (data !== true) {
+        throw new Error('No se actualizó el miembro.');
+      }
+
+      msg.textContent =
+        '¡Correo guardado correctamente! Te enviaremos allí tus beneficios.';
+      msg.classList.add('show');
+    } catch (error) {
+      msg.textContent =
+        'No pudimos guardar tu correo. Inténtalo nuevamente.';
+      msg.classList.add('show', 'error');
+    }
   }
 
-  // ---- Documentación legal: abre el documento y, si se indica, despliega el capítulo solicitado ----
   function openModal(chapterId){
     document.getElementById('modal-overlay').classList.add('show');
     document.body.style.overflow = 'hidden';
+
     if(chapterId){
-      document.querySelectorAll('.doc-section').forEach(d => d.open = (d.id === chapterId));
+      document.querySelectorAll('.doc-section').forEach(
+        d => d.open = (d.id === chapterId)
+      );
+
       const target = document.getElementById(chapterId);
-      if(target){ setTimeout(()=> target.scrollIntoView({behavior:'smooth', block:'start'}), 60); }
+
+      if(target){
+        setTimeout(
+          () => target.scrollIntoView({
+            behavior:'smooth',
+            block:'start'
+          }),
+          60
+        );
+      }
     }
   }
+
   function closeModal(){
     document.getElementById('modal-overlay').classList.remove('show');
     document.body.style.overflow = '';
   }
+
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape'){
-      document.querySelectorAll('.modal-overlay.show').forEach(m => m.classList.remove('show'));
+      document.querySelectorAll('.modal-overlay.show').forEach(
+        m => m.classList.remove('show')
+      );
       document.body.style.overflow = '';
+    }
+
+    if(e.key === 'Enter' && document.activeElement?.id === 'member-id-input'){
+      verifyMember();
+    }
+
+    if(e.key === 'Enter' && document.activeElement?.id === 'member-email-input'){
+      saveEmail();
     }
   });
 
-  // ---- Carrusel de testimonios ----
   function scrollTestimonials(direction){
     const track = document.getElementById('testimonial-track');
     const card = track.querySelector('.testimonial-card');
-    const distance = card ? (card.getBoundingClientRect().width + 20) : 300;
-    track.scrollBy({left: distance * direction, behavior:'smooth'});
+    const distance = card
+      ? (card.getBoundingClientRect().width + 20)
+      : 300;
+
+    track.scrollBy({
+      left: distance * direction,
+      behavior:'smooth'
+    });
   }
 </script>
 
