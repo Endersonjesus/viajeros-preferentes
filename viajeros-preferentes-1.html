@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viajeros Preferentes — Portal de Miembros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#0a1120;
+    --navy-panel:#111c32;
+    --navy-panel-2:#16233d;
+    --navy-line:#28395c;
+    --gold:#c6a355;
+    --gold-bright:#eccf9c;
+    --parchment:#efe7d8;
+    --muted:#8a94ae;
+    --stamp:#a5392b;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--navy-deep);
+    color:var(--parchment);
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.01em;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 28px;
+    background:linear-gradient(180deg,rgba(10,17,32,.92),rgba(10,17,32,0));
+    backdrop-filter:blur(2px);
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.05rem;letter-spacing:.06em;}
+  .brand .plane{color:var(--gold);}
+  .topbar .talk{
+    font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+    border:1px solid var(--navy-line);padding:9px 14px;border-radius:2px;color:var(--gold-bright);
+    display:flex;align-items:center;gap:7px;transition:border-color .2s,color .2s;
+  }
+  .topbar .talk:hover{border-color:var(--gold);color:var(--gold);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:120px 24px 70px;
+    background:
+      radial-gradient(circle at 18% 22%, rgba(198,163,85,.10), transparent 40%),
+      radial-gradient(circle at 82% 78%, rgba(198,163,85,.08), transparent 40%),
+      var(--navy-deep);
+    isolation:isolate;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:-2;
+    background-image:radial-gradient(rgba(198,163,85,.14) 1px, transparent 1px);
+    background-size:26px 26px;
+    mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, black 40%, transparent 90%);
+  }
+  .flight-svg{position:absolute;inset:0;width:100%;height:100%;z-index:-1;opacity:.55;}
+  .flight-path{fill:none;stroke:var(--gold);stroke-width:1;stroke-dasharray:6 6;opacity:.4;}
+  .flight-dot{fill:var(--gold-bright);}
+  @keyframes flyalong{ to{ offset-distance:100%; } }
+  .plane-icon{
+    offset-path:path('M 40 260 C 220 60, 520 60, 700 180 S 980 340, 1040 120');
+    offset-rotate:auto;
+    animation:flyalong 14s linear infinite;
+    font-size:16px;color:var(--gold-bright);position:absolute;
+  }
+
+  .hero .eyebrow{margin-bottom:22px;}
+  .hero h1{font-size:clamp(2.3rem,6vw,3.6rem);line-height:1.08;max-width:14ch;}
+  .hero h1 em{color:var(--gold);font-style:italic;}
+  .hero p.lead{
+    max-width:46ch;margin:22px auto 0;color:var(--muted);font-size:1.02rem;font-weight:300;
+  }
+  .select-hint{
+    margin-top:46px;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--gold);
+  }
+
+  /* ---------- boarding-pass stub selector ---------- */
+  .stubs{
+    margin-top:18px;display:flex;align-items:stretch;width:100%;max-width:640px;
+    background:var(--navy-panel);border:1px solid var(--navy-line);position:relative;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,.7);
+  }
+  .stub{
+    flex:1;padding:30px 22px;cursor:pointer;background:transparent;border:none;color:var(--parchment);
+    display:flex;flex-direction:column;align-items:center;gap:10px;font-family:'Jost',sans-serif;
+    transition:background .25s;position:relative;
+  }
+  .stub:hover{background:rgba(198,163,85,.06);}
+  .stub.active{background:rgba(198,163,85,.1);}
+  .stub .stub-icon{font-size:1.5rem;color:var(--gold);}
+  .stub .stub-eyebrow{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+  .stub .stub-label{font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-weight:600;}
+  .stub.active .stub-label{color:var(--gold-bright);}
+  .perforation{
+    width:0;position:relative;border-left:1px dashed var(--navy-line);
+  }
+  .perforation::before,.perforation::after{
+    content:"";position:absolute;left:50%;transform:translateX(-50%);
+    width:18px;height:18px;background:var(--navy-deep);border-radius:50%;
+  }
+  .perforation::before{top:-9px;}
+  .perforation::after{bottom:-9px;}
+
+  /* ---------- dynamic panel ---------- */
+  .panel{
+    max-width:640px;width:100%;margin:0 auto;overflow:hidden;
+    max-height:0;opacity:0;transition:max-height .5s ease, opacity .4s ease, margin .4s ease;
+  }
+  .panel.open{max-height:900px;opacity:1;margin-top:26px;}
+  .panel-inner{
+    background:var(--navy-panel-2);border:1px solid var(--navy-line);padding:30px 26px;text-align:left;
+  }
+  .panel-inner h3{font-size:1.3rem;margin-bottom:6px;}
+  .panel-inner .sub{color:var(--muted);font-size:.9rem;margin-bottom:20px;}
+  .req-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:22px;}
+  .req-list li{display:flex;gap:10px;font-size:.92rem;color:var(--parchment);}
+  .req-list li::before{content:"—";color:var(--gold);}
+  .cta-gold{
+    display:inline-flex;align-items:center;gap:9px;background:linear-gradient(180deg,var(--gold-bright),var(--gold));
+    color:#1a1305;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    padding:14px 22px;border:none;cursor:pointer;font-weight:700;transition:filter .2s, transform .2s;
+  }
+  .cta-gold:hover{filter:brightness(1.08);transform:translateY(-1px);}
+  .cta-gold:focus-visible, .tc-btn:focus-visible, .stub:focus-visible, .modal-close:focus-visible, .id-input:focus-visible{
+    outline:2px solid var(--gold-bright);outline-offset:2px;
+  }
+
+  .id-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .id-input{
+    flex:1;min-width:180px;background:var(--navy-deep);border:1px solid var(--navy-line);color:var(--gold-bright);
+    font-family:'Space Mono',monospace;letter-spacing:.12em;padding:14px 16px;font-size:.9rem;
+  }
+  .id-input:focus{outline:none;border-color:var(--gold);}
+  .id-input.error{border-color:var(--stamp);animation:shake .3s;}
+  @keyframes shake{25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+  .error-msg{color:var(--stamp);font-size:.78rem;margin-top:8px;display:none;}
+  .error-msg.show{display:block;}
+
+  .verify-loading{display:none;align-items:center;gap:8px;margin-top:18px;color:var(--muted);font-family:'Space Mono',monospace;font-size:.78rem;}
+  .verify-loading.show{display:flex;}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:pulse 1s infinite ease-in-out;}
+  .dot:nth-child(2){animation-delay:.15s;}
+  .dot:nth-child(3){animation-delay:.3s;}
+  @keyframes pulse{0%,100%{opacity:.25;}50%{opacity:1;}}
+
+  .verified-block{display:none;margin-top:20px;padding-top:20px;border-top:1px dashed var(--navy-line);}
+  .verified-block.show{display:block;}
+  .stamp-mark{
+    display:inline-block;border:2.5px solid var(--stamp);color:var(--stamp);font-family:'Space Mono',monospace;
+    font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;transform:rotate(-8deg) scale(0);
+    animation:stampIn .35s ease-out forwards .1s;
+  }
+  @keyframes stampIn{to{transform:rotate(-8deg) scale(1);}}
+  .quick-links{margin-top:18px;display:flex;flex-direction:column;gap:10px;}
+  .quick-links a{
+    font-size:.9rem;color:var(--gold-bright);border-bottom:1px solid var(--navy-line);padding-bottom:8px;
+    display:flex;justify-content:space-between;
+  }
+  .quick-links a:hover{color:var(--gold);}
+
+  /* ---------- sections ---------- */
+  section{padding:100px 0;}
+  .section-head{text-align:center;max-width:560px;margin:0 auto 56px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.8rem,4vw,2.4rem);}
+  .section-head p.deck{color:var(--muted);font-size:.92rem;margin-top:14px;max-width:52ch;margin-left:auto;margin-right:auto;}
+
+  /* ---------- historia: misión / visión ---------- */
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--navy-line);border:1px solid var(--navy-line);}
+  .story-block{background:var(--navy-panel);padding:46px 40px;}
+  .story-block .eyebrow{margin-bottom:16px;}
+  .story-block h3{font-size:1.6rem;margin-bottom:18px;line-height:1.2;}
+  .story-block p{color:var(--muted);font-size:.92rem;}
+  @media (max-width:760px){ .story-grid{grid-template-columns:1fr;} .story-block{padding:38px 26px;} }
+
+  /* ---------- por qué existe / por qué confiar (bloques narrativos) ---------- */
+  .why-block{max-width:740px;margin:0 auto;}
+  .why-lead{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+    font-size:clamp(1.2rem,2.6vw,1.5rem);color:var(--gold-bright);line-height:1.5;margin-bottom:24px;
+  }
+  .why-body p{color:var(--muted);font-size:.94rem;margin-bottom:16px;border-left:2px solid var(--navy-line);padding-left:20px;}
+  .why-body p:last-child{margin-bottom:0;}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--navy-line);border:1px solid var(--navy-line);}
+  .step{background:var(--navy-panel);padding:38px 28px;}
+  .step .num{font-family:'Space Mono',monospace;color:var(--gold);font-size:.85rem;}
+  .step h3{margin:16px 0 10px;font-size:1.25rem;}
+  .step p{color:var(--muted);font-size:.88rem;}
+
+  .benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--navy-line);border:1px solid var(--navy-line);}
+  .benefit{background:var(--navy-panel);padding:34px 24px;text-align:center;}
+  .benefit .seal{
+    width:52px;height:52px;margin:0 auto 16px;border:1px solid var(--gold);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.2rem;
+  }
+  .benefit h3{font-size:1.05rem;margin-bottom:8px;}
+  .benefit p{color:var(--muted);font-size:.82rem;}
+
+  /* ---------- niveles de membresía ---------- */
+  .tier-row{display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;gap:0;margin-top:10px;}
+  .tier-card{
+    flex:1;min-width:160px;max-width:230px;text-align:center;padding:36px 20px;
+    background:var(--navy-panel-2);border:1px solid var(--navy-line);position:relative;transition:transform .25s;
+  }
+  .tier-card:hover{transform:translateY(-4px);}
+  .tier-rank{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+  .tier-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;margin-bottom:10px;}
+  .tier-desc{color:var(--muted);font-size:.8rem;}
+  .tier-card.tier-2{border-color:var(--gold);}
+  .tier-card.tier-2 .tier-name{color:var(--gold);}
+  .tier-card.tier-3{border-color:var(--gold);box-shadow:0 0 30px -10px rgba(198,163,85,.4);}
+  .tier-card.tier-3 .tier-name{color:var(--gold);}
+  .tier-card.tier-4{background:linear-gradient(160deg,#1a1305,var(--navy-deep));border-color:var(--gold-bright);}
+  .tier-card.tier-4 .tier-name, .tier-card.tier-4 .tier-rank{color:var(--gold-bright);}
+  .tier-arrow{display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.1rem;padding:0 8px;}
+  @media (max-width:760px){ .tier-row{flex-direction:column;align-items:center;} .tier-arrow{transform:rotate(90deg);padding:6px 0;} .tier-card{max-width:280px;width:100%;} }
+  .tier-note{text-align:center;max-width:560px;margin:36px auto 0;color:var(--muted);font-size:.86rem;font-style:italic;}
+
+  /* ---------- timeline ---------- */
+  .timeline{position:relative;max-width:600px;margin:0 auto;padding-left:38px;}
+  .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:1px;background:var(--navy-line);}
+  .tl-item{position:relative;padding-bottom:40px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";position:absolute;left:-38px;top:2px;width:11px;height:11px;border-radius:50%;background:var(--gold);
+    box-shadow:0 0 0 5px var(--navy-deep), 0 0 0 6px var(--navy-line);
+  }
+  .tl-item h4{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.18rem;color:var(--gold-bright);margin-bottom:5px;}
+  .tl-item p{color:var(--muted);font-size:.86rem;}
+
+  /* ---------- bono preferente ---------- */
+  .bonus-intro{color:var(--muted);font-size:.92rem;margin-top:14px;max-width:52ch;margin-left:auto;margin-right:auto;}
+  .bonus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px;margin-top:8px;}
+  .bonus-card{
+    position:relative;background:var(--navy-panel-2);border:1px solid var(--navy-line);border-top:2px dashed var(--gold);
+    padding:32px 22px 26px;text-align:center;transition:transform .25s ease,border-color .25s ease;
+  }
+  .bonus-card::before{
+    content:"";position:absolute;top:-7px;left:50%;transform:translateX(-50%);
+    width:14px;height:14px;background:var(--navy-deep);border-radius:50%;
+  }
+  .bonus-card:hover{transform:translateY(-5px);border-top-color:var(--gold-bright);}
+  .bonus-icon{font-size:1.3rem;color:var(--gold);margin-bottom:14px;}
+  .bonus-card h3{font-size:1.02rem;margin-bottom:8px;}
+  .bonus-card p{color:var(--muted);font-size:.82rem;}
+  .bonus-note{
+    text-align:center;max-width:580px;margin:46px auto 0;font-family:'Cormorant Garamond',serif;
+    font-style:italic;color:var(--gold-bright);font-size:1.08rem;line-height:1.55;
+  }
+
+  /* ---------- nuestra comunidad ---------- */
+  .community-lead{text-align:center;max-width:640px;margin:0 auto 50px;color:var(--muted);font-size:.96rem;}
+
+  /* ---------- testimonios ---------- */
+  .testimonial-track{
+    display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 14px;
+    scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .testimonial-track::-webkit-scrollbar{display:none;}
+  .testimonial-card{
+    scroll-snap-align:start;flex:0 0 clamp(230px,80vw,300px);background:var(--navy-panel-2);
+    border:1px solid var(--navy-line);padding:28px 24px;display:flex;flex-direction:column;
+  }
+  .testimonial-stars{color:var(--gold);font-size:.82rem;letter-spacing:.12em;margin-bottom:14px;}
+  .testimonial-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:1.05rem;color:var(--parchment);margin-bottom:18px;line-height:1.5;flex:1;}
+  .testimonial-who{font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-top:1px dashed var(--navy-line);padding-top:12px;}
+  .testimonial-controls{display:flex;justify-content:center;gap:14px;margin-top:22px;}
+  .tc-btn{width:38px;height:38px;border:1px solid var(--navy-line);background:none;color:var(--gold);cursor:pointer;transition:border-color .2s,color .2s;font-size:.9rem;font-family:'Jost',sans-serif;}
+  .tc-btn:hover{border-color:var(--gold);color:var(--gold-bright);}
+
+  .advisor{
+    display:flex;gap:36px;align-items:center;background:var(--navy-panel-2);border:1px solid var(--navy-line);
+    padding:44px;flex-wrap:wrap;
+  }
+  .advisor-photo{
+    width:90px;height:90px;border-radius:50%;border:1px solid var(--gold);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;
+    font-size:1.6rem;color:var(--gold);background:var(--navy-deep);
+  }
+  .advisor-info{flex:1;min-width:220px;}
+  .advisor-info .eyebrow{margin-bottom:8px;}
+  .advisor-info h3{font-size:1.5rem;margin-bottom:8px;}
+  .advisor-info p{color:var(--muted);font-size:.9rem;max-width:44ch;}
+  .advisor .cta-gold{margin-top:18px;}
+
+  /* ---------- faq ---------- */
+  .faq-list{max-width:720px;margin:0 auto;border-top:1px solid var(--navy-line);}
+  .faq-item{padding:22px 4px;border-bottom:1px solid var(--navy-line);}
+  .faq-item summary{
+    display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;list-style:none;
+    font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--gold-bright);
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary .chev{color:var(--gold);transition:transform .25s;font-family:'Jost',sans-serif;flex-shrink:0;}
+  .faq-item[open] summary .chev{transform:rotate(90deg);}
+  .faq-item p{color:var(--muted);font-size:.9rem;margin-top:12px;max-width:60ch;}
+
+  /* ---------- tarjeta de miembro ---------- */
+  .member-card{
+    margin-top:20px;background:linear-gradient(155deg,var(--navy-panel-2),var(--navy-deep));
+    border:1px solid var(--gold);border-radius:6px;padding:22px 22px 18px;position:relative;overflow:hidden;
+  }
+  .member-card::after{
+    content:"✈";position:absolute;right:12px;bottom:4px;font-size:2.6rem;color:rgba(198,163,85,.08);
+  }
+  .member-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px;}
+  .mc-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+  .mc-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.3rem;color:var(--gold-bright);}
+  .mc-level{
+    font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#1a1305;
+    background:linear-gradient(180deg,var(--gold-bright),var(--gold));padding:6px 10px;border-radius:2px;height:fit-content;white-space:nowrap;
+  }
+  .mc-id{font-family:'Space Mono',monospace;letter-spacing:.14em;color:var(--gold);font-size:.88rem;margin-bottom:16px;}
+  .mc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 10px;border-top:1px dashed var(--navy-line);padding-top:14px;position:relative;}
+  .mc-grid > div{display:flex;flex-direction:column;gap:3px;}
+  .mc-k{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+  .mc-v{font-size:.92rem;color:var(--parchment);}
+
+  footer{padding:60px 0 40px;text-align:center;border-top:1px solid var(--navy-line);}
+  footer .brand{justify-content:center;margin-bottom:10px;}
+  footer .tag{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold-bright);margin-bottom:18px;}
+  footer .contact{color:var(--muted);font-size:.82rem;font-family:'Space Mono',monospace;line-height:2;}
+  .footer-link{display:inline-block;margin-top:16px;font-size:.78rem;letter-spacing:.05em;color:var(--muted);border-bottom:1px solid var(--navy-line);cursor:pointer;transition:color .2s;background:none;border-top:none;border-left:none;border-right:none;font-family:'Jost',sans-serif;padding:0 0 2px;}
+  .footer-link:hover{color:var(--gold);}
+  .footer-links-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 26px;margin-top:22px;}
+  .footer-links-row .footer-link{margin-top:0;}
+  .footer-link-disabled{cursor:default;opacity:.5;}
+  .footer-link-disabled:hover{color:var(--muted);}
+
+  /* ---------- documentación legal ---------- */
+  .modal-overlay{
+    display:none;position:fixed;inset:0;z-index:200;background:rgba(6,10,20,.86);
+    backdrop-filter:blur(3px);padding:24px;align-items:flex-start;justify-content:center;overflow-y:auto;
+  }
+  .modal-overlay.show{display:flex;}
+  .modal-box{
+    position:relative;max-width:720px;width:100%;background:var(--navy-panel);border:1px solid var(--navy-line);
+    padding:40px 30px;margin:40px 0;
+  }
+  .modal-close{
+    position:absolute;top:18px;right:18px;background:none;border:1px solid var(--navy-line);color:var(--muted);
+    width:32px;height:32px;cursor:pointer;font-size:.9rem;transition:color .2s,border-color .2s;
+  }
+  .modal-close:hover{color:var(--gold);border-color:var(--gold);}
+  .modal-toc{color:var(--muted);font-size:.78rem;margin-bottom:26px;line-height:1.9;}
+
+  .doc-section{padding:16px 0;border-bottom:1px solid var(--navy-line);scroll-margin-top:20px;}
+  .doc-section summary{
+    display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer;list-style:none;
+    font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold-bright);
+  }
+  .doc-section summary .doc-num{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--gold);flex-shrink:0;}
+  .doc-section summary::-webkit-details-marker{display:none;}
+  .doc-section summary .chev{color:var(--gold);transition:transform .25s;font-family:'Jost',sans-serif;flex-shrink:0;}
+  .doc-section[open] summary .chev{transform:rotate(90deg);}
+  .doc-body{margin-top:16px;}
+  .doc-body h5{font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:18px 0 8px;}
+  .doc-body h5:first-child{margin-top:0;}
+  .doc-body p{color:var(--muted);font-size:.85rem;margin-bottom:10px;}
+  .doc-body ol{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:10px;}
+  .doc-body ol li{color:var(--parchment);font-size:.85rem;}
+  .doc-body ol li strong{color:var(--gold-bright);display:block;font-weight:600;margin-bottom:3px;font-family:'Jost',sans-serif;font-size:.85rem;}
+  .doc-body ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:10px;}
+  .doc-body ul li{padding-left:16px;position:relative;color:var(--parchment);font-size:.85rem;}
+  .doc-body ul li::before{content:"—";position:absolute;left:0;color:var(--gold);}
+  .doc-body .example-box{background:var(--navy-deep);border:1px dashed var(--navy-line);padding:14px 16px;font-family:'Space Mono',monospace;font-size:.76rem;color:var(--gold-bright);margin:12px 0;line-height:1.9;}
+  .reglamento-link{
+    display:inline-block;margin-top:14px;font-size:.8rem;color:var(--muted);border-bottom:1px solid var(--navy-line);
+    cursor:pointer;transition:color .2s;background:none;border-top:none;border-left:none;border-right:none;font-family:'Jost',sans-serif;padding:0 0 2px;
+  }
+  .reglamento-link:hover{color:var(--gold);}
+
+  /* ---------- email capture ---------- */
+  .email-capture{margin-top:20px;padding-top:18px;border-top:1px dashed var(--navy-line);}
+  .email-capture .sub{color:var(--muted);font-size:.85rem;margin-bottom:12px;}
+  .email-msg{font-size:.8rem;margin-top:8px;color:var(--gold-bright);display:none;}
+  .email-msg.show{display:block;}
+  .email-msg.error{color:var(--stamp);}
+
+  @media (max-width:680px){
+    .stubs{flex-direction:column;}
+    .perforation{border-left:none;border-top:1px dashed var(--navy-line);height:0;}
+    .perforation::before{left:-9px;top:50%;transform:translateY(-50%);}
+    .perforation::after{left:auto;right:-9px;top:50%;bottom:auto;transform:translateY(-50%);}
+    .steps{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms !important;transition-duration:.001ms !important;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><span class="plane">✈</span> VIAJEROS PREFERENTES</div>
+  <a class="talk" href="https://wa.me/51920227246?text=Hola%2C%20tengo%20una%20consulta%20sobre%20Viajeros%20Preferentes" target="_blank" rel="noopener">☎ Hablar con un asesor</a>
+</div>
+
+<section class="hero">
+  <svg class="flight-svg" viewBox="0 0 1080 400" preserveAspectRatio="none">
+    <path class="flight-path" d="M 40 260 C 220 60, 520 60, 700 180 S 980 340, 1040 120"/>
+  </svg>
+  <div class="plane-icon">✈</div>
+
+  <div class="eyebrow">Acceso Privado — Portal Oficial de Miembros</div>
+  <h1>Bienvenido a <em>Viajeros Preferentes</em></h1>
+  <p class="lead">Esta membresía no está abierta al público: se otorga por invitación a quienes ya viajaron con nosotros y hoy forman parte de un círculo selecto. Identifíquese para acceder a su portal, o inicie el camino hacia su propia membresía.</p>
+
+  <div class="select-hint">Seleccione su pase de acceso</div>
+  <div class="stubs">
+    <button class="stub" id="stub-new" onclick="selectStub('new')">
+      <span class="stub-icon">🛫</span>
+      <span class="stub-eyebrow">Nuevo pasajero</span>
+      <span class="stub-label">Quiero ser miembro</span>
+    </button>
+    <div class="perforation"></div>
+    <button class="stub" id="stub-member" onclick="selectStub('member')">
+      <span class="stub-icon">🎫</span>
+      <span class="stub-eyebrow">Pasajero frecuente</span>
+      <span class="stub-label">Ya soy miembro</span>
+    </button>
+  </div>
+
+  <div class="panel" id="panel-new">
+    <div class="panel-inner">
+      <h3>¿Aún no eres miembro?</h3>
+      <p class="sub">Viajeros Preferentes es un programa exclusivo por invitación.</p>
+      <ul class="req-list">
+        <li>La membresía se otorga únicamente por invitación de nuestro equipo.</li>
+        <li>Se entrega a clientes que ya completaron un viaje gestionado con nosotros.</li>
+        <li>¿Un miembro te recomendó? Cuéntaselo a tu asesor y con gusto te ayudamos a planear tu primer viaje.</li>
+      </ul>
+      <a class="cta-gold" href="https://wa.me/51920227246?text=Hola%2C%20quiero%20más%20información%20sobre%20Viajeros%20Preferentes" target="_blank" rel="noopener">Hablar con mi asesor →</a>
+      <div><button class="reglamento-link" onclick="openModal('doc-requisitos')">Ver requisitos oficiales completos</button></div>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-member">
+    <div class="panel-inner">
+      <h3>Verificación de membresía</h3>
+      <p class="sub">Ingresa tu Member ID para acceder a tus beneficios.</p>
+      <div class="id-row">
+        <input class="id-input" id="member-id-input" type="text" placeholder="MEMBER ID — Ej. VP-E2J8-E6K">
+        <button class="cta-gold" onclick="verifyMember()">Verificar</button>
+      </div>
+      <div class="error-msg" id="error-msg">Ingresa tu Member ID para continuar.</div>
+      <div class="verify-loading" id="verify-loading"><span class="dot"></span><span class="dot"></span><span class="dot"></span> Verificando identificación…</div>
+      <div class="verified-block" id="verified-block">
+        <span class="stamp-mark">✓ Verificado</span>
+
+        <!-- Tarjeta de miembro — hoy se rellena con datos de demostración (ver renderMemberCard en el script).
+             Cuando exista la base de datos, reemplazar fetchMemberData() por la llamada real al backend. -->
+        <div class="member-card" id="member-card">
+          <div class="member-card-top">
+            <div>
+              <div class="mc-label">Miembro</div>
+              <div class="mc-name" id="mc-name">—</div>
+            </div>
+            <div class="mc-level" id="mc-level">—</div>
+          </div>
+          <div class="mc-id" id="mc-id">—</div>
+          <div class="mc-grid">
+            <div><span class="mc-k">Estado</span><span class="mc-v" id="mc-status">—</span></div>
+            <div><span class="mc-k">Activación</span><span class="mc-v" id="mc-since">—</span></div>
+            <div><span class="mc-k">Referidos</span><span class="mc-v" id="mc-referrals">—</span></div>
+            <div><span class="mc-k">Bonos obtenidos</span><span class="mc-v" id="mc-bonuses">—</span></div>
+          </div>
+        </div>
+
+        <div class="quick-links">
+          <a href="#beneficios">Ver mis beneficios <span>→</span></a>
+          <a href="https://wa.me/51920227246?text=Hola%2C%20soy%20miembro%20y%20quiero%20consultar%20mis%20referidos" target="_blank" rel="noopener">Consultar mis referidos <span>→</span></a>
+          <a href="https://wa.me/51920227246?text=Hola%2C%20soy%20miembro%20de%20Viajeros%20Preferentes%20y%20quisiera%20hablar%20con%20mi%20asesor%20personal" target="_blank" rel="noopener">Hablar con mi asesor personal <span>→</span></a>
+        </div>
+        <div class="email-capture">
+          <p class="sub">Déjanos tu correo y te enviaremos tus descuentos y tu Bono Preferente directamente.</p>
+          <div class="id-row">
+            <input class="id-input" id="member-email-input" type="email" placeholder="tucorreo@ejemplo.com">
+            <button class="cta-gold" onclick="saveEmail()">Guardar correo</button>
+          </div>
+          <div class="email-msg" id="email-msg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NUESTRA HISTORIA: MISIÓN Y VISIÓN ================= -->
+<section id="historia">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Nuestra Historia</div>
+      <h2>Un programa que nace de la confianza</h2>
+    </div>
+    <div class="story-grid">
+      <div class="story-block">
+        <div class="eyebrow">Nuestra Misión</div>
+        <h3>Reconocer la confianza de quienes ya viajaron con nosotros</h3>
+        <p>Viajeros Preferentes nació de una convicción simple: nadie conoce nuestro servicio mejor que quienes ya lo han vivido. Cada recomendación que un cliente hace en nuestro nombre vale más que cualquier campaña publicitaria, porque nace de una experiencia real y no de una promesa. Nuestra misión es honrar esa confianza, transformándola en beneficios concretos para quienes construyen, viaje a viaje, una comunidad que se recomienda con honestidad.</p>
+      </div>
+      <div class="story-block">
+        <div class="eyebrow">Nuestra Visión</div>
+        <h3>Una comunidad internacional que se recomienda a sí misma</h3>
+        <p>Aspiramos a construir una red de viajeros donde cada nuevo miembro llegue de la mano de alguien que ya confió en nosotros. Una comunidad donde la transparencia sea la norma, la credibilidad se gane viaje tras viaje, y los beneficios se compartan entre quienes la hacen posible. Así entendemos el crecimiento: no a través de la publicidad masiva, sino de la confianza que se transmite de viajero a viajero.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= POR QUÉ EXISTE EL PROGRAMA ================= -->
+<section id="por-que-existe">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">La Razón del Programa</div>
+      <h2>¿Por qué existe Viajeros Preferentes?</h2>
+    </div>
+    <div class="why-block">
+      <p class="why-lead">Ninguna campaña publicitaria genera la misma confianza que la palabra de alguien que ya viajó con nosotros.</p>
+      <div class="why-body">
+        <p>Por eso decidimos construir un programa que reconozca directamente a quienes hacen posible ese tipo de recomendación: nuestros propios clientes.</p>
+        <p>Viajeros Preferentes no es un programa abierto al público. Se otorga por invitación a quienes ya completaron un viaje con nuestro equipo, porque solo ellos pueden hablar con conocimiento real de lo que ofrecemos. Cada miembro que recomienda a alguien no solo nos ayuda a crecer: fortalece una comunidad donde cada nuevo integrante llega con una referencia genuina detrás.</p>
+        <p>El programa existe para recompensar esa confianza. No con promesas vacías, sino con beneficios reales que evolucionan junto con cada recomendación confirmada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NUESTROS VALORES ================= -->
+<section id="valores">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Lo Que Nos Sostiene</div>
+      <h2>Nuestros Valores</h2>
+    </div>
+    <div class="benefits">
+      <div class="benefit"><div class="seal">⬡</div><h3>Confianza</h3><p>La base de cada recomendación y de cada relación que construimos con nuestros viajeros.</p></div>
+      <div class="benefit"><div class="seal">❖</div><h3>Calidad</h3><p>Cada experiencia que gestionamos debe sostener el nivel que hace que alguien quiera recomendarnos.</p></div>
+      <div class="benefit"><div class="seal">⟡</div><h3>Transparencia</h3><p>Condiciones claras, procesos honestos y comunicación directa en cada etapa del programa.</p></div>
+      <div class="benefit"><div class="seal">⬢</div><h3>Comunidad</h3><p>Un círculo de viajeros que crece porque se recomienda entre sí, no porque se publicita a sí mismo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NIVELES DE MEMBRESÍA ================= -->
+<section id="niveles">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Membresía en Evolución</div>
+      <h2>Niveles de Membresía</h2>
+      <p class="deck">Su membresía no es estática. Conforme participa activamente en el programa —recomendando, viajando, formando parte de esta comunidad— puede acceder a niveles superiores dentro de Viajeros Preferentes.</p>
+    </div>
+    <div class="tier-row">
+      <div class="tier-card tier-1">
+        <div class="tier-rank">Nivel 01</div>
+        <div class="tier-name">Preferente</div>
+        <div class="tier-desc">Su punto de partida dentro del programa.</div>
+      </div>
+      <div class="tier-arrow">›</div>
+      <div class="tier-card tier-2">
+        <div class="tier-rank">Nivel 02</div>
+        <div class="tier-name">Gold</div>
+        <div class="tier-desc">Reconoce la participación sostenida en el tiempo.</div>
+      </div>
+      <div class="tier-arrow">›</div>
+      <div class="tier-card tier-3">
+        <div class="tier-rank">Nivel 03</div>
+        <div class="tier-name">Elite</div>
+        <div class="tier-desc">Reservado para los miembros más comprometidos con la comunidad.</div>
+      </div>
+      <div class="tier-arrow">›</div>
+      <div class="tier-card tier-4">
+        <div class="tier-rank">Nivel 04</div>
+        <div class="tier-name">Black</div>
+        <div class="tier-desc">El reconocimiento más alto dentro de Viajeros Preferentes.</div>
+      </div>
+    </div>
+    <p class="tier-note">Los criterios y beneficios de cada nivel se comunicarán directamente a los miembros conforme el programa continúa evolucionando.</p>
+  </div>
+</section>
+
+<!-- ================= LÍNEA DE TIEMPO ================= -->
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Su Camino Como Miembro</div>
+      <h2>¿Cómo funciona el programa?</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item"><h4>Viaja con nosotros</h4><p>Todo comienza con una experiencia de viaje gestionada por nuestro equipo.</p></div>
+      <div class="tl-item"><h4>Obtiene su Member Pass</h4><p>Al recibir su invitación, activa su credencial y su Member ID personal.</p></div>
+      <div class="tl-item"><h4>Recomienda</h4><p>Comparte su Member ID con alguien de su confianza que desee viajar.</p></div>
+      <div class="tl-item"><h4>Su referido reserva</h4><p>La persona recomendada confirma su reserva indicando su Member ID.</p></div>
+      <div class="tl-item"><h4>Ambos reciben el Bono Preferente</h4><p>Una vez validada la reserva, se habilita el beneficio vigente para los dos.</p></div>
+      <div class="tl-item"><h4>Su membresía sigue creciendo</h4><p>Cada recomendación confirmada suma a su trayectoria dentro del programa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="beneficios">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Membresía Preferente</div>
+      <h2>¿Por qué ser parte de Viajeros Preferentes?</h2>
+    </div>
+    <div class="benefits">
+      <div class="benefit"><div class="seal">★</div><h3>Bono Preferente</h3><p>Cada recomendación abre la puerta a nuevos beneficios.</p></div>
+      <div class="benefit"><div class="seal">◈</div><h3>Membresía Exclusiva</h3><p>Tu confianza te distingue como miembro de Viajeros Preferentes.</p></div>
+      <div class="benefit"><div class="seal">◆</div><h3>Asesor Personal</h3><p>Siempre contarás con un asesor para acompañarte cuando lo necesites.</p></div>
+      <div class="benefit"><div class="seal">↗</div><h3>Beneficios en Evolución</h3><p>La membresía incorpora continuamente nuevas ventajas para sus miembros.</p></div>
+      <div class="benefit"><div class="seal">✦</div><h3>Una Comunidad que Inspira</h3><p>Conecta con una comunidad que comparte oportunidades de viaje y confianza.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="bono-preferente">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Membresía en Movimiento</div>
+      <h2>Bono Preferente</h2>
+      <p class="bonus-intro">Cada recomendación confirmada puede abrir la puerta a un beneficio distinto. Esto es apenas una muestra de lo que su membresía puede desbloquear.</p>
+    </div>
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <div class="bonus-icon">✈</div>
+        <h3>Futuras Reservas</h3>
+        <p>Ventajas aplicables a su próximo viaje con nosotros.</p>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-icon">🛡</div>
+        <h3>Seguro de Viaje</h3>
+        <p>Cobertura adicional pensada para viajar con tranquilidad.</p>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-icon">🏨</div>
+        <h3>Hoteles Seleccionados</h3>
+        <p>Condiciones especiales en una selección de propiedades aliadas.</p>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-icon">🧳</div>
+        <h3>Equipaje Adicional</h3>
+        <p>Beneficios de equipaje cuando la reserva lo permite.</p>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-icon">◆</div>
+        <h3>Promociones Exclusivas</h3>
+        <p>Accesos que no se ofrecen fuera del programa.</p>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-icon">✦</div>
+        <h3>Campañas para Miembros</h3>
+        <p>Iniciativas activas únicamente para la comunidad Preferente.</p>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-icon">❋</div>
+        <h3>Experiencias Exclusivas</h3>
+        <p>Momentos reservados para quienes forman parte del círculo.</p>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-icon">✧</div>
+        <h3>Beneficios Sorpresa</h3>
+        <p>Ventajas puntuales que se activan según la campaña vigente.</p>
+      </div>
+    </div>
+    <p class="bonus-note">Los beneficios evolucionan constantemente. Conforme el programa crece y se desarrollan nuevas campañas, los miembros pueden acceder a nuevas oportunidades y ventajas exclusivas. La disponibilidad dependerá de las condiciones vigentes al momento de la reserva.</p>
+  </div>
+</section>
+
+<!-- ================= POR QUÉ CONFIAR EN UNA RECOMENDACIÓN ================= -->
+<section id="confianza">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">La Base de Todo</div>
+      <h2>¿Por qué confiar en una recomendación?</h2>
+    </div>
+    <div class="why-block">
+      <p class="why-lead">Toda persona que llega a Viajeros Preferentes a través de un Member ID fue recomendada por alguien que ya vivió la experiencia y decidió poner su nombre detrás de ella.</p>
+      <div class="why-body">
+        <p>Eso cambia por completo la naturaleza del vínculo: no llega buscando una oferta, llega porque alguien de confianza le dijo que valía la pena.</p>
+        <p>Una recomendación no se compra ni se fabrica con publicidad. Se gana, viaje a viaje, con un servicio que sostiene lo que promete. Por eso cada Member ID que circula dentro de nuestra comunidad funciona como algo más que un código: es el respaldo de alguien que ya puso su reputación en juego al recomendarnos.</p>
+        <p>Esa es la razón por la que confiamos más en nuestra comunidad que en cualquier campaña: porque cada nuevo miembro llega avalado por una experiencia real, no por un anuncio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NUESTRA COMUNIDAD ================= -->
+<section id="comunidad">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Crecimiento Real</div>
+      <h2>Nuestra Comunidad</h2>
+    </div>
+    <p class="community-lead">Viajeros Preferentes crece de la misma forma en que nació: gracias a la confianza de quienes ya viajaron con nosotros y decidieron compartir esa experiencia con alguien más. Cada nuevo miembro que se une llega con una historia real detrás, no con una campaña publicitaria. Esa es, para nosotros, la métrica que más importa.</p>
+    <div class="steps">
+      <div class="step"><h3>Crecimiento orgánico</h3><p>Cada nuevo miembro llega porque alguien más decidió compartir su experiencia, no por publicidad masiva.</p></div>
+      <div class="step"><h3>Historias reales</h3><p>Detrás de cada Member ID hay un viaje que realmente ocurrió y una persona que confió en él.</p></div>
+      <div class="step"><h3>Confianza compartida</h3><p>La comunidad se sostiene porque quienes la integran ya vivieron el servicio que recomiendan.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIOS ================= -->
+<section id="testimonios">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Voces de la Comunidad</div>
+      <h2>Lo que dicen nuestros miembros</h2>
+    </div>
+    <div class="testimonial-track" id="testimonial-track">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"Mi asesor estuvo presente en cada paso del viaje. Recomendarlo a mi familia se sintió completamente natural."</p>
+        <div class="testimonial-who">María P. — Perú</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"Lo que más valoro es que nadie me buscó a mí primero: fui yo quien decidió compartir mi Member ID."</p>
+        <div class="testimonial-who">Carlos R. — Chile</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"Sentí que entraba a algo distinto desde el primer mensaje. El seguimiento fue cercano y muy profesional."</p>
+        <div class="testimonial-who">Andrea S. — Colombia</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"Recomendé a dos amigos y ambos terminaron agradeciéndome. Esa es la mejor parte del programa."</p>
+        <div class="testimonial-who">Jorge M. — Perú</div>
+      </div>
+    </div>
+    <div class="testimonial-controls">
+      <button class="tc-btn" onclick="scrollTestimonials(-1)" aria-label="Testimonio anterior">‹</button>
+      <button class="tc-btn" onclick="scrollTestimonials(1)" aria-label="Testimonio siguiente">›</button>
+    </div>
+  </div>
+</section>
+
+<section id="asesor">
+  <div class="wrap">
+    <div class="advisor">
+      <div class="advisor-photo">EJ</div>
+      <div class="advisor-info">
+        <div class="eyebrow">Tu asesor personal</div>
+        <h3>Enderson Jesús</h3>
+        <p>Asesor especialista en viajes internacionales. Aquí para acompañarte, resolver tus consultas y ayudarte en cada etapa de tu experiencia de viaje.</p>
+        <a class="cta-gold" href="https://wa.me/51920227246" target="_blank" rel="noopener">☎ Hablar con mi asesor</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Antes de Continuar</div>
+      <h2>Preguntas Frecuentes</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>¿Qué es el Member ID? <span class="chev">›</span></summary>
+        <p>Es el código único, personal e intransferible que lo identifica dentro del programa. Debe indicarlo cada vez que recomiende a alguien, para que la recomendación quede registrada a su nombre.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Cómo registro un referido? <span class="chev">›</span></summary>
+        <p>Escriba a su asesor por WhatsApp con su Member ID, el nombre completo del referido, su WhatsApp y su destino de interés si lo conoce. Nuestro equipo se pondrá en contacto directamente con la persona.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Cuándo recibo mi Bono Preferente? <span class="chev">›</span></summary>
+        <p>Una vez que su referido confirma su reserva y esta es validada por nuestro equipo, se habilita el Bono Preferente vigente para ambos.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Mi membresía tiene vencimiento? <span class="chev">›</span></summary>
+        <p>Su membresía permanece activa mientras cumpla el Reglamento del programa. Los beneficios y condiciones pueden actualizarse con el tiempo, y se lo comunicaremos oportunamente.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Cómo contacto a mi asesor? <span class="chev">›</span></summary>
+        <p>Directamente por WhatsApp, disponible desde cualquier botón "Hablar con mi asesor" de este portal.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand"><span class="plane">✈</span> VIAJEROS PREFERENTES</div>
+  <div class="tag">Viajar también es compartir oportunidades.</div>
+  <div class="contact">contacto.endersonjesus@gmail.com<br>+51 920 227 246</div>
+  <div class="contact" style="margin-top:14px;opacity:.6;">© 2026 Viajeros Preferentes. Todos los derechos reservados.</div>
+  <div class="footer-links-row">
+    <button class="footer-link" onclick="openModal('doc-privacidad')">Política de Privacidad</button>
+    <button class="footer-link" onclick="openModal('doc-terminos')">Términos y Condiciones</button>
+    <button class="footer-link" onclick="openModal('doc-presentacion')">Documentación Legal</button>
+    <a class="footer-link" href="#asesor">Contacto</a>
+    <span class="footer-link footer-link-disabled" title="Disponible próximamente">Libro de Reclamaciones (Próximamente)</span>
+  </div>
+</footer>
+
+<!-- ================= DOCUMENTACIÓN LEGAL UNIFICADA ================= -->
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this) closeModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">✕</button>
+    <div class="eyebrow">Documento Corporativo</div>
+    <h3 style="font-size:1.6rem;margin:8px 0 10px;">Documentación Legal — Viajeros Preferentes</h3>
+    <p class="modal-toc">Este documento reúne, en capítulos, toda la información oficial que rige la participación en el programa: presentación, reglamento, términos de uso, privacidad, derechos y obligaciones del miembro.</p>
+
+    <details class="doc-section" id="doc-presentacion" open>
+      <summary><span><span class="doc-num">01 —</span> Presentación</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <p>Este documento reúne, en un solo lugar, la información oficial que rige la participación en Viajeros Preferentes: el reglamento del programa, los términos de uso del portal, la política de privacidad y los derechos y obligaciones de cada miembro. Le recomendamos leerlo con atención antes de activar su Member Pass.</p>
+      </div>
+    </details>
+
+    <details class="doc-section" id="doc-manual">
+      <summary><span><span class="doc-num">02 —</span> Manual de Uso — Member Pass</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <p>¡Felicitaciones! Ahora formas parte de Viajeros Preferentes, un programa exclusivo diseñado para clientes seleccionados que desean compartir nuestros servicios con familiares, amigos o conocidos.</p>
+        <p>Tu Member Pass es tu identificación oficial dentro del programa. Guárdalo en un lugar seguro y tenlo siempre disponible cuando desees registrar un nuevo referido.</p>
+
+        <h5>¿Qué es el Member Pass?</h5>
+        <p>Una credencial digital que contiene tu Member ID: un código único, personal e intransferible que identifica tus recomendaciones dentro del programa. No lo compartas con terceros ajenos al proceso de recomendación.</p>
+
+        <h5>¿Cómo recomendar a alguien?</h5>
+        <ol>
+          <li><strong>Paso 1</strong>Solicita autorización a la persona para compartir sus datos de contacto.</li>
+          <li><strong>Paso 2</strong>Escríbenos por WhatsApp.</li>
+          <li><strong>Paso 3</strong>Envía tu Member ID, el nombre completo del referido, su WhatsApp y su destino de interés (si lo conoce).</li>
+          <li><strong>Paso 4</strong>Nuestro equipo se pondrá en contacto directamente con el referido. No necesitas hacer ningún trámite adicional.</li>
+        </ol>
+        <div class="example-box">Member ID: VP-E2J8-E6K<br>Nombre: Enderson Jesús<br>WhatsApp: +51 920 227 246<br>Destino: Suiza</div>
+
+        <h5>¿Qué sucede después?</h5>
+        <ul>
+          <li>Revisamos la información.</li>
+          <li>Nos comunicamos con la persona.</li>
+          <li>Le brindamos toda la asesoría necesaria.</li>
+          <li>Si el viaje se concreta y cumple las condiciones del programa, se genera el Bono Preferente correspondiente.</li>
+        </ul>
+
+        <h5>¿Cómo consultar el estado de un referido?</h5>
+        <p>Escríbenos por WhatsApp indicando: "Quiero consultar el estado de mi referido." Verificaremos la información y te daremos una actualización cuando sea posible.</p>
+
+        <h5>Recomendaciones importantes</h5>
+        <ul>
+          <li>Conserva tu Member Pass.</li>
+          <li>No compartas tu Member ID públicamente.</li>
+          <li>Registra al referido antes de que inicie contacto con nosotros.</li>
+          <li>Comparte únicamente información real y autorizada por la persona recomendada.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="doc-section" id="doc-bono">
+      <summary><span><span class="doc-num">03 —</span> ¿Qué incluye el Bono Preferente?</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <p>Cada recomendación confirmada puede darte acceso a un Bono Preferente. Los beneficios se asignan de acuerdo con la campaña vigente y el tipo de reserva realizada.</p>
+        <h5>Algunos ejemplos incluyen</h5>
+        <ul>
+          <li>Descuentos en futuras reservas.</li>
+          <li>Bonificaciones especiales.</li>
+          <li>Seguro de viaje.</li>
+          <li>Beneficios en hoteles seleccionados.</li>
+          <li>Equipaje adicional (cuando aplique).</li>
+          <li>Experiencias y promociones exclusivas.</li>
+          <li>Y muchos beneficios más.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="doc-section" id="doc-reglamento">
+      <summary><span><span class="doc-num">04 —</span> Reglamento Oficial</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <ol>
+          <li><strong>1. Objetivo del programa</strong>Reconocer la confianza de nuestros clientes y brindar beneficios a quienes recomiendan nuestros servicios. La participación es completamente gratuita y está sujeta a este reglamento.</li>
+          <li><strong>2. Requisitos para ser miembro</strong>Haber realizado al menos una reserva o viaje gestionado por nuestro equipo, haberlo finalizado correctamente, haber recibido una invitación oficial y aceptar este reglamento. La membresía no está abierta al público; solo se obtiene por invitación.</li>
+          <li><strong>3. Activación de la membresía</strong>Al aceptar la invitación, el miembro recibe su Member Pass, un Member ID único y acceso a los beneficios disponibles.</li>
+          <li><strong>4. Member ID</strong>Código único e intransferible que debe usarse para registrar todas las recomendaciones. No puede compartirse con fines fraudulentos ni ser alterado.</li>
+          <li><strong>5. Recomendación de nuevos viajeros</strong>El referido no debe haber iniciado previamente un proceso con nosotros, el Member ID debe informarse antes o durante el primer contacto, y la información debe ser verdadera.</li>
+          <li><strong>6. Confirmación del referido</strong>Una recomendación se confirma solo cuando el referido completa su reserva, esta es confirmada por nuestro equipo y se cumplen las condiciones comerciales aplicables.</li>
+          <li><strong>7. Bono Preferente</strong>Al confirmarse una recomendación, el miembro accede al Bono Preferente vigente. El monto, porcentaje o forma de entrega puede actualizarse sin previo aviso.</li>
+          <li><strong>8. Casos no válidos</strong>No generan beneficios los referidos registrados después de iniciar contacto con la agencia, datos falsos o incompletos, cancelaciones antes de la confirmación definitiva, o recomendaciones obtenidas mediante prácticas indebidas.</li>
+          <li><strong>9. Conflicto entre recomendaciones</strong>Si dos miembros recomiendan a la misma persona, se reconoce únicamente la primera recomendación validada por Viajeros Preferentes. La decisión es definitiva.</li>
+          <li><strong>10. Vigencia de la membresía</strong>Permanece activa mientras el miembro cumpla las normas del programa. Los beneficios o condiciones pueden actualizarse cuando sea necesario.</li>
+          <li><strong>11. Suspensión o cancelación</strong>Puede suspenderse o cancelarse por uso indebido del Member ID, información falsa, intentos de fraude, suplantación de identidad o incumplimiento del reglamento, con pérdida de los beneficios acumulados.</li>
+          <li><strong>12. Modificaciones del programa</strong>Los beneficios, campañas, requisitos o condiciones pueden modificarse cuando se considere necesario, y se comunicarán oportunamente a los miembros activos.</li>
+          <li><strong>13. Protección de datos</strong>La información de miembros y referidos se usa únicamente para la gestión del programa y la prestación de nuestros servicios, respetando su confidencialidad.</li>
+          <li><strong>14. Aceptación</strong>El uso del Member Pass implica haber leído, comprendido y aceptado este reglamento.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details class="doc-section" id="doc-requisitos">
+      <summary><span><span class="doc-num">05 —</span> Requisitos Oficiales de Ingreso</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <ol>
+          <li><strong>Ser cliente de Viajeros Preferentes</strong>Haber adquirido al menos un servicio de viaje gestionado por nuestro equipo.</li>
+          <li><strong>Haber finalizado su proceso</strong>El viaje o servicio contratado debe estar confirmado y concluido satisfactoriamente.</li>
+          <li><strong>Haber sido seleccionado</strong>La membresía es exclusiva y se otorga solo a clientes previamente seleccionados.</li>
+          <li><strong>Recibir una invitación oficial</strong>El acceso solo es posible mediante invitación personalizada de nuestro equipo.</li>
+          <li><strong>Activar su Member Pass</strong>El invitado debe aceptar la invitación y activar su pase para obtener su Member ID.</li>
+          <li><strong>Aceptar el reglamento</strong>El ingreso implica la lectura y aceptación del Reglamento Oficial.</li>
+          <li><strong>Mantener una conducta adecuada</strong>Actuar con honestidad y respeto, proporcionando información veraz.</li>
+          <li><strong>Conservar su Member Pass</strong>El Member Pass y el Member ID son personales e intransferibles.</li>
+          <li><strong>Cupos limitados</strong>La invitación está sujeta a disponibilidad de cupos y a los criterios de selección de la empresa.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details class="doc-section" id="doc-terminos">
+      <summary><span><span class="doc-num">06 —</span> Términos y Condiciones</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <ul>
+          <li>El acceso al portal de miembros es exclusivo para quienes cuenten con una invitación válida y un Member ID activo.</li>
+          <li>El Member Pass es personal e intransferible; su uso indebido puede derivar en la suspensión de la cuenta.</li>
+          <li>La empresa se reserva el derecho de actualizar el contenido, las funcionalidades y el diseño del portal cuando lo considere necesario.</li>
+          <li>El uso continuado del portal implica la aceptación de estos términos y de sus futuras actualizaciones.</li>
+          <li>Los servicios de viaje contratados por los miembros o sus referidos se rigen, además, por las condiciones comerciales propias de cada reserva.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="doc-section" id="doc-privacidad">
+      <summary><span><span class="doc-num">07 —</span> Política de Privacidad y Protección de Datos</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <p>La información que usted comparte con nosotros —incluyendo sus datos de contacto y los de las personas que recomiende— se utiliza exclusivamente para la gestión del programa Viajeros Preferentes y la prestación de nuestros servicios de viaje.</p>
+        <p>No compartimos esta información con terceros ajenos a la operación del programa, salvo obligación legal. Usted puede solicitar en cualquier momento la actualización o eliminación de sus datos, escribiendo directamente a su asesor.</p>
+      </div>
+    </details>
+
+    <details class="doc-section" id="doc-derechos">
+      <summary><span><span class="doc-num">08 —</span> Derechos del Miembro</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <ul>
+          <li>Recibir información clara sobre el estado de sus referidos.</li>
+          <li>Acceder a los beneficios vigentes del Bono Preferente al confirmarse una recomendación.</li>
+          <li>Solicitar la actualización o eliminación de sus datos personales.</li>
+          <li>Contar con un asesor personal disponible para sus consultas.</li>
+          <li>Ser informado oportunamente ante cualquier modificación relevante del programa.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="doc-section" id="doc-obligaciones">
+      <summary><span><span class="doc-num">09 —</span> Obligaciones del Miembro</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <ul>
+          <li>Utilizar el Member ID de forma personal, sin compartirlo con fines ajenos al proceso de recomendación.</li>
+          <li>Proporcionar información verdadera y autorizada por la persona que recomienda.</li>
+          <li>Respetar el Reglamento Oficial del programa.</li>
+          <li>Actuar con honestidad en cada interacción dentro del programa.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="doc-section" id="doc-responsabilidad">
+      <summary><span><span class="doc-num">10 —</span> Responsabilidad del Programa</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <p>Viajeros Preferentes gestiona el proceso de recomendación y activación de beneficios, pero los servicios de viaje contratados por los referidos se rigen por las condiciones comerciales correspondientes a cada reserva.</p>
+        <p>El programa no garantiza resultados específicos ni montos fijos de beneficio; estos dependen de la campaña vigente y de las condiciones de cada reserva confirmada.</p>
+      </div>
+    </details>
+
+    <details class="doc-section" id="doc-modificaciones">
+      <summary><span><span class="doc-num">11 —</span> Modificaciones Futuras</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <p>Este documento, así como el Reglamento Oficial y las condiciones del Bono Preferente, pueden actualizarse cuando la empresa lo considere necesario. Los miembros activos serán informados oportunamente ante cualquier cambio relevante.</p>
+      </div>
+    </details>
+
+    <details class="doc-section" id="doc-preguntas-legales">
+      <summary><span><span class="doc-num">12 —</span> Preguntas Legales Frecuentes</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <ul>
+          <li>¿Puedo transferir mi Member ID a otra persona? No, es personal e intransferible.</li>
+          <li>¿Qué pasa si mi referido cancela su reserva? No se genera Bono Preferente en ese caso.</li>
+          <li>¿Puedo dejar de participar en el programa? Sí, puede solicitarlo a su asesor en cualquier momento.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="doc-section" id="doc-aceptacion">
+      <summary><span><span class="doc-num">13 —</span> Aceptación del Programa</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <p>El uso del Member Pass y del portal de Viajeros Preferentes implica que usted ha leído, comprendido y aceptado la totalidad de este documento, incluyendo el Reglamento Oficial, los Términos y Condiciones y la Política de Privacidad aquí descritos.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<script>
+  function selectStub(which){
+    const stubNew = document.getElementById('stub-new');
+    const stubMember = document.getElementById('stub-member');
+    const panelNew = document.getElementById('panel-new');
+    const panelMember = document.getElementById('panel-member');
+
+    stubNew.classList.toggle('active', which==='new');
+    stubMember.classList.toggle('active', which==='member');
+    panelNew.classList.toggle('open', which==='new');
+    panelMember.classList.toggle('open', which==='member');
+  }
+
+  // 🔧 DATOS DE DEMOSTRACIÓN — esta función simula la respuesta de un backend.
+  // Cuando exista la base de datos real de miembros, reemplazar el contenido
+  // de esta función por una llamada a la API (fetch) que devuelva el mismo
+  // conjunto de campos: name, memberId, status, since, referrals, bonuses, level.
+  function fetchMemberData(memberId){
+    return {
+      name: 'Miembro Preferente',
+      memberId: memberId,
+      status: 'Activa',
+      since: '—',
+      referrals: '—',
+      bonuses: '—',
+      level: 'Preferente'
+    };
+  }
+
+  function renderMemberCard(data){
+    document.getElementById('mc-name').textContent = data.name;
+    document.getElementById('mc-id').textContent = data.memberId;
+    document.getElementById('mc-status').textContent = data.status;
+    document.getElementById('mc-since').textContent = data.since;
+    document.getElementById('mc-referrals').textContent = data.referrals;
+    document.getElementById('mc-bonuses').textContent = data.bonuses;
+    document.getElementById('mc-level').textContent = data.level;
+  }
+
+  function verifyMember(){
+    const input = document.getElementById('member-id-input');
+    const errorMsg = document.getElementById('error-msg');
+    const loading = document.getElementById('verify-loading');
+    const verified = document.getElementById('verified-block');
+
+    verified.classList.remove('show');
+    if(!input.value.trim()){
+      input.classList.add('error');
+      errorMsg.classList.add('show');
+      setTimeout(()=>input.classList.remove('error'),300);
+      return;
+    }
+    errorMsg.classList.remove('show');
+    loading.classList.add('show');
+
+    setTimeout(()=>{
+      loading.classList.remove('show');
+      renderMemberCard(fetchMemberData(input.value.trim().toUpperCase()));
+      verified.classList.add('show');
+    }, 900);
+  }
+
+  function saveEmail(){
+    const input = document.getElementById('member-email-input');
+    const msg = document.getElementById('email-msg');
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(!emailPattern.test(input.value.trim())){
+      msg.textContent = 'Ingresa un correo válido.';
+      msg.classList.add('show','error');
+      return;
+    }
+    msg.classList.remove('error');
+    msg.textContent = '¡Gracias! Te escribiremos pronto con tus beneficios.';
+    msg.classList.add('show');
+  }
+
+  // ---- Documentación legal: abre el documento y, si se indica, despliega el capítulo solicitado ----
+  function openModal(chapterId){
+    document.getElementById('modal-overlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+    if(chapterId){
+      document.querySelectorAll('.doc-section').forEach(d => d.open = (d.id === chapterId));
+      const target = document.getElementById(chapterId);
+      if(target){ setTimeout(()=> target.scrollIntoView({behavior:'smooth', block:'start'}), 60); }
+    }
+  }
+  function closeModal(){
+    document.getElementById('modal-overlay').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      document.querySelectorAll('.modal-overlay.show').forEach(m => m.classList.remove('show'));
+      document.body.style.overflow = '';
+    }
+  });
+
+  // ---- Carrusel de testimonios ----
+  function scrollTestimonials(direction){
+    const track = document.getElementById('testimonial-track');
+    const card = track.querySelector('.testimonial-card');
+    const distance = card ? (card.getBoundingClientRect().width + 20) : 300;
+    track.scrollBy({left: distance * direction, behavior:'smooth'});
+  }
+</script>
+
+</body>
+</html>
