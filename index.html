@@ -127,7 +127,7 @@
     max-width:640px;width:100%;margin:0 auto;overflow:hidden;
     max-height:0;opacity:0;transition:max-height .5s ease, opacity .4s ease, margin .4s ease;
   }
-  .panel.open{max-height:900px;opacity:1;margin-top:26px;}
+  .panel.open{max-height:none;opacity:1;margin-top:26px;overflow:visible;}
   .panel-inner{
     background:var(--navy-panel-2);border:1px solid var(--navy-line);padding:30px 26px;text-align:left;
   }
@@ -178,6 +178,55 @@
     display:flex;justify-content:space-between;
   }
   .quick-links a:hover{color:var(--gold);}
+
+
+  /* ---------- capacitación privada: cómo viajar ---------- */
+  .training-entry{
+    margin-top:20px;padding:20px;border:1px solid var(--gold);background:linear-gradient(145deg,rgba(198,163,85,.10),rgba(17,28,50,.72));
+  }
+  .training-entry-top{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;}
+  .training-entry h4{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--gold-bright);margin-bottom:5px;}
+  .training-entry p{color:var(--muted);font-size:.86rem;max-width:48ch;}
+  .training-badge{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+  .training-shell{display:none;margin-top:20px;border-top:1px dashed var(--navy-line);padding-top:20px;}
+  .training-shell.show{display:block;}
+  .training-head{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:18px;}
+  .training-head h4{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--gold-bright);}
+  .training-head p{color:var(--muted);font-size:.86rem;max-width:50ch;}
+  .training-progress-wrap{min-width:180px;flex:1;max-width:260px;}
+  .training-progress-meta{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);margin-bottom:6px;}
+  .training-progress{height:7px;background:var(--navy-deep);border:1px solid var(--navy-line);overflow:hidden;}
+  .training-progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-bright));transition:width .25s ease;}
+  .training-block{border:1px solid var(--navy-line);background:var(--navy-panel);margin-top:12px;}
+  .training-block > summary{list-style:none;cursor:pointer;padding:18px 18px;display:flex;justify-content:space-between;align-items:center;gap:14px;}
+  .training-block > summary::-webkit-details-marker{display:none;}
+  .training-block-title{font-family:'Cormorant Garamond',serif;font-size:1.16rem;color:var(--gold-bright);}
+  .training-block-kicker{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+  .training-chevron{color:var(--gold);transition:transform .2s;}
+  .training-block[open] .training-chevron{transform:rotate(90deg);}
+  .training-content{padding:0 18px 20px;}
+  .lesson-card{border-top:1px dashed var(--navy-line);padding:18px 0;}
+  .lesson-card:first-child{border-top:none;padding-top:4px;}
+  .lesson-card h5{font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:var(--parchment);margin-bottom:8px;}
+  .lesson-card p,.lesson-card li{font-size:.84rem;color:var(--muted);}
+  .lesson-card ul{list-style:none;display:grid;gap:6px;margin:10px 0;}
+  .lesson-card ul li{padding-left:16px;position:relative;}
+  .lesson-card ul li::before{content:'—';position:absolute;left:0;color:var(--gold);}
+  .training-callout{margin:12px 0;padding:13px 14px;background:var(--navy-deep);border-left:2px solid var(--gold);font-size:.82rem;color:var(--parchment);}
+  .training-callout strong{color:var(--gold-bright);}
+  .training-checks{display:grid;gap:9px;margin-top:12px;}
+  .training-check{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid var(--navy-line);background:rgba(10,17,32,.55);cursor:pointer;}
+  .training-check input{margin-top:3px;accent-color:var(--gold);}
+  .training-check span{font-size:.82rem;color:var(--parchment);}
+  .training-status{margin-top:16px;padding:14px;border:1px solid var(--navy-line);font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:var(--gold-bright);}
+  .training-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+  .training-mini-btn{background:none;border:1px solid var(--navy-line);color:var(--gold-bright);padding:10px 13px;cursor:pointer;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;}
+  .training-mini-btn:hover{border-color:var(--gold);color:var(--gold);}
+  @media (max-width:680px){
+    .training-entry{padding:18px 15px;}
+    .training-head{align-items:flex-start;}
+    .training-progress-wrap{max-width:none;width:100%;}
+  }
 
   /* ---------- sections ---------- */
   section{padding:100px 0;}
@@ -495,6 +544,273 @@
           <a href="https://wa.me/51920227246?text=Hola%2C%20soy%20miembro%20y%20quiero%20consultar%20mis%20referidos" target="_blank" rel="noopener">Consultar mis referidos <span>→</span></a>
           <a href="https://wa.me/51920227246?text=Hola%2C%20soy%20miembro%20de%20Viajeros%20Preferentes%20y%20quisiera%20hablar%20con%20mi%20asesor%20personal" target="_blank" rel="noopener">Hablar con mi asesor personal <span>→</span></a>
         </div>
+
+        <div class="training-entry" id="training-entry">
+          <div class="training-entry-top">
+            <div>
+              <div class="training-badge">Acceso exclusivo para miembros verificados</div>
+              <h4>Cómo viajar</h4>
+              <p>Tu capacitación privada para preparar el viaje, dominar tu documentación y llegar listo al aeropuerto.</p>
+            </div>
+            <button class="cta-gold" type="button" onclick="toggleTraining(true)">Entrar a mi capacitación →</button>
+          </div>
+
+          <div class="training-shell" id="training-shell" aria-hidden="true">
+            <div class="training-head">
+              <div>
+                <div class="training-badge">Capacitación del viajero</div>
+                <h4>Convicción = Preparación</h4>
+                <p>No memorices un libreto. Conoce tu viaje, tus documentos y tus decisiones. Tu progreso queda guardado en este dispositivo para tu Member ID.</p>
+              </div>
+              <div class="training-progress-wrap">
+                <div class="training-progress-meta"><span>Mi progreso</span><span id="training-progress-text">0%</span></div>
+                <div class="training-progress"><div class="training-progress-bar" id="training-progress-bar"></div></div>
+              </div>
+            </div>
+
+            <details class="training-block" open>
+              <summary>
+                <span><span class="training-block-kicker">Bloque 1</span><span class="training-block-title">Conoce y domina tu viaje</span></span>
+                <span class="training-chevron">›</span>
+              </summary>
+              <div class="training-content">
+                <div class="lesson-card">
+                  <h5>1. Conoce tu viaje</h5>
+                  <p>Debes poder explicar tu viaje con naturalidad porque conoces la información real: destino, motivo, fechas, duración, ruta, escalas, alojamiento y actividades.</p>
+                  <div class="training-callout"><strong>Recuerda:</strong> convicción no es memorizar respuestas. Es conocer tu propio viaje.</div>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b1-destino"><span>Sé a qué país y ciudad(es) viajo.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b1-motivo"><span>Puedo explicar con mis palabras el motivo real de mi viaje.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b1-fechas"><span>Sé mi fecha de salida, retorno y duración total.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b1-ruta"><span>Conozco mi aerolínea, ruta y escalas cuando correspondan.</span></label>
+                  </div>
+                </div>
+
+                <div class="lesson-card">
+                  <h5>2. Tu carpeta de viaje</h5>
+                  <p>Debes saber dónde está cada documento y poder encontrarlo rápidamente, en físico o digital.</p>
+                  <ul>
+                    <li>Confirmación o reserva del viaje.</li>
+                    <li>Reserva de alojamiento y dirección.</li>
+                    <li>Itinerario turístico o de actividades/pasantía empresarial.</li>
+                    <li>Seguro de viaje.</li>
+                    <li>RT24, cuando ya haya sido entregado.</li>
+                  </ul>
+                  <div class="training-callout"><strong>Prueba de 30 segundos:</strong> ¿podrías abrir ahora mismo tu reserva de alojamiento sin perder tiempo buscándola?</div>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b1-reserva"><span>Tengo mi confirmación/reserva localizada y revisada.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b1-hotel"><span>Tengo mi alojamiento localizado, con nombre y dirección.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b1-itinerario"><span>He revisado mi itinerario y entiendo lo que haré durante el viaje.</span></label>
+                  </div>
+                </div>
+
+                <div class="lesson-card">
+                  <h5>3. RT24 y retorno</h5>
+                  <p>El RT24 corresponde al boleto/retorno previsto dentro de tu servicio. Normalmente el retorno se prevé alrededor de 7 u 8 días después, según tu viaje, y se entrega el mismo día del viaje junto con la asistencia de check-in.</p>
+                  <div class="training-callout"><strong>Importante:</strong> el RT24 no es visa, autorización de entrada, seguro ni garantía migratoria. Es la información de tu retorno dentro del servicio y debes conocerla y tenerla disponible.</div>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b1-retorno"><span>Sé cuál es mi fecha prevista de retorno.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b1-rt24"><span>Entiendo qué es el RT24 y cuándo lo recibiré.</span></label>
+                  </div>
+                </div>
+
+                <div class="lesson-card">
+                  <h5>4. Seguro de viaje</h5>
+                  <p>No necesitas memorizar cláusulas técnicas, pero sí debes saber dónde está tu póliza, qué cobertura básica contrataste y cómo contactar la asistencia.</p>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b1-seguro"><span>Sé dónde está mi seguro y puedo abrirlo rápidamente.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b1-asistencia"><span>Tengo identificado el canal de asistencia de mi seguro.</span></label>
+                  </div>
+                </div>
+
+                <div class="training-status" id="training-status-b1">CONTROL DE CONVICCIÓN · Completa los puntos para conocer tu estado.</div>
+              </div>
+            </details>
+
+            <details class="training-block">
+              <summary>
+                <span><span class="training-block-kicker">Bloque 2</span><span class="training-block-title">Prepara tu viaje</span></span>
+                <span class="training-chevron">›</span>
+              </summary>
+              <div class="training-content">
+                <div class="lesson-card">
+                  <h5>1. Equipaje inteligente para 7–8 días</h5>
+                  <p>Distingue artículo personal, equipaje de mano y equipaje facturado. El peso, dimensiones y cantidad permitida dependen de tu aerolínea y tarifa: revisa siempre tu reserva.</p>
+                  <div class="training-callout"><strong>Pregunta clave:</strong> si tu maleta facturada se pierde, ¿podrías pasar 24 horas con lo que llevas en cabina?</div>
+                  <ul>
+                    <li>Documentos originales, objetos de valor y medicamentos esenciales van contigo.</li>
+                    <li>Lleva un cambio de ropa básico y artículos esenciales en cabina.</li>
+                    <li>Verifica reglas vigentes para líquidos, electrónicos y baterías externas.</li>
+                    <li>Combina prendas; evita llenar la maleta “por si acaso”.</li>
+                  </ul>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b2-equipaje"><span>Revisé qué equipaje está incluido en mi reserva.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b2-peso"><span>Mi maleta está armada y dentro de las condiciones de mi tarifa.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b2-cabina"><span>Mi equipaje de cabina contiene lo esencial para las primeras 24 horas.</span></label>
+                  </div>
+                </div>
+
+                <div class="lesson-card">
+                  <h5>2. Cómo vestir</h5>
+                  <p>Piensa por contexto, no por moda: ropa cómoda para el vuelo, prendas funcionales para turismo y presentación profesional cuando tengas actividades empresariales. Revisa el clima real antes de empacar.</p>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b2-ropa"><span>Mi ropa corresponde al clima y a las actividades de mi viaje.</span></label>
+                  </div>
+                </div>
+
+                <div class="lesson-card">
+                  <h5>3. Dinero para el viaje</h5>
+                  <p>Conoce la moneda de tu destino. Organiza efectivo, tarjetas y un fondo de emergencia sin depender de una sola forma de pago. No existe un monto universal para todos los viajes.</p>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b2-moneda"><span>Sé qué moneda usaré y tengo un presupuesto estimado.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b2-pagos"><span>Tengo al menos una forma de pago de respaldo.</span></label>
+                  </div>
+                </div>
+
+                <div class="lesson-card">
+                  <h5>4. Teléfono e internet</h5>
+                  <p>Decide cómo te conectarás y prepárate para momentos sin internet: mapas offline, documentos descargados, capturas importantes, batería y contactos guardados.</p>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b2-conexion"><span>Ya decidí cómo tendré internet en destino.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b2-offline"><span>Tengo mapas/documentos importantes disponibles sin conexión.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b2-contactos"><span>Tengo guardados mi asesor y un contacto de emergencia.</span></label>
+                  </div>
+                </div>
+
+                <div class="lesson-card">
+                  <h5>5. 24 horas antes</h5>
+                  <p>El día previo no es para improvisar. Revisa documentación, equipaje, teléfono, dinero, transporte al aeropuerto, terminal cuando corresponda y estado del vuelo.</p>
+                  <div class="training-callout"><strong>Nuestro proceso:</strong> recibirás asistencia con el check-in el día del viaje y, ese mismo día, tu RT24.</div>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b2-pasaporte"><span>Pasaporte vigente y localizado.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b2-documentos"><span>Reserva, alojamiento, seguro e itinerario revisados.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b2-telefono"><span>Teléfono, cargadores y batería listos.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b2-transporte"><span>Transporte y horario de salida hacia el aeropuerto definidos.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b2-vuelo"><span>Estado del vuelo y terminal revisados cuando corresponda.</span></label>
+                  </div>
+                </div>
+
+                <div class="training-status" id="training-status-b2">CONTROL DE PREPARACIÓN · Completa los puntos para conocer tu estado.</div>
+              </div>
+            </details>
+
+            <details class="training-block">
+              <summary>
+                <span><span class="training-block-kicker">Bloque 3</span><span class="training-block-title">Del aeropuerto a tu llegada</span></span>
+                <span class="training-chevron">›</span>
+              </summary>
+              <div class="training-content">
+                <div class="lesson-card">
+                  <h5>1. Llega con tiempo y ubícate</h5>
+                  <p>Para un vuelo internacional, nuestra recomendación operativa es llegar al aeropuerto con aproximadamente 3 horas de anticipación, salvo que tu aerolínea o aeropuerto indiquen algo diferente.</p>
+                  <div class="training-callout"><strong>Tu primera misión:</strong> identifica terminal, aerolínea, mostrador o zona de check-in y puerta de embarque. No avances por intuición: confirma siempre en pantallas y señalización.</div>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b3-tiempo"><span>Sé a qué hora debo estar en el aeropuerto.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b3-terminal"><span>Sé cómo confirmar terminal, aerolínea y puerta de embarque.</span></label>
+                  </div>
+                </div>
+
+                <div class="lesson-card">
+                  <h5>2. Check-in y entrega de equipaje</h5>
+                  <p>El check-in confirma tu presencia para el vuelo y te permite obtener o validar tu pase de abordar. Si llevas equipaje facturado, sigue las instrucciones de la aerolínea para entregarlo y conserva cualquier comprobante que te den.</p>
+                  <div class="training-callout"><strong>Nuestro proceso:</strong> el día del viaje recibirás asistencia con tu check-in y tu RT24. Aun así, debes entender qué documentos tienes y saber ubicarlos.</div>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b3-boarding"><span>Sé dónde encontrar mi pase de abordar y mis datos de vuelo.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b3-equipaje"><span>Si facturo equipaje, sé que debo conservar el comprobante o etiqueta correspondiente.</span></label>
+                  </div>
+                </div>
+
+                <div class="lesson-card">
+                  <h5>3. Control de seguridad</h5>
+                  <p>En seguridad debes seguir las instrucciones del personal y preparar tus pertenencias según las reglas vigentes del aeropuerto. Las normas sobre líquidos, electrónicos, medicamentos y objetos restringidos pueden variar.</p>
+                  <ul>
+                    <li>Ten tus documentos accesibles, no enterrados en la maleta.</li>
+                    <li>Revisa antes de salir de casa qué artículos están restringidos.</li>
+                    <li>No bromees sobre armas, explosivos o seguridad aeroportuaria.</li>
+                    <li>Si el personal te pide una revisión adicional, coopera y pregunta con calma si no entiendes una instrucción.</li>
+                  </ul>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b3-seguridad"><span>Revisé que mi equipaje de cabina no contenga artículos restringidos.</span></label>
+                  </div>
+                </div>
+
+                <div class="lesson-card">
+                  <h5>4. Migración: calma, verdad y coherencia</h5>
+                  <p>Si pasas por un control migratorio, responde con verdad, de forma clara y breve. No necesitas memorizar un libreto: necesitas conocer tu viaje y tener tus documentos organizados.</p>
+                  <div class="training-callout"><strong>Convicción = preparación:</strong> debes conocer tu motivo real de viaje, duración, alojamiento, actividades previstas y fecha de retorno.</div>
+                  <ul>
+                    <li>Escucha la pregunta completa antes de responder.</li>
+                    <li>Contesta exactamente lo que te preguntan, sin inventar información.</li>
+                    <li>Si no entiendes una pregunta, pide que la repitan o aclaren.</li>
+                    <li>Si solicitan un documento, entrégalo con calma y verifica que sea el correcto.</li>
+                  </ul>
+                  <div class="training-callout"><strong>Error frecuente:</strong> parecer desorganizado porque no recuerdas dónde te hospedas, cuánto dura el viaje o cuándo regresas. Esa información ya debe estar clara desde el Bloque 1.</div>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b3-motivo"><span>Puedo explicar con mis palabras el motivo real de mi viaje.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b3-alojamiento"><span>Sé dónde me hospedo y puedo localizar mi reserva rápidamente.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b3-retorno"><span>Sé cuánto dura mi viaje y cuál es mi fecha prevista de retorno.</span></label>
+                  </div>
+                </div>
+
+                <div class="lesson-card">
+                  <h5>5. Escalas y conexiones</h5>
+                  <p>En una conexión, tu prioridad es localizar el siguiente vuelo y seguir la señalización de conexiones o transferencias. Dependiendo de la ruta, aeropuerto y billete, pueden existir nuevos controles de seguridad, migración, cambios de terminal o instrucciones especiales para el equipaje.</p>
+                  <div class="training-callout"><strong>Si algo cambia:</strong> revisa las pantallas, confirma la puerta y acude al personal de la aerolínea si tu vuelo se retrasa o crees que puedes perder la conexión.</div>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b3-escala"><span>Si tengo escala, sé en qué aeropuerto es y cuál es mi siguiente vuelo.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b3-conexion"><span>Sé que debo confirmar de nuevo la puerta y seguir la señalización de conexiones.</span></label>
+                  </div>
+                </div>
+
+                <div class="lesson-card">
+                  <h5>6. Embarque y vuelo</h5>
+                  <p>Cuando la puerta esté confirmada, mantente atento a pantallas y anuncios. Ten a mano tu pase de abordar y documento de viaje. La puerta puede cambiar incluso después de que ya la hayas visto una vez.</p>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b3-puerta"><span>Sé que debo volver a revisar mi puerta de embarque antes de abordar.</span></label>
+                  </div>
+                </div>
+
+                <div class="lesson-card">
+                  <h5>7. Al llegar a destino</h5>
+                  <p>Después de bajar del avión, sigue la señalización correspondiente a llegadas, controles aplicables y recogida de equipaje. Antes de salir del aeropuerto, confirma que tienes todas tus pertenencias y que sabes cómo llegar a tu alojamiento.</p>
+                  <ul>
+                    <li>Comprueba que la maleta que recoges sea realmente la tuya.</li>
+                    <li>Si tu equipaje no aparece, reporta la incidencia antes de abandonar la zona correspondiente y conserva la documentación del reporte.</li>
+                    <li>Ten disponible la dirección de tu alojamiento y tu método de transporte.</li>
+                    <li>Conéctate solo cuando puedas hacerlo de forma segura y avisa que llegaste cuando corresponda.</li>
+                  </ul>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b3-llegada"><span>Sé qué haré desde que bajo del avión hasta llegar a mi alojamiento.</span></label>
+                    <label class="training-check"><input type="checkbox" data-training-check="b3-maleta"><span>Sé que debo reportar una maleta no localizada antes de salir del área indicada por la aerolínea/aeropuerto.</span></label>
+                  </div>
+                </div>
+
+                <div class="lesson-card">
+                  <h5>8. ¿Qué harías si...?</h5>
+                  <p>Antes de dar este bloque por terminado, comprueba que puedes resolver estas situaciones sin entrar en pánico:</p>
+                  <ul>
+                    <li><strong>No ves tu vuelo en la primera pantalla:</strong> confirma terminal, número de vuelo y solicita orientación al personal.</li>
+                    <li><strong>Cambió tu puerta:</strong> sigue la nueva información de las pantallas y dirígete a la puerta actualizada.</li>
+                    <li><strong>No entiendes una pregunta:</strong> pide que la repitan o aclaren antes de responder.</li>
+                    <li><strong>Tu primer vuelo se retrasa y tienes conexión:</strong> revisa el siguiente vuelo y habla con la aerolínea.</li>
+                    <li><strong>Tu maleta no aparece al llegar:</strong> repórtalo en el punto de atención correspondiente antes de abandonar el área.</li>
+                  </ul>
+                  <div class="training-checks">
+                    <label class="training-check"><input type="checkbox" data-training-check="b3-reaccion"><span>Entiendo qué hacer ante cambios de puerta, retrasos, dudas o problemas con mi equipaje.</span></label>
+                  </div>
+                </div>
+
+                <div class="training-status" id="training-status-b3">CONTROL DE AUTONOMÍA · Completa los puntos para conocer tu estado.</div>
+              </div>
+            </details>
+
+            <div class="training-actions">
+              <button class="training-mini-btn" type="button" onclick="toggleTraining(false)">Cerrar capacitación</button>
+              <button class="training-mini-btn" type="button" onclick="resetTrainingProgress()">Reiniciar mi progreso</button>
+            </div>
+          </div>
+        </div>
+
         <div class="email-capture">
           <p class="sub">Déjanos tu correo y te enviaremos tus descuentos y tu Bono Preferente directamente.</p>
           <div class="id-row">
@@ -1079,6 +1395,8 @@
     const memberId = input.value.trim().toUpperCase();
 
     verified.classList.remove('show');
+    const trainingShell = document.getElementById('training-shell');
+    if(trainingShell){ trainingShell.classList.remove('show'); trainingShell.setAttribute('aria-hidden','true'); }
     errorMsg.classList.remove('show');
     verifiedMemberId = null;
 
@@ -1108,6 +1426,7 @@
       verifiedMemberId = memberData.memberId;
       renderMemberCard(memberData);
       verified.classList.add('show');
+      restoreTrainingProgress();
     } catch (error) {
       loading.classList.remove('show');
       errorMsg.textContent =
@@ -1115,6 +1434,78 @@
       errorMsg.classList.add('show');
     }
   }
+
+
+  function trainingStorageKey(){
+    return verifiedMemberId ? `vp-training-${verifiedMemberId}` : null;
+  }
+
+  function toggleTraining(open){
+    if(!verifiedMemberId) return;
+    const shell = document.getElementById('training-shell');
+    shell.classList.toggle('show', open);
+    shell.setAttribute('aria-hidden', open ? 'false' : 'true');
+    if(open){
+      restoreTrainingProgress();
+      setTimeout(() => shell.scrollIntoView({behavior:'smooth', block:'start'}), 80);
+    }
+  }
+
+  function saveTrainingProgress(){
+    const key = trainingStorageKey();
+    if(!key) return;
+    const state = {};
+    document.querySelectorAll('[data-training-check]').forEach(input => {
+      state[input.dataset.trainingCheck] = input.checked;
+    });
+    localStorage.setItem(key, JSON.stringify(state));
+    updateTrainingProgress();
+  }
+
+  function restoreTrainingProgress(){
+    const key = trainingStorageKey();
+    const raw = key ? localStorage.getItem(key) : null;
+    let state = {};
+    try { state = raw ? JSON.parse(raw) : {}; } catch(e) { state = {}; }
+    document.querySelectorAll('[data-training-check]').forEach(input => {
+      input.checked = !!state[input.dataset.trainingCheck];
+    });
+    updateTrainingProgress();
+  }
+
+  function updateTrainingProgress(){
+    const checks = Array.from(document.querySelectorAll('[data-training-check]'));
+    const done = checks.filter(c => c.checked).length;
+    const percent = checks.length ? Math.round((done / checks.length) * 100) : 0;
+    document.getElementById('training-progress-bar').style.width = `${percent}%`;
+    document.getElementById('training-progress-text').textContent = `${percent}%`;
+
+    const b1 = checks.filter(c => c.dataset.trainingCheck.startsWith('b1-'));
+    const b2 = checks.filter(c => c.dataset.trainingCheck.startsWith('b2-'));
+    const b3 = checks.filter(c => c.dataset.trainingCheck.startsWith('b3-'));
+    const b1done = b1.filter(c => c.checked).length;
+    const b2done = b2.filter(c => c.checked).length;
+    const b3done = b3.filter(c => c.checked).length;
+
+    const b1status = b1done === b1.length ? '🟢 DOMINAS TU VIAJE' : b1done >= Math.ceil(b1.length * .65) ? '🟡 CASI LISTO' : '🔴 NECESITAS PREPARARTE';
+    const b2status = b2done === b2.length ? '🟢 PREPARADO PARA VIAJAR' : b2done >= Math.ceil(b2.length * .65) ? '🟡 CASI LISTO' : '🔴 NECESITAS PREPARARTE';
+    const b3status = b3done === b3.length ? '🟢 PUEDES MOVERTE CON AUTONOMÍA' : b3done >= Math.ceil(b3.length * .65) ? '🟡 CASI LISTO' : '🔴 NECESITAS REPASAR EL PROCESO';
+
+    document.getElementById('training-status-b1').textContent = `CONTROL DE CONVICCIÓN · ${b1status}`;
+    document.getElementById('training-status-b2').textContent = `CONTROL DE PREPARACIÓN · ${b2status}`;
+    document.getElementById('training-status-b3').textContent = `CONTROL DE AUTONOMÍA · ${b3status}`;
+  }
+
+  function resetTrainingProgress(){
+    const key = trainingStorageKey();
+    if(key) localStorage.removeItem(key);
+    document.querySelectorAll('[data-training-check]').forEach(input => input.checked = false);
+    updateTrainingProgress();
+  }
+
+  document.addEventListener('change', function(e){
+    if(e.target.matches('[data-training-check]')) saveTrainingProgress();
+  });
 
   async function saveEmail() {
     const input = document.getElementById('member-email-input');
