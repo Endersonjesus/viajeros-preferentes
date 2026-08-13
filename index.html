@@ -459,6 +459,62 @@
     *{animation-duration:.001ms !important;transition-duration:.001ms !important;}
     html{scroll-behavior:auto;}
   }
+
+
+  /* ========== VIAJEROS PREFERENTES V2 ========== */
+  .v2-dashboard{margin-top:22px;border:1px solid var(--gold);background:linear-gradient(145deg,rgba(198,163,85,.08),rgba(17,28,50,.94));padding:24px;position:relative;overflow:hidden;}
+  .v2-dashboard::after{content:"✦";position:absolute;right:-10px;top:-28px;font-size:7rem;color:rgba(198,163,85,.05);pointer-events:none;}
+  .v2-dash-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap;position:relative;z-index:1;}
+  .v2-greeting{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--gold-bright);line-height:1.1;}
+  .v2-level-pill{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold-bright);padding:7px 11px;white-space:nowrap;}
+  .v2-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--navy-line);border:1px solid var(--navy-line);margin-top:20px;}
+  .v2-stat{background:rgba(10,17,32,.74);padding:16px 14px;}
+  .v2-stat-k{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px;}
+  .v2-stat-v{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--gold-bright);}
+  .v2-progress-box{margin-top:20px;padding:18px;border:1px solid var(--navy-line);background:rgba(10,17,32,.55);}
+  .v2-progress-meta{display:flex;justify-content:space-between;gap:12px;font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);margin-bottom:8px;}
+  .v2-progress{height:9px;border:1px solid var(--navy-line);background:var(--navy-deep);overflow:hidden;}
+  .v2-progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-bright));transition:width .45s ease;}
+  .v2-next{margin-top:10px;color:var(--parchment);font-size:.86rem;}
+  .v2-next strong{color:var(--gold-bright);}
+  .v2-actions{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px;}
+  .v2-action{border:1px solid var(--navy-line);background:var(--navy-panel);padding:15px 14px;color:var(--parchment);cursor:pointer;text-align:left;transition:.2s;font-family:'Jost',sans-serif;}
+  .v2-action:hover{border-color:var(--gold);transform:translateY(-1px);}
+  .v2-action b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:var(--gold-bright);margin-bottom:2px;}
+  .v2-action span{font-size:.76rem;color:var(--muted);}
+  .v2-wallet-note{margin-top:14px;font-size:.72rem;color:var(--muted);line-height:1.55;}
+  .v2-roadmap{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:26px;}
+  .v2-milestone{position:relative;border:1px solid var(--navy-line);background:var(--navy-panel);padding:22px 15px;text-align:center;min-height:142px;}
+  .v2-milestone.highlight{border-color:var(--gold);box-shadow:0 0 30px -16px rgba(198,163,85,.65);}
+  .v2-milestone .m-count{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+  .v2-milestone .m-value{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--gold-bright);margin:9px 0 4px;}
+  .v2-milestone .m-label{font-size:.75rem;color:var(--muted);}
+  .v2-rule{max-width:720px;margin:24px auto 0;padding:16px 18px;border-left:2px solid var(--gold);background:rgba(17,28,50,.72);color:var(--muted);font-size:.82rem;}
+  .v2-journey{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  .v2-journey-card{padding:28px 22px;border:1px solid var(--navy-line);background:var(--navy-panel);position:relative;}
+  .v2-journey-num{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--gold);letter-spacing:.14em;}
+  .v2-journey-card h3{font-size:1.18rem;margin:12px 0 8px;color:var(--gold-bright);}
+  .v2-journey-card p{color:var(--muted);font-size:.82rem;}
+  .v2-locked-preview{margin-top:22px;border:1px solid var(--navy-line);padding:20px;background:rgba(10,17,32,.65);display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .v2-lock{padding:12px;border:1px solid rgba(40,57,92,.7);color:var(--muted);font-size:.8rem;}
+  .v2-review{margin-top:20px;padding:18px;border:1px solid var(--navy-line);background:rgba(10,17,32,.45);text-align:center;}
+  .v2-stars{font-size:1.35rem;letter-spacing:.15em;color:var(--gold);margin:7px 0 10px;}
+  .v2-disclaimer{font-size:.72rem;color:var(--muted);margin-top:12px;line-height:1.55;}
+  @media(max-width:820px){.v2-roadmap{grid-template-columns:1fr 1fr}.v2-journey{grid-template-columns:1fr 1fr}.v2-stats{grid-template-columns:1fr}.v2-actions{grid-template-columns:1fr}}
+  @media(max-width:520px){.v2-roadmap,.v2-journey,.v2-locked-preview{grid-template-columns:1fr}.v2-dashboard{padding:20px 15px}.topbar{padding:14px 16px}.topbar .talk{font-size:.58rem;padding:8px 10px}.brand{font-size:.92rem}.hero{padding-left:16px;padding-right:16px}}
+
+  /* ---------- V3: ramas, acceso privado y niveles visuales ---------- */
+  .branch-note{margin-top:14px;padding:13px 15px;border-left:2px solid var(--gold);background:rgba(10,17,32,.58);color:var(--muted);font-size:.82rem;}
+  .auth-tabs{display:flex;gap:8px;margin:18px 0 16px;flex-wrap:wrap}.auth-tab{flex:1;min-width:150px;border:1px solid var(--navy-line);background:var(--navy-deep);color:var(--muted);padding:11px 12px;cursor:pointer;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}.auth-tab.active{border-color:var(--gold);color:var(--gold-bright);background:rgba(198,163,85,.08)}
+  .auth-pane{display:none}.auth-pane.show{display:block}.auth-grid{display:grid;gap:10px}.auth-help{font-size:.76rem;color:var(--muted);margin-top:10px}.auth-msg{display:none;margin-top:12px;padding:11px 12px;border:1px solid var(--navy-line);font-size:.78rem;color:var(--gold-bright)}.auth-msg.show{display:block}.auth-msg.error{color:#ff9f9a;border-color:rgba(165,57,43,.7)}
+  .private-lock{display:flex;gap:10px;align-items:flex-start;margin:16px 0;padding:14px;border:1px solid var(--navy-line);background:rgba(10,17,32,.55)}.private-lock b{color:var(--gold-bright);display:block;font-family:'Cormorant Garamond',serif;font-size:1.05rem}.private-lock span{color:var(--muted);font-size:.76rem}.logout-btn{background:none;border:1px solid var(--navy-line);color:var(--muted);padding:8px 10px;font-family:'Space Mono',monospace;font-size:.58rem;cursor:pointer}.logout-btn:hover{color:var(--gold);border-color:var(--gold)}
+  .prospect-shell{display:grid;gap:18px}.prospect-hero{padding:34px 28px;border:1px solid var(--gold);background:linear-gradient(145deg,rgba(198,163,85,.11),rgba(17,28,50,.92));position:relative;overflow:hidden}.prospect-hero:after{content:'✈';position:absolute;right:18px;bottom:-14px;font-size:6rem;color:rgba(198,163,85,.055)}.prospect-hero h3{font-size:1.7rem;color:var(--gold-bright);margin:8px 0}.prospect-hero p{color:var(--muted);max-width:58ch}.prospect-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.prospect-proof>div{border:1px solid var(--navy-line);background:rgba(10,17,32,.55);padding:17px}.prospect-proof b{display:block;color:var(--gold-bright);font-family:'Cormorant Garamond',serif;font-size:1.05rem}.prospect-proof span{font-size:.76rem;color:var(--muted)}
+  .prospect-route{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}.prospect-step{border:1px solid var(--navy-line);padding:18px 15px;background:var(--navy-panel)}.prospect-step i{font-style:normal;font-family:'Space Mono',monospace;font-size:.56rem;color:var(--gold)}.prospect-step b{display:block;font-family:'Cormorant Garamond',serif;color:var(--parchment);font-size:1.05rem;margin:7px 0 4px}.prospect-step span{font-size:.74rem;color:var(--muted)}
+  .tier-card.tier-1{border-color:#4378d7;background:linear-gradient(160deg,rgba(45,88,166,.22),var(--navy-panel-2))}.tier-card.tier-1 .tier-name{color:#8fb7ff}.tier-card.tier-2{border-color:#aeb8c7;background:linear-gradient(160deg,rgba(174,184,199,.16),var(--navy-panel-2))}.tier-card.tier-2 .tier-name{color:#dce3ec}.tier-card.tier-3{border-color:#d7ad45;background:linear-gradient(160deg,rgba(215,173,69,.18),var(--navy-panel-2));box-shadow:0 0 34px -16px rgba(215,173,69,.7)}.tier-card.tier-3 .tier-name{color:#f1d47f}.tier-card.tier-4{border-color:#b899ff;background:linear-gradient(160deg,rgba(91,54,135,.34),#090d18);box-shadow:0 0 38px -16px rgba(184,153,255,.55)}.tier-card.tier-4 .tier-name,.tier-card.tier-4 .tier-rank{color:#d9c8ff}
+  .v2-level-pill.level-preferente{background:linear-gradient(180deg,#8fb7ff,#4378d7);color:#071328}.v2-level-pill.level-silver{background:linear-gradient(180deg,#f0f3f7,#aeb8c7);color:#111827}.v2-level-pill.level-gold{background:linear-gradient(180deg,#f4db8c,#c7952d);color:#211604}.v2-level-pill.level-platinum{background:linear-gradient(180deg,#dbcaff,#8d67cf);color:#130b21}
+  .travel-profile{margin:20px 0;border:1px solid var(--navy-line);padding:18px;background:rgba(10,17,32,.5)}.travel-profile h5{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--gold-bright);margin-bottom:5px}.profile-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0}.profile-tab{border:1px solid var(--navy-line);background:var(--navy-deep);color:var(--muted);padding:9px 11px;cursor:pointer;font-size:.68rem}.profile-tab.active{border-color:var(--gold);color:var(--gold-bright)}.profile-content{display:none;padding:13px;border-left:2px solid var(--gold);background:rgba(17,28,50,.65)}.profile-content.show{display:block}.profile-content p,.profile-content li{font-size:.8rem;color:var(--muted)}.profile-content ul{margin:8px 0 0 16px}.profile-warning{margin-top:10px;color:var(--parchment)!important}
+  @media(max-width:760px){.prospect-proof,.prospect-route{grid-template-columns:1fr}.prospect-hero{padding:26px 20px}}
+
 </style>
 </head>
 <body>
@@ -476,7 +532,7 @@
 
   <div class="eyebrow">Acceso Privado — Portal Oficial de Miembros</div>
   <h1>Bienvenido a <em>Viajeros Preferentes</em></h1>
-  <p class="lead">Esta membresía no está abierta al público: se otorga por invitación a quienes ya viajaron con nosotros y hoy forman parte de un círculo selecto. Identifíquese para acceder a su portal, o inicie el camino hacia su propia membresía.</p>
+  <p class="lead">Un club privado para viajeros que convierten su experiencia en nuevas oportunidades. Viaja, comparte, acumula Crédito Preferente y desbloquea beneficios para tu próximo viaje.</p>
 
   <div class="select-hint">Seleccione su pase de acceso</div>
   <div class="stubs">
@@ -495,33 +551,72 @@
 
   <div class="panel" id="panel-new">
     <div class="panel-inner">
-      <h3>¿Aún no eres miembro?</h3>
-      <p class="sub">Viajeros Preferentes es un programa exclusivo por invitación.</p>
-      <ul class="req-list">
-        <li>La membresía se otorga únicamente por invitación de nuestro equipo.</li>
-        <li>Se entrega a clientes que ya completaron un viaje gestionado con nosotros.</li>
-        <li>¿Un miembro te recomendó? Cuéntaselo a tu asesor y con gusto te ayudamos a planear tu primer viaje.</li>
-      </ul>
-      <a class="cta-gold" href="https://wa.me/51920227246?text=Hola%2C%20quiero%20más%20información%20sobre%20Viajeros%20Preferentes" target="_blank" rel="noopener">Hablar con mi asesor →</a>
-      <div><button class="reglamento-link" onclick="openModal('doc-requisitos')">Ver requisitos oficiales completos</button></div>
+      <div class="prospect-shell">
+        <div class="prospect-hero">
+          <div class="eyebrow">Tu viaje puede abrirte la puerta al club</div>
+          <h3>No necesitas ser miembro para empezar. Necesitas vivir la experiencia.</h3>
+          <p>Viajeros Preferentes está diseñado para pasajeros que primero viajan con nuestro acompañamiento y luego reciben una invitación privada. La membresía reconoce esa experiencia y la convierte en beneficios, preparación y recompensas por recomendaciones válidas.</p>
+        </div>
+        <div class="prospect-proof">
+          <div><b>Preparación antes de viajar</b><span>Organizamos contigo documentación, ruta, equipaje, aeropuerto y los puntos críticos de tu viaje.</span></div>
+          <div><b>Acceso privado después</b><span>Si eres invitado, activas tu cuenta personal con Member ID, correo y una contraseña creada por ti.</span></div>
+          <div><b>Tu experiencia puede darte beneficios</b><span>Los referidos confirmados te acercan a niveles y Crédito Preferente para futuros servicios elegibles.</span></div>
+        </div>
+        <div>
+          <div class="training-badge">Así se convierte un viajero en miembro</div>
+          <div class="prospect-route">
+            <div class="prospect-step"><i>01 — VIAJA</i><b>Planifica tu experiencia</b><span>Contrata un servicio real y recibe acompañamiento durante tu proceso.</span></div>
+            <div class="prospect-step"><i>02 — COMPLETA</i><b>Finaliza tu viaje</b><span>La experiencia debe estar concluida y cumplir las condiciones del programa.</span></div>
+            <div class="prospect-step"><i>03 — RECIBE</i><b>Obtén tu invitación</b><span>Los clientes elegibles reciben Member Pass y Member ID personal.</span></div>
+            <div class="prospect-step"><i>04 — DESBLOQUEA</i><b>Activa tu club privado</b><span>Crea tu contraseña y accede a Academia, progreso y recompensas.</span></div>
+          </div>
+        </div>
+        <div class="v2-locked-preview">
+          <div class="v2-lock">🔒 Panel personal con metas reales</div>
+          <div class="v2-lock">🔒 Crédito Preferente acumulable</div>
+          <div class="v2-lock">🔒 Academia privada según tu tipo de viaje</div>
+          <div class="v2-lock">🔒 Atención y campañas exclusivas</div>
+        </div>
+        <div class="branch-note"><strong style="color:var(--gold-bright)">¿Vienes recomendado?</strong> Comparte el Member ID de quien te recomendó desde tu primer contacto para que pueda registrarse correctamente si tu proceso llega a cumplir las condiciones del programa.</div>
+        <a class="cta-gold" href="https://wa.me/51920227246?text=Hola%2C%20quiero%20planificar%20mi%20viaje%20y%20conocer%20c%C3%B3mo%20puedo%20llegar%20a%20ser%20miembro%20de%20Viajeros%20Preferentes" target="_blank" rel="noopener">Quiero comenzar mi viaje →</a>
+        <div><button class="reglamento-link" onclick="openModal('doc-requisitos')">Ver requisitos oficiales de membresía</button></div>
+      </div>
     </div>
   </div>
 
   <div class="panel" id="panel-member">
     <div class="panel-inner">
-      <h3>Verificación de membresía</h3>
-      <p class="sub">Ingresa tu Member ID para acceder a tus beneficios.</p>
-      <div class="id-row">
-        <input class="id-input" id="member-id-input" type="text" placeholder="MEMBER ID — Ej. VP-E2J8-E6K">
-        <button class="cta-gold" onclick="verifyMember()">Verificar</button>
+      <div class="eyebrow">Área privada del miembro</div>
+      <h3>Tu Member ID identifica tu membresía. Tu contraseña protege tu cuenta.</h3>
+      <p class="sub">El acceso a tu progreso, Créditos Preferentes y Academia del Viajero requiere una cuenta personal. Compartir tu Member ID para recomendar a alguien no comparte el acceso a tu portal.</p>
+      <div class="private-lock"><span style="font-size:1.35rem">🔐</span><div><b>Acceso individual</b><span>Cada miembro activa una sola cuenta con su Member ID, correo y contraseña. El Member ID puede identificar una recomendación; la contraseña nunca se comparte.</span></div></div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="auth-tab-login" type="button" onclick="showAuthPane('login')">Ingresar</button>
+        <button class="auth-tab" id="auth-tab-activate" type="button" onclick="showAuthPane('activate')">Activar mi cuenta</button>
       </div>
-      <div class="error-msg" id="error-msg">Ingresa tu Member ID para continuar.</div>
-      <div class="verify-loading" id="verify-loading"><span class="dot"></span><span class="dot"></span><span class="dot"></span> Verificando identificación…</div>
+      <div class="auth-pane show" id="auth-login">
+        <div class="auth-grid">
+          <input class="id-input" id="login-email" type="email" autocomplete="email" placeholder="Correo de tu cuenta">
+          <input class="id-input" id="login-password" type="password" autocomplete="current-password" placeholder="Contraseña">
+          <button class="cta-gold" type="button" onclick="loginMember()">Entrar a mi portal →</button>
+        </div>
+        <button class="reglamento-link" type="button" onclick="resetMemberPassword()">Olvidé mi contraseña</button>
+      </div>
+      <div class="auth-pane" id="auth-activate">
+        <div class="auth-grid">
+          <input class="id-input" id="activate-member-id" type="text" placeholder="MEMBER ID — Ej. VP-E2J8-E6K">
+          <input class="id-input" id="activate-email" type="email" autocomplete="email" placeholder="Tu correo personal">
+          <input class="id-input" id="activate-password" type="password" autocomplete="new-password" placeholder="Crea una contraseña de mínimo 8 caracteres">
+          <input class="id-input" id="activate-password-2" type="password" autocomplete="new-password" placeholder="Repite tu contraseña">
+          <button class="cta-gold" type="button" onclick="activateMemberAccount()">Crear mi acceso privado →</button>
+        </div>
+        <p class="auth-help">La activación solo funciona con un Member ID válido, activo y todavía no asociado a otra cuenta.</p>
+      </div>
+      <div class="auth-msg" id="auth-msg"></div>
       <div class="verified-block" id="verified-block">
         <span class="stamp-mark">✓ Verificado</span>
 
-        <!-- Tarjeta de miembro — hoy se rellena con datos de demostración (ver renderMemberCard en el script).
-             Cuando exista la base de datos, reemplazar fetchMemberData() por la llamada real al backend. -->
+        <!-- Datos privados cargados desde Supabase para el usuario autenticado. -->
         <div class="member-card" id="member-card">
           <div class="member-card-top">
             <div>
@@ -539,6 +634,34 @@
           </div>
         </div>
 
+
+        <div class="v2-dashboard" id="v2-dashboard">
+          <div class="v2-dash-head">
+            <div>
+              <div class="training-badge">Mi Panel Preferente</div>
+              <div class="v2-greeting" id="v2-greeting">Tu progreso</div>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><div class="v2-level-pill" id="v2-level">Preferente</div><button class="logout-btn" type="button" onclick="logoutMember()">Cerrar sesión</button></div>
+          </div>
+          <div class="v2-stats">
+            <div class="v2-stat"><span class="v2-stat-k">Referidos confirmados</span><span class="v2-stat-v" id="v2-referrals">0</span></div>
+            <div class="v2-stat"><span class="v2-stat-k">Crédito desbloqueado</span><span class="v2-stat-v" id="v2-credit">US$0</span></div>
+            <div class="v2-stat"><span class="v2-stat-k">Próxima meta</span><span class="v2-stat-v" id="v2-next-goal">1 viajero</span></div>
+          </div>
+          <div class="v2-progress-box">
+            <div class="v2-progress-meta"><span>PROGRESO HACIA TU PRÓXIMA RECOMPENSA</span><span id="v2-progress-text">0%</span></div>
+            <div class="v2-progress"><div class="v2-progress-bar" id="v2-progress-bar"></div></div>
+            <div class="v2-next" id="v2-next-text">Tu próxima recomendación puede desbloquear tu primer Crédito Preferente.</div>
+          </div>
+          <div class="v2-actions">
+            <button class="v2-action" type="button" onclick="shareReferral()"><b>👥 Recomendar a alguien</b><span>Comparte tu invitación personal con tu Member ID.</span></button>
+            <button class="v2-action" type="button" onclick="toggleTraining(true)"><b>✈ Academia del Viajero</b><span>Prepárate con tu capacitación privada.</span></button>
+            <button class="v2-action" type="button" onclick="document.getElementById('bono-preferente').scrollIntoView({behavior:'smooth'})"><b>🎁 Ver recompensas</b><span>Conoce las metas y Créditos Preferentes.</span></button>
+            <a class="v2-action" href="https://wa.me/51920227246?text=Hola%2C%20soy%20miembro%20de%20Viajeros%20Preferentes%20y%20quiero%20planear%20mi%20pr%C3%B3ximo%20viaje" target="_blank" rel="noopener"><b>◆ Planear otro viaje</b><span>Consulta cómo aplicar beneficios elegibles.</span></a>
+          </div>
+          <div class="v2-wallet-note">El Crédito Preferente es un beneficio promocional del programa: es personal, no transferible y no equivale a una cuenta bancaria ni a dinero retirable en efectivo. Su uso está sujeto a servicios elegibles y a las condiciones vigentes.</div>
+        </div>
+
         <div class="quick-links">
           <a href="#beneficios">Ver mis beneficios <span>→</span></a>
           <a href="https://wa.me/51920227246?text=Hola%2C%20soy%20miembro%20y%20quiero%20consultar%20mis%20referidos" target="_blank" rel="noopener">Consultar mis referidos <span>→</span></a>
@@ -549,8 +672,8 @@
           <div class="training-entry-top">
             <div>
               <div class="training-badge">Acceso exclusivo para miembros verificados</div>
-              <h4>Cómo viajar</h4>
-              <p>Tu capacitación privada para preparar el viaje, dominar tu documentación y llegar listo al aeropuerto.</p>
+              <h4>Academia del Viajero</h4>
+              <p>Una preparación privada, práctica y progresiva para conocer tu viaje, organizar tu documentación y actuar con seguridad durante cada etapa.</p>
             </div>
             <button class="cta-gold" type="button" onclick="toggleTraining(true)">Entrar a mi capacitación →</button>
           </div>
@@ -558,14 +681,28 @@
           <div class="training-shell" id="training-shell" aria-hidden="true">
             <div class="training-head">
               <div>
-                <div class="training-badge">Capacitación del viajero</div>
-                <h4>Convicción = Preparación</h4>
-                <p>No memorices un libreto. Conoce tu viaje, tus documentos y tus decisiones. Tu progreso queda guardado en este dispositivo para tu Member ID.</p>
+                <div class="training-badge">Academia del Viajero</div>
+                <h4>Preparación = claridad, control y capacidad de reacción</h4>
+                <p>Esta capacitación no es decorativa: está diseñada para que sepas qué llevas, qué declaras, qué haces en cada etapa y cómo reaccionar ante cambios. No memorices un libreto; comprende tu viaje real y utiliza siempre documentación auténtica.</p>
               </div>
               <div class="training-progress-wrap">
                 <div class="training-progress-meta"><span>Mi progreso</span><span id="training-progress-text">0%</span></div>
                 <div class="training-progress"><div class="training-progress-bar" id="training-progress-bar"></div></div>
               </div>
+            </div>
+
+            <div class="travel-profile">
+              <div class="training-badge">Preparación según tu propósito real</div>
+              <h5>Selecciona el tipo de viaje que realmente vas a realizar</h5>
+              <p style="color:var(--muted);font-size:.8rem">La preparación cambia según el propósito legal y real del viaje. Nunca debes presentar un motivo distinto al verdadero ni utilizar documentación que no corresponda a tu situación.</p>
+              <div class="profile-tabs">
+                <button class="profile-tab active" type="button" onclick="showTravelProfile('tourism')">Turismo</button>
+                <button class="profile-tab" type="button" onclick="showTravelProfile('business')">Empresarial / Pasantía</button>
+                <button class="profile-tab" type="button" onclick="showTravelProfile('relocation')">Migración / Reubicación</button>
+              </div>
+              <div class="profile-content show" id="profile-tourism"><p><strong style="color:var(--gold-bright)">Turismo:</strong> conoce tu itinerario, alojamiento, duración, presupuesto, retorno y actividades previstas.</p><ul><li>Reserva y dirección del alojamiento.</li><li>Fechas y ruta completa.</li><li>Fondos y seguro conforme a los requisitos aplicables.</li><li>Plan real de actividades y retorno.</li></ul></div>
+              <div class="profile-content" id="profile-business"><p><strong style="color:var(--gold-bright)">Empresarial / Pasantía:</strong> además de tu viaje, debes comprender quién te recibe, qué actividad realizarás, dónde, durante cuánto tiempo y qué documentación respalda legalmente esa actividad.</p><ul><li>Agenda, invitación o soporte de la actividad cuando aplique.</li><li>Datos de empresa, organización o anfitrión.</li><li>Alojamiento, retorno y seguro.</li><li>Coherencia entre el propósito real y los permisos exigibles.</li></ul></div>
+              <div class="profile-content" id="profile-relocation"><p><strong style="color:var(--gold-bright)">Migración / Reubicación:</strong> este proceso exige revisar específicamente la visa, residencia, permiso de trabajo u otra autorización que corresponda al país y al propósito real.</p><ul><li>Autorización migratoria correcta antes de viajar cuando sea exigida.</li><li>Documentación de residencia, trabajo, estudios o reunificación según el caso.</li><li>Dirección de llegada, contactos y plan de instalación.</li><li>Copias seguras de documentos y canales oficiales de ayuda.</li></ul><p class="profile-warning"><strong>Importante:</strong> no se debe viajar declarando turismo cuando el propósito real sea trabajar o residir si la normativa exige otra autorización.</p></div>
             </div>
 
             <details class="training-block" open>
@@ -824,129 +961,51 @@
   </div>
 </section>
 
-<!-- ================= NUESTRA HISTORIA: MISIÓN Y VISIÓN ================= -->
-<section id="historia">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Nuestra Historia</div>
-      <h2>Un programa que nace de la confianza</h2>
-    </div>
-    <div class="story-grid">
-      <div class="story-block">
-        <div class="eyebrow">Nuestra Misión</div>
-        <h3>Reconocer la confianza de quienes ya viajaron con nosotros</h3>
-        <p>Viajeros Preferentes nació de una convicción simple: nadie conoce nuestro servicio mejor que quienes ya lo han vivido. Cada recomendación que un cliente hace en nuestro nombre vale más que cualquier campaña publicitaria, porque nace de una experiencia real y no de una promesa. Nuestra misión es honrar esa confianza, transformándola en beneficios concretos para quienes construyen, viaje a viaje, una comunidad que se recomienda con honestidad.</p>
-      </div>
-      <div class="story-block">
-        <div class="eyebrow">Nuestra Visión</div>
-        <h3>Una comunidad internacional que se recomienda a sí misma</h3>
-        <p>Aspiramos a construir una red de viajeros donde cada nuevo miembro llegue de la mano de alguien que ya confió en nosotros. Una comunidad donde la transparencia sea la norma, la credibilidad se gane viaje tras viaje, y los beneficios se compartan entre quienes la hacen posible. Así entendemos el crecimiento: no a través de la publicidad masiva, sino de la confianza que se transmite de viajero a viajero.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= POR QUÉ EXISTE EL PROGRAMA ================= -->
-<section id="por-que-existe">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">La Razón del Programa</div>
-      <h2>¿Por qué existe Viajeros Preferentes?</h2>
-    </div>
-    <div class="why-block">
-      <p class="why-lead">Ninguna campaña publicitaria genera la misma confianza que la palabra de alguien que ya viajó con nosotros.</p>
-      <div class="why-body">
-        <p>Por eso decidimos construir un programa que reconozca directamente a quienes hacen posible ese tipo de recomendación: nuestros propios clientes.</p>
-        <p>Viajeros Preferentes no es un programa abierto al público. Se otorga por invitación a quienes ya completaron un viaje con nuestro equipo, porque solo ellos pueden hablar con conocimiento real de lo que ofrecemos. Cada miembro que recomienda a alguien no solo nos ayuda a crecer: fortalece una comunidad donde cada nuevo integrante llega con una referencia genuina detrás.</p>
-        <p>El programa existe para recompensar esa confianza. No con promesas vacías, sino con beneficios reales que evolucionan junto con cada recomendación confirmada.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= NUESTROS VALORES ================= -->
-<section id="valores">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Lo Que Nos Sostiene</div>
-      <h2>Nuestros Valores</h2>
-    </div>
-    <div class="benefits">
-      <div class="benefit"><div class="seal">⬡</div><h3>Confianza</h3><p>La base de cada recomendación y de cada relación que construimos con nuestros viajeros.</p></div>
-      <div class="benefit"><div class="seal">❖</div><h3>Calidad</h3><p>Cada experiencia que gestionamos debe sostener el nivel que hace que alguien quiera recomendarnos.</p></div>
-      <div class="benefit"><div class="seal">⟡</div><h3>Transparencia</h3><p>Condiciones claras, procesos honestos y comunicación directa en cada etapa del programa.</p></div>
-      <div class="benefit"><div class="seal">⬢</div><h3>Comunidad</h3><p>Un círculo de viajeros que crece porque se recomienda entre sí, no porque se publicita a sí mismo.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= NIVELES DE MEMBRESÍA ================= -->
-<section id="niveles">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Membresía en Evolución</div>
-      <h2>Niveles de Membresía</h2>
-      <p class="deck">Su membresía no es estática. Conforme participa activamente en el programa —recomendando, viajando, formando parte de esta comunidad— puede acceder a niveles superiores dentro de Viajeros Preferentes.</p>
-    </div>
-    <div class="tier-row">
-      <div class="tier-card tier-1">
-        <div class="tier-rank">Nivel 01</div>
-        <div class="tier-name">Preferente</div>
-        <div class="tier-desc">Su punto de partida dentro del programa.</div>
-      </div>
-      <div class="tier-arrow">›</div>
-      <div class="tier-card tier-2">
-        <div class="tier-rank">Nivel 02</div>
-        <div class="tier-name">Gold</div>
-        <div class="tier-desc">Reconoce la participación sostenida en el tiempo.</div>
-      </div>
-      <div class="tier-arrow">›</div>
-      <div class="tier-card tier-3">
-        <div class="tier-rank">Nivel 03</div>
-        <div class="tier-name">Elite</div>
-        <div class="tier-desc">Reservado para los miembros más comprometidos con la comunidad.</div>
-      </div>
-      <div class="tier-arrow">›</div>
-      <div class="tier-card tier-4">
-        <div class="tier-rank">Nivel 04</div>
-        <div class="tier-name">Black</div>
-        <div class="tier-desc">El reconocimiento más alto dentro de Viajeros Preferentes.</div>
-      </div>
-    </div>
-    <p class="tier-note">Los criterios y beneficios de cada nivel se comunicarán directamente a los miembros conforme el programa continúa evolucionando.</p>
-  </div>
-</section>
-
-<!-- ================= LÍNEA DE TIEMPO ================= -->
+<!-- ================= EXPERIENCIA V2 ================= -->
 <section id="como-funciona">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">Su Camino Como Miembro</div>
-      <h2>¿Cómo funciona el programa?</h2>
+      <div class="eyebrow">Un círculo que vuelve a empezar</div>
+      <h2>Viaja. Recomienda. Acumula. Vuelve a viajar.</h2>
+      <p class="deck">Viajeros Preferentes convierte una buena experiencia en progreso real dentro del club. Cada referido confirmado puede acercarte a una nueva recompensa para futuros servicios elegibles.</p>
     </div>
-    <div class="timeline">
-      <div class="tl-item"><h4>Viaja con nosotros</h4><p>Todo comienza con una experiencia de viaje gestionada por nuestro equipo.</p></div>
-      <div class="tl-item"><h4>Obtiene su Member Pass</h4><p>Al recibir su invitación, activa su credencial y su Member ID personal.</p></div>
-      <div class="tl-item"><h4>Recomienda</h4><p>Comparte su Member ID con alguien de su confianza que desee viajar.</p></div>
-      <div class="tl-item"><h4>Su referido reserva</h4><p>La persona recomendada confirma su reserva indicando su Member ID.</p></div>
-      <div class="tl-item"><h4>Ambos reciben el Bono Preferente</h4><p>Una vez validada la reserva, se habilita el beneficio vigente para los dos.</p></div>
-      <div class="tl-item"><h4>Su membresía sigue creciendo</h4><p>Cada recomendación confirmada suma a su trayectoria dentro del programa.</p></div>
+    <div class="v2-journey">
+      <div class="v2-journey-card"><div class="v2-journey-num">01 — VIAJA</div><h3>Vive la experiencia</h3><p>La membresía nace después de un viaje o proceso elegible gestionado por nuestro equipo.</p></div>
+      <div class="v2-journey-card"><div class="v2-journey-num">02 — COMPARTE</div><h3>Recomienda con tu Member ID</h3><p>Tu código identifica la recomendación desde el primer contacto y permite validar tu participación.</p></div>
+      <div class="v2-journey-card"><div class="v2-journey-num">03 — DESBLOQUEA</div><h3>Alcanza nuevas metas</h3><p>Cuando tus referidos cumplen las condiciones del programa, avanzas hacia Créditos Preferentes y niveles superiores.</p></div>
+      <div class="v2-journey-card"><div class="v2-journey-num">04 — REGRESA</div><h3>Úsalo en tu próximo viaje</h3><p>Acumula tus beneficios y consulta cómo aplicarlos en servicios elegibles de una próxima compra.</p></div>
     </div>
+  </div>
+</section>
+
+<section id="niveles">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Tu progreso se reconoce</div>
+      <h2>Niveles de Membresía</h2>
+      <p class="deck">Tu nivel refleja la cantidad de viajeros confirmados que has recomendado. Cada etapa hace visible tu trayectoria dentro de la comunidad.</p>
+    </div>
+    <div class="tier-row">
+      <div class="tier-card tier-1"><div class="tier-rank">0–2 referidos</div><div class="tier-name">Preferente</div><div class="tier-desc">Tu punto de partida y acceso al club.</div></div>
+      <div class="tier-arrow">›</div>
+      <div class="tier-card tier-2"><div class="tier-rank">3–4 referidos</div><div class="tier-name">Silver</div><div class="tier-desc">Primer reconocimiento por participación activa.</div></div>
+      <div class="tier-arrow">›</div>
+      <div class="tier-card tier-3"><div class="tier-rank">5–9 referidos</div><div class="tier-name">Gold</div><div class="tier-desc">Una trayectoria de confianza que sigue creciendo.</div></div>
+      <div class="tier-arrow">›</div>
+      <div class="tier-card tier-4"><div class="tier-rank">10+ referidos</div><div class="tier-name">Platinum</div><div class="tier-desc">Nuestro nivel más alto de reconocimiento vigente.</div></div>
+    </div>
+    <p class="tier-note">Los niveles son de reconocimiento. Las recompensas económicas se rigen por las metas y condiciones del Crédito Preferente vigentes.</p>
   </div>
 </section>
 
 <section id="beneficios">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Membresía Preferente</div>
-      <h2>¿Por qué ser parte de Viajeros Preferentes?</h2>
-    </div>
+    <div class="section-head"><div class="eyebrow">Mucho más que un descuento</div><h2>Lo que desbloquea tu membresía</h2></div>
     <div class="benefits">
-      <div class="benefit"><div class="seal">★</div><h3>Bono Preferente</h3><p>Cada recomendación abre la puerta a nuevos beneficios.</p></div>
-      <div class="benefit"><div class="seal">◈</div><h3>Membresía Exclusiva</h3><p>Tu confianza te distingue como miembro de Viajeros Preferentes.</p></div>
-      <div class="benefit"><div class="seal">◆</div><h3>Asesor Personal</h3><p>Siempre contarás con un asesor para acompañarte cuando lo necesites.</p></div>
-      <div class="benefit"><div class="seal">↗</div><h3>Beneficios en Evolución</h3><p>La membresía incorpora continuamente nuevas ventajas para sus miembros.</p></div>
-      <div class="benefit"><div class="seal">✦</div><h3>Una Comunidad que Inspira</h3><p>Conecta con una comunidad que comparte oportunidades de viaje y confianza.</p></div>
+      <div class="benefit"><div class="seal">$</div><h3>Crédito Preferente</h3><p>Acumula beneficios promocionales para servicios elegibles de futuros viajes.</p></div>
+      <div class="benefit"><div class="seal">✈</div><h3>Academia del Viajero</h3><p>Preparación privada sobre documentación, aeropuerto, migración, conexiones y llegada.</p></div>
+      <div class="benefit"><div class="seal">◆</div><h3>Asesor Personal</h3><p>Un canal directo para resolver dudas y acompañar tu experiencia.</p></div>
+      <div class="benefit"><div class="seal">★</div><h3>Campañas Privadas</h3><p>Bonos especiales y oportunidades temporales reservadas para miembros.</p></div>
     </div>
   </div>
 </section>
@@ -954,56 +1013,34 @@
 <section id="bono-preferente">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">Membresía en Movimiento</div>
-      <h2>Bono Preferente</h2>
-      <p class="bonus-intro">Cada recomendación confirmada puede abrir la puerta a un beneficio distinto. Esto es apenas una muestra de lo que su membresía puede desbloquear.</p>
+      <div class="eyebrow">Ruta de Recompensas</div>
+      <h2>Crédito Preferente</h2>
+      <p class="bonus-intro">No necesitas esperar veinte viajeros para empezar. Cada hito confirmado desbloquea un nuevo acumulado dentro de tu ruta de recompensas.</p>
     </div>
-    <div class="bonus-grid">
-      <div class="bonus-card">
-        <div class="bonus-icon">✈</div>
-        <h3>Futuras Reservas</h3>
-        <p>Ventajas aplicables a su próximo viaje con nosotros.</p>
-      </div>
-      <div class="bonus-card">
-        <div class="bonus-icon">🛡</div>
-        <h3>Seguro de Viaje</h3>
-        <p>Cobertura adicional pensada para viajar con tranquilidad.</p>
-      </div>
-      <div class="bonus-card">
-        <div class="bonus-icon">🏨</div>
-        <h3>Hoteles Seleccionados</h3>
-        <p>Condiciones especiales en una selección de propiedades aliadas.</p>
-      </div>
-      <div class="bonus-card">
-        <div class="bonus-icon">🧳</div>
-        <h3>Equipaje Adicional</h3>
-        <p>Beneficios de equipaje cuando la reserva lo permite.</p>
-      </div>
-      <div class="bonus-card">
-        <div class="bonus-icon">◆</div>
-        <h3>Promociones Exclusivas</h3>
-        <p>Accesos que no se ofrecen fuera del programa.</p>
-      </div>
-      <div class="bonus-card">
-        <div class="bonus-icon">✦</div>
-        <h3>Campañas para Miembros</h3>
-        <p>Iniciativas activas únicamente para la comunidad Preferente.</p>
-      </div>
-      <div class="bonus-card">
-        <div class="bonus-icon">❋</div>
-        <h3>Experiencias Exclusivas</h3>
-        <p>Momentos reservados para quienes forman parte del círculo.</p>
-      </div>
-      <div class="bonus-card">
-        <div class="bonus-icon">✧</div>
-        <h3>Beneficios Sorpresa</h3>
-        <p>Ventajas puntuales que se activan según la campaña vigente.</p>
-      </div>
+    <div class="v2-roadmap">
+      <div class="v2-milestone"><div class="m-count">1 referido</div><div class="m-value">US$5</div><div class="m-label">acumulados</div></div>
+      <div class="v2-milestone"><div class="m-count">3 referidos</div><div class="m-value">US$20</div><div class="m-label">acumulados</div></div>
+      <div class="v2-milestone"><div class="m-count">5 referidos</div><div class="m-value">US$40</div><div class="m-label">acumulados</div></div>
+      <div class="v2-milestone"><div class="m-count">10 referidos</div><div class="m-value">US$90</div><div class="m-label">acumulados</div></div>
+      <div class="v2-milestone highlight"><div class="m-count">20 referidos</div><div class="m-value">US$200</div><div class="m-label">acumulados</div></div>
     </div>
-    <p class="bonus-note">Los beneficios evolucionan constantemente. Conforme el programa crece y se desarrollan nuevas campañas, los miembros pueden acceder a nuevas oportunidades y ventajas exclusivas. La disponibilidad dependerá de las condiciones vigentes al momento de la reserva.</p>
+    <div class="v2-rule"><strong style="color:var(--gold-bright)">¿Qué significa “confirmado”?</strong> El referido debe estar correctamente registrado con el Member ID y cumplir las condiciones comerciales de la reserva definidas por el programa. El crédito no se genera solo por compartir un contacto.</div>
+    <div class="v2-rule"><strong style="color:var(--gold-bright)">Puedes seguir acumulando.</strong> Los hitos mostrados corresponden a la ruta base vigente. Al superar las metas máximas, podrán activarse campañas o reconocimientos adicionales comunicados por el programa.</div>
   </div>
 </section>
 
+<section id="academia-publica">
+  <div class="wrap">
+    <div class="section-head"><div class="eyebrow">Uno de nuestros beneficios más valiosos</div><h2>Academia del Viajero</h2><p class="deck">Prepararse bien no significa memorizar respuestas. Significa conocer el viaje real, dominar la documentación y saber qué hacer si algo cambia.</p></div>
+    <div class="benefits">
+      <div class="benefit"><div class="seal">01</div><h3>Mi viaje</h3><p>Destino, fechas, ruta, alojamiento, actividades y retorno.</p></div>
+      <div class="benefit"><div class="seal">02</div><h3>Documentación</h3><p>Organización práctica de reservas, seguro, itinerario y documentos aplicables.</p></div>
+      <div class="benefit"><div class="seal">03</div><h3>Aeropuerto y migración</h3><p>Procesos reales, respuestas veraces, seguridad, conexiones y embarque.</p></div>
+      <div class="benefit"><div class="seal">04</div><h3>Imprevistos</h3><p>Qué hacer ante retrasos, cambios, equipaje no localizado o dudas durante el trayecto.</p></div>
+    </div>
+    <p class="v2-disclaimer" style="text-align:center;max-width:720px;margin:22px auto 0">La capacitación mejora la preparación del viajero, pero no sustituye requisitos oficiales ni garantiza la admisión migratoria. Las decisiones de ingreso corresponden exclusivamente a las autoridades competentes.</p>
+  </div>
+</section>
 <!-- ================= POR QUÉ CONFIAR EN UNA RECOMENDACIÓN ================= -->
 <section id="confianza">
   <div class="wrap">
@@ -1074,6 +1111,18 @@
   </div>
 </section>
 
+<section id="experiencia">
+  <div class="wrap">
+    <div class="section-head"><div class="eyebrow">Después del viaje</div><h2>Tu experiencia también cuenta</h2><p class="deck">Queremos conocer cómo fue tu proceso. Una opinión honesta nos ayuda a mejorar y puede orientar a futuros viajeros.</p></div>
+    <div class="v2-review">
+      <div class="training-badge">Experiencia de viaje</div>
+      <div class="v2-stars">★★★★★</div>
+      <p style="color:var(--muted);font-size:.86rem;max-width:52ch;margin:0 auto 16px">Comparte tu experiencia real: atención, preparación, acompañamiento y el proceso general del viaje.</p>
+      <a class="cta-gold" href="https://wa.me/51920227246?text=Hola%2C%20quiero%20compartir%20mi%20experiencia%20de%20viaje" target="_blank" rel="noopener">Compartir mi experiencia →</a>
+    </div>
+  </div>
+</section>
+
 <section id="asesor">
   <div class="wrap">
     <div class="advisor">
@@ -1104,8 +1153,16 @@
         <p>Escriba a su asesor por WhatsApp con su Member ID, el nombre completo del referido, su WhatsApp y su destino de interés si lo conoce. Nuestro equipo se pondrá en contacto directamente con la persona.</p>
       </details>
       <details class="faq-item">
-        <summary>¿Cuándo recibo mi Bono Preferente? <span class="chev">›</span></summary>
-        <p>Una vez que su referido confirma su reserva y esta es validada por nuestro equipo, se habilita el Bono Preferente vigente para ambos.</p>
+        <summary>¿Cuándo se confirma mi Crédito Preferente? <span class="chev">›</span></summary>
+        <p>El crédito se reconoce cuando el referido está correctamente registrado con tu Member ID y cumple las condiciones comerciales de confirmación establecidas por el programa. Un contacto o una cotización por sí solos no generan crédito.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿El Crédito Preferente es dinero en efectivo? <span class="chev">›</span></summary>
+        <p>No. Es un beneficio promocional personal y no transferible, aplicable a servicios elegibles de futuros viajes según las condiciones vigentes. No funciona como cuenta bancaria, depósito ni saldo retirable en efectivo.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Puedo acumular mis recompensas? <span class="chev">›</span></summary>
+        <p>Sí. El programa permite acumular el Crédito Preferente desbloqueado mientras se mantenga vigente y disponible conforme al reglamento. Antes de usarlo, consulta con tu asesor qué servicios son elegibles.</p>
       </details>
       <details class="faq-item">
         <summary>¿Mi membresía tiene vencimiento? <span class="chev">›</span></summary>
@@ -1188,42 +1245,38 @@
     </details>
 
     <details class="doc-section" id="doc-bono">
-      <summary><span><span class="doc-num">03 —</span> ¿Qué incluye el Bono Preferente?</span> <span class="chev">›</span></summary>
+      <summary><span><span class="doc-num">03 —</span> Crédito Preferente y Recompensas</span> <span class="chev">›</span></summary>
       <div class="doc-body">
-        <p>Cada recomendación confirmada puede darte acceso a un Bono Preferente. Los beneficios se asignan de acuerdo con la campaña vigente y el tipo de reserva realizada.</p>
-        <h5>Algunos ejemplos incluyen</h5>
-        <ul>
-          <li>Descuentos en futuras reservas.</li>
-          <li>Bonificaciones especiales.</li>
-          <li>Seguro de viaje.</li>
-          <li>Beneficios en hoteles seleccionados.</li>
-          <li>Equipaje adicional (cuando aplique).</li>
-          <li>Experiencias y promociones exclusivas.</li>
-          <li>Y muchos beneficios más.</li>
-        </ul>
+        <p>El Crédito Preferente es un beneficio promocional del programa que puede desbloquearse al alcanzar hitos de referidos confirmados. No constituye una cuenta bancaria, depósito, instrumento financiero ni dinero entregado en custodia.</p>
+        <h5>Ruta base vigente</h5>
+        <ul><li>1 referido confirmado: US$5 acumulados.</li><li>3 referidos confirmados: US$20 acumulados.</li><li>5 referidos confirmados: US$40 acumulados.</li><li>10 referidos confirmados: US$90 acumulados.</li><li>20 referidos confirmados: US$200 acumulados.</li></ul>
+        <h5>Uso</h5>
+        <ul><li>Es personal y no transferible.</li><li>No es canjeable directamente por dinero en efectivo.</li><li>Puede aplicarse únicamente a servicios o reservas elegibles informados por el programa.</li><li>Su aplicación puede estar sujeta a límites, disponibilidad, vigencia y condiciones de la reserva.</li><li>Las campañas especiales pueden otorgar beneficios adicionales sin modificar permanentemente la ruta base.</li></ul>
       </div>
     </details>
 
     <details class="doc-section" id="doc-reglamento">
       <summary><span><span class="doc-num">04 —</span> Reglamento Oficial</span> <span class="chev">›</span></summary>
-      <div class="doc-body">
-        <ol>
-          <li><strong>1. Objetivo del programa</strong>Reconocer la confianza de nuestros clientes y brindar beneficios a quienes recomiendan nuestros servicios. La participación es completamente gratuita y está sujeta a este reglamento.</li>
-          <li><strong>2. Requisitos para ser miembro</strong>Haber realizado al menos una reserva o viaje gestionado por nuestro equipo, haberlo finalizado correctamente, haber recibido una invitación oficial y aceptar este reglamento. La membresía no está abierta al público; solo se obtiene por invitación.</li>
-          <li><strong>3. Activación de la membresía</strong>Al aceptar la invitación, el miembro recibe su Member Pass, un Member ID único y acceso a los beneficios disponibles.</li>
-          <li><strong>4. Member ID</strong>Código único e intransferible que debe usarse para registrar todas las recomendaciones. No puede compartirse con fines fraudulentos ni ser alterado.</li>
-          <li><strong>5. Recomendación de nuevos viajeros</strong>El referido no debe haber iniciado previamente un proceso con nosotros, el Member ID debe informarse antes o durante el primer contacto, y la información debe ser verdadera.</li>
-          <li><strong>6. Confirmación del referido</strong>Una recomendación se confirma solo cuando el referido completa su reserva, esta es confirmada por nuestro equipo y se cumplen las condiciones comerciales aplicables.</li>
-          <li><strong>7. Bono Preferente</strong>Al confirmarse una recomendación, el miembro accede al Bono Preferente vigente. El monto, porcentaje o forma de entrega puede actualizarse sin previo aviso.</li>
-          <li><strong>8. Casos no válidos</strong>No generan beneficios los referidos registrados después de iniciar contacto con la agencia, datos falsos o incompletos, cancelaciones antes de la confirmación definitiva, o recomendaciones obtenidas mediante prácticas indebidas.</li>
-          <li><strong>9. Conflicto entre recomendaciones</strong>Si dos miembros recomiendan a la misma persona, se reconoce únicamente la primera recomendación validada por Viajeros Preferentes. La decisión es definitiva.</li>
-          <li><strong>10. Vigencia de la membresía</strong>Permanece activa mientras el miembro cumpla las normas del programa. Los beneficios o condiciones pueden actualizarse cuando sea necesario.</li>
-          <li><strong>11. Suspensión o cancelación</strong>Puede suspenderse o cancelarse por uso indebido del Member ID, información falsa, intentos de fraude, suplantación de identidad o incumplimiento del reglamento, con pérdida de los beneficios acumulados.</li>
-          <li><strong>12. Modificaciones del programa</strong>Los beneficios, campañas, requisitos o condiciones pueden modificarse cuando se considere necesario, y se comunicarán oportunamente a los miembros activos.</li>
-          <li><strong>13. Protección de datos</strong>La información de miembros y referidos se usa únicamente para la gestión del programa y la prestación de nuestros servicios, respetando su confidencialidad.</li>
-          <li><strong>14. Aceptación</strong>El uso del Member Pass implica haber leído, comprendido y aceptado este reglamento.</li>
-        </ol>
-      </div>
+      <div class="doc-body"><ol>
+        <li><strong>1. Naturaleza del programa</strong>Viajeros Preferentes es un programa privado de fidelización y recomendación, gratuito y por invitación. La membresía y sus beneficios no constituyen una inversión, producto financiero ni promesa de rentabilidad.</li>
+        <li><strong>2. Elegibilidad</strong>La membresía se otorga a clientes seleccionados que hayan completado un viaje o servicio elegible con nuestro equipo y recibido una invitación oficial.</li>
+        <li><strong>3. Member Pass y Member ID</strong>Son personales e intransferibles. El Member ID identifica las recomendaciones del miembro y debe informarse antes o durante el primer contacto del referido.</li>
+        <li><strong>4. Consentimiento del referido</strong>El miembro debe contar con autorización de la persona antes de compartir sus datos de contacto. No se aceptan bases de datos, contactos obtenidos sin consentimiento o prácticas de spam.</li>
+        <li><strong>5. Registro válido</strong>El referido debe ser una persona real, con datos verificables, que no haya iniciado previamente un proceso comercial con nosotros, salvo validación expresa del equipo.</li>
+        <li><strong>6. Referido confirmado</strong>Una recomendación cuenta para recompensas únicamente cuando la reserva o servicio cumple las condiciones comerciales de confirmación establecidas por el programa. Consultas, cotizaciones, promesas de pago o contactos sin cierre no generan crédito.</li>
+        <li><strong>7. Ruta de Crédito Preferente</strong>Las metas base vigentes son 1, 3, 5, 10 y 20 referidos confirmados, con acumulados promocionales de US$5, US$20, US$40, US$90 y US$200 respectivamente.</li>
+        <li><strong>8. Naturaleza del Crédito Preferente</strong>Es un beneficio promocional para servicios elegibles; no es dinero depositado a nombre del miembro, no genera intereses, no es transferible y no puede exigirse como retiro de efectivo.</li>
+        <li><strong>9. Canje</strong>El uso del crédito depende de la vigencia, disponibilidad y condiciones del servicio. El programa puede establecer límites de aplicación por reserva, exclusiones o servicios no elegibles, informados antes del canje.</li>
+        <li><strong>10. Cancelaciones, devoluciones y reversos</strong>Si la operación que originó un referido confirmado se cancela, revierte, resulta fraudulenta o deja de cumplir las condiciones comerciales, el progreso o crédito asociado puede ser corregido o reversado.</li>
+        <li><strong>11. Referidos duplicados</strong>Si más de un miembro registra a la misma persona, se reconoce la primera recomendación válida registrada y verificable, salvo error demostrado.</li>
+        <li><strong>12. Prácticas prohibidas</strong>No se permite suplantación, falsificación, auto-referidos simulados, creación artificial de reservas, manipulación de datos, publicación engañosa, promesas en nombre del programa ni cualquier conducta destinada a generar recompensas indebidamente.</li>
+        <li><strong>13. Niveles</strong>Los niveles Preferente, Silver, Gold y Platinum son reconocimientos de participación. No implican por sí mismos una suma de dinero adicional salvo campaña expresa.</li>
+        <li><strong>14. Campañas especiales</strong>El programa puede lanzar promociones temporales, bonos adicionales o beneficios sorpresa indicando sus fechas, requisitos y límites.</li>
+        <li><strong>15. Suspensión</strong>El uso indebido del programa puede generar revisión, suspensión o cancelación. Las correcciones de créditos se realizarán conforme a las operaciones que legítimamente los originaron.</li>
+        <li><strong>16. Cambios del programa</strong>Las condiciones futuras pueden actualizarse por razones comerciales, operativas o legales. Los cambios relevantes se comunicarán a los miembros y no alterarán retroactivamente créditos ya válidamente utilizados.</li>
+        <li><strong>17. Protección de datos</strong>Los datos se utilizarán para gestionar membresías, recomendaciones, reservas, comunicaciones y beneficios, conforme a la política de privacidad aplicable.</li>
+        <li><strong>18. Aceptación</strong>El uso del Member Pass, Member ID o portal implica la aceptación de las reglas vigentes del programa.</li>
+      </ol></div>
     </details>
 
     <details class="doc-section" id="doc-requisitos">
@@ -1250,7 +1303,7 @@
           <li>El acceso al portal de miembros es exclusivo para quienes cuenten con una invitación válida y un Member ID activo.</li>
           <li>El Member Pass es personal e intransferible; su uso indebido puede derivar en la suspensión de la cuenta.</li>
           <li>La empresa se reserva el derecho de actualizar el contenido, las funcionalidades y el diseño del portal cuando lo considere necesario.</li>
-          <li>El uso continuado del portal implica la aceptación de estos términos y de sus futuras actualizaciones.</li>
+          <li>El uso del portal se rige por los términos vigentes. Los cambios relevantes serán comunicados de forma razonable antes de que resulten aplicables cuando corresponda.</li>
           <li>Los servicios de viaje contratados por los miembros o sus referidos se rigen, además, por las condiciones comerciales propias de cada reserva.</li>
         </ul>
       </div>
@@ -1259,8 +1312,8 @@
     <details class="doc-section" id="doc-privacidad">
       <summary><span><span class="doc-num">07 —</span> Política de Privacidad y Protección de Datos</span> <span class="chev">›</span></summary>
       <div class="doc-body">
-        <p>La información que usted comparte con nosotros —incluyendo sus datos de contacto y los de las personas que recomiende— se utiliza exclusivamente para la gestión del programa Viajeros Preferentes y la prestación de nuestros servicios de viaje.</p>
-        <p>No compartimos esta información con terceros ajenos a la operación del programa, salvo obligación legal. Usted puede solicitar en cualquier momento la actualización o eliminación de sus datos, escribiendo directamente a su asesor.</p>
+        <p>La información que usted comparte con nosotros —incluyendo sus datos de contacto y, cuando cuente con autorización, los de las personas que recomiende— se utiliza para gestionar Viajeros Preferentes, contactar a los referidos, administrar reservas, beneficios y comunicaciones relacionadas con nuestros servicios.</p>
+        <p>La información podrá ser tratada por proveedores necesarios para la operación de los servicios y por autoridades cuando exista obligación legal, aplicando medidas razonables de confidencialidad. El titular puede solicitar información, actualización, corrección o eliminación de sus datos a través del canal de contacto indicado, sujeto a las obligaciones legales de conservación que correspondan.</p>
       </div>
     </details>
 
@@ -1269,7 +1322,7 @@
       <div class="doc-body">
         <ul>
           <li>Recibir información clara sobre el estado de sus referidos.</li>
-          <li>Acceder a los beneficios vigentes del Bono Preferente al confirmarse una recomendación.</li>
+          <li>Consultar su progreso y acceder al Crédito Preferente que haya sido válidamente desbloqueado conforme a las condiciones vigentes.</li>
           <li>Solicitar la actualización o eliminación de sus datos personales.</li>
           <li>Contar con un asesor personal disponible para sus consultas.</li>
           <li>Ser informado oportunamente ante cualquier modificación relevante del programa.</li>
@@ -1293,7 +1346,7 @@
       <summary><span><span class="doc-num">10 —</span> Responsabilidad del Programa</span> <span class="chev">›</span></summary>
       <div class="doc-body">
         <p>Viajeros Preferentes gestiona el proceso de recomendación y activación de beneficios, pero los servicios de viaje contratados por los referidos se rigen por las condiciones comerciales correspondientes a cada reserva.</p>
-        <p>El programa no garantiza resultados específicos ni montos fijos de beneficio; estos dependen de la campaña vigente y de las condiciones de cada reserva confirmada.</p>
+        <p>El programa no garantiza la aprobación de visas, ingreso migratorio, disponibilidad de proveedores ni resultados ajenos a su control. La ruta base de Crédito Preferente publicada en el portal se aplica a las recomendaciones que cumplan sus condiciones mientras permanezca vigente.</p>
       </div>
     </details>
 
@@ -1309,7 +1362,7 @@
       <div class="doc-body">
         <ul>
           <li>¿Puedo transferir mi Member ID a otra persona? No, es personal e intransferible.</li>
-          <li>¿Qué pasa si mi referido cancela su reserva? No se genera Bono Preferente en ese caso.</li>
+          <li>¿Qué pasa si mi referido cancela o revierte su reserva? El progreso o crédito asociado puede no generarse o puede ser reversado si deja de cumplir las condiciones de confirmación.</li>
           <li>¿Puedo dejar de participar en el programa? Sí, puede solicitarlo a su asesor en cualquier momento.</li>
         </ul>
       </div>
@@ -1349,92 +1402,166 @@
     panelMember.classList.toggle('open', which === 'member');
   }
 
-  async function fetchMemberData(memberId) {
-    const { data, error } = await supabaseClient.rpc(
-      'verificar_miembro',
-      { p_member_id: memberId }
-    );
+  const VP_REWARD_MILESTONES = [
+    { referrals: 0, credit: 0 },
+    { referrals: 1, credit: 5 },
+    { referrals: 3, credit: 20 },
+    { referrals: 5, credit: 40 },
+    { referrals: 10, credit: 90 },
+    { referrals: 20, credit: 200 }
+  ];
 
-    if (error) {
-      console.error('Error al verificar miembro:', error);
-      throw new Error('No fue posible consultar la membresía.');
+  function getLevel(referrals){
+    if(referrals >= 10) return 'Platinum';
+    if(referrals >= 5) return 'Gold';
+    if(referrals >= 3) return 'Silver';
+    return 'Preferente';
+  }
+
+  function getUnlockedCredit(referrals){
+    let unlocked = 0;
+    for(const milestone of VP_REWARD_MILESTONES){
+      if(referrals >= milestone.referrals) unlocked = milestone.credit;
     }
+    return unlocked;
+  }
 
-    if (!data || data.length === 0) {
-      return null;
-    }
+  function getNextMilestone(referrals){
+    return VP_REWARD_MILESTONES.find(m => m.referrals > referrals) || null;
+  }
 
-    const member = data[0];
+  function showAuthPane(which){
+    document.getElementById('auth-login').classList.toggle('show', which === 'login');
+    document.getElementById('auth-activate').classList.toggle('show', which === 'activate');
+    document.getElementById('auth-tab-login').classList.toggle('active', which === 'login');
+    document.getElementById('auth-tab-activate').classList.toggle('active', which === 'activate');
+    setAuthMessage('');
+  }
 
+  function setAuthMessage(message, isError=false){
+    const box = document.getElementById('auth-msg');
+    if(!box) return;
+    box.textContent = message || '';
+    box.classList.toggle('show', !!message);
+    box.classList.toggle('error', !!message && isError);
+  }
+
+  async function fetchPrivateMemberData(){
+    const { data, error } = await supabaseClient.rpc('mi_portal_vp');
+    if(error) throw error;
+    if(!data) return null;
+    const member = Array.isArray(data) ? data[0] : data;
+    if(!member) return null;
     return {
       name: member.nombre || 'Miembro Preferente',
-      memberId: member.member_id || memberId,
+      memberId: member.member_id || '—',
       status: member.estado || 'Activa',
       since: member.fecha_activacion || '—',
-      referrals: member.referidos ?? 0,
-      bonuses: member.bonos ?? 0,
-      level: member.nivel || 'Preferente'
+      referrals: Number(member.referidos ?? 0),
+      bonuses: Number(member.bonos ?? 0),
+      level: member.nivel || getLevel(Number(member.referidos ?? 0))
     };
   }
 
-  function renderMemberCard(data){
-    document.getElementById('mc-name').textContent = data.name;
-    document.getElementById('mc-id').textContent = data.memberId;
-    document.getElementById('mc-status').textContent = data.status;
-    document.getElementById('mc-since').textContent = data.since;
-    document.getElementById('mc-referrals').textContent = data.referrals;
-    document.getElementById('mc-bonuses').textContent = data.bonuses;
-    document.getElementById('mc-level').textContent = data.level;
-  }
-
-  async function verifyMember() {
-    const input = document.getElementById('member-id-input');
-    const errorMsg = document.getElementById('error-msg');
-    const loading = document.getElementById('verify-loading');
-    const verified = document.getElementById('verified-block');
-    const memberId = input.value.trim().toUpperCase();
-
-    verified.classList.remove('show');
-    const trainingShell = document.getElementById('training-shell');
-    if(trainingShell){ trainingShell.classList.remove('show'); trainingShell.setAttribute('aria-hidden','true'); }
-    errorMsg.classList.remove('show');
-    verifiedMemberId = null;
-
-    if (!memberId) {
-      input.classList.add('error');
-      errorMsg.textContent = 'Ingresa tu Member ID para continuar.';
-      errorMsg.classList.add('show');
-      setTimeout(() => input.classList.remove('error'), 300);
-      return;
-    }
-
-    loading.classList.add('show');
-
-    try {
-      const memberData = await fetchMemberData(memberId);
-      loading.classList.remove('show');
-
-      if (!memberData) {
-        input.classList.add('error');
-        errorMsg.textContent =
-          'Member ID no encontrado o membresía inactiva. Verifica el código o comunícate con tu asesor.';
-        errorMsg.classList.add('show');
-        setTimeout(() => input.classList.remove('error'), 300);
+  async function loadPrivatePortal(){
+    try{
+      const memberData = await fetchPrivateMemberData();
+      if(!memberData){
+        setAuthMessage('Tu cuenta inició sesión, pero no está vinculada a una membresía activa. Comunícate con tu asesor.', true);
         return;
       }
-
       verifiedMemberId = memberData.memberId;
       renderMemberCard(memberData);
-      verified.classList.add('show');
+      document.getElementById('verified-block').classList.add('show');
+      document.querySelector('.auth-tabs').style.display='none';
+      document.getElementById('auth-login').classList.remove('show');
+      document.getElementById('auth-activate').classList.remove('show');
+      setAuthMessage('Acceso privado verificado.');
       restoreTrainingProgress();
-    } catch (error) {
-      loading.classList.remove('show');
-      errorMsg.textContent =
-        'No pudimos verificar tu membresía en este momento. Inténtalo nuevamente.';
-      errorMsg.classList.add('show');
+    }catch(error){
+      console.error(error);
+      setAuthMessage('No pudimos cargar tu portal privado. Verifica que la actualización SQL V3 esté instalada en Supabase.', true);
     }
   }
 
+  async function loginMember(){
+    const email=document.getElementById('login-email').value.trim();
+    const password=document.getElementById('login-password').value;
+    if(!email || !password){ setAuthMessage('Ingresa tu correo y contraseña.', true); return; }
+    setAuthMessage('Verificando tu acceso…');
+    const { error } = await supabaseClient.auth.signInWithPassword({email,password});
+    if(error){ setAuthMessage('No pudimos iniciar sesión. Revisa el correo, la contraseña o la confirmación de tu cuenta.', true); return; }
+    await loadPrivatePortal();
+  }
+
+  async function activateMemberAccount(){
+    const memberId=document.getElementById('activate-member-id').value.trim().toUpperCase();
+    const email=document.getElementById('activate-email').value.trim();
+    const password=document.getElementById('activate-password').value;
+    const password2=document.getElementById('activate-password-2').value;
+    if(!memberId || !email || !password){ setAuthMessage('Completa Member ID, correo y contraseña.', true); return; }
+    if(password.length < 8){ setAuthMessage('La contraseña debe tener al menos 8 caracteres.', true); return; }
+    if(password !== password2){ setAuthMessage('Las contraseñas no coinciden.', true); return; }
+
+    const { data:validData, error:validError } = await supabaseClient.rpc('vp_member_id_disponible',{p_member_id:memberId});
+    if(validError || !validData){ setAuthMessage('Este Member ID no es válido, no está activo o ya fue asociado a otra cuenta.', true); return; }
+
+    setAuthMessage('Creando tu acceso privado…');
+    const { data, error } = await supabaseClient.auth.signUp({
+      email,
+      password,
+      options:{ data:{ member_id: memberId } }
+    });
+    if(error){ setAuthMessage(error.message || 'No pudimos crear tu cuenta.', true); return; }
+    if(data?.session){
+      setAuthMessage('Cuenta activada correctamente.');
+      await loadPrivatePortal();
+    }else{
+      setAuthMessage('Cuenta creada. Revisa tu correo y confirma tu dirección; luego vuelve aquí e inicia sesión.');
+      showAuthPane('login');
+      document.getElementById('login-email').value=email;
+    }
+  }
+
+  async function resetMemberPassword(){
+    const email=document.getElementById('login-email').value.trim();
+    if(!email){ setAuthMessage('Escribe primero el correo de tu cuenta.', true); return; }
+    const { error }=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo:window.location.href.split('#')[0]});
+    if(error){ setAuthMessage('No pudimos enviar el enlace de recuperación.', true); return; }
+    setAuthMessage('Te enviamos un enlace para recuperar tu contraseña.');
+  }
+
+  async function logoutMember(){
+    await supabaseClient.auth.signOut();
+    verifiedMemberId=null;
+    document.getElementById('verified-block').classList.remove('show');
+    document.querySelector('.auth-tabs').style.display='flex';
+    showAuthPane('login');
+    setAuthMessage('Sesión cerrada correctamente.');
+  }
+
+
+
+  function showTravelProfile(which){
+    document.querySelectorAll('.profile-content').forEach(el=>el.classList.remove('show'));
+    document.querySelectorAll('.profile-tab').forEach(el=>el.classList.remove('active'));
+    const content=document.getElementById(`profile-${which}`);
+    if(content) content.classList.add('show');
+    const map={tourism:0,business:1,relocation:2};
+    const tabs=document.querySelectorAll('.profile-tab');
+    if(tabs[map[which]]) tabs[map[which]].classList.add('active');
+  }
+
+  function shareReferral(){
+    if(!verifiedMemberId) return;
+    const name = document.getElementById('mc-name')?.textContent || 'un miembro de Viajeros Preferentes';
+    const text = `Hola 👋 Te recomiendo mi asesor de viajes. Yo ya he vivido la experiencia y formo parte de Viajeros Preferentes. Si deseas información para tu viaje, indica que vienes recomendado por ${name} y comparte mi Member ID: ${verifiedMemberId}.`;
+    if(navigator.share){
+      navigator.share({title:'Viajeros Preferentes', text}).catch(()=>{});
+    }else{
+      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+    }
+  }
 
   function trainingStorageKey(){
     return verifiedMemberId ? `vp-training-${verifiedMemberId}` : null;
@@ -1546,7 +1673,7 @@
       }
 
       msg.textContent =
-        '¡Correo guardado correctamente! Te enviaremos allí tus beneficios.';
+        '¡Correo guardado correctamente! Lo usaremos para comunicaciones relacionadas con tu membresía y beneficios.';
       msg.classList.add('show');
     } catch (error) {
       msg.textContent =
@@ -1612,6 +1739,21 @@
       behavior:'smooth'
     });
   }
+
+  supabaseClient.auth.getSession().then(({data})=>{
+    if(data?.session){ selectStub('member'); loadPrivatePortal(); }
+  });
+
+  supabaseClient.auth.onAuthStateChange((event)=>{
+    if(event === 'PASSWORD_RECOVERY'){
+      const password = window.prompt('Crea tu nueva contraseña (mínimo 8 caracteres):');
+      if(password && password.length >= 8){
+        supabaseClient.auth.updateUser({password}).then(({error})=>{
+          setAuthMessage(error ? 'No pudimos actualizar la contraseña.' : 'Contraseña actualizada. Ya puedes continuar.', !!error);
+        });
+      }
+    }
+  });
 </script>
 
 </body>
