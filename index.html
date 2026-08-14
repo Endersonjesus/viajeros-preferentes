@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Viajeros Preferentes — Portal de Miembros V7</title>
+<title>Viajeros Preferentes — Portal de Miembros V9.1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -1686,6 +1686,45 @@ body:not(.vp-branch-new):not(.vp-branch-member) #faq{display:none}
     };
   }
 
+
+  function renderMemberCard(memberData){
+    if(!memberData) return;
+
+    const referrals = Number(memberData.referrals ?? 0);
+    const bonuses = Number(memberData.bonuses ?? 0);
+    const level = memberData.level || getLevel(referrals);
+    const next = getNextMilestone(referrals);
+
+    const setText = (id, value) => {
+      const el = document.getElementById(id);
+      if(el) el.textContent = value ?? '—';
+    };
+
+    setText('mc-name', memberData.name || 'Miembro Preferente');
+    setText('mc-level', level);
+    setText('mc-id', memberData.memberId || '—');
+    setText('mc-status', memberData.status || 'Activa');
+    setText('mc-since', memberData.since || '—');
+    setText('mc-referrals', referrals);
+    setText('mc-bonuses', bonuses);
+
+    // Mantener el panel de progreso compatible con los elementos que existan en esta versión.
+    const unlocked = getUnlockedCredit(referrals);
+    const progressText = document.getElementById('reward-progress-text');
+    if(progressText){
+      progressText.textContent = next
+        ? `${referrals} referidos confirmados · siguiente hito: ${next.referrals}`
+        : `${referrals} referidos confirmados · nivel máximo base alcanzado`;
+    }
+
+    const creditEl = document.getElementById('reward-credit');
+    if(creditEl) creditEl.textContent = unlocked;
+
+    // Aplicar el nivel como dato visual sin depender de una clase concreta.
+    const card = document.getElementById('member-card');
+    if(card) card.dataset.level = String(level).toLowerCase();
+  }
+
   async function loadPrivatePortal(){
     try{
       const memberData = await fetchPrivateMemberData();
@@ -1705,8 +1744,9 @@ body:not(.vp-branch-new):not(.vp-branch-member) #faq{display:none}
       setAuthMessage('Acceso privado verificado.');
       restoreTrainingProgress();
     }catch(error){
-      console.error(error);
-      setAuthMessage('No pudimos cargar tu portal privado. Verifica que la actualización SQL V3 esté instalada en Supabase.', true);
+      console.error('Viajeros Preferentes · error al cargar portal:', error);
+      const detail = error?.message ? ` (${error.message})` : '';
+      setAuthMessage(`Tu sesión está activa, pero ocurrió un error al mostrar el portal${detail}.`, true);
     }
   }
 
@@ -1715,8 +1755,16 @@ body:not(.vp-branch-new):not(.vp-branch-member) #faq{display:none}
     const password=document.getElementById('login-password').value;
     if(!email || !password){ setAuthMessage('Ingresa tu correo y contraseña.', true); return; }
     setAuthMessage('Verificando tu acceso…');
-    const { error } = await supabaseClient.auth.signInWithPassword({email,password});
-    if(error){ setAuthMessage('No pudimos iniciar sesión. Revisa el correo, la contraseña o la confirmación de tu cuenta.', true); return; }
+    const { data, error } = await supabaseClient.auth.signInWithPassword({email,password});
+    if(error){
+      console.error('Viajeros Preferentes · error de inicio de sesión:', error);
+      setAuthMessage(`No pudimos iniciar sesión: ${error.message || 'revisa tu correo y contraseña.'}`, true);
+      return;
+    }
+    if(!data?.session){
+      setAuthMessage('La cuenta existe, pero Supabase no devolvió una sesión activa.', true);
+      return;
+    }
     await loadPrivatePortal();
   }
 
