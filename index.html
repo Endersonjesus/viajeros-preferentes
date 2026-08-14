@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<!-- VIAJEROS PREFERENTES V3.1 · experiencia tipo app + acción siguiente + accesibilidad -->
-<title>Viajeros Preferentes — V3.1</title>
+<!-- VIAJEROS PREFERENTES V3.2 · notificaciones + soporte humano + compartir membresía -->
+<title>Viajeros Preferentes — V3.2</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id=%22g%22%20x1=%220%22%20y1=%220%22%20x2=%221%22%20y2=%221%22%3E%0A%20%20%20%20%3Cstop%20offset=%220%22%20stop-color=%22%23162747%22/%3E%0A%20%20%20%20%3Cstop%20offset=%221%22%20stop-color=%22%230b1426%22/%3E%0A%20%20%3C/linearGradient%3E%0A%20%20%3ClinearGradient%20id=%22p%22%20x1=%220%22%20y1=%220%22%20x2=%221%22%20y2=%221%22%3E%0A%20%20%20%20%3Cstop%20offset=%220%22%20stop-color=%22%23dce7ff%22/%3E%0A%20%20%20%20%3Cstop%20offset=%221%22%20stop-color=%22%2389afff%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20x=%223%22%20y=%223%22%20width=%2258%22%20height=%2258%22%20rx=%2218%22%20fill=%22url(%23g)%22%20stroke=%22%235876b5%22%20stroke-width=%222%22/%3E%0A%3Cpath%20d=%22M15%2034.2%2048.5%2018c1.7-.8%203.2.9%202.2%202.5L34.9%2048.9c-.8%201.5-3%20.9-3-0.8l-.2-10.2-9.9%204.1c-1.1.5-2.3-.1-2.6-1.2l-1.1-4.2c-.3-1%20.1-2%201-2.5l17.8-9-21.2%2011.1c-1.6.8-2.4-1.2-.7-2Z%22%20fill=%22url(%23p)%22/%3E%0A%3C/svg%3E">
 <meta name="theme-color" content="#0a1120">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -4769,6 +4769,22 @@ summary:focus-visible{
 }
 </style>
 
+
+<style>
+/* V3.2 · notificaciones, soporte y compartir */
+.v32-utility-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.v32-utility-card{min-height:70px!important;display:grid;grid-template-columns:38px 1fr auto;gap:9px;align-items:center;text-align:left;padding:10px 12px!important;border-radius:19px!important;border:1px solid rgba(255,255,255,.055)!important;background:rgba(255,255,255,.018)!important;color:#e4ebf5!important}
+.v32-utility-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:14px;background:color-mix(in srgb,var(--member-accent) 10%,#0d1828);color:var(--member-accent);font-weight:800}
+.v32-utility-card b{display:block;font-size:.68rem}.v32-utility-card small{display:block;margin-top:2px;color:#748297;font-size:.51rem}.v32-utility-card em{min-width:24px;height:24px;display:grid;place-items:center;border-radius:999px;background:rgba(255,255,255,.03);color:#8da1bd;font-size:.58rem;font-style:normal}
+.v32-notifications{display:none;padding:16px;border:1px solid rgba(255,255,255,.055);border-radius:21px;background:rgba(255,255,255,.015)}.v32-notifications.show{display:block}
+.v32-section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}.v32-section-head h4{margin:3px 0 0;font-size:.95rem}.v32-section-head button{min-height:38px!important;border-radius:999px!important;border:1px solid rgba(255,255,255,.06)!important;background:rgba(255,255,255,.02)!important;color:#8998ad!important;padding:7px 10px!important;font-size:.56rem!important}
+.v32-notification-item{display:grid;grid-template-columns:34px 1fr;gap:9px;padding:10px 2px;border-top:1px solid rgba(255,255,255,.045)}.v32-notification-item:first-child{border-top:0}.v32-notification-item>span{width:34px;height:34px;display:grid;place-items:center;border-radius:12px;background:rgba(111,157,226,.07);color:var(--member-accent)}.v32-notification-item b{display:block;font-size:.65rem;color:#dce5f1}.v32-notification-item small{display:block;margin-top:2px;font-size:.53rem;line-height:1.45;color:#76859a}.v32-notification-item.unread b:after{content:"";display:inline-block;width:6px;height:6px;margin-left:6px;border-radius:50%;background:var(--member-accent);vertical-align:middle}
+.v32-modal{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(2,7,14,.78);backdrop-filter:blur(13px)}.v32-modal.show{display:flex}.v32-modal-card{position:relative;width:min(540px,96vw);max-height:88vh;overflow:auto;padding:20px;border:1px solid rgba(255,255,255,.08);border-radius:26px;background:#091522;box-shadow:0 28px 90px rgba(0,0,0,.45)}.v32-modal-card h3{margin:5px 0 6px;font-family:'Jost',sans-serif!important;font-size:1.15rem}.v32-modal-card>p{margin:0 0 14px;color:#8593a7;font-size:.68rem;line-height:1.6}.v32-close{position:absolute;right:14px;top:14px;width:40px;height:40px!important;min-height:40px!important;border-radius:50%!important;border:1px solid rgba(255,255,255,.06)!important;background:rgba(255,255,255,.025)!important;color:#aebbd0!important;font-size:1rem!important}
+.v32-support-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}.v32-support-options button,.v32-share-actions button{min-height:64px!important;text-align:left;padding:11px 13px!important;border-radius:17px!important;border:1px solid rgba(255,255,255,.055)!important;background:rgba(255,255,255,.018)!important;color:#dfe8f4!important}.v32-support-options b{display:block;font-size:.68rem}.v32-support-options small{display:block;margin-top:3px;color:#748399;font-size:.52rem;line-height:1.4}.v32-support-note{margin-top:12px!important;font-size:.55rem!important;color:#65748a!important}
+.v32-share-preview{padding:20px;margin:10px 0 12px;border-radius:23px;border:1px solid color-mix(in srgb,var(--member-accent) 22%,rgba(255,255,255,.05));background:radial-gradient(circle at 90% 0%,color-mix(in srgb,var(--member-accent) 13%,transparent),transparent 40%),#0c192a}.v32-share-preview span{display:block;color:var(--member-accent);font-size:.5rem;letter-spacing:.16em}.v32-share-preview strong{display:block;margin:13px 0 2px;font-size:1.05rem}.v32-share-preview b{display:block;margin-top:8px;color:#dce6f3;font-size:.72rem}.v32-share-preview small{display:block;margin-top:5px;color:#77869b;font-size:.55rem}.v32-share-actions{display:grid;gap:7px}.v32-share-actions button{min-height:48px!important;text-align:center!important}
+@media(max-width:720px){.v32-utility-grid{grid-template-columns:1fr}.v32-utility-card{min-height:64px!important}.v32-support-options{grid-template-columns:1fr}}
+</style>
+
 </head>
 <body>
 
@@ -4980,6 +4996,33 @@ summary:focus-visible{
             <button type="button" onclick="toggleTraining(true)"><span>✓</span><b>Academia</b><small>Preparación</small></button>
             <button type="button" onclick="v31OpenMore()"><span>•••</span><b>Más</b><small>Beneficios</small></button>
           </nav>
+
+          <section class="v32-utility-grid" aria-label="Centro de ayuda y novedades">
+            <button class="v32-utility-card" type="button" onclick="v32ToggleNotifications()">
+              <span class="v32-utility-icon">●</span>
+              <span><b>Notificaciones</b><small id="v32-notification-summary">Todo al día</small></span>
+              <em id="v32-notification-badge">0</em>
+            </button>
+            <button class="v32-utility-card" type="button" onclick="v32OpenSupport()">
+              <span class="v32-utility-icon">?</span>
+              <span><b>Soporte</b><small>Habla con una persona</small></span>
+              <em>›</em>
+            </button>
+            <button class="v32-utility-card" type="button" onclick="v32OpenShare()">
+              <span class="v32-utility-icon">↗</span>
+              <span><b>Compartir</b><small>Mi membresía o mi viaje</small></span>
+              <em>›</em>
+            </button>
+          </section>
+
+          <section class="v32-notifications" id="v32-notifications" aria-hidden="true">
+            <div class="v32-section-head">
+              <div><div class="v17-section-label">Centro de novedades</div><h4>Notificaciones</h4></div>
+              <button type="button" onclick="v32MarkAllRead()">Marcar vistas</button>
+            </div>
+            <div id="v32-notification-list"></div>
+          </section>
+
 
 <section class="v30-trip" id="v30-trip">
             <div class="v30-trip-head">
@@ -5430,6 +5473,106 @@ summary:focus-visible{
   let verifiedMemberId = null;
 
 
+
+  const V32_PORTAL_URL='https://endersonjesus.github.io/viajeros-preferentes/';
+  const V32_SUPPORT_PHONE='51920227246';
+  let v32PortalPayload=null;
+  let v32MemberName='Miembro Preferente';
+  let v32MemberId='';
+  let v32Notifications=[];
+
+  function v32OpenModal(id){
+    const el=document.getElementById(id);if(!el)return;
+    el.classList.add('show');el.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+  }
+  function v32CloseModal(id){
+    const el=document.getElementById(id);if(!el)return;
+    el.classList.remove('show');el.setAttribute('aria-hidden','true');document.body.style.overflow='';
+  }
+  function v32OpenSupport(){v32OpenModal('v32-support-modal')}
+  function v32CloseSupport(){v32CloseModal('v32-support-modal')}
+  function v32OpenShare(){
+    const trip=v32PortalPayload?.trip||null;
+    const completed=trip?.estado==='viaje_completado';
+    const btn=document.getElementById('v32-share-trip-btn');
+    if(btn){btn.style.display=completed?'':'none'}
+    const n=document.getElementById('v32-share-name');if(n)n.textContent=v32MemberName||'Miembro Preferente';
+    const m=document.getElementById('v32-share-message');if(m)m.textContent=completed&&trip?.destino?`Viaje a ${trip.destino} completado ✓`:'Formo parte de Viajeros Preferentes.';
+    const t=document.getElementById('v32-share-trip');if(t)t.textContent=completed&&trip?.destino?'Una experiencia que continúa con mi membresía privada.':'Membresía privada · Preparación · Beneficios · Soporte';
+    v32OpenModal('v32-share-modal');
+  }
+  function v32CloseShare(){v32CloseModal('v32-share-modal')}
+
+  function v32ContactSupport(topic){
+    const labels={
+      viaje:'Hola, necesito soporte humano con el estado o los próximos pasos de mi viaje.',
+      documentacion:'Hola, necesito soporte humano con la documentación de mi viaje.',
+      acceso:'Hola, necesito ayuda con mi acceso a Viajeros Preferentes.',
+      cotizacion:'Hola, quiero cotizar un nuevo viaje o servicio.'
+    };
+    const member=v32MemberId?` Mi Member ID es ${v32MemberId}.`:'';
+    window.open(`https://wa.me/${V32_SUPPORT_PHONE}?text=${encodeURIComponent((labels[topic]||'Hola, necesito soporte.')+member)}`,'_blank','noopener');
+  }
+
+  function v32NotificationKey(){
+    return `vp32-notifications-read:${v32MemberId||'member'}`;
+  }
+  function v32ReadSet(){
+    try{return new Set(JSON.parse(localStorage.getItem(v32NotificationKey())||'[]'))}catch(e){return new Set()}
+  }
+  function v32BuildNotifications(payload){
+    const out=[],trip=payload?.trip||null,docs=Array.isArray(payload?.documents)?payload.documents:[];
+    if(trip){
+      out.push({id:`trip:${trip.id||trip.estado}:${trip.estado}`,icon:'✈',title:`Tu viaje está en: ${typeof labelState==='function'?labelState(trip.estado):trip.estado}`,text:trip.destino?`Destino: ${trip.destino}. Revisa “Mi viaje” para ver el siguiente paso.`:'Revisa “Mi viaje” para ver el siguiente paso.'});
+    }
+    docs.filter(d=>d.aplica!==false&&['listo','enviado'].includes(d.estado)).forEach(d=>{
+      out.push({id:`doc:${d.id||d.tipo}:${d.estado}:${d.recibido_at||''}`,icon:'▤',title:`${d.etiqueta||'Documento'}: ${d.estado==='enviado'?'enviado':'listo'}`,text:d.recibido_at?'Ya confirmaste que lo recibiste.':'Revisa la sección Mi viaje para mantener tu proceso al día.'});
+    });
+    if(Number(payload?.academy_percent||0)>=100) out.push({id:'academy:100',icon:'✓',title:'Academia Ultimate completada',text:'Tu preparación digital está al 100%.'});
+    if(trip?.estado==='viaje_completado') out.push({id:`completed:${trip.id||trip.destino}`,icon:'★',title:'Viaje completado',text:'Ya puedes compartir tu viaje o contarnos tu experiencia.'});
+    v32Notifications=out.slice(0,8);
+    v32RenderNotifications();
+  }
+  function v32RenderNotifications(){
+    const read=v32ReadSet(),box=document.getElementById('v32-notification-list');
+    const unread=v32Notifications.filter(n=>!read.has(n.id)).length;
+    const badge=document.getElementById('v32-notification-badge'),summary=document.getElementById('v32-notification-summary');
+    if(badge)badge.textContent=String(unread);
+    if(summary)summary.textContent=unread?`${unread} novedad${unread===1?'':'es'}`:'Todo al día';
+    if(!box)return;
+    box.innerHTML=v32Notifications.length?v32Notifications.map(n=>`<div class="v32-notification-item ${read.has(n.id)?'':'unread'}"><span>${n.icon}</span><div><b>${n.title}</b><small>${n.text}</small></div></div>`).join(''):'<div class="v32-notification-item"><span>✓</span><div><b>Todo al día</b><small>Cuando cambie tu viaje o documentación, verás aquí las novedades importantes.</small></div></div>';
+  }
+  function v32ToggleNotifications(){
+    const el=document.getElementById('v32-notifications');if(!el)return;
+    const show=!el.classList.contains('show');el.classList.toggle('show',show);el.setAttribute('aria-hidden',String(!show));
+    if(show)el.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  function v32MarkAllRead(){
+    try{localStorage.setItem(v32NotificationKey(),JSON.stringify(v32Notifications.map(n=>n.id)))}catch(e){}
+    v32RenderNotifications();
+  }
+
+  async function v32NativeShare(text){
+    const data={title:'Viajeros Preferentes',text,url:V32_PORTAL_URL};
+    try{
+      if(navigator.share){await navigator.share(data);return}
+      await navigator.clipboard.writeText(`${text}\n${V32_PORTAL_URL}`);
+      alert('Mensaje y enlace copiados.');
+    }catch(e){}
+  }
+  function v32ShareMembership(){
+    v32NativeShare(`Formo parte de Viajeros Preferentes. Un espacio privado donde puedo consultar mi preparación, beneficios y acompañamiento de viaje.`);
+  }
+  function v32ShareTrip(){
+    const trip=v32PortalPayload?.trip||null;
+    if(!trip||trip.estado!=='viaje_completado')return;
+    const destination=trip.destino?` a ${trip.destino}`:'';
+    v32NativeShare(`Viaje${destination} completado ✓ Formo parte de Viajeros Preferentes y esta experiencia continúa con mi membresía privada.`);
+  }
+  async function v32CopyPortal(){
+    try{await navigator.clipboard.writeText(V32_PORTAL_URL);alert('Enlace del portal copiado.')}catch(e){}
+  }
+
   let v31TodayAction = { type:'none' };
 
   function v31ScrollTo(id){
@@ -5666,6 +5809,8 @@ summary:focus-visible{
     const docs=Array.isArray(payload?.documents)?payload.documents:[];
     const academy=Number(payload?.academy_percent||0);
     const experience=payload?.experience||null;
+    v32PortalPayload=payload;
+    v32BuildNotifications(payload);
     v31UpdateToday(payload);
 
     if(!trip){
@@ -5945,6 +6090,8 @@ function selectStub(which){
     setText('vp23-credit-used', `US$${Number(memberData.creditUsed ?? 0)}`);
 
     setText('v15-member-id', memberData.memberId || '—');
+    v32MemberName=memberData.name || 'Miembro Preferente';
+    v32MemberId=memberData.memberId || '';
     setText('v21-pass-name', memberData.name || 'Miembro Preferente');
     setText('v21-pass-id', memberData.memberId || '—');
     setText('v21-pass-level', level);
@@ -6763,6 +6910,43 @@ document.addEventListener('DOMContentLoaded',()=>{
   </div>
 </div>
 
+
+
+<div class="v32-modal" id="v32-support-modal" aria-hidden="true" onclick="if(event.target===this)v32CloseSupport()">
+  <div class="v32-modal-card">
+    <button class="v32-close" type="button" onclick="v32CloseSupport()">×</button>
+    <div class="v17-section-label">Soporte humano</div>
+    <h3>¿En qué podemos ayudarte?</h3>
+    <p>Tu portal te mantiene informado. Si necesitas una respuesta humana sobre tu viaje, documentación, acceso o una nueva cotización, escríbenos directamente.</p>
+    <div class="v32-support-options">
+      <button type="button" onclick="v32ContactSupport('viaje')"><b>Mi viaje</b><small>Dudas sobre el estado o próximos pasos</small></button>
+      <button type="button" onclick="v32ContactSupport('documentacion')"><b>Documentación</b><small>Consulta sobre documentos de tu proceso</small></button>
+      <button type="button" onclick="v32ContactSupport('acceso')"><b>Acceso al portal</b><small>Ayuda con tu cuenta o Member ID</small></button>
+      <button type="button" onclick="v32ContactSupport('cotizacion')"><b>Quiero cotizar</b><small>Hablar sobre un nuevo viaje o servicio</small></button>
+    </div>
+    <p class="v32-support-note">El soporte es atendido por una persona. Los tiempos de respuesta pueden variar según la operación del día.</p>
+  </div>
+</div>
+
+<div class="v32-modal" id="v32-share-modal" aria-hidden="true" onclick="if(event.target===this)v32CloseShare()">
+  <div class="v32-modal-card">
+    <button class="v32-close" type="button" onclick="v32CloseShare()">×</button>
+    <div class="v17-section-label">Compartir</div>
+    <h3>Comparte tu experiencia</h3>
+    <p>Elige qué quieres compartir. Tu Member ID, datos de reserva, hotel y documentación privada nunca se incluyen.</p>
+    <div class="v32-share-preview" id="v32-share-preview">
+      <span>VIAJEROS PREFERENTES</span>
+      <strong id="v32-share-name">Miembro Preferente</strong>
+      <b id="v32-share-message">Formo parte de Viajeros Preferentes.</b>
+      <small id="v32-share-trip">Membresía privada · Preparación · Beneficios · Soporte</small>
+    </div>
+    <div class="v32-share-actions">
+      <button type="button" onclick="v32ShareMembership()">Compartir mi membresía</button>
+      <button type="button" id="v32-share-trip-btn" onclick="v32ShareTrip()">Compartir mi viaje</button>
+      <button type="button" onclick="v32CopyPortal()">Copiar enlace del portal</button>
+    </div>
+  </div>
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
