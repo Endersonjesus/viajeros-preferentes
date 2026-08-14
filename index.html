@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Viajeros Preferentes — V2.1</title>
+<!-- VIAJEROS PREFERENTES V2.8 · escala cromática coherente + automatización visual -->
+<title>Viajeros Preferentes — V2.8</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id=%22g%22%20x1=%220%22%20y1=%220%22%20x2=%221%22%20y2=%221%22%3E%0A%20%20%20%20%3Cstop%20offset=%220%22%20stop-color=%22%23162747%22/%3E%0A%20%20%20%20%3Cstop%20offset=%221%22%20stop-color=%22%230b1426%22/%3E%0A%20%20%3C/linearGradient%3E%0A%20%20%3ClinearGradient%20id=%22p%22%20x1=%220%22%20y1=%220%22%20x2=%221%22%20y2=%221%22%3E%0A%20%20%20%20%3Cstop%20offset=%220%22%20stop-color=%22%23dce7ff%22/%3E%0A%20%20%20%20%3Cstop%20offset=%221%22%20stop-color=%22%2389afff%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20x=%223%22%20y=%223%22%20width=%2258%22%20height=%2258%22%20rx=%2218%22%20fill=%22url(%23g)%22%20stroke=%22%235876b5%22%20stroke-width=%222%22/%3E%0A%3Cpath%20d=%22M15%2034.2%2048.5%2018c1.7-.8%203.2.9%202.2%202.5L34.9%2048.9c-.8%201.5-3%20.9-3-0.8l-.2-10.2-9.9%204.1c-1.1.5-2.3-.1-2.6-1.2l-1.1-4.2c-.3-1%20.1-2%201-2.5l17.8-9-21.2%2011.1c-1.6.8-2.4-1.2-.7-2Z%22%20fill=%22url(%23p)%22/%3E%0A%3C/svg%3E">
+<meta name="theme-color" content="#0a1120">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -13,8 +16,8 @@
     --navy-panel:#111c32;
     --navy-panel-2:#16233d;
     --navy-line:#28395c;
-    --gold:#c6a355;
-    --gold-bright:#eccf9c;
+    --gold:#6f8fc9;
+    --gold-bright:#c8d6ef;
     --parchment:#efe7d8;
     --muted:#8a94ae;
     --stamp:#a5392b;
@@ -62,14 +65,14 @@
     position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;padding:120px 24px 70px;
     background:
-      radial-gradient(circle at 18% 22%, rgba(198,163,85,.10), transparent 40%),
-      radial-gradient(circle at 82% 78%, rgba(198,163,85,.08), transparent 40%),
+      radial-gradient(circle at 18% 22%, rgba(91,156,255,.10), transparent 40%),
+      radial-gradient(circle at 82% 78%, rgba(91,156,255,.08), transparent 40%),
       var(--navy-deep);
     isolation:isolate;
   }
   .hero::before{
     content:"";position:absolute;inset:0;z-index:-2;
-    background-image:radial-gradient(rgba(198,163,85,.14) 1px, transparent 1px);
+    background-image:radial-gradient(rgba(91,156,255,.14) 1px, transparent 1px);
     background-size:26px 26px;
     mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, black 40%, transparent 90%);
   }
@@ -106,8 +109,8 @@
     display:flex;flex-direction:column;align-items:center;gap:10px;font-family:'Jost',sans-serif;
     transition:background .25s;position:relative;
   }
-  .stub:hover{background:rgba(198,163,85,.06);}
-  .stub.active{background:rgba(198,163,85,.1);}
+  .stub:hover{background:rgba(91,156,255,.06);}
+  .stub.active{background:rgba(91,156,255,.1);}
   .stub .stub-icon{font-size:1.5rem;color:var(--gold);}
   .stub .stub-eyebrow{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
   .stub .stub-label{font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-weight:600;}
@@ -175,7 +178,7 @@
 
   /* ---------- capacitación privada: cómo viajar ---------- */
   .training-entry{
-    margin-top:20px;padding:20px;border:1px solid var(--gold);background:linear-gradient(145deg,rgba(198,163,85,.10),rgba(17,28,50,.72));
+    margin-top:20px;padding:20px;border:1px solid var(--gold);background:linear-gradient(145deg,rgba(91,156,255,.10),rgba(17,28,50,.72));
   }
   .training-entry-top{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;}
   .training-entry h4{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--gold-bright);margin-bottom:5px;}
@@ -272,7 +275,7 @@
   .tier-desc{color:var(--muted);font-size:.8rem;}
   .tier-card.tier-2{border-color:var(--gold);}
   .tier-card.tier-2 .tier-name{color:var(--gold);}
-  .tier-card.tier-3{border-color:var(--gold);box-shadow:0 0 30px -10px rgba(198,163,85,.4);}
+  .tier-card.tier-3{border-color:var(--gold);box-shadow:0 0 30px -10px rgba(91,156,255,.4);}
   .tier-card.tier-3 .tier-name{color:var(--gold);}
   .tier-card.tier-4{background:linear-gradient(160deg,#1a1305,var(--navy-deep));border-color:var(--gold-bright);}
   .tier-card.tier-4 .tier-name, .tier-card.tier-4 .tier-rank{color:var(--gold-bright);}
@@ -353,7 +356,7 @@
     border:1px solid var(--gold);border-radius:6px;padding:22px 22px 18px;position:relative;overflow:hidden;
   }
   .member-card::after{
-    content:"✈";position:absolute;right:12px;bottom:4px;font-size:2.6rem;color:rgba(198,163,85,.08);
+    content:"✈";position:absolute;right:12px;bottom:4px;font-size:2.6rem;color:rgba(91,156,255,.08);
   }
   .member-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px;}
   .mc-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
@@ -445,8 +448,8 @@
 
 
   /* ========== VIAJEROS PREFERENTES V2 ========== */
-  .v2-dashboard{margin-top:22px;border:1px solid var(--gold);background:linear-gradient(145deg,rgba(198,163,85,.08),rgba(17,28,50,.94));padding:24px;position:relative;overflow:hidden;}
-  .v2-dashboard::after{content:"✦";position:absolute;right:-10px;top:-28px;font-size:7rem;color:rgba(198,163,85,.05);pointer-events:none;}
+  .v2-dashboard{margin-top:22px;border:1px solid var(--gold);background:linear-gradient(145deg,rgba(91,156,255,.08),rgba(17,28,50,.94));padding:24px;position:relative;overflow:hidden;}
+  .v2-dashboard::after{content:"✦";position:absolute;right:-10px;top:-28px;font-size:7rem;color:rgba(91,156,255,.05);pointer-events:none;}
   .v2-dash-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap;position:relative;z-index:1;}
   .v2-greeting{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--gold-bright);line-height:1.1;}
   .v2-level-pill{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold-bright);padding:7px 11px;white-space:nowrap;}
@@ -468,7 +471,7 @@
   .v2-wallet-note{margin-top:14px;font-size:.72rem;color:var(--muted);line-height:1.55;}
   .v2-roadmap{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:26px;}
   .v2-milestone{position:relative;border:1px solid var(--navy-line);background:var(--navy-panel);padding:22px 15px;text-align:center;min-height:142px;}
-  .v2-milestone.highlight{border-color:var(--gold);box-shadow:0 0 30px -16px rgba(198,163,85,.65);}
+  .v2-milestone.highlight{border-color:var(--gold);box-shadow:0 0 30px -16px rgba(91,156,255,.65);}
   .v2-milestone .m-count{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
   .v2-milestone .m-value{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--gold-bright);margin:9px 0 4px;}
   .v2-milestone .m-label{font-size:.75rem;color:var(--muted);}
@@ -488,20 +491,20 @@
 
   /* ---------- V3: ramas, acceso privado y niveles visuales ---------- */
   .branch-note{margin-top:14px;padding:13px 15px;border-left:2px solid var(--gold);background:rgba(10,17,32,.58);color:var(--muted);font-size:.82rem;}
-  .auth-tabs{display:flex;gap:8px;margin:18px 0 16px;flex-wrap:wrap}.auth-tab{flex:1;min-width:150px;border:1px solid var(--navy-line);background:var(--navy-deep);color:var(--muted);padding:11px 12px;cursor:pointer;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}.auth-tab.active{border-color:var(--gold);color:var(--gold-bright);background:rgba(198,163,85,.08)}
+  .auth-tabs{display:flex;gap:8px;margin:18px 0 16px;flex-wrap:wrap}.auth-tab{flex:1;min-width:150px;border:1px solid var(--navy-line);background:var(--navy-deep);color:var(--muted);padding:11px 12px;cursor:pointer;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}.auth-tab.active{border-color:var(--gold);color:var(--gold-bright);background:rgba(91,156,255,.08)}
   .auth-pane{display:none}.auth-pane.show{display:block}.auth-grid{display:grid;gap:10px}.auth-help{font-size:.76rem;color:var(--muted);margin-top:10px}.auth-msg{display:none;margin-top:12px;padding:11px 12px;border:1px solid var(--navy-line);font-size:.78rem;color:var(--gold-bright)}.auth-msg.show{display:block}.auth-msg.error{color:#ff9f9a;border-color:rgba(165,57,43,.7)}
   .private-lock{display:flex;gap:10px;align-items:flex-start;margin:16px 0;padding:14px;border:1px solid var(--navy-line);background:rgba(10,17,32,.55)}.private-lock b{color:var(--gold-bright);display:block;font-family:'Cormorant Garamond',serif;font-size:1.05rem}.private-lock span{color:var(--muted);font-size:.76rem}.logout-btn{background:none;border:1px solid var(--navy-line);color:var(--muted);padding:8px 10px;font-family:'Space Mono',monospace;font-size:.58rem;cursor:pointer}.logout-btn:hover{color:var(--gold);border-color:var(--gold)}
-  .prospect-shell{display:grid;gap:18px}.prospect-hero{padding:34px 28px;border:1px solid var(--gold);background:linear-gradient(145deg,rgba(198,163,85,.11),rgba(17,28,50,.92));position:relative;overflow:hidden}.prospect-hero:after{content:'✈';position:absolute;right:18px;bottom:-14px;font-size:6rem;color:rgba(198,163,85,.055)}.prospect-hero h3{font-size:1.7rem;color:var(--gold-bright);margin:8px 0}.prospect-hero p{color:var(--muted);max-width:58ch}.prospect-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.prospect-proof>div{border:1px solid var(--navy-line);background:rgba(10,17,32,.55);padding:17px}.prospect-proof b{display:block;color:var(--gold-bright);font-family:'Cormorant Garamond',serif;font-size:1.05rem}.prospect-proof span{font-size:.76rem;color:var(--muted)}
+  .prospect-shell{display:grid;gap:18px}.prospect-hero{padding:34px 28px;border:1px solid var(--gold);background:linear-gradient(145deg,rgba(91,156,255,.11),rgba(17,28,50,.92));position:relative;overflow:hidden}.prospect-hero:after{content:'✈';position:absolute;right:18px;bottom:-14px;font-size:6rem;color:rgba(91,156,255,.055)}.prospect-hero h3{font-size:1.7rem;color:var(--gold-bright);margin:8px 0}.prospect-hero p{color:var(--muted);max-width:58ch}.prospect-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.prospect-proof>div{border:1px solid var(--navy-line);background:rgba(10,17,32,.55);padding:17px}.prospect-proof b{display:block;color:var(--gold-bright);font-family:'Cormorant Garamond',serif;font-size:1.05rem}.prospect-proof span{font-size:.76rem;color:var(--muted)}
   .prospect-route{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}.prospect-step{border:1px solid var(--navy-line);padding:18px 15px;background:var(--navy-panel)}.prospect-step i{font-style:normal;font-family:'Space Mono',monospace;font-size:.56rem;color:var(--gold)}.prospect-step b{display:block;font-family:'Cormorant Garamond',serif;color:var(--parchment);font-size:1.05rem;margin:7px 0 4px}.prospect-step span{font-size:.74rem;color:var(--muted)}
-  .tier-card.tier-1{border-color:#4378d7;background:linear-gradient(160deg,rgba(45,88,166,.22),var(--navy-panel-2))}.tier-card.tier-1 .tier-name{color:#8fb7ff}.tier-card.tier-2{border-color:#aeb8c7;background:linear-gradient(160deg,rgba(174,184,199,.16),var(--navy-panel-2))}.tier-card.tier-2 .tier-name{color:#dce3ec}.tier-card.tier-3{border-color:#d7ad45;background:linear-gradient(160deg,rgba(215,173,69,.18),var(--navy-panel-2));box-shadow:0 0 34px -16px rgba(215,173,69,.7)}.tier-card.tier-3 .tier-name{color:#f1d47f}.tier-card.tier-4{border-color:#b899ff;background:linear-gradient(160deg,rgba(91,54,135,.34),#090d18);box-shadow:0 0 38px -16px rgba(184,153,255,.55)}.tier-card.tier-4 .tier-name,.tier-card.tier-4 .tier-rank{color:#d9c8ff}
-  .v2-level-pill.level-preferente{background:linear-gradient(180deg,#8fb7ff,#4378d7);color:#071328}.v2-level-pill.level-silver{background:linear-gradient(180deg,#f0f3f7,#aeb8c7);color:#111827}.v2-level-pill.level-gold{background:linear-gradient(180deg,#f4db8c,#c7952d);color:#211604}.v2-level-pill.level-platinum{background:linear-gradient(180deg,#dbcaff,#8d67cf);color:#130b21}
+  .tier-card.tier-1{border-color:#4378d7;background:linear-gradient(160deg,rgba(45,88,166,.22),var(--navy-panel-2))}.tier-card.tier-1 .tier-name{color:#8fb7ff}.tier-card.tier-2{border-color:#aeb8c7;background:linear-gradient(160deg,rgba(174,184,199,.16),var(--navy-panel-2))}.tier-card.tier-2 .tier-name{color:#dce3ec}.tier-card.tier-3{border-color:#789bd8;background:linear-gradient(160deg,rgba(215,173,69,.18),var(--navy-panel-2));box-shadow:0 0 34px -16px rgba(215,173,69,.7)}.tier-card.tier-3 .tier-name{color:#b8c9e9}.tier-card.tier-4{border-color:#b899ff;background:linear-gradient(160deg,rgba(91,54,135,.34),#090d18);box-shadow:0 0 38px -16px rgba(184,153,255,.55)}.tier-card.tier-4 .tier-name,.tier-card.tier-4 .tier-rank{color:#d9c8ff}
+  .v2-level-pill.level-preferente{background:linear-gradient(180deg,#8fb7ff,#4378d7);color:#071328}.v2-level-pill.level-silver{background:linear-gradient(180deg,#f0f3f7,#aeb8c7);color:#111827}.v2-level-pill.level-gold{background:linear-gradient(180deg,#c4d3ed,#6588c8);color:#211604}.v2-level-pill.level-platinum{background:linear-gradient(180deg,#dbcaff,#8d67cf);color:#130b21}
   .travel-profile{margin:20px 0;border:1px solid var(--navy-line);padding:18px;background:rgba(10,17,32,.5)}.travel-profile h5{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--gold-bright);margin-bottom:5px}.profile-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0}.profile-tab{border:1px solid var(--navy-line);background:var(--navy-deep);color:var(--muted);padding:9px 11px;cursor:pointer;font-size:.68rem}.profile-tab.active{border-color:var(--gold);color:var(--gold-bright)}.profile-content{display:none;padding:13px;border-left:2px solid var(--gold);background:rgba(17,28,50,.65)}.profile-content.show{display:block}.profile-content p,.profile-content li{font-size:.8rem;color:var(--muted)}.profile-content ul{margin:8px 0 0 16px}.profile-warning{margin-top:10px;color:var(--parchment)!important}
   @media(max-width:760px){.prospect-proof,.prospect-route{grid-template-columns:1fr}.prospect-hero{padding:26px 20px}}
 
 
   /* ---------- V5 mobile polish / logo ---------- */
   .brand-logo{display:inline-flex;align-items:center;gap:10px;}
-  .brand-logo .logo-plane{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border:1px solid var(--gold);border-radius:50%;color:var(--gold-bright);font-size:.95rem;box-shadow:0 0 18px rgba(198,163,85,.14);}
+  .brand-logo .logo-plane{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border:1px solid var(--gold);border-radius:50%;color:var(--gold-bright);font-size:.95rem;box-shadow:0 0 18px rgba(91,156,255,.14);}
   .brand-logo .logo-text{white-space:nowrap;}
   input,button,a,summary{touch-action:manipulation;}
   .id-input,input[type=email],input[type=password],input[type=text],input[type=tel]{font-size:16px !important;}
@@ -539,9 +542,9 @@
 
   /* ---------- V6 persuasion / curiosity design ---------- */
   :root{--electric:#67d5ff;--violet:#9b7cff;--emerald:#54d3a0;}
-  .prospect-hero-v6{box-shadow:0 34px 80px -45px rgba(198,163,85,.58)}
+  .prospect-hero-v6{box-shadow:0 34px 80px -45px rgba(91,156,255,.58)}
   .v6-secret-chip{display:inline-flex;margin:8px 0 14px;padding:7px 10px;border:1px solid rgba(103,213,255,.35);background:rgba(103,213,255,.07);color:var(--electric);font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.11em}
-  .v6-prize-peek{margin-top:20px;display:grid;gap:2px;padding:18px;border:1px solid rgba(198,163,85,.45);background:linear-gradient(120deg,rgba(198,163,85,.12),rgba(155,124,255,.07))}
+  .v6-prize-peek{margin-top:20px;display:grid;gap:2px;padding:18px;border:1px solid rgba(91,156,255,.45);background:linear-gradient(120deg,rgba(91,156,255,.12),rgba(155,124,255,.07))}
   .v6-prize-peek span,.v6-destination span{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.14em;color:var(--gold)}
   .v6-prize-peek strong{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold-bright);line-height:1.05}
   .v6-prize-peek small{color:var(--muted);font-size:.73rem}
@@ -553,12 +556,12 @@
   .v6-journey-card:after{content:'↗';position:absolute;right:13px;top:10px;color:rgba(236,207,156,.28);font-size:1.2rem}
   .v6-benefit{position:relative;overflow:hidden;transition:transform .2s,border-color .2s,background .2s}.v6-benefit:hover{transform:translateY(-3px);background:#182744}.v6-benefit:nth-child(1){border-top:2px solid var(--gold)}.v6-benefit:nth-child(2){border-top:2px solid var(--electric)}.v6-benefit:nth-child(3){border-top:2px solid var(--emerald)}.v6-benefit:nth-child(4){border-top:2px solid var(--violet)}
   .v6-reward-head{max-width:690px}.v6-reward-head h2 em{font-style:italic}
-  .v6-destination{margin:24px auto 0;max-width:420px;padding:20px;border:1px solid var(--gold);background:radial-gradient(circle at 50% 0%,rgba(198,163,85,.18),transparent 60%),var(--navy-panel);display:grid;gap:3px;box-shadow:0 28px 65px -42px rgba(236,207,156,.8)}
+  .v6-destination{margin:24px auto 0;max-width:420px;padding:20px;border:1px solid var(--gold);background:radial-gradient(circle at 50% 0%,rgba(91,156,255,.18),transparent 60%),var(--navy-panel);display:grid;gap:3px;box-shadow:0 28px 65px -42px rgba(236,207,156,.8)}
   .v6-destination strong{font-family:'Cormorant Garamond',serif;font-size:3.3rem;line-height:1;color:var(--gold-bright)}.v6-destination small{font-size:.72rem;color:var(--muted)}
   .v6-milestone{transition:transform .2s,filter .2s}.v6-milestone:hover{transform:translateY(-4px);filter:brightness(1.08)}
   .v6-milestone:nth-child(1){border-top-color:var(--electric)}.v6-milestone:nth-child(2){border-top-color:#b7c4d8}.v6-milestone:nth-child(3){border-top-color:var(--gold)}.v6-milestone:nth-child(4){border-top-color:var(--violet)}
   .v6-final{background:radial-gradient(circle at 50% 0%,rgba(236,207,156,.2),transparent 55%),linear-gradient(160deg,#211904,var(--navy-panel));box-shadow:0 24px 60px -38px rgba(236,207,156,.9)}
-  .v6-teaser-section{padding-top:40px}.v6-teaser{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;padding:34px;border:1px solid var(--navy-line);background:linear-gradient(135deg,var(--navy-panel-2),#0d182a);align-items:center}.v6-teaser h2{font-size:clamp(1.6rem,3.6vw,2.2rem);line-height:1.15;margin:10px 0 14px}.v6-teaser h2 em{color:var(--gold);font-style:italic}.v6-teaser p{color:var(--muted);font-size:.9rem}.v6-teaser-screen{padding:20px;border:1px solid rgba(198,163,85,.55);background:#0a1120;box-shadow:0 26px 60px -42px #000}.v6-mini-label{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.14em;color:var(--gold)}.v6-mini-row{display:flex;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px dashed var(--navy-line)}.v6-mini-row b{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted)}.v6-mini-row strong{font-family:'Cormorant Garamond',serif;color:var(--gold-bright)}.v6-mini-progress{height:8px;border:1px solid var(--navy-line);margin:17px 0;background:#070d18;overflow:hidden}.v6-mini-progress i{display:block;height:100%;width:62%;background:linear-gradient(90deg,var(--electric),var(--violet),var(--gold))}.v6-mini-lock{font-size:.72rem;color:var(--muted)}
+  .v6-teaser-section{padding-top:40px}.v6-teaser{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;padding:34px;border:1px solid var(--navy-line);background:linear-gradient(135deg,var(--navy-panel-2),#0d182a);align-items:center}.v6-teaser h2{font-size:clamp(1.6rem,3.6vw,2.2rem);line-height:1.15;margin:10px 0 14px}.v6-teaser h2 em{color:var(--gold);font-style:italic}.v6-teaser p{color:var(--muted);font-size:.9rem}.v6-teaser-screen{padding:20px;border:1px solid rgba(91,156,255,.55);background:#0a1120;box-shadow:0 26px 60px -42px #000}.v6-mini-label{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.14em;color:var(--gold)}.v6-mini-row{display:flex;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px dashed var(--navy-line)}.v6-mini-row b{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted)}.v6-mini-row strong{font-family:'Cormorant Garamond',serif;color:var(--gold-bright)}.v6-mini-progress{height:8px;border:1px solid var(--navy-line);margin:17px 0;background:#070d18;overflow:hidden}.v6-mini-progress i{display:block;height:100%;width:62%;background:linear-gradient(90deg,var(--electric),var(--violet),var(--gold))}.v6-mini-lock{font-size:.72rem;color:var(--muted)}
   @media(max-width:760px){.v6-teaser{grid-template-columns:1fr;padding:24px 18px}.v6-destination strong{font-size:2.8rem}.v6-prize-peek strong{font-size:1.75rem}.v6-secret-chip{font-size:.5rem;letter-spacing:.08em}.v6-curiosity-box{padding:15px}.v6-teaser-section{padding-top:18px}}
 
   /* ---------- V7 progression psychology ---------- */
@@ -569,10 +572,10 @@
   .v7-tier:nth-of-type(2):before{background:radial-gradient(circle at 50% 0%,rgba(196,211,232,.25),transparent 56%)}
   .v7-tier:nth-of-type(3):before{background:radial-gradient(circle at 50% 0%,rgba(236,207,156,.25),transparent 56%)}
   .v7-tier:nth-of-type(4):before{background:radial-gradient(circle at 50% 0%,rgba(155,124,255,.28),transparent 56%)}
-  .v7-tier-badge{width:34px;height:34px;margin:0 auto 12px;display:grid;place-items:center;clip-path:polygon(50% 0,92% 22%,92% 72%,50% 100%,8% 72%,8% 22%);background:linear-gradient(145deg,var(--gold-bright),var(--gold));color:#171006;font-family:'Space Mono',monospace;font-weight:700;font-size:.62rem;box-shadow:0 0 25px rgba(198,163,85,.18)}
+  .v7-tier-badge{width:34px;height:34px;margin:0 auto 12px;display:grid;place-items:center;clip-path:polygon(50% 0,92% 22%,92% 72%,50% 100%,8% 72%,8% 22%);background:linear-gradient(145deg,var(--gold-bright),var(--gold));color:#171006;font-family:'Space Mono',monospace;font-weight:700;font-size:.62rem;box-shadow:0 0 25px rgba(91,156,255,.18)}
   .tier-1 .v7-tier-badge{background:linear-gradient(145deg,#9fe7ff,#4ea6d4)}
   .tier-2 .v7-tier-badge{background:linear-gradient(145deg,#f0f4fb,#99a9bf)}
-  .tier-3 .v7-tier-badge{background:linear-gradient(145deg,#ffe8a8,#c59635)}
+  .tier-3 .v7-tier-badge{background:linear-gradient(145deg,#d7e2f6,#688bc9)}
   .tier-4 .v7-tier-badge{background:linear-gradient(145deg,#d7c8ff,#7c56d8)}
   .v7-level-perks{margin-top:30px;border:1px solid var(--navy-line);overflow:auto;background:var(--navy-panel)}
   .v7-perk-head,.v7-perk-row{display:grid;grid-template-columns:minmax(190px,1.5fr) repeat(4,minmax(115px,1fr));min-width:720px;align-items:stretch}
@@ -582,10 +585,10 @@
   .v7-perk-row b{font-size:.78rem;color:var(--parchment);font-weight:500}
   .v7-perk-row span{text-align:center;font-size:.75rem;color:var(--muted)}
   .v7-perk-row span:nth-child(3){background:rgba(196,211,232,.035)}
-  .v7-perk-row span:nth-child(4){background:rgba(198,163,85,.045)}
+  .v7-perk-row span:nth-child(4){background:rgba(91,156,255,.045)}
   .v7-perk-row span:nth-child(5){background:rgba(155,124,255,.055);color:var(--gold-bright)}
   .v7-perk-secret b,.v7-perk-secret span{border-bottom:none}
-  .v7-destination{border-color:rgba(155,124,255,.58);background:radial-gradient(circle at 30% 0%,rgba(155,124,255,.18),transparent 58%),radial-gradient(circle at 80% 100%,rgba(198,163,85,.12),transparent 55%),var(--navy-panel)}
+  .v7-destination{border-color:rgba(155,124,255,.58);background:radial-gradient(circle at 30% 0%,rgba(155,124,255,.18),transparent 58%),radial-gradient(circle at 80% 100%,rgba(91,156,255,.12),transparent 55%),var(--navy-panel)}
   .v7-destination strong{background:linear-gradient(90deg,var(--gold-bright),#d8c9ff);-webkit-background-clip:text;background-clip:text;color:transparent}
   @media(max-width:760px){.v7-level-perks{margin-left:-6px;margin-right:-6px}.v7-tier-row{gap:0}.v7-tier{max-width:320px}.v7-prize-peek strong,.v7-destination strong{font-size:2.45rem}}
 
@@ -594,8 +597,8 @@
    V8 · CURIOSIDAD + VALOR
    ========================= */
 .prospect-hero-v8{position:relative;overflow:hidden}
-.v8-membership-chip{display:inline-flex;align-items:center;gap:8px;margin:10px 0 14px;padding:8px 12px;border:1px solid rgba(212,175,55,.32);border-radius:999px;background:rgba(212,175,55,.07);font-size:.68rem;letter-spacing:.12em;font-weight:700;color:var(--gold-bright)}
-.v8-curiosity-box{margin-top:20px;padding:20px;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(212,175,55,.06));box-shadow:0 18px 50px rgba(0,0,0,.18)}
+.v8-membership-chip{display:inline-flex;align-items:center;gap:8px;margin:10px 0 14px;padding:8px 12px;border:1px solid rgba(91,156,255,.32);border-radius:999px;background:rgba(91,156,255,.07);font-size:.68rem;letter-spacing:.12em;font-weight:700;color:var(--gold-bright)}
+.v8-curiosity-box{margin-top:20px;padding:20px;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(91,156,255,.06));box-shadow:0 18px 50px rgba(0,0,0,.18)}
 .v8-curiosity-box span,.v8-curiosity-box small,.v8-curiosity-box em{display:block}
 .v8-curiosity-box span{font-size:.67rem;letter-spacing:.18em;font-weight:700;color:rgba(255,255,255,.62)}
 .v8-curiosity-box strong{display:block;margin:8px 0 7px;font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,6vw,3.3rem);line-height:.95;color:#fff}
@@ -609,7 +612,7 @@
 .v8-unlock-card span{display:block;margin:12px 0 7px;font-size:.62rem;letter-spacing:.16em;font-weight:700;color:var(--gold-bright)}
 .v8-unlock-card h3{margin:0 0 8px;font-size:1.16rem}
 .v8-unlock-card p{margin:0;font-size:.82rem;line-height:1.55;color:var(--muted)}
-.v8-unlock-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.22);font-size:1.05rem}
+.v8-unlock-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:rgba(91,156,255,.1);border:1px solid rgba(91,156,255,.22);font-size:1.05rem}
 .v8-mystery-card{background:linear-gradient(145deg,rgba(81,57,138,.18),rgba(255,255,255,.025));border-color:rgba(151,120,220,.25)}
 .v8-level-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}
 .v8-level-strip>div{padding:14px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.035)}
@@ -618,7 +621,7 @@
 .v8-level-strip small{margin-top:4px;font-size:.68rem;color:var(--muted)}
 .v8-level-strip>div:nth-child(1){border-top:2px solid #6fa8ff}
 .v8-level-strip>div:nth-child(2){border-top:2px solid #bfc7d5}
-.v8-level-strip>div:nth-child(3){border-top:2px solid #e2b74c}
+.v8-level-strip>div:nth-child(3){border-top:2px solid #7d9edb}
 .v8-level-strip>div:nth-child(4){border-top:2px solid #5cc8d7}
 .v8-level-strip .v8-plus{border-top:2px solid #a986ff;background:linear-gradient(145deg,rgba(126,91,190,.15),rgba(255,255,255,.03))}
 .v8-trust-note{margin-top:14px;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);font-size:.78rem;line-height:1.55;color:var(--muted)}
@@ -642,7 +645,7 @@
 :root{--v9-content:820px}
 .v9-narrow{width:min(var(--v9-content),calc(100% - 36px));margin:0 auto}
 .v9-section{padding:68px 0}
-.v9-section-soft{background:linear-gradient(180deg,rgba(255,255,255,.018),rgba(198,163,85,.025))}
+.v9-section-soft{background:linear-gradient(180deg,rgba(255,255,255,.018),rgba(91,156,255,.025))}
 .v9-heading{text-align:center;max-width:650px;margin:0 auto 28px}
 .v9-heading h2{font-size:clamp(1.8rem,5vw,2.55rem);line-height:1.08;margin-top:8px}
 .v9-heading h2 em{color:var(--gold);font-style:italic}
@@ -664,7 +667,7 @@
 .v9-lvl{padding:7px 10px;border-radius:999px;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.07em;border:1px solid var(--navy-line)}
 .v9-lvl.pref{border-color:#5c8ecf;color:#a8ceff;background:rgba(55,106,170,.12)}
 .v9-lvl.silver{border-color:#9ea9b8;color:#dce4ed;background:rgba(158,169,184,.1)}
-.v9-lvl.gold{border-color:#c6a355;color:#f1d68f;background:rgba(198,163,85,.11)}
+.v9-lvl.gold{border-color:#6f8fc9;color:#bdcdea;background:rgba(91,156,255,.11)}
 .v9-lvl.platinum{border-color:#4ab7c6;color:#9cebf4;background:rgba(74,183,198,.1)}
 .v9-lvl.plus{border-color:#9173d8;color:#cebaff;background:rgba(145,115,216,.12)}
 
@@ -684,7 +687,7 @@
 .v9-level-card:before{content:"";position:absolute;left:0;right:0;top:0;height:3px}
 .v9-level-card.pref:before{background:#5c8ecf}
 .v9-level-card.silver:before{background:#aab2bf}
-.v9-level-card.gold:before{background:#c6a355}
+.v9-level-card.gold:before{background:#6f8fc9}
 .v9-level-card.platinum:before{background:#4ab7c6}
 .v9-level-card.plus:before{background:#9173d8}
 .v9-level-card small,.v9-level-card strong,.v9-level-card span{display:block}
@@ -705,14 +708,14 @@
 .v9-trust-grid b,.v9-trust-grid small{display:block}
 .v9-trust-grid b{font-size:.84rem}
 .v9-trust-grid small{font-size:.7rem;line-height:1.45;color:var(--muted);margin-top:4px}
-.v9-academy-teaser{margin-top:12px;padding:22px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:24px;border:1px solid rgba(198,163,85,.34);border-radius:18px;background:linear-gradient(135deg,rgba(198,163,85,.07),rgba(17,28,50,.6))}
+.v9-academy-teaser{margin-top:12px;padding:22px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:24px;border:1px solid rgba(91,156,255,.34);border-radius:18px;background:linear-gradient(135deg,rgba(91,156,255,.07),rgba(17,28,50,.6))}
 .v9-academy-teaser h3{font-size:1.4rem;margin:6px 0}
 .v9-academy-teaser p{color:var(--muted);font-size:.8rem;line-height:1.5;max-width:56ch}
 .v9-academy-lock{text-align:center;font-size:1.35rem;color:var(--gold)}
 .v9-academy-lock span{display:block;font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.08em;color:var(--muted);margin-top:5px}
 
 .v9-final-section{padding-top:36px;padding-bottom:72px}
-.v9-final-card{text-align:center;padding:38px 26px;border:1px solid var(--gold);border-radius:22px;background:linear-gradient(145deg,rgba(198,163,85,.09),rgba(17,28,50,.74))}
+.v9-final-card{text-align:center;padding:38px 26px;border:1px solid var(--gold);border-radius:22px;background:linear-gradient(145deg,rgba(91,156,255,.09),rgba(17,28,50,.74))}
 .v9-final-card h2{font-size:clamp(1.8rem,5vw,2.55rem);line-height:1.05;margin:10px 0}
 .v9-final-card h2 em{color:var(--gold);font-style:italic}
 .v9-final-card p{max-width:56ch;margin:0 auto 20px;color:var(--muted);font-size:.86rem}
@@ -769,11 +772,11 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
 
   #verified-block.level-themed{
     --member-accent:var(--gold);
-    --member-glow:rgba(198,163,85,.16);
+    --member-glow:rgba(91,156,255,.16);
   }
-  #verified-block[data-level="preferente"]{--member-accent:#d8b96f;--member-glow:rgba(216,185,111,.16);}
+  #verified-block[data-level="preferente"]{--member-accent:#8da8d9;--member-glow:rgba(91,156,255,.16);}
   #verified-block[data-level="silver"]{--member-accent:#d9e1ec;--member-glow:rgba(217,225,236,.16);}
-  #verified-block[data-level="gold"]{--member-accent:#f0c75e;--member-glow:rgba(240,199,94,.18);}
+  #verified-block[data-level="gold"]{--member-accent:#91afe3;--member-glow:rgba(91,156,255,.18);}
   #verified-block[data-level="platinum"]{--member-accent:#a98cff;--member-glow:rgba(169,140,255,.20);}
   #verified-block[data-level="plus"]{--member-accent:#67d5ff;--member-glow:rgba(103,213,255,.22);}
 
@@ -806,7 +809,7 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
     position:relative;
     overflow:hidden;
     background:
-      radial-gradient(circle at 92% 8%,var(--member-glow,rgba(198,163,85,.12)),transparent 32%),
+      radial-gradient(circle at 92% 8%,var(--member-glow,rgba(91,156,255,.12)),transparent 32%),
       linear-gradient(145deg,rgba(17,28,50,.96),rgba(10,17,32,.96));
   }
   #training-entry:before{
@@ -825,12 +828,12 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
 <style>
   /* V11 — panel privado simplificado y más redondeado */
   #verified-block{
-    --member-accent:#d8b96f;
-    --member-soft:rgba(216,185,111,.14);
+    --member-accent:#8da8d9;
+    --member-soft:rgba(91,156,255,.14);
   }
-  #verified-block[data-level="preferente"]{--member-accent:#d8b96f;--member-soft:rgba(216,185,111,.14);}
+  #verified-block[data-level="preferente"]{--member-accent:#8da8d9;--member-soft:rgba(91,156,255,.14);}
   #verified-block[data-level="silver"]{--member-accent:#dbe4ef;--member-soft:rgba(219,228,239,.14);}
-  #verified-block[data-level="gold"]{--member-accent:#e8bd4f;--member-soft:rgba(232,189,79,.15);}
+  #verified-block[data-level="gold"]{--member-accent:#88a9e8;--member-soft:rgba(91,156,255,.15);}
   #verified-block[data-level="platinum"]{--member-accent:#a98cff;--member-soft:rgba(169,140,255,.18);}
   #verified-block[data-level="plus"]{--member-accent:#67d5ff;--member-soft:rgba(103,213,255,.18);}
 
@@ -915,8 +918,8 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
     --member-soft:rgba(194,202,214,.16);
   }
   #verified-block[data-level="gold"]{
-    --member-accent:#e8bd4f;
-    --member-soft:rgba(232,189,79,.17);
+    --member-accent:#88a9e8;
+    --member-soft:rgba(91,156,255,.17);
   }
   #verified-block[data-level="platinum"]{
     --member-accent:#5fd2b3;
@@ -1248,7 +1251,7 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
   .hero{
     background:
       radial-gradient(900px 520px at 18% 18%, rgba(91,156,255,.055), transparent 72%),
-      radial-gradient(760px 480px at 82% 22%, rgba(198,163,85,.045), transparent 74%),
+      radial-gradient(760px 480px at 82% 22%, rgba(91,156,255,.045), transparent 74%),
       var(--navy-deep) !important;
     background-repeat:no-repeat !important;
     background-attachment:scroll !important;
@@ -1260,7 +1263,7 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
   .hero::before{
     inset:0 0 auto 0 !important;
     height:560px !important;
-    background-image:radial-gradient(rgba(198,163,85,.10) 1px, transparent 1px) !important;
+    background-image:radial-gradient(rgba(91,156,255,.10) 1px, transparent 1px) !important;
     background-size:28px 28px !important;
     -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.75),rgba(0,0,0,.18) 65%,transparent 100%) !important;
     mask-image:linear-gradient(to bottom,rgba(0,0,0,.75),rgba(0,0,0,.18) 65%,transparent 100%) !important;
@@ -1797,10 +1800,10 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
     margin-top:88px !important;
     margin-bottom:18px !important;
     padding:7px 12px;
-    border:1px solid rgba(198,163,85,.22);
+    border:1px solid rgba(91,156,255,.22);
     border-radius:999px;
     background:rgba(255,255,255,.025);
-    color:#d7bd7a !important;
+    color:#9eb5dd !important;
     font-size:.58rem !important;
     letter-spacing:.20em !important;
   }
@@ -1815,7 +1818,7 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
 
   .hero h1 em{
     display:inline-block;
-    background:linear-gradient(90deg,#f0d596,#b89cff);
+    background:linear-gradient(90deg,#bdcdea,#b89cff);
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent !important;
@@ -3242,7 +3245,7 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
 
 <style>
   /* =========================================================
-     V2.1 · ACADEMIA ULTIMATE / REFERIDOS / MICROINTERACCIONES
+     V2.2 · ACADEMIA ULTIMATE / REFERIDOS / MICROINTERACCIONES
      ========================================================= */
 
   .v21-academy-entry h4{font-size:1.2rem !important;}
@@ -3417,6 +3420,993 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
   }
 </style>
 
+<style id="ultimate-v22-css">
+.ultimate-academy{overflow:hidden}.ultimate-head{gap:22px}.ultimate-head #ultimate-module-count{display:block;margin-top:7px;color:var(--muted);font:600 .62rem 'Space Mono',monospace}.ultimate-modules{display:grid;gap:12px;margin-top:20px}.ultimate-module{border:1px solid rgba(205,168,83,.18);border-radius:22px;background:rgba(7,15,29,.62);overflow:hidden}.ultimate-module-head{width:100%;display:grid;grid-template-columns:48px 1fr auto;align-items:center;gap:14px;padding:16px;border:0;background:transparent;color:inherit;text-align:left;cursor:pointer}.ultimate-module-head>span{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(205,168,83,.18),rgba(255,255,255,.03));border:1px solid rgba(205,168,83,.25);font:700 .72rem 'Space Mono',monospace;color:var(--gold-bright)}.ultimate-module-head b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:var(--parchment)}.ultimate-module-head small{display:block;margin-top:3px;color:var(--muted);font-size:.74rem;line-height:1.45}.ultimate-module-head em{font-style:normal;font:700 .56rem 'Space Mono',monospace;letter-spacing:.08em;color:var(--gold-bright);padding:7px 9px;border-radius:999px;border:1px solid rgba(205,168,83,.22)}.ultimate-module.locked{opacity:.52}.ultimate-module.locked .ultimate-module-head{cursor:not-allowed}.ultimate-module-body{display:none;padding:0 14px 14px}.ultimate-module.open .ultimate-module-body{display:block}.ultimate-lesson{border-top:1px solid rgba(255,255,255,.07)}.ultimate-lesson summary{list-style:none;display:flex;align-items:center;gap:11px;padding:14px 4px;cursor:pointer}.ultimate-lesson summary::-webkit-details-marker{display:none}.ultimate-lesson summary span{font:700 .58rem 'Space Mono',monospace;color:var(--gold)}.ultimate-lesson summary b{font-size:.82rem;color:var(--parchment)}.ultimate-lesson-content{padding:0 4px 15px 30px}.ultimate-lesson-content p{font-size:.8rem!important;line-height:1.7!important;color:var(--muted)!important;max-width:none!important}.ultimate-check{display:flex;gap:9px;align-items:flex-start;margin-top:11px;padding:10px 12px;border-radius:13px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);font-size:.72rem;color:var(--parchment);cursor:pointer}.ultimate-check input{margin-top:2px;accent-color:var(--gold)}.ultimate-module-finish{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:13px;padding:13px;border-radius:15px;background:rgba(205,168,83,.06);border:1px solid rgba(205,168,83,.14)}.ultimate-module-finish b{display:block;font:700 .62rem 'Space Mono',monospace;color:var(--gold-bright)}.ultimate-module-finish small{display:block;margin-top:4px;color:var(--muted);font-size:.68rem}.ultimate-module-finish button{border:1px solid rgba(205,168,83,.3);background:rgba(205,168,83,.12);color:var(--parchment);border-radius:999px;padding:9px 12px;font-weight:700;font-size:.68rem;cursor:pointer}.ultimate-final{margin-top:18px;padding:22px;border-radius:22px;text-align:center;background:radial-gradient(circle at top,rgba(205,168,83,.13),transparent 52%),rgba(7,15,29,.72);border:1px solid rgba(205,168,83,.2)}.ultimate-final strong{display:block;margin:9px 0 2px;font:700 2rem 'Space Mono',monospace;color:var(--gold-bright)}.ultimate-final h5{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--parchment)}.ultimate-final p{margin:7px auto 0!important;max-width:62ch!important;font-size:.76rem!important;color:var(--muted)!important}.ultimate-final-actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:15px}@media(max-width:680px){.ultimate-module-head{grid-template-columns:42px 1fr;gap:10px;padding:13px}.ultimate-module-head>span{width:40px;height:40px}.ultimate-module-head em{grid-column:2;justify-self:start;margin-top:-5px}.ultimate-lesson-content{padding-left:20px}.ultimate-module-finish{align-items:flex-start;flex-direction:column}.ultimate-module-finish button{width:100%}}
+
+  /* V2.3 · Billetera Crédito Preferente */
+  .vp23-wallet{gap:18px;align-items:center}.vp23-wallet-main{flex:1}.vp23-wallet-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.vp23-wallet-meta span{padding:8px 11px;border:1px solid rgba(255,255,255,.1);border-radius:999px;font-size:.68rem}.vp23-wallet-meta b{margin-left:5px}.vp23-wallet-actions{display:flex;gap:8px;flex-wrap:wrap}.vp23-redeem-btn{background:var(--member-accent)!important;color:#07121e!important;border-color:transparent!important;font-weight:800}.vp23-redeem{display:none;margin:12px 0 22px;padding:18px;border:1px solid color-mix(in srgb,var(--member-accent) 30%,transparent);border-radius:22px;background:rgba(4,15,30,.72);box-shadow:0 18px 50px rgba(0,0,0,.18)}.vp23-redeem.show{display:block;animation:v23In .22s ease}.vp23-redeem-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:14px}.vp23-redeem-head span{display:block;font-size:.58rem;letter-spacing:.16em;color:var(--member-accent);font-weight:800}.vp23-redeem-head b{display:block;margin-top:5px}.vp23-redeem-head button{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:transparent;color:inherit;font-size:1.2rem}.vp23-redeem select{appearance:auto}.vp23-redeem-note{min-height:76px;resize:vertical;padding-top:12px}.vp23-redeem-help{font-size:.7rem;color:var(--muted);line-height:1.55;margin-top:10px}@keyframes v23In{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}@media(max-width:680px){.vp23-wallet{align-items:stretch}.vp23-wallet-actions{width:100%}.vp23-wallet-actions button{flex:1}.vp23-wallet-meta{display:grid;grid-template-columns:1fr 1fr}}
+</style>
+
+<style>
+/* ============================================================
+   V2.4 · SISTEMA VISUAL FINAL
+   Todo redondeado, tipografía moderna y legales renovados
+   ============================================================ */
+
+:root{
+  --vp-radius-xs:12px;
+  --vp-radius-sm:16px;
+  --vp-radius-md:20px;
+  --vp-radius-lg:26px;
+  --vp-radius-xl:34px;
+  --vp-radius-pill:999px;
+}
+
+/* Tipografía general más moderna */
+body,
+button,
+input,
+select,
+textarea,
+label,
+small,
+p,
+span,
+a{
+  font-family:'Jost',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif !important;
+}
+
+h1,h2,h3,h4,h5,h6,
+.v2-greeting,
+.v20-summary-main strong,
+.training-head h4,
+.modal-card h3,
+.doc-body h5{
+  font-family:'Cormorant Garamond',Georgia,serif !important;
+  letter-spacing:-.01em;
+}
+
+/* Evitar bloques visualmente cuadrados */
+*{
+  box-sizing:border-box;
+}
+
+button,
+input,
+select,
+textarea,
+.stub,
+.panel-inner,
+.v2-dashboard,
+.v20-summary-main,
+.v20-summary-side,
+.v20-next-card,
+.v20-credit-card,
+.v21-referrals-panel,
+.v21-referral-row,
+.v21-benefit-item,
+.training-entry,
+.training-shell,
+.training-module,
+.training-section,
+.training-card,
+.v21-ready-card,
+.modal-card,
+.doc-section,
+.doc-body,
+.auth-tabs,
+.auth-tab,
+.id-input,
+.v19-profile-editor,
+.v17-primary-zone,
+.v17-referral-main,
+.v17-secondary-btn,
+.v205-how-btn,
+.v16-edit-btn,
+.quick-link,
+.level-card,
+.benefit-card,
+.testimonial-card,
+.v205-footer-inner,
+.v21-referral-form,
+.v21-benefit-grid > *,
+details,
+summary{
+  border-radius:var(--vp-radius-md) !important;
+}
+
+/* Botones tipo pill */
+button,
+.cta-gold,
+.logout-btn,
+.v21-referral-toggle,
+.v20-credit-card button,
+.v16-edit-btn,
+.v205-how-btn,
+.v17-secondary-btn{
+  border-radius:var(--vp-radius-pill) !important;
+}
+
+/* Inputs modernos */
+input,
+select,
+textarea,
+.id-input{
+  border-radius:var(--vp-radius-sm) !important;
+  min-height:48px;
+  padding:12px 14px !important;
+  font-size:.92rem !important;
+  letter-spacing:0 !important;
+  text-transform:none !important;
+}
+
+/* Eliminar sensación "TODO EN MAYÚSCULA" en formularios */
+.auth-pane label,
+.auth-grid label,
+.v19-profile-editor label,
+.v21-referral-form label,
+.auth-help,
+.auth-msg,
+.form-help,
+.form-label{
+  text-transform:none !important;
+  letter-spacing:.01em !important;
+  font-size:.72rem !important;
+  font-weight:500 !important;
+}
+
+/* Mantener micro-etiquetas premium pero menos agresivas */
+.eyebrow,
+.training-badge,
+.v17-section-label,
+.v20-summary-main>span,
+.v20-summary-side span,
+.v20-next-card span,
+.v20-credit-card span,
+.v21-pass-kicker,
+.doc-num{
+  letter-spacing:.10em !important;
+  font-size:.49rem !important;
+}
+
+/* Registro / activación más moderno */
+#auth-activate,
+#auth-login{
+  border-radius:var(--vp-radius-lg) !important;
+}
+
+#auth-activate .auth-grid,
+#auth-login .auth-grid{
+  gap:11px !important;
+}
+
+#auth-activate input,
+#auth-login input{
+  background:rgba(255,255,255,.035) !important;
+  border:1px solid rgba(255,255,255,.08) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+#auth-activate input::placeholder,
+#auth-login input::placeholder{
+  text-transform:none !important;
+  letter-spacing:0 !important;
+  color:#758198 !important;
+}
+
+/* Tarjetas principales más suaves */
+.v2-dashboard,
+.panel-inner,
+.training-entry,
+.training-shell,
+.v21-referrals-panel,
+.v20-next-card,
+.v20-credit-card,
+.v20-summary-main,
+.v20-summary-side{
+  overflow:hidden;
+}
+
+/* Legales: renovación total */
+.modal-card,
+.modal-box{
+  border-radius:32px !important;
+  overflow:hidden !important;
+  border:1px solid rgba(255,255,255,.09) !important;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(94,145,255,.10),transparent 30%),
+    linear-gradient(145deg,rgba(17,29,50,.985),rgba(8,15,28,.985)) !important;
+  box-shadow:0 34px 100px rgba(0,0,0,.38) !important;
+}
+
+.modal-head,
+.modal-box > .eyebrow{
+  padding:20px 22px 14px !important;
+  border-bottom:1px solid rgba(255,255,255,.065) !important;
+}
+
+.modal-head h3{
+  font-size:1.55rem !important;
+  margin:2px 0 0 !important;
+}
+
+.modal-close{
+  width:38px !important;
+  height:38px !important;
+  border-radius:50% !important;
+  background:rgba(255,255,255,.05) !important;
+  border:1px solid rgba(255,255,255,.075) !important;
+}
+
+.modal-body{
+  padding:16px 18px 22px !important;
+}
+
+.doc-section{
+  margin:8px 0 !important;
+  border:1px solid rgba(255,255,255,.065) !important;
+  background:rgba(255,255,255,.018) !important;
+  overflow:hidden;
+}
+
+.doc-section summary{
+  list-style:none;
+  padding:14px 15px !important;
+  cursor:pointer;
+  background:rgba(255,255,255,.018) !important;
+  border-radius:18px !important;
+  font-size:.78rem !important;
+  font-weight:600 !important;
+  letter-spacing:0 !important;
+  text-transform:none !important;
+}
+
+.doc-section summary::-webkit-details-marker{
+  display:none;
+}
+
+.doc-section[open] summary{
+  background:
+    linear-gradient(135deg,rgba(92,145,255,.08),rgba(255,255,255,.02)) !important;
+}
+
+.doc-body{
+  padding:2px 15px 15px !important;
+  color:#99a5b8 !important;
+  line-height:1.65 !important;
+  font-size:.75rem !important;
+}
+
+.doc-body h5{
+  color:#edf1f6 !important;
+  margin:16px 0 6px !important;
+  font-size:1rem !important;
+}
+
+.doc-body p,
+.doc-body li{
+  color:#929fb3 !important;
+  font-size:.73rem !important;
+  line-height:1.62 !important;
+}
+
+.doc-body ul,
+.doc-body ol{
+  padding-left:19px !important;
+}
+
+.example-box{
+  border-radius:16px !important;
+  background:rgba(255,255,255,.025) !important;
+  border:1px solid rgba(255,255,255,.06) !important;
+}
+
+/* Footer legal más moderno */
+.v205-footer,
+footer{
+  border-radius:30px 30px 0 0 !important;
+}
+
+.v205-footer a,
+footer a{
+  border-radius:var(--vp-radius-pill) !important;
+}
+
+/* Recorrido y chips siempre redondos */
+.v21-journey-dot,
+.v21-referral-status,
+.v2-level-pill,
+.level-pill,
+.status-pill{
+  border-radius:var(--vp-radius-pill) !important;
+}
+
+/* Quitar bordes excesivamente rígidos en tablas/bloques */
+table,
+th,
+td{
+  border-radius:18px !important;
+}
+
+table{
+  overflow:hidden;
+  border-collapse:separate !important;
+  border-spacing:0 !important;
+  border-radius:18px !important;
+}
+
+/* Microinteracción suave */
+.stub,
+.doc-section,
+.v21-benefit-item,
+.v21-referral-row,
+.training-module,
+.training-section,
+.v20-credit-card,
+.v20-next-card{
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    background .18s ease,
+    box-shadow .18s ease !important;
+}
+
+@media (hover:hover){
+  .doc-section:hover,
+  .v21-benefit-item:hover,
+  .v21-referral-row:hover{
+    transform:translateY(-1px);
+    border-color:rgba(255,255,255,.10) !important;
+  }
+}
+
+/* Móvil */
+@media(max-width:700px){
+  .modal-card,
+.modal-box{
+    border-radius:24px !important;
+    width:min(94vw,760px) !important;
+  }
+
+  .panel-inner,
+  .v2-dashboard,
+  .training-entry,
+  .training-shell,
+  .v21-referrals-panel{
+    border-radius:20px !important;
+  }
+
+  input,
+  select,
+  textarea,
+  .id-input{
+    font-size:16px !important;
+  }
+}
+</style>
+
+
+<style>
+/* V2.4 · Ajuste real del modal legal existente */
+#modal-overlay .modal-box{
+  width:min(760px,94vw) !important;
+  max-height:88vh !important;
+  overflow:auto !important;
+  padding:22px !important;
+  border-radius:32px !important;
+  border:1px solid rgba(255,255,255,.09) !important;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(94,145,255,.10),transparent 30%),
+    linear-gradient(145deg,rgba(17,29,50,.99),rgba(8,15,28,.99)) !important;
+  box-shadow:0 34px 100px rgba(0,0,0,.40) !important;
+}
+
+#modal-overlay .modal-box > .eyebrow{
+  display:inline-flex !important;
+  align-items:center;
+  width:auto !important;
+  padding:7px 10px !important;
+  border-radius:999px !important;
+  border:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.025);
+  text-transform:none !important;
+  letter-spacing:.04em !important;
+  font-size:.62rem !important;
+}
+
+#modal-overlay .modal-box > h3{
+  font-family:'Cormorant Garamond',Georgia,serif !important;
+  font-size:1.7rem !important;
+  line-height:1.05 !important;
+  letter-spacing:-.015em !important;
+}
+
+#modal-overlay .modal-toc{
+  margin:7px 0 16px !important;
+  padding:12px 14px !important;
+  border-radius:16px !important;
+  background:rgba(255,255,255,.022) !important;
+  border:1px solid rgba(255,255,255,.055) !important;
+  color:#8f9baf !important;
+  font-size:.72rem !important;
+  line-height:1.55 !important;
+}
+
+#modal-overlay .modal-close{
+  position:sticky !important;
+  top:0 !important;
+  float:right !important;
+  z-index:3 !important;
+  width:38px !important;
+  height:38px !important;
+  padding:0 !important;
+  border-radius:50% !important;
+}
+
+/* Formularios de activación: frases más naturales y modernas */
+#auth-activate .auth-help,
+#auth-login .auth-help{
+  font-size:.69rem !important;
+  line-height:1.5 !important;
+  color:#7f8ca2 !important;
+}
+
+#auth-activate .cta-gold,
+#auth-login .cta-gold{
+  min-height:48px !important;
+  padding:11px 17px !important;
+  font-size:.76rem !important;
+  letter-spacing:.01em !important;
+  text-transform:none !important;
+}
+
+/* Evita cualquier tarjeta o control con esquinas duras heredadas */
+#panel-new *, #panel-member *, #modal-overlay *{
+  --local-radius:18px;
+}
+
+#panel-new button:not(.modal-close),
+#panel-member button:not(.modal-close),
+#modal-overlay button:not(.modal-close){
+  border-radius:999px !important;
+}
+
+#panel-new input, #panel-member input,
+#panel-new select, #panel-member select,
+#panel-new textarea, #panel-member textarea{
+  border-radius:16px !important;
+}
+
+@media(max-width:700px){
+  #modal-overlay .modal-box{
+    border-radius:24px !important;
+    padding:16px !important;
+  }
+}
+</style>
+
+
+<style>
+/* V2.4.1 · Limpieza del amarillo heredado
+   El dorado queda como acento fino; desaparecen los botones/bloques amarillos viejos. */
+
+.cta-gold,
+button.cta-gold,
+.v21-referral-toggle,
+.v205-how-btn,
+.v16-edit-btn,
+.v17-secondary-btn,
+.training-entry button,
+.training-shell button,
+#panel-new button,
+#panel-member button{
+  background:
+    linear-gradient(135deg,rgba(86,119,180,.24),rgba(42,65,108,.28)) !important;
+  color:#f4f7fb !important;
+  border:1px solid rgba(145,174,226,.22) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 8px 24px rgba(0,0,0,.16) !important;
+}
+
+.cta-gold:hover,
+button.cta-gold:hover,
+.v21-referral-toggle:hover,
+.v205-how-btn:hover,
+.v16-edit-btn:hover,
+.v17-secondary-btn:hover,
+.training-entry button:hover,
+.training-shell button:hover{
+  background:
+    linear-gradient(135deg,rgba(98,137,207,.32),rgba(47,73,121,.36)) !important;
+  border-color:rgba(158,188,240,.34) !important;
+}
+
+/* Gold continúa teniendo identidad, pero sin bloques amarillo chillón */
+.level-gold,
+[data-level="Gold"],
+[data-level="gold"],
+.v2-dashboard.level-gold,
+.v2-dashboard.gold{
+  --level-accent:#7898cf;
+}
+
+.level-gold button,
+[data-level="Gold"] button,
+[data-level="gold"] button{
+  background:
+    linear-gradient(135deg,rgba(111,88,42,.22),rgba(45,55,76,.34)) !important;
+  color:#f6f2e8 !important;
+  border-color:rgba(201,168,93,.26) !important;
+}
+
+/* Chips y pequeños acentos: dorado elegante, no amarillo sólido */
+.gold,
+.gold-text,
+.level-gold .eyebrow,
+.level-gold .training-badge,
+.level-gold .status-pill{
+  color:#9db4dc !important;
+}
+
+.level-gold .status-pill,
+.level-gold .level-pill{
+  background:rgba(201,168,93,.09) !important;
+  border:1px solid rgba(201,168,93,.20) !important;
+}
+
+/* Evita amarillos sólidos heredados en controles comunes */
+button[style*="#7197dd"],
+button[style*="#7197dd"],
+button[style*="#ffd"],
+button[style*="#ffcc"],
+button[style*="gold"],
+a[style*="#7197dd"],
+a[style*="#7197dd"]{
+  background:linear-gradient(135deg,rgba(86,119,180,.24),rgba(42,65,108,.28)) !important;
+  color:#f4f7fb !important;
+  border-color:rgba(145,174,226,.22) !important;
+}
+
+/* Mantener el dorado solo en detalles premium */
+.logo-mark,
+.brand-mark,
+.brand-dot,
+.eyebrow,
+.v17-section-label{
+  text-shadow:none !important;
+}
+</style>
+
+
+<style>
+/* V2.5 · Estado Activo en la ruta pública */
+.v9-lvl.active{
+  border-color:#5478b8 !important;
+  color:#b9cff7 !important;
+  background:rgba(84,120,184,.10) !important;
+}
+</style>
+
+
+<style>
+/* V2.6 · Beneficios completos + referidos compactos */
+.v21-benefit-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+}
+.v21-benefit-item{
+  min-height:68px;
+}
+.v21-benefit-item b{
+  font-size:.72rem !important;
+}
+.v21-benefit-item small{
+  line-height:1.35 !important;
+}
+
+.v26-referral-summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+  margin-top:12px;
+}
+.v26-referral-summary[hidden]{display:none !important;}
+.v26-referral-summary>div{
+  padding:9px 10px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.055);
+  background:rgba(255,255,255,.018);
+  text-align:center;
+}
+.v26-referral-summary span{
+  display:block;
+  font-size:.9rem;
+  font-weight:700;
+  color:#edf2fa;
+}
+.v26-referral-summary small{
+  display:block;
+  margin-top:1px;
+  font-size:.5rem;
+  color:#7f8ca1;
+}
+
+.v26-referrals-preview{
+  max-height:none !important;
+  overflow:visible !important;
+}
+.v21-referral-row{
+  display:grid !important;
+  grid-template-columns:34px minmax(0,1fr) auto !important;
+  gap:9px !important;
+  padding:9px 10px !important;
+}
+.v26-referral-id span{
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--member-soft);
+  color:var(--member-accent);
+  font-family:'Space Mono',monospace !important;
+  font-size:.48rem;
+  font-weight:700;
+}
+.v26-referral-copy{
+  min-width:0;
+}
+.v26-referral-copy b,
+.v26-referral-copy small{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.v26-referrals-all{
+  width:100%;
+  margin-top:8px;
+  padding:9px 12px !important;
+  min-height:38px !important;
+  border-radius:999px !important;
+  border:1px solid rgba(255,255,255,.065) !important;
+  background:rgba(255,255,255,.02) !important;
+  color:#aab5c6 !important;
+  font-size:.62rem !important;
+  cursor:pointer;
+}
+.v26-referrals-all[hidden]{display:none !important;}
+
+.v26-referral-history-box{
+  width:min(620px,94vw) !important;
+}
+.v26-referral-history-list{
+  display:grid;
+  gap:7px;
+  max-height:58vh;
+  overflow:auto;
+  padding-right:3px;
+}
+.v26-referral-history-list .v21-referral-row{
+  background:rgba(255,255,255,.02);
+}
+
+@media(max-width:700px){
+  .v21-benefit-grid{
+    grid-template-columns:1fr !important;
+  }
+  .v26-referral-summary{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+</style>
+
+
+<style>
+/* ============================================================
+   V2.7 · IDENTIDAD VISUAL UNIFICADA
+   Dorado únicamente para el nivel Gold.
+   ============================================================ */
+
+:root{
+  --gold:#7098e2 !important;
+  --gold-bright:#c8d8f4 !important;
+  --parchment:#edf2f8 !important;
+}
+
+/* Marca principal: ya no amarilla */
+.hero h1 em,
+.v205-logo-copy strong,
+.v205-footer-brand strong,
+.brand,
+.select-hint,
+.eyebrow:not(#verified-block[data-level="gold"] *),
+.v17-section-label:not(#verified-block[data-level="gold"] *){
+  color:#eef3fb !important;
+}
+
+/* Detalles secundarios premium en azul frío */
+.hero .eyebrow,
+.select-hint,
+.stub.active .stub-label,
+.req-list li::before,
+.brand .plane,
+.flight-path,
+.flight-dot,
+.plane-icon{
+  color:#91b0e7 !important;
+  stroke:#7198df !important;
+  fill:#a7bee9 !important;
+}
+
+/* Inicio y captación: eliminar cualquier residuo amarillo */
+.hero{
+  background:
+    radial-gradient(circle at 18% 22%,rgba(91,156,255,.095),transparent 40%),
+    radial-gradient(circle at 82% 78%,rgba(169,140,255,.055),transparent 40%),
+    var(--navy-deep) !important;
+}
+.hero::before{
+  background-image:radial-gradient(rgba(112,152,226,.13) 1px,transparent 1px) !important;
+}
+.stub:hover{background:rgba(91,156,255,.055) !important;}
+.stub.active{background:rgba(91,156,255,.09) !important;}
+.stub .stub-icon{color:#9bb6e7 !important;}
+
+/* Logotipo: conservar exactamente la dirección moderna */
+.v205-logo-mark,
+.v205-footer-brand .v205-logo-mark{
+  border-color:rgba(151,177,255,.24) !important;
+  background:
+    radial-gradient(circle at 30% 20%,rgba(255,255,255,.13),transparent 42%),
+    linear-gradient(145deg,rgba(91,156,255,.16),rgba(169,140,255,.09)) !important;
+}
+.v205-logo-mark span{color:#cdd9ff !important;}
+
+/* Documentos legales: una sola familia tipográfica moderna */
+#modal-overlay .modal-box,
+#modal-overlay .modal-box *,
+#modal-overlay .doc-section,
+#modal-overlay .doc-section *,
+#modal-overlay .doc-body,
+#modal-overlay .doc-body *{
+  font-family:'Jost',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif !important;
+}
+#modal-overlay .modal-box > h3{
+  font-family:'Jost',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif !important;
+  font-weight:600 !important;
+  letter-spacing:-.025em !important;
+}
+#modal-overlay .modal-box > .eyebrow,
+#modal-overlay .doc-num{
+  color:#8faee6 !important;
+  background:rgba(91,156,255,.055) !important;
+  border-color:rgba(145,174,226,.12) !important;
+}
+#modal-overlay .doc-section[open] summary{
+  background:linear-gradient(135deg,rgba(91,156,255,.085),rgba(255,255,255,.018)) !important;
+}
+#modal-overlay .chev{
+  color:#8faee6 !important;
+}
+
+
+
+/* GOLD: único lugar donde vive el dorado */
+#verified-block[data-level="gold"]{
+  --member-accent:#e8bd4f !important;
+  --member-soft:rgba(232,189,79,.17) !important;
+  --member-glow:rgba(232,189,79,.18) !important;
+}
+#verified-block[data-level="gold"] .v2-level-pill,
+#verified-block[data-level="gold"] .training-badge,
+#verified-block[data-level="gold"] .v17-section-label,
+#verified-block[data-level="gold"] .eyebrow{
+  color:#f1d47f !important;
+}
+#verified-block[data-level="gold"] button{
+  border-color:rgba(232,189,79,.25) !important;
+}
+
+/* Gold también se identifica en la ruta pública, sin contaminar el resto */
+.v9-lvl.gold,
+.v9-level-card.gold{
+  color:#e8bd4f !important;
+  border-color:rgba(232,189,79,.28) !important;
+}
+.v9-level-card.gold:before{
+  background:#e8bd4f !important;
+}
+
+/* Evita fuentes monoespaciadas heredadas en legales / pie */
+#modal-overlay .example-box,
+#modal-overlay .example-box *,
+.v205-footer{
+  font-family:'Jost',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif !important;
+}
+</style>
+
+
+<style>
+/* ============================================================
+   V2.8 · ESCALA CROMÁTICA DE NIVELES
+   Principio:
+   inicio = claridad / acceso
+   progreso = mayor profundidad y saturación
+   Gold = único nivel con dorado
+   Plus = máxima exclusividad visual
+   ============================================================ */
+
+/* ---------- QUIERO SER MIEMBRO / RUTA DE NIVELES ---------- */
+
+.v9-lvl.active{
+  color:#e8f2ff !important;
+  border-color:rgba(196,218,247,.30) !important;
+  background:rgba(196,218,247,.065) !important;
+}
+.v9-lvl.pref{
+  color:#c9ddff !important;
+  border-color:rgba(142,181,238,.34) !important;
+  background:rgba(101,150,219,.09) !important;
+}
+.v9-lvl.silver{
+  color:#d4dde9 !important;
+  border-color:rgba(164,180,201,.34) !important;
+  background:rgba(113,131,156,.12) !important;
+}
+.v9-lvl.gold{
+  color:#efd37d !important;
+  border-color:rgba(224,183,74,.38) !important;
+  background:rgba(139,104,27,.14) !important;
+}
+.v9-lvl.platinum{
+  color:#a9c4ff !important;
+  border-color:rgba(86,126,205,.42) !important;
+  background:rgba(51,79,137,.18) !important;
+}
+.v9-lvl.plus{
+  color:#d4c0ff !important;
+  border-color:rgba(126,91,202,.46) !important;
+  background:rgba(68,43,124,.22) !important;
+  box-shadow:0 0 26px rgba(111,76,190,.10) !important;
+}
+
+/* Si existen tarjetas de nivel en captación, usan exactamente la misma lógica */
+.v9-level-card.active{
+  background:linear-gradient(145deg,rgba(213,228,248,.055),rgba(10,17,32,.96)) !important;
+  border-color:rgba(196,218,247,.18) !important;
+}
+.v9-level-card.pref{
+  background:linear-gradient(145deg,rgba(93,143,211,.085),rgba(10,17,32,.96)) !important;
+  border-color:rgba(142,181,238,.20) !important;
+}
+.v9-level-card.silver{
+  background:linear-gradient(145deg,rgba(120,136,160,.10),rgba(9,16,29,.97)) !important;
+  border-color:rgba(164,180,201,.21) !important;
+}
+.v9-level-card.gold{
+  background:linear-gradient(145deg,rgba(132,97,24,.13),rgba(10,17,31,.97)) !important;
+  border-color:rgba(224,183,74,.23) !important;
+}
+.v9-level-card.platinum{
+  background:linear-gradient(145deg,rgba(51,79,137,.17),rgba(8,14,27,.98)) !important;
+  border-color:rgba(86,126,205,.26) !important;
+}
+.v9-level-card.plus{
+  background:linear-gradient(145deg,rgba(66,40,121,.24),rgba(7,12,24,.99)) !important;
+  border-color:rgba(126,91,202,.30) !important;
+}
+
+/* Línea superior coherente */
+.v9-level-card.active:before{background:#d8e6f8 !important;}
+.v9-level-card.pref:before{background:#7fa9e6 !important;}
+.v9-level-card.silver:before{background:#96a6bc !important;}
+.v9-level-card.gold:before{background:#e0b74a !important;}
+.v9-level-card.platinum:before{background:#557bc5 !important;}
+.v9-level-card.plus:before{background:#7854c5 !important;}
+
+
+/* ---------- YA SOY MIEMBRO / PANEL PRIVADO ---------- */
+/* Mismo lenguaje cromático para que no parezca otro producto. */
+
+#verified-block[data-level="activo"]{
+  --member-accent:#d7e7fb !important;
+  --member-soft:rgba(199,220,247,.075) !important;
+  --member-glow:rgba(174,207,247,.07) !important;
+}
+#verified-block[data-level="preferente"]{
+  --member-accent:#9fc2f1 !important;
+  --member-soft:rgba(111,160,226,.105) !important;
+  --member-glow:rgba(91,145,218,.10) !important;
+}
+#verified-block[data-level="silver"]{
+  --member-accent:#b7c4d5 !important;
+  --member-soft:rgba(133,151,176,.115) !important;
+  --member-glow:rgba(127,147,176,.10) !important;
+}
+#verified-block[data-level="gold"]{
+  --member-accent:#e8bd4f !important;
+  --member-soft:rgba(202,155,35,.13) !important;
+  --member-glow:rgba(202,155,35,.11) !important;
+}
+#verified-block[data-level="platinum"]{
+  --member-accent:#779fe8 !important;
+  --member-soft:rgba(73,111,184,.15) !important;
+  --member-glow:rgba(69,104,174,.13) !important;
+}
+#verified-block[data-level="plus"]{
+  --member-accent:#b59ae9 !important;
+  --member-soft:rgba(98,65,161,.20) !important;
+  --member-glow:rgba(91,57,158,.18) !important;
+}
+
+/* Intensidad del panel: de más ligero a más profundo */
+#verified-block[data-level="activo"] .v2-dashboard,
+#verified-block[data-level="activo"] .training-entry{
+  background:
+    radial-gradient(circle at 94% 6%,rgba(207,225,248,.055),transparent 34%),
+    linear-gradient(145deg,#101b2e,#0c1525) !important;
+}
+#verified-block[data-level="preferente"] .v2-dashboard,
+#verified-block[data-level="preferente"] .training-entry{
+  background:
+    radial-gradient(circle at 94% 6%,rgba(111,160,226,.075),transparent 34%),
+    linear-gradient(145deg,#0f1b30,#0a1425) !important;
+}
+#verified-block[data-level="silver"] .v2-dashboard,
+#verified-block[data-level="silver"] .training-entry{
+  background:
+    radial-gradient(circle at 94% 6%,rgba(151,165,185,.07),transparent 34%),
+    linear-gradient(145deg,#0e192b,#091321) !important;
+}
+#verified-block[data-level="gold"] .v2-dashboard,
+#verified-block[data-level="gold"] .training-entry{
+  background:
+    radial-gradient(circle at 94% 6%,rgba(212,169,62,.075),transparent 34%),
+    linear-gradient(145deg,#101827,#09111e) !important;
+}
+#verified-block[data-level="platinum"] .v2-dashboard,
+#verified-block[data-level="platinum"] .training-entry{
+  background:
+    radial-gradient(circle at 94% 6%,rgba(74,112,188,.12),transparent 35%),
+    linear-gradient(145deg,#0c1729,#07101d) !important;
+}
+#verified-block[data-level="plus"] .v2-dashboard,
+#verified-block[data-level="plus"] .training-entry{
+  background:
+    radial-gradient(circle at 92% 5%,rgba(110,76,181,.16),transparent 36%),
+    linear-gradient(145deg,#0b1425,#060b16) !important;
+}
+
+/* Progreso: no mezclar colores aleatorios */
+#verified-block.level-themed .v2-progress-bar{
+  background:linear-gradient(90deg,
+    color-mix(in srgb,var(--member-accent) 72%,#fff),
+    var(--member-accent)
+  ) !important;
+}
+
+/* Botones dentro del panel mantienen el tono del nivel, pero sobrios */
+#verified-block.level-themed .v21-referral-toggle,
+#verified-block.level-themed .vp23-redeem-btn,
+#verified-block.level-themed .v16-edit-btn{
+  border-color:color-mix(in srgb,var(--member-accent) 26%,transparent) !important;
+  background:color-mix(in srgb,var(--member-accent) 8%,rgba(15,25,44,.96)) !important;
+}
+
+/* Gold sigue siendo el único dorado */
+#verified-block[data-level="gold"] .v2-level-pill,
+#verified-block[data-level="gold"] .training-badge,
+#verified-block[data-level="gold"] .v17-section-label{
+  color:#efd37d !important;
+}
+
+/* Plus debe sentirse el más exclusivo sin volverse llamativo/barato */
+#verified-block[data-level="plus"] .v2-level-pill{
+  box-shadow:0 0 24px rgba(116,81,190,.13) !important;
+}
+
+</style>
+
 </head>
 <body>
 
@@ -3465,7 +4455,7 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
       <div class="v9-entry-copy">
         <div class="eyebrow">Tu viaje puede abrir algo más</div>
         <h3>Primero vive la experiencia. Después descubre lo que puede desbloquear.</h3>
-        <p>Viajeros Preferentes reconoce a clientes que ya conocen nuestro acompañamiento. La membresía puede abrir preparación privada, atención preferente, ventajas de viaje y nuevos beneficios a medida que avanzas.</p>
+        <p>Viajeros Preferentes reconoce a clientes que ya conocen nuestro acompañamiento. La membresía comienza con preparación privada y puede desbloquear atención preferente, ventajas de viaje y Crédito Preferente cuando tus recomendaciones cumplen las condiciones del programa.</p>
       </div>
 
       
@@ -3476,7 +4466,7 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
         </article>
         <article>
           <span>02</span>
-          <div><b>Beneficios que crecen contigo</b><small>Tu recorrido puede desbloquear nuevas ventajas de viaje.</small></div>
+          <div><b>Beneficios que crecen contigo</b><small>Los referidos confirmados pueden desbloquear nivel, Crédito Preferente y nuevas ventajas.</small></div>
         </article>
         <article>
           <span>03</span>
@@ -3485,6 +4475,8 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
       </div>
 
       <div class="v9-level-peek">
+        <span class="v9-lvl active">Activo</span>
+        <i>›</i>
         <span class="v9-lvl pref">Preferente</span>
         <i>›</i>
         <span class="v9-lvl silver">Silver</span>
@@ -3497,7 +4489,7 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
       </div>
 
       <div class="v9-locked-row">
-        <span>🔓 Academia del Viajero</span>
+        <span>🔓 Academia Ultimate</span>
         <span>🔒 Próxima ventaja</span>
         <span>🔒 Beneficio de viaje</span>
       </div>
@@ -3553,7 +4545,7 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
               <div class="v15-level-message" id="v15-level-message">Tu recorrido acaba de comenzar.</div>
             </div>
             <div class="v15-top-actions">
-              <div class="v2-level-pill" id="v2-level">Preferente</div>
+              <div class="v2-level-pill" id="v2-level">Activo</div>
               <button class="v16-edit-btn" type="button" onclick="toggleProfileEditor()">Editar mis datos</button>
               <button class="logout-btn" type="button" onclick="logoutMember()">Cerrar sesión</button>
             </div>
@@ -3575,20 +4567,20 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
               <input class="id-input" id="profile-email-inline" type="email" autocomplete="email" placeholder="Correo de acceso">
               <button class="cta-gold" type="button" onclick="savePersonalProfileInline()">Guardar cambios →</button>
             </div>
-            <p class="auth-help">Member ID, nivel, estado, referidos, bonos y fecha de activación son datos oficiales y no pueden modificarse desde aquí.</p>
+            <p class="auth-help">Member ID, nivel, estado, referidos, Crédito Preferente y fecha de activación son datos oficiales y no pueden modificarse desde aquí.</p>
             <div class="auth-msg" id="profile-msg-inline"></div>
           </div>
 
           <div class="v20-summary">
             <div class="v20-summary-main">
               <span>ESTADO ACTUAL</span>
-              <strong id="v20-current-level">Preferente</strong>
-              <small id="v20-current-note">Membresía activa</small>
+              <strong id="v20-current-level">Activo</strong>
+              <small id="v20-current-note">Preparación activa · Academia Ultimate disponible</small>
             </div>
 
             <div class="v20-summary-side">
               <div>
-                <span>MEMBER ID</span>
+                <span>Member ID</span>
                 <strong id="v15-member-id">—</strong>
               </div>
               <div>
@@ -3603,7 +4595,7 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
             <div class="v20-next-head">
               <div>
                 <span>PRÓXIMO OBJETIVO</span>
-                <strong id="v20-next-title">Tu primer hito</strong>
+                <strong id="v20-next-title">Desbloquea Preferente</strong>
               </div>
               <div class="v20-progress-percent" id="v2-progress-text">0%</div>
             </div>
@@ -3613,10 +4605,10 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
             </div>
 
             <div class="v20-next-copy">
-              <p id="v2-next-text">Te faltan 2 referidos confirmados para alcanzar tu primer hito.</p>
+              <p id="v2-next-text">Te falta 1 referido confirmado para desbloquear Preferente.</p>
               <div class="v20-next-goal">
                 <small>META</small>
-                <strong id="v2-next-goal">2 referidos</strong>
+                <strong id="v2-next-goal">1 referido</strong>
               </div>
             </div>
 
@@ -3655,9 +4647,17 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
               <div class="auth-msg" id="ref-msg"></div>
             </div>
 
-            <div class="v21-referrals-list" id="v21-referrals-list">
+            <div class="v26-referral-summary" id="v26-referral-summary" hidden>
+              <div><span id="v26-ref-total">0</span><small>Total</small></div>
+              <div><span id="v26-ref-confirmed">0</span><small>Confirmados</small></div>
+              <div><span id="v26-ref-pending">0</span><small>Registrados</small></div>
+            </div>
+
+            <div class="v21-referrals-list v26-referrals-preview" id="v21-referrals-list">
               <div class="v21-referral-empty">Aún no hay recomendaciones registradas desde tu portal.</div>
             </div>
+
+            <button class="v26-referrals-all" id="v26-referrals-all" type="button" onclick="openReferralHistory()" hidden>Ver todos mis referidos</button>
           </div>
 
           <div class="v17-primary-zone">
@@ -3670,13 +4670,25 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
 
           
           
-          <div class="v20-credit-card">
-            <div>
+          <div class="v20-credit-card vp23-wallet">
+            <div class="vp23-wallet-main">
               <span>CRÉDITO PREFERENTE DISPONIBLE</span>
               <strong id="v2-credit">US$0</strong>
-              <p>Úsalo en beneficios y servicios elegibles de tu próximo viaje, sujeto a las condiciones vigentes.</p>
+              <p>Solicita aplicar parte o todo tu saldo a un servicio elegible. El crédito solo se descuenta cuando la solicitud es aprobada.</p>
+              <div class="vp23-wallet-meta"><span>Desbloqueado <b id="vp23-credit-unlocked">US$0</b></span><span>Utilizado <b id="vp23-credit-used">US$0</b></span></div>
             </div>
-            <button type="button" onclick="openModal('doc-bono')">Ver condiciones</button>
+            <div class="vp23-wallet-actions"><button class="vp23-redeem-btn" type="button" onclick="toggleCreditRedeem(true)">Usar mi crédito</button></div>
+          </div>
+          <div class="vp23-redeem" id="vp23-redeem" aria-hidden="true">
+            <div class="vp23-redeem-head"><div><span>SOLICITUD DE CANJE</span><b>¿Cuánto crédito quieres aplicar?</b></div><button type="button" onclick="toggleCreditRedeem(false)" aria-label="Cerrar">×</button></div>
+            <div class="auth-grid">
+              <input class="id-input" id="vp23-redeem-amount" type="number" min="1" step="1" placeholder="Monto en US$">
+              <select class="id-input" id="vp23-redeem-service"><option value="">Selecciona el servicio</option><option>Vuelo</option><option>Hotel</option><option>Seguro de viaje</option><option>Paquete turístico</option><option>Otro servicio elegible</option></select>
+              <textarea class="id-input vp23-redeem-note" id="vp23-redeem-note" placeholder="Detalle opcional de tu próximo viaje"></textarea>
+              <button class="cta-gold" type="button" onclick="submitCreditRedeem()">Solicitar canje →</button>
+            </div>
+            <p class="vp23-redeem-help">La solicitud no descuenta tu saldo automáticamente. Administración revisará el servicio y el monto aplicable antes de aprobarlo.</p>
+            <div class="auth-msg" id="vp23-redeem-msg"></div>
           </div>
 
 
@@ -3690,306 +4702,15 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
           <button type="button" onclick="openReferralChoices()">👥 Referir a alguien</button>
         </div>
 
-        <div class="training-entry" id="training-entry">
-          <div class="training-entry-top v21-academy-entry">
-            <div>
-              <div class="training-badge">Academia Ultimate</div>
-              <h4>Prepárate para viajar con claridad.</h4>
-              <p>Una ruta práctica para dominar tu viaje real, tus documentos y cada etapa desde casa hasta destino.</p>
-            </div>
+        <div class="training-entry ultimate-academy" id="training-entry">
+          <div class="training-entry-top">
+            <div><div class="training-badge">Academia privada · 6 módulos</div><h4>Academia Ultimate</h4><p>Conoce tu viaje. Domina tus documentos. Viaja preparado.</p></div>
             <button class="cta-gold" type="button" onclick="toggleTraining(true)">Entrar a mi Academia →</button>
           </div>
-
-          
-          <div class="v17-academy-nav v21-academy-nav" aria-label="Ruta de preparación">
-            <button type="button" onclick="openAcademyModule('viaje')"><span>01</span><b>Domina tu viaje</b><small>Ruta, propósito, documentos y retorno.</small></button>
-            <button type="button" onclick="openAcademyModule('antes')"><span>02</span><b>Sal listo de casa</b><small>Equipaje, dinero, conexión y revisión final.</small></button>
-            <button type="button" onclick="openAcademyModule('aeropuerto')"><span>03</span><b>Aeropuerto sin improvisar</b><small>Check-in, seguridad, migración y conexiones.</small></button>
-            <button type="button" onclick="openAcademyModule('llegada')"><span>04</span><b>Llegada e imprevistos</b><small>Equipaje, traslado, cambios y reacción.</small></button>
-          </div>
-<div class="training-shell" id="training-shell" aria-hidden="true">
-            <div class="training-head">
-              <div>
-                <div class="training-badge">Academia del Viajero</div>
-                <h4>Tu objetivo: entender tu viaje, no memorizar respuestas.</h4>
-                <p>Completa cada etapa con información verdadera y documentación auténtica. La Academia te ayuda a ubicarte, responder con claridad y actuar mejor ante cambios reales.</p>
-              </div>
-              <div class="training-progress-wrap">
-                <div class="training-progress-meta"><span>Mi progreso</span><span id="training-progress-text">0%</span></div>
-                <div class="training-progress"><div class="training-progress-bar" id="training-progress-bar"></div></div>
-              </div>
-            </div>
-
-            <div class="travel-profile">
-              <div class="training-badge">Preparación según tu propósito real</div>
-              <h5>Selecciona el tipo de viaje que realmente vas a realizar</h5>
-              <p style="color:var(--muted);font-size:.8rem">La preparación cambia según el propósito legal y real del viaje. Nunca debes presentar un motivo distinto al verdadero ni utilizar documentación que no corresponda a tu situación.</p>
-              <div class="profile-tabs">
-                <button class="profile-tab active" type="button" onclick="showTravelProfile('tourism')">Turismo</button>
-                <button class="profile-tab" type="button" onclick="showTravelProfile('business')">Empresarial / Pasantía</button>
-                <button class="profile-tab" type="button" onclick="showTravelProfile('relocation')">Migración / Reubicación</button>
-              </div>
-              <div class="profile-content show" id="profile-tourism"><p><strong style="color:var(--gold-bright)">Turismo:</strong> conoce tu itinerario, alojamiento, duración, presupuesto, retorno y actividades previstas.</p><ul><li>Reserva y dirección del alojamiento.</li><li>Fechas y ruta completa.</li><li>Fondos y seguro conforme a los requisitos aplicables.</li><li>Plan real de actividades y retorno.</li></ul></div>
-              <div class="profile-content" id="profile-business"><p><strong style="color:var(--gold-bright)">Empresarial / Pasantía:</strong> además de tu viaje, debes comprender quién te recibe, qué actividad realizarás, dónde, durante cuánto tiempo y qué documentación respalda legalmente esa actividad.</p><ul><li>Agenda, invitación o soporte de la actividad cuando aplique.</li><li>Datos de empresa, organización o anfitrión.</li><li>Alojamiento, retorno y seguro.</li><li>Coherencia entre el propósito real y los permisos exigibles.</li></ul></div>
-              <div class="profile-content" id="profile-relocation"><p><strong style="color:var(--gold-bright)">Migración / Reubicación:</strong> este proceso exige revisar específicamente la visa, residencia, permiso de trabajo u otra autorización que corresponda al país y al propósito real.</p><ul><li>Autorización migratoria correcta antes de viajar cuando sea exigida.</li><li>Documentación de residencia, trabajo, estudios o reunificación según el caso.</li><li>Dirección de llegada, contactos y plan de instalación.</li><li>Copias seguras de documentos y canales oficiales de ayuda.</li></ul><p class="profile-warning"><strong>Importante:</strong> no se debe viajar declarando turismo cuando el propósito real sea trabajar o residir si la normativa exige otra autorización.</p></div>
-            </div>
-
-            <details class="training-block" open>
-              <summary>
-                <span><span class="training-block-kicker">Bloque 1</span><span class="training-block-title">Conoce y domina tu viaje</span></span>
-                <span class="training-chevron">›</span>
-              </summary>
-              <div class="training-content">
-                <div class="lesson-card">
-                  <h5>1. Conoce tu viaje</h5>
-                  <p>Debes poder explicar tu viaje con naturalidad porque conoces la información real: destino, motivo, fechas, duración, ruta, escalas, alojamiento y actividades.</p>
-                  <div class="training-callout"><strong>Recuerda:</strong> convicción no es memorizar respuestas. Es conocer tu propio viaje.</div>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b1-destino"><span>Sé a qué país y ciudad(es) viajo.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b1-motivo"><span>Puedo explicar con mis palabras el motivo real de mi viaje.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b1-fechas"><span>Sé mi fecha de salida, retorno y duración total.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b1-ruta"><span>Conozco mi aerolínea, ruta y escalas cuando correspondan.</span></label>
-                  </div>
-                </div>
-
-                <div class="lesson-card">
-                  <h5>2. Tu carpeta de viaje</h5>
-                  <p>Debes saber dónde está cada documento y poder encontrarlo rápidamente, en físico o digital.</p>
-                  <ul>
-                    <li>Confirmación o reserva del viaje.</li>
-                    <li>Reserva de alojamiento y dirección.</li>
-                    <li>Itinerario turístico o de actividades/pasantía empresarial.</li>
-                    <li>Seguro de viaje.</li>
-                    <li>RT24, cuando ya haya sido entregado.</li>
-                  </ul>
-                  <div class="training-callout"><strong>Prueba de 30 segundos:</strong> ¿podrías abrir ahora mismo tu reserva de alojamiento sin perder tiempo buscándola?</div>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b1-reserva"><span>Tengo mi confirmación/reserva localizada y revisada.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b1-hotel"><span>Tengo mi alojamiento localizado, con nombre y dirección.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b1-itinerario"><span>He revisado mi itinerario y entiendo lo que haré durante el viaje.</span></label>
-                  </div>
-                </div>
-
-                <div class="lesson-card">
-                  <h5>3. RT24 y retorno</h5>
-                  <p>El RT24 corresponde al boleto/retorno previsto dentro de tu servicio. Normalmente el retorno se prevé alrededor de 7 u 8 días después, según tu viaje, y se entrega el mismo día del viaje junto con la asistencia de check-in.</p>
-                  <div class="training-callout"><strong>Importante:</strong> el RT24 no es visa, autorización de entrada, seguro ni garantía migratoria. Es la información de tu retorno dentro del servicio y debes conocerla y tenerla disponible.</div>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b1-retorno"><span>Sé cuál es mi fecha prevista de retorno.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b1-rt24"><span>Entiendo qué es el RT24 y cuándo lo recibiré.</span></label>
-                  </div>
-                </div>
-
-                <div class="lesson-card">
-                  <h5>4. Seguro de viaje</h5>
-                  <p>No necesitas memorizar cláusulas técnicas, pero sí debes saber dónde está tu póliza, qué cobertura básica contrataste y cómo contactar la asistencia.</p>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b1-seguro"><span>Sé dónde está mi seguro y puedo abrirlo rápidamente.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b1-asistencia"><span>Tengo identificado el canal de asistencia de mi seguro.</span></label>
-                  </div>
-                </div>
-
-                <div class="training-status" id="training-status-b1">CONTROL DE CONVICCIÓN · Completa los puntos para conocer tu estado.</div>
-              </div>
-            </details>
-
-            <details class="training-block">
-              <summary>
-                <span><span class="training-block-kicker">Bloque 2</span><span class="training-block-title">Prepara tu viaje</span></span>
-                <span class="training-chevron">›</span>
-              </summary>
-              <div class="training-content">
-                <div class="lesson-card">
-                  <h5>1. Equipaje inteligente para 7–8 días</h5>
-                  <p>Distingue artículo personal, equipaje de mano y equipaje facturado. El peso, dimensiones y cantidad permitida dependen de tu aerolínea y tarifa: revisa siempre tu reserva.</p>
-                  <div class="training-callout"><strong>Pregunta clave:</strong> si tu maleta facturada se pierde, ¿podrías pasar 24 horas con lo que llevas en cabina?</div>
-                  <ul>
-                    <li>Documentos originales, objetos de valor y medicamentos esenciales van contigo.</li>
-                    <li>Lleva un cambio de ropa básico y artículos esenciales en cabina.</li>
-                    <li>Verifica reglas vigentes para líquidos, electrónicos y baterías externas.</li>
-                    <li>Combina prendas; evita llenar la maleta “por si acaso”.</li>
-                  </ul>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b2-equipaje"><span>Revisé qué equipaje está incluido en mi reserva.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b2-peso"><span>Mi maleta está armada y dentro de las condiciones de mi tarifa.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b2-cabina"><span>Mi equipaje de cabina contiene lo esencial para las primeras 24 horas.</span></label>
-                  </div>
-                </div>
-
-                <div class="lesson-card">
-                  <h5>2. Cómo vestir</h5>
-                  <p>Piensa por contexto, no por moda: ropa cómoda para el vuelo, prendas funcionales para turismo y presentación profesional cuando tengas actividades empresariales. Revisa el clima real antes de empacar.</p>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b2-ropa"><span>Mi ropa corresponde al clima y a las actividades de mi viaje.</span></label>
-                  </div>
-                </div>
-
-                <div class="lesson-card">
-                  <h5>3. Dinero para el viaje</h5>
-                  <p>Conoce la moneda de tu destino. Organiza efectivo, tarjetas y un fondo de emergencia sin depender de una sola forma de pago. No existe un monto universal para todos los viajes.</p>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b2-moneda"><span>Sé qué moneda usaré y tengo un presupuesto estimado.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b2-pagos"><span>Tengo al menos una forma de pago de respaldo.</span></label>
-                  </div>
-                </div>
-
-                <div class="lesson-card">
-                  <h5>4. Teléfono e internet</h5>
-                  <p>Decide cómo te conectarás y prepárate para momentos sin internet: mapas offline, documentos descargados, capturas importantes, batería y contactos guardados.</p>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b2-conexion"><span>Ya decidí cómo tendré internet en destino.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b2-offline"><span>Tengo mapas/documentos importantes disponibles sin conexión.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b2-contactos"><span>Tengo guardados mi asesor y un contacto de emergencia.</span></label>
-                  </div>
-                </div>
-
-                <div class="lesson-card">
-                  <h5>5. 24 horas antes</h5>
-                  <p>El día previo no es para improvisar. Revisa documentación, equipaje, teléfono, dinero, transporte al aeropuerto, terminal cuando corresponda y estado del vuelo.</p>
-                  <div class="training-callout"><strong>Nuestro proceso:</strong> recibirás asistencia con el check-in el día del viaje y, ese mismo día, tu RT24.</div>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b2-pasaporte"><span>Pasaporte vigente y localizado.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b2-documentos"><span>Reserva, alojamiento, seguro e itinerario revisados.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b2-telefono"><span>Teléfono, cargadores y batería listos.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b2-transporte"><span>Transporte y horario de salida hacia el aeropuerto definidos.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b2-vuelo"><span>Estado del vuelo y terminal revisados cuando corresponda.</span></label>
-                  </div>
-                </div>
-
-                <div class="training-status" id="training-status-b2">CONTROL DE PREPARACIÓN · Completa los puntos para conocer tu estado.</div>
-              </div>
-            </details>
-
-            <details class="training-block">
-              <summary>
-                <span><span class="training-block-kicker">Bloque 3</span><span class="training-block-title">Del aeropuerto a tu llegada</span></span>
-                <span class="training-chevron">›</span>
-              </summary>
-              <div class="training-content">
-                <div class="lesson-card">
-                  <h5>1. Llega con tiempo y ubícate</h5>
-                  <p>Para un vuelo internacional, nuestra recomendación operativa es llegar al aeropuerto con aproximadamente 3 horas de anticipación, salvo que tu aerolínea o aeropuerto indiquen algo diferente.</p>
-                  <div class="training-callout"><strong>Tu primera misión:</strong> identifica terminal, aerolínea, mostrador o zona de check-in y puerta de embarque. No avances por intuición: confirma siempre en pantallas y señalización.</div>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b3-tiempo"><span>Sé a qué hora debo estar en el aeropuerto.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b3-terminal"><span>Sé cómo confirmar terminal, aerolínea y puerta de embarque.</span></label>
-                  </div>
-                </div>
-
-                <div class="lesson-card">
-                  <h5>2. Check-in y entrega de equipaje</h5>
-                  <p>El check-in confirma tu presencia para el vuelo y te permite obtener o validar tu pase de abordar. Si llevas equipaje facturado, sigue las instrucciones de la aerolínea para entregarlo y conserva cualquier comprobante que te den.</p>
-                  <div class="training-callout"><strong>Nuestro proceso:</strong> el día del viaje recibirás asistencia con tu check-in y tu RT24. Aun así, debes entender qué documentos tienes y saber ubicarlos.</div>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b3-boarding"><span>Sé dónde encontrar mi pase de abordar y mis datos de vuelo.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b3-equipaje"><span>Si facturo equipaje, sé que debo conservar el comprobante o etiqueta correspondiente.</span></label>
-                  </div>
-                </div>
-
-                <div class="lesson-card">
-                  <h5>3. Control de seguridad</h5>
-                  <p>En seguridad debes seguir las instrucciones del personal y preparar tus pertenencias según las reglas vigentes del aeropuerto. Las normas sobre líquidos, electrónicos, medicamentos y objetos restringidos pueden variar.</p>
-                  <ul>
-                    <li>Ten tus documentos accesibles, no enterrados en la maleta.</li>
-                    <li>Revisa antes de salir de casa qué artículos están restringidos.</li>
-                    <li>No bromees sobre armas, explosivos o seguridad aeroportuaria.</li>
-                    <li>Si el personal te pide una revisión adicional, coopera y pregunta con calma si no entiendes una instrucción.</li>
-                  </ul>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b3-seguridad"><span>Revisé que mi equipaje de cabina no contenga artículos restringidos.</span></label>
-                  </div>
-                </div>
-
-                <div class="lesson-card">
-                  <h5>4. Migración: calma, verdad y coherencia</h5>
-                  <p>Si pasas por un control migratorio, responde con verdad, de forma clara y breve. No necesitas memorizar un libreto: necesitas conocer tu viaje y tener tus documentos organizados.</p>
-                  <div class="training-callout"><strong>Convicción = preparación:</strong> debes conocer tu motivo real de viaje, duración, alojamiento, actividades previstas y fecha de retorno.</div>
-                  <ul>
-                    <li>Escucha la pregunta completa antes de responder.</li>
-                    <li>Contesta exactamente lo que te preguntan, sin inventar información.</li>
-                    <li>Si no entiendes una pregunta, pide que la repitan o aclaren.</li>
-                    <li>Si solicitan un documento, entrégalo con calma y verifica que sea el correcto.</li>
-                  </ul>
-                  <div class="training-callout"><strong>Error frecuente:</strong> parecer desorganizado porque no recuerdas dónde te hospedas, cuánto dura el viaje o cuándo regresas. Esa información ya debe estar clara desde el Bloque 1.</div>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b3-motivo"><span>Puedo explicar con mis palabras el motivo real de mi viaje.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b3-alojamiento"><span>Sé dónde me hospedo y puedo localizar mi reserva rápidamente.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b3-retorno"><span>Sé cuánto dura mi viaje y cuál es mi fecha prevista de retorno.</span></label>
-                  </div>
-                </div>
-
-                <div class="lesson-card">
-                  <h5>5. Escalas y conexiones</h5>
-                  <p>En una conexión, tu prioridad es localizar el siguiente vuelo y seguir la señalización de conexiones o transferencias. Dependiendo de la ruta, aeropuerto y billete, pueden existir nuevos controles de seguridad, migración, cambios de terminal o instrucciones especiales para el equipaje.</p>
-                  <div class="training-callout"><strong>Si algo cambia:</strong> revisa las pantallas, confirma la puerta y acude al personal de la aerolínea si tu vuelo se retrasa o crees que puedes perder la conexión.</div>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b3-escala"><span>Si tengo escala, sé en qué aeropuerto es y cuál es mi siguiente vuelo.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b3-conexion"><span>Sé que debo confirmar de nuevo la puerta y seguir la señalización de conexiones.</span></label>
-                  </div>
-                </div>
-
-                <div class="lesson-card">
-                  <h5>6. Embarque y vuelo</h5>
-                  <p>Cuando la puerta esté confirmada, mantente atento a pantallas y anuncios. Ten a mano tu pase de abordar y documento de viaje. La puerta puede cambiar incluso después de que ya la hayas visto una vez.</p>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b3-puerta"><span>Sé que debo volver a revisar mi puerta de embarque antes de abordar.</span></label>
-                  </div>
-                </div>
-
-                <div class="lesson-card">
-                  <h5>7. Al llegar a destino</h5>
-                  <p>Después de bajar del avión, sigue la señalización correspondiente a llegadas, controles aplicables y recogida de equipaje. Antes de salir del aeropuerto, confirma que tienes todas tus pertenencias y que sabes cómo llegar a tu alojamiento.</p>
-                  <ul>
-                    <li>Comprueba que la maleta que recoges sea realmente la tuya.</li>
-                    <li>Si tu equipaje no aparece, reporta la incidencia antes de abandonar la zona correspondiente y conserva la documentación del reporte.</li>
-                    <li>Ten disponible la dirección de tu alojamiento y tu método de transporte.</li>
-                    <li>Conéctate solo cuando puedas hacerlo de forma segura y avisa que llegaste cuando corresponda.</li>
-                  </ul>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b3-llegada"><span>Sé qué haré desde que bajo del avión hasta llegar a mi alojamiento.</span></label>
-                    <label class="training-check"><input type="checkbox" data-training-check="b3-maleta"><span>Sé que debo reportar una maleta no localizada antes de salir del área indicada por la aerolínea/aeropuerto.</span></label>
-                  </div>
-                </div>
-
-                <div class="lesson-card">
-                  <h5>8. ¿Qué harías si...?</h5>
-                  <p>Antes de dar este bloque por terminado, comprueba que puedes resolver estas situaciones sin entrar en pánico:</p>
-                  <ul>
-                    <li><strong>No ves tu vuelo en la primera pantalla:</strong> confirma terminal, número de vuelo y solicita orientación al personal.</li>
-                    <li><strong>Cambió tu puerta:</strong> sigue la nueva información de las pantallas y dirígete a la puerta actualizada.</li>
-                    <li><strong>No entiendes una pregunta:</strong> pide que la repitan o aclaren antes de responder.</li>
-                    <li><strong>Tu primer vuelo se retrasa y tienes conexión:</strong> revisa el siguiente vuelo y habla con la aerolínea.</li>
-                    <li><strong>Tu maleta no aparece al llegar:</strong> repórtalo en el punto de atención correspondiente antes de abandonar el área.</li>
-                  </ul>
-                  <div class="training-checks">
-                    <label class="training-check"><input type="checkbox" data-training-check="b3-reaccion"><span>Entiendo qué hacer ante cambios de puerta, retrasos, dudas o problemas con mi equipaje.</span></label>
-                  </div>
-                </div>
-
-                <div class="training-status" id="training-status-b3">CONTROL DE AUTONOMÍA · Completa los puntos para conocer tu estado.</div>
-              </div>
-            </details>
-
-            
-            <div class="v21-ready-card">
-              <div>
-                <div class="training-badge">Control final</div>
-                <h5>¿Estás listo para viajar?</h5>
-                <p>Cuando tu progreso esté completo, revisa una última vez pasaporte, reserva, alojamiento, seguro, retorno, equipaje, conexión y transporte al aeropuerto.</p>
-              </div>
-              <div class="v21-ready-score">
-                <span id="v21-ready-score">0%</span>
-                <small>PREPARACIÓN</small>
-              </div>
-            </div>
-
-            <div class="training-actions">
-              <button class="training-mini-btn" type="button" onclick="toggleTraining(false)">Cerrar capacitación</button>
-              <button class="training-mini-btn" type="button" onclick="resetTrainingProgress()">Reiniciar mi progreso</button>
-            </div>
-          </div>
-        </div>
-
+          <div class="training-shell" id="training-shell" aria-hidden="true">
+            <div class="training-head ultimate-head"><div><div class="training-badge">ACADEMIA ULTIMATE</div><h4>Tu preparación comienza aquí.</h4><p>No memorices respuestas. Conoce tu viaje real, tu documentación y cómo actuar en cada etapa.</p></div><div class="training-progress-wrap"><div class="training-progress-meta"><span>PREPARACIÓN ULTIMATE</span><span id="training-progress-text">0%</span></div><div class="training-progress"><div class="training-progress-bar" id="training-progress-bar"></div></div><small id="ultimate-module-count">0 de 6 módulos</small></div></div>
+            <div class="ultimate-modules">
+<section class="ultimate-module" data-module="1"><button class="ultimate-module-head" type="button" onclick="openUltimateModule(1)"><span>01</span><div><b>CONOCE TU VIAJE</b><small>De pies a cabeza: ruta, fechas, alojamiento, planificación y preparación.</small></div><em id="ultimate-lock-1">COMENZAR</em></button><div class="ultimate-module-body" id="ultimate-module-1"><details class="ultimate-lesson"><summary><span>01</span><b>Tu viaje esencial</b></summary><div class="ultimate-lesson-content"><p>Domina país, ciudad, aeropuerto, salida, llegada, duración, retorno según tu documentación, aerolínea, ruta completa, escalas y código de reserva. Si forma parte de tu viaje, debes conocerlo.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m1-l1"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>02</span><b>Alojamiento y planificación</b></summary><div class="ultimate-lesson-content"><p>Conoce nombre y dirección del alojamiento, fechas y noches, ubicación aproximada respecto al aeropuerto y cómo llegarás. Lee tu itinerario y explica con tus palabras qué tienes previsto hacer.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m1-l2"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>03</span><b>Medios económicos y seguro</b></summary><div class="ultimate-lesson-content"><p>Conoce cuánto dinero tienes realmente disponible, cómo acceder a él y cómo acreditarlo cuando corresponda. Revisa compañía, vigencia y canal de asistencia de tu seguro. Los requisitos oficiales pueden cambiar y deben verificarse para cada viaje.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m1-l3"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>04</span><b>Recomendaciones Ultimate</b></summary><div class="ultimate-lesson-content"><p>Pasaporte, documentos, dinero, tarjetas, teléfono y medicamentos esenciales siempre contigo, nunca exclusivamente en bodega. No concentres todos tus medios de pago en un solo lugar. Revisa líquidos, baterías, power banks, medicamentos y artículos restringidos según aerolínea y aeropuerto. En bodega va lo reemplazable; contigo, lo indispensable.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m1-l4"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>05</span><b>Primer entrenamiento</b></summary><div class="ultimate-lesson-content"><p>Practica en voz alta: ¿a dónde viajas?, ¿por qué?, ¿cuántos días?, ¿cuándo regresas?, ¿dónde te hospedas?, ¿qué harás?, ¿cuánto dinero tienes disponible? Responde siempre con la verdad y conforme a tu viaje real.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m1-l5"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><div class="ultimate-module-finish"><div><b>CONTROL DEL MÓDULO 1</b><small id="ultimate-status-1">Completa todos los puntos para continuar.</small></div><button type="button" onclick="completeUltimateModule(1)">Completar módulo</button></div></div></section><section class="ultimate-module" data-module="2"><button class="ultimate-module-head" type="button" onclick="openUltimateModule(2)"><span>02</span><div><b>DOMINA TUS DOCUMENTOS</b><small>Entiende cada documento y encuéntralo rápidamente, incluso sin internet.</small></div><em id="ultimate-lock-2">BLOQUEADO</em></button><div class="ultimate-module-body" id="ultimate-module-2"><details class="ultimate-lesson"><summary><span>01</span><b>Pasaporte</b></summary><div class="ultimate-lesson-content"><p>Revisa nombre, número, nacionalidad, fechas y vigencia aplicable. Debe estar en buen estado y permanecer seguro y accesible contigo.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m2-l1"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>02</span><b>Reserva aérea</b></summary><div class="ultimate-lesson-content"><p>Identifica PNR/código de reserva, aerolínea, número de cada vuelo, aeropuertos, horarios, escalas, terminal cuando aparezca y equipaje incluido. Una ciudad puede tener varios aeropuertos: aprende también sus códigos.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m2-l2"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>03</span><b>Reserva, check-in y boarding pass</b></summary><div class="ultimate-lesson-content"><p>La reserva confirma el viaje; el check-in es el proceso previo; el pase de abordar se usa para embarcar. Revisa nombre, vuelo, fecha, asiento, grupo, terminal y puerta cuando aparezcan. La puerta puede cambiar.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m2-l3"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>04</span><b>Hotel, itinerario, seguro y retorno</b></summary><div class="ultimate-lesson-content"><p>Abre cada documento y entiende nombres, fechas, direcciones y datos principales. La Academia no explica internamente RT24: estudia la documentación vigente que te proporcione tu asesor y conoce exactamente lo que contiene.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m2-l4"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>05</span><b>Carpeta MI VIAJE</b></summary><div class="ultimate-lesson-content"><p>Organiza: 01 Pasaporte · 02 Vuelos · 03 Check-in · 04 Alojamiento · 05 Seguro · 06 Itinerario · 07 Retorno · 08 Otros. Descarga lo esencial para usarlo offline y protege códigos, pasaporte y pases de abordar.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m2-l5"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>06</span><b>Prueba de 30 segundos</b></summary><div class="ultimate-lesson-content"><p>Encuentra alojamiento, seguro, reserva aérea, itinerario y retorno. Después activa modo avión y repite. Si no puedes abrirlos, tu carpeta aún no está lista.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m2-l6"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><div class="ultimate-module-finish"><div><b>CONTROL DEL MÓDULO 2</b><small id="ultimate-status-2">Completa todos los puntos para continuar.</small></div><button type="button" onclick="completeUltimateModule(2)">Completar módulo</button></div></div></section><section class="ultimate-module" data-module="3"><button class="ultimate-module-head" type="button" onclick="openUltimateModule(3)"><span>03</span><div><b>DEL CHECK-IN AL AVIÓN</b><small>Un recorrido cronológico desde las horas previas hasta estar sentado en el avión.</small></div><em id="ultimate-lock-3">BLOQUEADO</em></button><div class="ultimate-module-body" id="ultimate-module-3"><details class="ultimate-lesson"><summary><span>01</span><b>24 horas previas</b></summary><div class="ultimate-lesson-content"><p>Cuando el check-in esté disponible y recibas la documentación, revísala. Comprueba el estado actual del vuelo, organiza MI VIAJE, carga el teléfono y revisa todos los tramos.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m3-l1"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>02</span><b>Mochila y maleta</b></summary><div class="ultimate-lesson-content"><p>Contigo: pasaporte, pase de abordar, documentación, dinero, tarjetas, medicamentos, teléfono y esenciales. Comprueba peso, dimensiones y restricciones. Identifica y fotografía la maleta; retira etiquetas antiguas.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m3-l2"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>03</span><b>Salida y llegada al aeropuerto</b></summary><div class="ultimate-lesson-content"><p>Chequeo: PASAPORTE · TELÉFONO · BILLETERA · DOCUMENTOS · PASE · BATERÍA · EQUIPAJE. Para nuestra preparación internacional usamos 3 horas como referencia operativa, salvo indicación distinta de aerolínea/aeropuerto.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m3-l3"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>04</span><b>Mostrador y equipaje</b></summary><div class="ultimate-lesson-content"><p>Localiza terminal por aerolínea y vuelo. Si facturas, conserva el comprobante y verifica el destino de la etiqueta cuando sea posible. Si el check-in online falla, consulta en mostrador con tiempo.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m3-l4"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>05</span><b>Seguridad, puerta y embarque</b></summary><div class="ultimate-lesson-content"><p>Sigue instrucciones, no hagas bromas sobre amenazas y recupera todas tus pertenencias. Revisa pantallas: la información operacional actualizada manda. Controla grupo de embarque y mantén pasaporte y pase accesibles.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m3-l5"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>06</span><b>Incidencias</b></summary><div class="ultimate-lesson-content"><p>Ante retraso o cancelación, consulta primero fuentes oficiales y la aerolínea. Si una conexión puede verse afectada, pregunta de inmediato. Pasaporte utilizado = pasaporte guardado.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m3-l6"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><div class="ultimate-module-finish"><div><b>CONTROL DEL MÓDULO 3</b><small id="ultimate-status-3">Completa todos los puntos para continuar.</small></div><button type="button" onclick="completeUltimateModule(3)">Completar módulo</button></div></div></section><section class="ultimate-module" data-module="4"><button class="ultimate-module-head" type="button" onclick="openUltimateModule(4)"><span>04</span><div><b>MIGRACIÓN Y CONTROL DE ENTRADA</b><small>Prepárate para un control sencillo, uno exigente y preguntas inesperadas.</small></div><em id="ultimate-lock-4">BLOQUEADO</em></button><div class="ultimate-module-body" id="ultimate-module-4"><details class="ultimate-lesson"><summary><span>01</span><b>Convicción real</b></summary><div class="ultimate-lesson-content"><p>Convicción no es actuar. Es conocer tu viaje real, responder con verdad y poder respaldarlo con documentación auténtica. Escucha, comprende y responde solo lo preguntado.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m4-l1"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>02</span><b>Las 7 áreas que debes dominar</b></summary><div class="ultimate-lesson-content"><p>Motivo real · destino · duración · alojamiento · planificación · retorno · medios económicos. También debes poder responder con verdad sobre acompañantes, familiares/conocidos, quién financia el viaje, ocupación e historial de viajes cuando te lo pregunten.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m4-l2"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>03</span><b>Preguntas de práctica</b></summary><div class="ultimate-lesson-content"><p>Practica: ¿motivo?, ¿ciudad?, ¿días?, ¿retorno?, ¿hotel y dirección?, ¿noches?, ¿cómo llegarás?, ¿qué visitarás?, ¿seguro?, ¿fondos disponibles y cómo los acreditas?, ¿viajas solo?, ¿familiares?, ¿a qué te dedicas?, ¿quién paga?, ¿has estado antes en España/Schengen?</p><label class="ultimate-check"><input type="checkbox" data-training-check="m4-l3"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>04</span><b>Muéstreme…</b></summary><div class="ultimate-lesson-content"><p>Practica localizar rápidamente alojamiento, retorno, seguro, itinerario y reserva aérea. Si no recuerdas un número o dirección exacta, no inventes: consulta el documento correspondiente.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m4-l4"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>05</span><b>Máquinas, biometría y revisión adicional</b></summary><div class="ultimate-lesson-content"><p>Sigue las instrucciones del sistema o personal. Si no entiendes, pide ayuda. Que te aparten de la fila, te hagan esperar o revisen nuevamente no significa automáticamente rechazo. Mantén calma, coherencia, verdad y cooperación.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m4-l5"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>06</span><b>Método E · P · R · R</b></summary><div class="ultimate-lesson-content"><p>ESCUCHA → PIENSA → RESPONDE → RESPALDA. Nunca uses documentación falsa ni cambies el motivo real del viaje. Una pregunta inesperada se resuelve con el mismo método.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m4-l6"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><div class="ultimate-module-finish"><div><b>CONTROL DEL MÓDULO 4</b><small id="ultimate-status-4">Completa todos los puntos para continuar.</small></div><button type="button" onclick="completeUltimateModule(4)">Completar módulo</button></div></div></section><section class="ultimate-module" data-module="5"><button class="ultimate-module-head" type="button" onclick="openUltimateModule(5)"><span>05</span><div><b>ESCALAS, LLEGADA E IMPREVISTOS</b><small>Aprende a moverte solo y a resolver una situación a la vez.</small></div><em id="ultimate-lock-5">BLOQUEADO</em></button><div class="ultimate-module-body" id="ultimate-module-5"><details class="ultimate-lesson"><summary><span>01</span><b>Conexiones</b></summary><div class="ultimate-lesson-content"><p>Al bajar, identifica siguiente vuelo, terminal, puerta y estado. Sigue Connections/Transfer cuando corresponda. Algunos itinerarios requieren nuevos controles; no asumas. Pregunta si tu equipaje está facturado hasta destino final.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m5-l1"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>02</span><b>Conexión corta o perdida</b></summary><div class="ultimate-lesson-content"><p>Con poco tiempo, prioridad absoluta al siguiente vuelo. Si un retraso amenaza la conexión, consulta inmediatamente. Si la pierdes, habla primero con la aerolínea antes de comprar otro boleto y pregunta por reubicación, equipaje y nuevo pase.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m5-l2"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>03</span><b>Llegada y equipaje</b></summary><div class="ultimate-lesson-content"><p>Busca la cinta por vuelo/origen y verifica que la maleta sea la tuya. Si no aparece o llega dañada, reporta la incidencia por el canal correspondiente antes de irte cuando proceda; conserva comprobante, fotos y número de caso.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m5-l3"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>04</span><b>Del aeropuerto al hotel</b></summary><div class="ultimate-lesson-content"><p>Ten nombre, dirección, distancia aproximada y traslado previsto disponibles offline. Usa transporte legítimo y verificable. Si el hotel no encuentra la reserva, abre la confirmación y revisa huésped, fechas, establecimiento y número de reserva.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m5-l4"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>05</span><b>Emergencias</b></summary><div class="ultimate-lesson-content"><p>Si pierdes el pasaporte, actúa de inmediato por vías oficiales y consulares cuando corresponda. Ante robo, prioriza tu seguridad, bloquea medios comprometidos y realiza los procedimientos necesarios. Ante emergencia médica, localiza tu seguro y usa servicios de emergencia locales cuando sea necesario.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m5-l5"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>06</span><b>Método P · V · A</b></summary><div class="ultimate-lesson-content"><p>PARA → VERIFICA → ACTÚA. Un viajero preparado no es aquel al que nunca le ocurre nada; es aquel que sabe qué hacer cuando algo cambia.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m5-l6"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><div class="ultimate-module-finish"><div><b>CONTROL DEL MÓDULO 5</b><small id="ultimate-status-5">Completa todos los puntos para continuar.</small></div><button type="button" onclick="completeUltimateModule(5)">Completar módulo</button></div></div></section><section class="ultimate-module" data-module="6"><button class="ultimate-module-head" type="button" onclick="openUltimateModule(6)"><span>06</span><div><b>SIMULACIÓN ULTIMATE</b><small>Demuestra que puedes completar el viaje con autonomía, organización y verdad.</small></div><em id="ultimate-lock-6">BLOQUEADO</em></button><div class="ultimate-module-body" id="ultimate-module-6"><details class="ultimate-lesson"><summary><span>01</span><b>Viaje completo</b></summary><div class="ultimate-lesson-content"><p>Simula: 24 h antes → documentos → equipaje → salida → aeropuerto → mostrador → seguridad → puerta → embarque → conexión → control de entrada → llegada → equipaje → transporte → hotel.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m6-l1"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>02</span><b>Control de entrada</b></summary><div class="ultimate-lesson-content"><p>Responde con tu información real: motivo, días, retorno, alojamiento, actividades, fondos, familiares/conocidos, ocupación y financiación. Después practica “Muéstreme…” con tus documentos.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m6-l2"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>03</span><b>Escenario exigente</b></summary><div class="ultimate-lesson-content"><p>Practica una pregunta inesperada, una segunda revisión, un procedimiento automatizado y una conexión complicada. Usa EPRR para preguntas y PVA para incidencias.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m6-l3"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>04</span><b>Autonomía</b></summary><div class="ultimate-lesson-content"><p>Simula: cambia la puerta; falla el check-in online; pierdes conexión; no llega la maleta; no tienes internet; el hotel no encuentra tu reserva; pierdes el pasaporte. Resuelve cada problema en orden.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m6-l4"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>05</span><b>Autoevaluación final</b></summary><div class="ultimate-lesson-content"><p>La Academia no puede juzgar una respuesta personal. Marca con honestidad: LO DOMINO · NECESITO REPASAR · NO LO SÉ. Los puntos débiles deben llevarte de vuelta al módulo correspondiente.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m6-l5"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><details class="ultimate-lesson"><summary><span>06</span><b>Cierre</b></summary><div class="ultimate-lesson-content"><p>Completar la Academia no garantiza la admisión a ningún país. La decisión corresponde a las autoridades. La preparación busca que viajes informado, organizado y capaz de explicar tu viaje real.</p><label class="ultimate-check"><input type="checkbox" data-training-check="m6-l6"><span>He leído, entendido y puedo aplicar este punto.</span></label></div></details><div class="ultimate-module-finish"><div><b>CONTROL DEL MÓDULO 6</b><small id="ultimate-status-6">Completa todos los puntos para continuar.</small></div><button type="button" onclick="completeUltimateModule(6)">Completar módulo</button></div></div></section></div><div class="ultimate-final" id="ultimate-final"><div class="training-badge">CONTROL FINAL</div><strong id="v21-ready-score">0%</strong><h5 id="ultimate-final-title">Tu preparación está en progreso</h5><p id="ultimate-final-copy">Completa los seis módulos en orden. Repasa cualquier punto que todavía no domines.</p><div class="ultimate-final-actions"><button class="training-mini-btn" type="button" onclick="toggleTraining(false)">Cerrar Academia</button><button class="training-mini-btn" type="button" onclick="resetTrainingProgress()">Reiniciar progreso</button></div></div></div></div>
       </div>
     </div>
   </div>
@@ -4012,8 +4733,8 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
     <div class="v9-academy-teaser">
       <div>
         <div class="eyebrow">Uno de los beneficios más valiosos</div>
-        <h3>Academia del Viajero</h3>
-        <p>Una guía privada para prepararte según el propósito real de tu viaje: turismo, actividad empresarial/pasantía o migración/reubicación cuando corresponda.</p>
+        <h3>Academia Ultimate</h3>
+        <p>Seis módulos privados para conocer tu viaje, dominar tus documentos, prepararte para el aeropuerto, practicar controles de entrada y reaccionar ante conexiones e imprevistos.</p>
       </div>
       <div class="v9-academy-lock">🔒<span>Contenido completo<br>solo para miembros</span></div>
     </div>
@@ -4051,227 +4772,229 @@ body:not(.vp-branch-new):not(.vp-branch-member) #asesor{display:none}
 
     <div class="v205-footer-actions">
       <button type="button" onclick="openModal('doc-presentacion')">Documentos legales</button>
-      <span>Libro de Reclamaciones · Próximamente</span>
     </div>
-
-    <div class="v205-footer-copy">© 2026 Viajeros Preferentes · Todos los derechos reservados.</div>
   </div>
 </footer>
 
+
+
+<div class="modal-overlay v26-referral-history-overlay" id="v26-referral-history-modal" onclick="if(event.target===this) closeReferralHistory()" aria-hidden="true">
+  <div class="modal-box v26-referral-history-box">
+    <button class="modal-close" onclick="closeReferralHistory()" aria-label="Cerrar">✕</button>
+    <div class="eyebrow">Historial privado</div>
+    <h3>Mis referidos</h3>
+    <p class="modal-toc">Aquí puedes revisar tus recomendaciones sin hacer más largo tu panel principal.</p>
+    <div class="v26-referral-history-list" id="v26-referral-history-list"></div>
+  </div>
+</div>
 
 <!-- ================= DOCUMENTACIÓN LEGAL UNIFICADA ================= -->
 <div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this) closeModal()">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">✕</button>
-    <div class="eyebrow">Documento Corporativo</div>
-    <h3 style="font-size:1.6rem;margin:8px 0 10px;">Documentación Legal — Viajeros Preferentes</h3>
+    <div class="eyebrow">Documentos del programa</div>
+    <h3 style="font-size:1.6rem;margin:8px 0 10px;">Reglas y documentos de Viajeros Preferentes</h3>
     <p class="modal-toc">Este documento reúne, en capítulos, toda la información oficial que rige la participación en el programa: presentación, reglamento, términos de uso, privacidad, derechos y obligaciones del miembro.</p>
 
+    <div class="v24-legal-intro" style="margin:0 0 14px;padding:14px 15px;border-radius:18px;border:1px solid rgba(255,255,255,.065);background:linear-gradient(135deg,rgba(91,156,255,.07),rgba(255,255,255,.018));">
+      <div class="training-badge">Documentos del programa</div>
+      <h4 style="margin:5px 0 3px;font-size:1.08rem;color:#eef2f7;">Reglas claras y fáciles de consultar.</h4>
+      <p style="margin:0;color:#8d99ad;font-size:.7rem;line-height:1.5;">Aquí encontrarás las condiciones vigentes de membresía, referidos, Crédito Preferente, privacidad y uso del portal.</p>
+    </div>
+
     <details class="doc-section" id="doc-presentacion" open>
-      <summary><span><span class="doc-num">01 —</span> Presentación</span> <span class="chev">›</span></summary>
+      <summary><span><span class="doc-num">01 —</span> Cómo funciona Viajeros Preferentes</span> <span class="chev">›</span></summary>
       <div class="doc-body">
-        <p>Este documento reúne, en un solo lugar, la información oficial que rige la participación en Viajeros Preferentes: el reglamento del programa, los términos de uso del portal, la política de privacidad y los derechos y obligaciones de cada miembro. Le recomendamos leerlo con atención antes de activar su Member Pass.</p>
+        <p>Viajeros Preferentes es un programa privado de fidelización, preparación y recomendación para clientes elegibles. El acceso no está abierto al público: se realiza mediante un Member ID entregado por nuestro equipo.</p>
+        <p>La experiencia tiene tres partes conectadas: activación del acceso, uso del portal privado y participación voluntaria en el programa de referidos. La Academia Ultimate permanece disponible para preparar al viajero independientemente de que decida o no recomendar a otras personas.</p>
       </div>
     </details>
 
-    <details class="doc-section" id="doc-manual">
-      <summary><span><span class="doc-num">02 —</span> Manual de Uso — Member Pass</span> <span class="chev">›</span></summary>
+    <details class="doc-section" id="doc-acceso">
+      <summary><span><span class="doc-num">02 —</span> Member Pass, Member ID y activación</span> <span class="chev">›</span></summary>
       <div class="doc-body">
-        <p>¡Felicitaciones! Ahora formas parte de Viajeros Preferentes, un programa exclusivo diseñado para clientes seleccionados que desean compartir nuestros servicios con familiares, amigos o conocidos.</p>
-        <p>Tu Member Pass es tu identificación oficial dentro del programa. Guárdalo en un lugar seguro y tenlo siempre disponible cuando desees registrar un nuevo referido.</p>
-
-        <h5>¿Qué es el Member Pass?</h5>
-        <p>Una credencial digital que contiene tu Member ID: un código único, personal e intransferible que identifica tus recomendaciones dentro del programa. No lo compartas con terceros ajenos al proceso de recomendación.</p>
-
-        <h5>¿Cómo recomendar a alguien?</h5>
+        <p>El Member Pass es la credencial del programa y contiene el Member ID. El Member ID es un código personal e intransferible que identifica al miembro dentro de Viajeros Preferentes.</p>
+        <h5>Primera activación</h5>
         <ol>
-          <li><strong>Paso 1</strong>Solicita autorización a la persona para compartir sus datos de contacto.</li>
-          <li><strong>Paso 2</strong>Escríbenos por WhatsApp.</li>
-          <li><strong>Paso 3</strong>Envía tu Member ID, el nombre completo del referido, su WhatsApp y su destino de interés (si lo conoce).</li>
-          <li><strong>Paso 4</strong>Nuestro equipo se pondrá en contacto directamente con el referido. No necesitas hacer ningún trámite adicional.</li>
+          <li>El equipo crea y entrega un Member ID válido al cliente elegible.</li>
+          <li>El cliente abre “Ya soy miembro” y selecciona “Activar mi cuenta”.</li>
+          <li>Ingresa Member ID, nombre, WhatsApp, correo y crea su contraseña.</li>
+          <li>Después de activarse, el acceso normal se realiza únicamente con correo y contraseña.</li>
         </ol>
-        <div class="example-box">Member ID: VP-E2J8-E6K<br>Nombre: Enderson Jesús<br>WhatsApp: +51 920 227 246<br>Destino: Suiza</div>
+        <p>El miembro puede actualizar nombre, WhatsApp y correo desde su portal. No puede modificar por sí mismo Member ID, nivel, referidos, Crédito Preferente ni los datos administrativos de la membresía.</p>
+      </div>
+    </details>
 
-        <h5>¿Qué sucede después?</h5>
-        <ul>
-          <li>Revisamos la información.</li>
-          <li>Nos comunicamos con la persona.</li>
-          <li>Le brindamos toda la asesoría necesaria.</li>
-          <li>Si el viaje se concreta y cumple las condiciones del programa, se genera el Bono Preferente correspondiente.</li>
-        </ul>
+    <details class="doc-section" id="doc-referidos">
+      <summary><span><span class="doc-num">03 —</span> Recomendaciones y referidos</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <p>El miembro puede recomendar a una persona desde su portal privado. Antes de registrar nombre o WhatsApp debe contar con autorización de esa persona para compartir sus datos.</p>
+        <h5>Flujo actual</h5>
+        <ol>
+          <li><strong>Registrar.</strong> El miembro introduce nombre, WhatsApp y, si lo conoce, destino o servicio de interés. También puede utilizar los mensajes preparados para compartir su Member ID.</li>
+          <li><strong>Registrado.</strong> La recomendación queda guardada y visible en el portal.</li>
+          <li><strong>Confirmado.</strong> Solo cuando la operación cumple las condiciones comerciales del programa se contabiliza como referido confirmado.</li>
+          <li><strong>Beneficio aplicado.</strong> Puede utilizarse para indicar que el beneficio relacionado ya fue reconocido o aplicado, sin volver a sumar el referido.</li>
+        </ol>
+        <p>Una cotización, consulta, contacto, promesa de compra o incluso una operación que no cumpla las condiciones de elegibilidad del programa no se convierte automáticamente en referido confirmado. La confirmación corresponde a las reglas comerciales vigentes de Viajeros Preferentes.</p>
+        <p>Si una misma persona es registrada por más de un miembro, se tomará como referencia la primera recomendación válida y verificable, salvo error demostrado.</p>
+      </div>
+    </details>
 
-        <h5>¿Cómo consultar el estado de un referido?</h5>
-        <p>Escríbenos por WhatsApp indicando: "Quiero consultar el estado de mi referido." Verificaremos la información y te daremos una actualización cuando sea posible.</p>
-
-        <h5>Recomendaciones importantes</h5>
-        <ul>
-          <li>Conserva tu Member Pass.</li>
-          <li>No compartas tu Member ID públicamente.</li>
-          <li>Registra al referido antes de que inicie contacto con nosotros.</li>
-          <li>Comparte únicamente información real y autorizada por la persona recomendada.</li>
-        </ul>
+    <details class="doc-section" id="doc-niveles">
+      <summary><span><span class="doc-num">04 —</span> Niveles y recorrido</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <p>El nivel se actualiza automáticamente con los referidos confirmados que cumplen las condiciones del programa.</p>
+        <div class="example-box">
+          <strong>Activo</strong> · 0 referidos confirmados · Academia Ultimate y portal privado<br>
+          <strong>Preferente</strong> · 1 referido confirmado<br>
+          <strong>Silver</strong> · 2 referidos confirmados<br>
+          <strong>Gold</strong> · 5 referidos confirmados<br>
+          <strong>Platinum</strong> · 10 referidos confirmados<br>
+          <strong>Plus</strong> · 20 referidos confirmados
+        </div>
+        <p>Activo es el punto de entrada y preparación. Los beneficios de fidelización comienzan al desbloquear Preferente. Plus es el máximo nivel actualmente publicado; futuros hitos o campañas podrán anunciarse por separado.</p>
       </div>
     </details>
 
     <details class="doc-section" id="doc-bono">
-      <summary><span><span class="doc-num">03 —</span> Crédito Preferente y Recompensas</span> <span class="chev">›</span></summary>
+      <summary><span><span class="doc-num">05 —</span> Crédito Preferente</span> <span class="chev">›</span></summary>
       <div class="doc-body">
-        <p>El Crédito Preferente es un beneficio promocional del programa que puede desbloquearse al alcanzar hitos de referidos confirmados. No constituye una cuenta bancaria, depósito, instrumento financiero ni dinero entregado en custodia.</p>
-        <h5>Beneficios vigentes</h5>
-<p>Los referidos confirmados pueden habilitar Crédito Preferente, cambios de nivel y otras ventajas. Las metas, importes y beneficios aplicables se muestran individualmente dentro del panel privado del miembro y pueden variar según condiciones o campañas vigentes.</p>
-        <h5>Uso</h5>
-        <ul><li>Es personal y no transferible.</li><li>No es canjeable directamente por dinero en efectivo.</li><li>Puede aplicarse únicamente a servicios o reservas elegibles informados por el programa.</li><li>Su aplicación puede estar sujeta a límites, disponibilidad, vigencia y condiciones de la reserva.</li><li>Las campañas especiales pueden otorgar beneficios adicionales sin modificar permanentemente la ruta base.</li></ul>
+        <p>El Crédito Preferente es un beneficio promocional personal para servicios elegibles. No es una cuenta bancaria, no genera intereses, no es transferible y no puede retirarse en efectivo.</p>
+        <p>El crédito se desbloquea progresivamente según el nivel alcanzado. <strong>El monto exacto disponible de cada miembro se consulta únicamente dentro de su panel privado</strong>, donde también se muestran el crédito utilizado y el saldo disponible.</p>
+        <p>Los importes y condiciones pueden variar cuando existan campañas, ajustes del programa o beneficios especiales. El Crédito Preferente no representa un pago fijo por cada referido.</p>
+        <p>Además del crédito, los niveles pueden incorporar preparación privada, atención prioritaria, ventajas en seguros, hoteles, planificación de viaje, campañas y otros beneficios elegibles.</p>
+      </div>
+    </details>
+
+    <details class="doc-section" id="doc-canje">
+      <summary><span><span class="doc-num">06 —</span> Solicitud y uso del crédito</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <p>El miembro puede tocar <strong>“Usar mi crédito”</strong> desde el portal y solicitar aplicar una parte o todo su saldo disponible a un servicio elegible.</p>
+        <ol>
+          <li>Indica el monto que desea utilizar.</li>
+          <li>Selecciona el servicio: vuelo, hotel, seguro de viaje, paquete turístico u otro servicio elegible.</li>
+          <li>La solicitud queda en estado <strong>Pendiente</strong>.</li>
+          <li>Administración revisa el servicio y puede aprobar el monto completo, aprobar una parte o rechazar la solicitud.</li>
+          <li>El Crédito Preferente solo se descuenta cuando una solicitud es aprobada.</li>
+        </ol>
+        <p>Tener saldo disponible no garantiza que el 100% pueda utilizarse en cualquier reserva. La cantidad aplicable depende del servicio, margen, disponibilidad, promociones y condiciones de la operación. Antes de aprobar un canje se informará el monto que puede aplicarse.</p>
+        <p>Por defecto, el crédito no es acumulable con otras promociones salvo que una campaña indique expresamente lo contrario.</p>
+      </div>
+    </details>
+
+    <details class="doc-section" id="doc-beneficios">
+      <summary><span><span class="doc-num">07 —</span> Beneficios por nivel</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <p>Los beneficios buscan reconocer tanto la participación como la experiencia del miembro. No todo beneficio es monetario.</p>
+        <ul>
+          <li><strong>Activo:</strong> portal privado y Academia Ultimate completa.</li>
+          <li><strong>Preferente:</strong> inicia la ruta de beneficios, Crédito Preferente y atención preferente disponible.</li>
+          <li><strong>Silver:</strong> puede incorporar ventaja de viaje, revisión Silver y prioridad superior.</li>
+          <li><strong>Gold:</strong> puede incorporar beneficio Gold, sesión privada y planificación preferente.</li>
+          <li><strong>Platinum:</strong> puede incorporar preparación privada, revisión documental prioritaria y planificación Platinum.</li>
+          <li><strong>Plus:</strong> máximo nivel publicado, prioridad Plus, campañas y beneficios especiales.</li>
+        </ul>
+        <p>Seguros, hoteles, descuentos, campañas u otras ventajas pueden depender de servicios elegibles, disponibilidad y condiciones vigentes. El panel privado mostrará los beneficios activos para cada miembro.</p>
+      </div>
+    </details>
+
+    <details class="doc-section" id="doc-academia">
+      <summary><span><span class="doc-num">08 —</span> Academia Ultimate</span> <span class="chev">›</span></summary>
+      <div class="doc-body">
+        <p>Academia Ultimate es una herramienta de preparación incluida desde el estado Activo. No requiere referidos para acceder.</p>
+        <p>Está organizada en seis módulos: conocer el viaje, dominar documentos, aeropuerto y embarque, migración y control de entrada, escalas e imprevistos y simulación final.</p>
+        <p>La capacitación enseña a conocer el viaje real, utilizar documentación auténtica y reaccionar con autonomía. No proporciona garantías migratorias ni sustituye requisitos oficiales, decisiones de autoridades, condiciones de aerolíneas o asesoramiento legal.</p>
       </div>
     </details>
 
     <details class="doc-section" id="doc-reglamento">
-      <summary><span><span class="doc-num">04 —</span> Reglamento Oficial</span> <span class="chev">›</span></summary>
-      <div class="doc-body"><ol>
-        <li><strong>1. Naturaleza del programa</strong>Viajeros Preferentes es un programa privado de fidelización y recomendación, gratuito y por invitación. La membresía y sus beneficios no constituyen una inversión, producto financiero ni promesa de rentabilidad.</li>
-        <li><strong>2. Elegibilidad</strong>La membresía se otorga a clientes seleccionados que hayan completado un viaje o servicio elegible con nuestro equipo y recibido una invitación oficial.</li>
-        <li><strong>3. Member Pass y Member ID</strong>Son personales e intransferibles. El Member ID identifica las recomendaciones del miembro y debe informarse antes o durante el primer contacto del referido.</li>
-        <li><strong>4. Consentimiento del referido</strong>El miembro debe contar con autorización de la persona antes de compartir sus datos de contacto. No se aceptan bases de datos, contactos obtenidos sin consentimiento o prácticas de spam.</li>
-        <li><strong>5. Registro válido</strong>El referido debe ser una persona real, con datos verificables, que no haya iniciado previamente un proceso comercial con nosotros, salvo validación expresa del equipo.</li>
-        <li><strong>6. Referido confirmado</strong>Una recomendación puede registrarse desde el portal por el propio miembro. Su estado inicial será “Registrado”. Solo pasa a “Confirmado” cuando la reserva o servicio cumple las condiciones comerciales establecidas por el programa. Consultas, cotizaciones, promesas de pago o contactos sin cierre no generan crédito.</li>
-        <li><strong>7. Ruta de beneficios</strong>Los referidos confirmados pueden generar Crédito Preferente, cambios de nivel, ventajas de viaje u otros beneficios vigentes. Las metas, importes y condiciones aplicables se informan en el panel privado y pueden variar según campañas o servicios elegibles.</li>
-        <li><strong>8. Naturaleza del Crédito Preferente</strong>Es un beneficio promocional para servicios elegibles; no es dinero depositado a nombre del miembro, no genera intereses, no es transferible y no puede exigirse como retiro de efectivo.</li>
-        <li><strong>9. Canje</strong>El uso del crédito depende de la vigencia, disponibilidad y condiciones del servicio. El programa puede establecer límites de aplicación por reserva, exclusiones o servicios no elegibles, informados antes del canje.</li>
-        <li><strong>10. Cancelaciones, devoluciones y reversos</strong>Si la operación que originó un referido confirmado se cancela, revierte, resulta fraudulenta o deja de cumplir las condiciones comerciales, el progreso o crédito asociado puede ser corregido o reversado.</li>
-        <li><strong>11. Referidos duplicados</strong>Si más de un miembro registra a la misma persona, se reconoce la primera recomendación válida registrada y verificable, salvo error demostrado.</li>
-        <li><strong>12. Prácticas prohibidas</strong>No se permite suplantación, falsificación, auto-referidos simulados, creación artificial de reservas, manipulación de datos, publicación engañosa, promesas en nombre del programa ni cualquier conducta destinada a generar recompensas indebidamente.</li>
-        <li><strong>13. Niveles</strong>Los niveles Preferente, Silver, Gold, Platinum y Plus son reconocimientos de participación. El hito inicial de 2 referidos forma parte de la ruta de progreso, pero no constituye por sí mismo un nivel independiente. Los niveles no implican una suma de dinero adicional salvo beneficio o campaña expresamente informados.</li>
-        <li><strong>14. Campañas especiales</strong>El programa puede lanzar promociones temporales, bonos adicionales o beneficios sorpresa indicando sus fechas, requisitos y límites.</li>
-        <li><strong>15. Suspensión</strong>El uso indebido del programa puede generar revisión, suspensión o cancelación. Las correcciones de créditos se realizarán conforme a las operaciones que legítimamente los originaron.</li>
-        <li><strong>16. Cambios del programa</strong>Las condiciones futuras pueden actualizarse por razones comerciales, operativas o legales. Los cambios relevantes se comunicarán a los miembros y no alterarán retroactivamente créditos ya válidamente utilizados.</li>
-        <li><strong>17. Protección de datos</strong>Los datos se utilizarán para gestionar membresías, recomendaciones, reservas, comunicaciones y beneficios, conforme a la política de privacidad aplicable.</li>
-        <li><strong>18. Aceptación</strong>El uso del Member Pass, Member ID o portal implica la aceptación de las reglas vigentes del programa.</li>
-      </ol></div>
-    </details>
-
-    <details class="doc-section" id="doc-requisitos">
-      <summary><span><span class="doc-num">05 —</span> Requisitos Oficiales de Ingreso</span> <span class="chev">›</span></summary>
+      <summary><span><span class="doc-num">09 —</span> Reglamento del programa</span> <span class="chev">›</span></summary>
       <div class="doc-body">
         <ol>
-          <li><strong>Ser cliente de Viajeros Preferentes</strong>Haber adquirido al menos un servicio de viaje gestionado por nuestro equipo.</li>
-          <li><strong>Haber finalizado su proceso</strong>El viaje o servicio contratado debe estar confirmado y concluido satisfactoriamente.</li>
-          <li><strong>Haber sido seleccionado</strong>La membresía es exclusiva y se otorga solo a clientes previamente seleccionados.</li>
-          <li><strong>Recibir una invitación oficial</strong>El acceso solo es posible mediante invitación personalizada de nuestro equipo.</li>
-          <li><strong>Activar su Member Pass</strong>El invitado debe aceptar la invitación y activar su pase para obtener su Member ID.</li>
-          <li><strong>Aceptar el reglamento</strong>El ingreso implica la lectura y aceptación del Reglamento Oficial.</li>
-          <li><strong>Mantener una conducta adecuada</strong>Actuar con honestidad y respeto, proporcionando información veraz.</li>
-          <li><strong>Conservar su Member Pass</strong>El Member Pass y el Member ID son personales e intransferibles.</li>
-          <li><strong>Cupos limitados</strong>La invitación está sujeta a disponibilidad de cupos y a los criterios de selección de la empresa.</li>
+          <li><strong>Acceso privado.</strong> La membresía es por invitación y requiere un Member ID válido.</li>
+          <li><strong>Uso personal.</strong> Cuenta, Member ID y credenciales no deben utilizarse de forma fraudulenta ni cederse para manipular el programa.</li>
+          <li><strong>Consentimiento.</strong> El miembro debe contar con autorización antes de registrar datos de otra persona.</li>
+          <li><strong>Información verdadera.</strong> No se permiten perfiles falsos, contactos inventados, spam, documentos alterados, auto-referidos simulados ni operaciones creadas artificialmente para generar progreso.</li>
+          <li><strong>Confirmación comercial.</strong> Solo una recomendación que cumpla las condiciones vigentes puede convertirse en referido confirmado.</li>
+          <li><strong>Correcciones.</strong> Si una operación se cancela, revierte, resulta fraudulenta o deja de cumplir las condiciones, el programa puede corregir el referido, nivel o crédito relacionado.</li>
+          <li><strong>Canjes.</strong> El Crédito Preferente se aplica únicamente después de aprobación y dentro de servicios elegibles.</li>
+          <li><strong>Campañas.</strong> Viajeros Preferentes puede lanzar ventajas, hitos o promociones temporales con condiciones propias.</li>
+          <li><strong>Actualizaciones.</strong> Los niveles, beneficios, servicios elegibles y condiciones pueden evolucionar. Los cambios relevantes se reflejarán en el portal o se comunicarán por los canales disponibles.</li>
         </ol>
       </div>
     </details>
 
-    <details class="doc-section" id="doc-terminos">
-      <summary><span><span class="doc-num">06 —</span> Términos y Condiciones</span> <span class="chev">›</span></summary>
-      <div class="doc-body">
-        <ul>
-          <li>El acceso al portal de miembros es exclusivo para quienes cuenten con una invitación válida y un Member ID activo.</li>
-          <li>El Member Pass es personal e intransferible; su uso indebido puede derivar en la suspensión de la cuenta.</li>
-          <li>La empresa se reserva el derecho de actualizar el contenido, las funcionalidades y el diseño del portal cuando lo considere necesario.</li>
-          <li>El uso del portal se rige por los términos vigentes. Los cambios relevantes serán comunicados de forma razonable antes de que resulten aplicables cuando corresponda.</li>
-          <li>Los servicios de viaje contratados por los miembros o sus referidos se rigen, además, por las condiciones comerciales propias de cada reserva.</li>
-        </ul>
-      </div>
-    </details>
-
     <details class="doc-section" id="doc-privacidad">
-      <summary><span><span class="doc-num">07 —</span> Política de Privacidad y Protección de Datos</span> <span class="chev">›</span></summary>
+      <summary><span><span class="doc-num">10 —</span> Privacidad y datos</span> <span class="chev">›</span></summary>
       <div class="doc-body">
-        <p>La información que usted comparte con nosotros —incluyendo sus datos de contacto y, cuando cuente con autorización, los de las personas que recomiende— se utiliza para gestionar Viajeros Preferentes, contactar a los referidos, administrar reservas, beneficios y comunicaciones relacionadas con nuestros servicios.</p>
-        <p>La información podrá ser tratada por proveedores necesarios para la operación de los servicios y por autoridades cuando exista obligación legal, aplicando medidas razonables de confidencialidad. El titular puede solicitar información, actualización, corrección o eliminación de sus datos a través del canal de contacto indicado, sujeto a las obligaciones legales de conservación que correspondan.</p>
+        <p>Los datos proporcionados por el miembro se utilizan para gestionar su cuenta, membresía, preparación, comunicaciones, referidos, reservas y beneficios relacionados con Viajeros Preferentes.</p>
+        <p>Cuando un miembro registra a un referido declara contar con autorización para compartir sus datos de contacto. La información puede ser tratada por proveedores necesarios para prestar los servicios o por autoridades cuando exista una obligación aplicable.</p>
+        <p>El titular puede solicitar actualización, corrección o eliminación de sus datos por los canales de contacto disponibles, sujeto a obligaciones de conservación que correspondan.</p>
       </div>
     </details>
 
     <details class="doc-section" id="doc-derechos">
-      <summary><span><span class="doc-num">08 —</span> Derechos del Miembro</span> <span class="chev">›</span></summary>
+      <summary><span><span class="doc-num">11 —</span> Derechos y control del miembro</span> <span class="chev">›</span></summary>
       <div class="doc-body">
         <ul>
-          <li>Recibir información clara sobre el estado de sus referidos.</li>
-          <li>Consultar su progreso y acceder al Crédito Preferente que haya sido válidamente desbloqueado conforme a las condiciones vigentes.</li>
-          <li>Solicitar la actualización o eliminación de sus datos personales.</li>
-          <li>Contar con un asesor personal disponible para sus consultas.</li>
-          <li>Ser informado oportunamente ante cualquier modificación relevante del programa.</li>
-        </ul>
-      </div>
-    </details>
-
-    <details class="doc-section" id="doc-obligaciones">
-      <summary><span><span class="doc-num">09 —</span> Obligaciones del Miembro</span> <span class="chev">›</span></summary>
-      <div class="doc-body">
-        <ul>
-          <li>Utilizar el Member ID de forma personal, sin compartirlo con fines ajenos al proceso de recomendación.</li>
-          <li>Proporcionar información verdadera y autorizada por la persona que recomienda.</li>
-          <li>Respetar el Reglamento Oficial del programa.</li>
-          <li>Actuar con honestidad en cada interacción dentro del programa.</li>
+          <li>Consultar su nivel, referidos y beneficios visibles en el portal.</li>
+          <li>Consultar el estado de las recomendaciones registradas desde su cuenta.</li>
+          <li>Solicitar el uso del Crédito Preferente disponible en servicios elegibles.</li>
+          <li>Acceder a Academia Ultimate mientras su acceso permanezca activo.</li>
+          <li>Actualizar los datos personales habilitados en el portal.</li>
+          <li>Solicitar información sobre reglas y condiciones del programa.</li>
         </ul>
       </div>
     </details>
 
     <details class="doc-section" id="doc-responsabilidad">
-      <summary><span><span class="doc-num">10 —</span> Responsabilidad del Programa</span> <span class="chev">›</span></summary>
+      <summary><span><span class="doc-num">12 —</span> Alcance y responsabilidad</span> <span class="chev">›</span></summary>
       <div class="doc-body">
-        <p>Viajeros Preferentes gestiona el proceso de recomendación y activación de beneficios, pero los servicios de viaje contratados por los referidos se rigen por las condiciones comerciales correspondientes a cada reserva.</p>
-        <p>El programa no garantiza la aprobación de visas, ingreso migratorio, disponibilidad de proveedores ni resultados ajenos a su control. La ruta base de Crédito Preferente publicada en el portal se aplica a las recomendaciones que cumplan sus condiciones mientras permanezca vigente.</p>
+        <p>Viajeros Preferentes administra el portal, la preparación y el programa de fidelización. Los vuelos, hoteles, seguros y demás servicios contratados también están sujetos a las condiciones de sus respectivos proveedores.</p>
+        <p>La membresía, la Academia y los beneficios no garantizan visas, autorizaciones, entrada a un país, disponibilidad de proveedores, ausencia de incidencias ni resultados que dependan de autoridades o terceros.</p>
       </div>
     </details>
 
-    <details class="doc-section" id="doc-modificaciones">
-      <summary><span><span class="doc-num">11 —</span> Modificaciones Futuras</span> <span class="chev">›</span></summary>
+    <details class="doc-section" id="doc-reclamaciones">
+      <summary><span><span class="doc-num">13 —</span> Libro de Reclamaciones</span> <span class="chev">›</span></summary>
       <div class="doc-body">
-        <p>Este documento, así como el Reglamento Oficial y las condiciones del Bono Preferente, pueden actualizarse cuando la empresa lo considere necesario. Los miembros activos serán informados oportunamente ante cualquier cambio relevante.</p>
+        <p>El acceso digital al Libro de Reclamaciones se incorporará próximamente dentro de este mismo espacio de Documentos Legales.</p>
+        <p>Hasta su habilitación, las consultas relacionadas con atención y servicio pueden realizarse por los canales de contacto disponibles en el portal.</p>
       </div>
     </details>
 
-    <details class="doc-section" id="doc-preguntas-legales">
-      <summary><span><span class="doc-num">12 —</span> Preguntas Legales Frecuentes</span> <span class="chev">›</span></summary>
+    <details class="doc-section" id="doc-derechos-reservados">
+      <summary><span><span class="doc-num">14 —</span> Derechos reservados</span> <span class="chev">›</span></summary>
       <div class="doc-body">
-        <ul>
-          <li>¿Puedo transferir mi Member ID a otra persona? No, es personal e intransferible.</li>
-          <li>¿Qué pasa si mi referido cancela o revierte su reserva? El progreso o crédito asociado puede no generarse o puede ser reversado si deja de cumplir las condiciones de confirmación.</li>
-          <li>¿Puedo dejar de participar en el programa? Sí, puede solicitarlo a su asesor en cualquier momento.</li>
-        </ul>
-      </div>
-    </details>
-
-    <details class="doc-section" id="doc-aceptacion">
-      <summary><span><span class="doc-num">13 —</span> Aceptación del Programa</span> <span class="chev">›</span></summary>
-      <div class="doc-body">
-        <p>El uso del Member Pass y del portal de Viajeros Preferentes implica que usted ha leído, comprendido y aceptado la totalidad de este documento, incluyendo el Reglamento Oficial, los Términos y Condiciones y la Política de Privacidad aquí descritos.</p>
-      </div>
-    </details>
-    
-    <details class="doc-section" id="doc-estados-referidos">
-      <summary><span><span class="doc-num">08 —</span> Estados de una recomendación</span> <span class="chev">›</span></summary>
-      <div class="doc-body">
-        <p><strong>Registrado:</strong> el miembro ingresó la recomendación desde su portal y declaró contar con autorización para compartir los datos.</p>
-        <p><strong>Confirmado:</strong> la operación cumplió las condiciones comerciales requeridas para contabilizarse como referido confirmado.</p>
-        <p><strong>Beneficio aplicado:</strong> el beneficio correspondiente ya fue reconocido o aplicado dentro del programa.</p>
-        <p>El registro inicial no garantiza crédito, nivel ni recompensa. El progreso se actualiza únicamente con referidos confirmados conforme a las reglas vigentes.</p>
+        <p>© 2026 Viajeros Preferentes. Todos los derechos reservados.</p>
+        <p>El diseño, estructura, textos, materiales de capacitación y contenidos propios del portal están destinados al uso autorizado dentro del programa, sin perjuicio de los derechos de terceros sobre marcas, servicios o contenidos que les pertenezcan.</p>
       </div>
     </details>
 
     <details class="doc-section" id="doc-consultas">
-      <summary><span><span class="doc-num">09 —</span> Consultas sobre membresía y referidos</span> <span class="chev">›</span></summary>
+      <summary><span><span class="doc-num">15 —</span> Consultas rápidas</span> <span class="chev">›</span></summary>
       <div class="doc-body">
-        <p>Información práctica de consulta sobre el funcionamiento del programa.</p>
-        <h5>¿Qué es el Member ID?</h5>
-        <p>Es el código único, personal e intransferible que lo identifica dentro del programa. Debe indicarlo cada vez que recomiende a alguien, para que la recomendación quede registrada a su nombre.</p>
+        <h5>¿Tengo que referir para usar Academia Ultimate?</h5>
+        <p>No. Academia Ultimate está disponible desde Activo.</p>
+
+        <h5>¿Cuándo comienza el programa de beneficios?</h5>
+        <p>Al conseguir el primer referido confirmado se desbloquea Preferente y comienza la ruta de beneficios.</p>
+
         <h5>¿Cómo registro un referido?</h5>
-        <p>Escriba a su asesor por WhatsApp con su Member ID, el nombre completo del referido, su WhatsApp y su destino de interés si lo conoce. Nuestro equipo se pondrá en contacto directamente con la persona.</p>
-        <h5>¿Cuándo se confirma mi Crédito Preferente?</h5>
-        <p>El crédito se reconoce cuando el referido está correctamente registrado con tu Member ID y cumple las condiciones comerciales de confirmación establecidas por el programa. Un contacto o una cotización por sí solos no generan crédito.</p>
-        <h5>¿El Crédito Preferente es dinero en efectivo?</h5>
-        <p>No. Es un beneficio promocional personal y no transferible, aplicable a servicios elegibles de futuros viajes según las condiciones vigentes. No funciona como cuenta bancaria, depósito ni saldo retirable en efectivo.</p>
-        <h5>¿Puedo acumular mis recompensas?</h5>
-        <p>Sí. El programa permite acumular el Crédito Preferente desbloqueado mientras se mantenga vigente y disponible conforme al reglamento. Antes de usarlo, consulta con tu asesor qué servicios son elegibles.</p>
-        <h5>¿Mi membresía tiene vencimiento?</h5>
-        <p>Su membresía permanece activa mientras cumpla el Reglamento del programa. Los beneficios y condiciones pueden actualizarse con el tiempo, y se lo comunicaremos oportunamente.</p>
+        <p>Desde “Mis referidos” en tu portal privado. Completa los datos autorizados y la recomendación quedará en estado Registrado.</p>
+
+        <h5>¿Una venta siempre cuenta como referido confirmado?</h5>
+        <p>No necesariamente. Para el programa, Confirmado significa que la operación cumple las condiciones comerciales y de elegibilidad vigentes.</p>
+
+        <h5>¿Puedo retirar el Crédito Preferente en efectivo?</h5>
+        <p>No. Se utiliza únicamente en servicios elegibles y previa aprobación de la solicitud de canje.</p>
+
+        <h5>¿Puedo pedir usar todo mi saldo?</h5>
+        <p>Sí, puedes solicitarlo. Administración determinará cuánto puede aplicarse a esa operación y podrá aprobar todo, una parte o rechazar la solicitud.</p>
+
         <h5>¿Cómo contacto a mi asesor?</h5>
-        <p>Directamente por WhatsApp, disponible desde cualquier botón "Hablar con mi asesor" de este portal.</p>
+        <p>El portal mantiene acceso directo al canal de WhatsApp del asesor para consultas relacionadas con viajes y membresía.</p>
       </div>
     </details>
   </div>
@@ -4340,20 +5063,21 @@ function selectStub(which){
   }
 
   const VP_REWARD_MILESTONES = [
-    { referrals: 0, credit: 0 },
-    { referrals: 1, credit: 5 },
-    { referrals: 3, credit: 20 },
-    { referrals: 5, credit: 40 },
-    { referrals: 10, credit: 90 },
-    { referrals: 20, credit: 200 }
+    { referrals: 0,  credit: 0,  level: 'Activo' },
+    { referrals: 1,  credit: 10, level: 'Preferente' },
+    { referrals: 2,  credit: 20, level: 'Silver' },
+    { referrals: 5,  credit: 35, level: 'Gold' },
+    { referrals: 10, credit: 55, level: 'Platinum' },
+    { referrals: 20, credit: 80, level: 'Plus' }
   ];
 
   function getLevel(referrals){
     if(referrals >= 20) return 'Plus';
     if(referrals >= 10) return 'Platinum';
     if(referrals >= 5) return 'Gold';
-    if(referrals >= 3) return 'Silver';
-    return 'Preferente';
+    if(referrals >= 2) return 'Silver';
+    if(referrals >= 1) return 'Preferente';
+    return 'Activo';
   }
 
   function getUnlockedCredit(referrals){
@@ -4366,8 +5090,8 @@ function selectStub(which){
 
   function getNextMilestone(referrals){
     const visualMilestones = [
-      { referrals: 2, label: 'Primer hito' },
-      { referrals: 3, label: 'Silver' },
+      { referrals: 1, label: 'Preferente' },
+      { referrals: 2, label: 'Silver' },
       { referrals: 5, label: 'Gold' },
       { referrals: 10, label: 'Platinum' },
       { referrals: 20, label: 'Plus' }
@@ -4405,7 +5129,9 @@ function selectStub(which){
       status: member.estado || 'Activo',
       since: member.fecha_activacion || '—',
       referrals: Number(member.referidos ?? 0),
-      bonuses: Number(member.bonos ?? 0),
+      bonuses: Number(member.credito_disponible ?? member.bonos ?? 0),
+      creditUnlocked: Number(member.credito_desbloqueado ?? member.bonos ?? 0),
+      creditUsed: Number(member.credito_usado ?? 0),
       level: member.nivel || getLevel(Number(member.referidos ?? 0))
     };
   }
@@ -4436,7 +5162,8 @@ function selectStub(which){
     setText('v20-current-level', level);
 
     const currentNotes = {
-      preferente: referrals < 2 ? 'Membresía activa · primer objetivo en curso' : 'Primer hito alcanzado',
+      activo: 'Preparación activa · Academia Ultimate disponible',
+      preferente: 'Nivel Preferente activo',
       silver: 'Nivel Silver activo',
       gold: 'Nivel Gold activo',
       platinum: 'Nivel Platinum activo',
@@ -4446,6 +5173,8 @@ function selectStub(which){
 
     setText('v2-referrals', referrals);
     setText('v2-credit', `US$${bonuses}`);
+    setText('vp23-credit-unlocked', `US$${Number(memberData.creditUnlocked ?? getUnlockedCredit(referrals))}`);
+    setText('vp23-credit-used', `US$${Number(memberData.creditUsed ?? 0)}`);
 
     setText('v15-member-id', memberData.memberId || '—');
     setText('v21-pass-name', memberData.name || 'Miembro Preferente');
@@ -4454,7 +5183,8 @@ function selectStub(which){
 
 
     const levelMessages = {
-      preferente: 'Tu recorrido acaba de comenzar.',
+      activo: 'Tu preparación ya está disponible.',
+      preferente: 'Ya perteneces al programa de beneficios.',
       silver: 'Ya empezaste a construir ventaja.',
       gold: 'Tu experiencia ya está abriendo beneficios.',
       platinum: 'Estás dentro de uno de los niveles más altos.',
@@ -4464,7 +5194,8 @@ function selectStub(which){
     setText('v15-level-message', levelMessages[levelKey] || 'Tu recorrido sigue creciendo.');
 
     const nextBenefitText = {
-      preferente: referrals < 2 ? 'Primer desbloqueo Preferente' : 'Reconocimiento Silver',
+      activo: 'Desbloquea Preferente con tu primer referido confirmado',
+      preferente: 'Reconocimiento Silver',
       silver: 'Ventaja especial para tu próximo viaje',
       gold: 'Beneficio premium de viaje',
       platinum: 'Acceso PLUS',
@@ -4484,9 +5215,9 @@ function selectStub(which){
     if(nextTitle) nextTitle.textContent = next ? next.label : 'Ruta principal completada';
 
     const previousThreshold =
-      referrals < 2 ? 0 :
-      referrals < 3 ? 2 :
-      referrals < 5 ? 3 :
+      referrals < 1 ? 0 :
+      referrals < 2 ? 1 :
+      referrals < 5 ? 2 :
       referrals < 10 ? 5 :
       referrals < 20 ? 10 : 20;
 
@@ -4745,37 +5476,55 @@ function renderDynamicBenefits(levelKey, referrals){
   if(!grid) return;
 
   const all = {
+    activo: [
+      ['Academia Ultimate','6 módulos completos de preparación'],
+      ['Portal privado','Acceso personal con Member ID'],
+      ['Preparación autónoma','Documentos, aeropuerto, migración e imprevistos'],
+      ['Ruta de progreso','Tu primer referido confirmado desbloquea Preferente']
+    ],
     preferente: [
-      ['Academia Ultimate','Activa'],
-      ['Atención Preferente','Activa'],
-      ['Primer hito','A 2 referidos']
+      ['Crédito Preferente','Saldo disponible para servicios elegibles'],
+      ['Seguro de viaje','Condición o tarifa preferente cuando aplique'],
+      ['Revisión Preferente','Preparación y documentación antes del viaje'],
+      ['Atención Preferente','Mayor prioridad dentro del programa'],
+      ['Campañas privadas','Acceso a oportunidades y beneficios especiales']
     ],
     silver: [
-      ['Academia Ultimate','Activa'],
-      ['Atención Preferente','Prioritaria'],
-      ['Ventaja Silver','Desbloqueada']
+      ['Crédito Preferente','Mayor saldo desbloqueado por nivel'],
+      ['Beneficio Silver','Ventaja elegible en seguro, hotel o servicio participante'],
+      ['Revisión Silver','Chequeo de ruta, documentación y preparación'],
+      ['Prioridad Silver','Atención superior a niveles iniciales'],
+      ['Oportunidades privadas','Acceso preferente a campañas seleccionadas']
     ],
     gold: [
-      ['Academia Ultimate','Activa'],
-      ['Atención Preferente','Prioritaria'],
-      ['Ventaja Gold','Desbloqueada']
+      ['Crédito Preferente','Saldo Gold disponible para servicios elegibles'],
+      ['Beneficio Gold','Ventaja especial entre opciones disponibles'],
+      ['Sesión privada 1 a 1','Preparación personalizada antes del viaje'],
+      ['Planificación Gold','Ruta, escalas, hotel, equipaje y conectividad'],
+      ['Prioridad Gold','Atención prioritaria dentro del programa']
     ],
     platinum: [
-      ['Academia Ultimate','Activa'],
-      ['Atención Preferente','Alta prioridad'],
-      ['Ventaja Platinum','Desbloqueada']
+      ['Crédito Preferente','Saldo Platinum disponible para servicios elegibles'],
+      ['Beneficio Platinum','Ventaja especial en servicio participante'],
+      ['Preparación privada','Sesión 1 a 1 prioritaria'],
+      ['Revisión documental','Chequeo prioritario de documentación de viaje'],
+      ['Planificación Platinum','Alojamiento, movilidad, ruta y preparación'],
+      ['Campañas Platinum','Acceso a beneficios privados seleccionados']
     ],
     plus: [
-      ['Academia Ultimate','Activa'],
-      ['Atención Preferente','Máxima prioridad'],
-      ['PLUS Member','Activo']
+      ['Crédito Preferente','Saldo Plus disponible para servicios elegibles'],
+      ['Beneficio Plus','Mejor condición disponible en campañas elegibles'],
+      ['Ultimate 1 a 1','Preparación personalizada con máxima prioridad'],
+      ['Planificación Plus','Evaluación integral del próximo viaje'],
+      ['Prioridad Plus','Máximo nivel de atención del programa'],
+      ['Acceso anticipado','Campañas, oportunidades y beneficios especiales']
     ]
   };
 
-  const rows = all[levelKey] || all.preferente;
+  const rows = all[levelKey] || all.activo;
   grid.innerHTML = rows.map(([name,state],i) => `
-    <div class="v21-benefit-item ${i===2 ? 'featured' : ''}">
-      <span>${i===2 ? '✦' : '✓'}</span>
+    <div class="v21-benefit-item ${i===rows.length-1 ? 'featured' : ''}">
+      <span>${i===rows.length-1 ? '✦' : '✓'}</span>
       <div><b>${name}</b><small>${state}</small></div>
     </div>
   `).join('');
@@ -4787,8 +5536,8 @@ function renderAchievements(memberData, referrals, levelKey){
 
     const milestones = [
       {label:'Activo', threshold:0},
-      {label:'2 referidos', threshold:2},
-      {label:'Silver', threshold:3},
+      {label:'Preferente', threshold:1},
+      {label:'Silver', threshold:2},
       {label:'Gold', threshold:5},
       {label:'Platinum', threshold:10},
       {label:'Plus', threshold:20}
@@ -4815,6 +5564,45 @@ function renderAchievements(memberData, referrals, levelKey){
   }
 
   
+function toggleCreditRedeem(forceOpen){
+  const box = document.getElementById('vp23-redeem');
+  if(!box) return;
+  const open = typeof forceOpen === 'boolean' ? forceOpen : !box.classList.contains('show');
+  box.classList.toggle('show', open);
+  box.setAttribute('aria-hidden', open ? 'false' : 'true');
+  if(open) document.getElementById('vp23-redeem-amount')?.focus();
+}
+
+function setCreditRedeemMsg(text, error=false){
+  const el = document.getElementById('vp23-redeem-msg');
+  if(!el) return;
+  el.textContent = text || '';
+  el.classList.toggle('show', !!text);
+  el.classList.toggle('error', !!text && error);
+}
+
+async function submitCreditRedeem(){
+  const amount = Number(document.getElementById('vp23-redeem-amount')?.value || 0);
+  const service = document.getElementById('vp23-redeem-service')?.value || '';
+  const note = document.getElementById('vp23-redeem-note')?.value.trim() || '';
+  const available = Number((document.getElementById('v2-credit')?.textContent || '0').replace(/[^0-9.]/g,'')) || 0;
+  if(!amount || amount <= 0){ setCreditRedeemMsg('Indica el monto que deseas solicitar.', true); return; }
+  if(amount > available){ setCreditRedeemMsg(`Tu saldo disponible es US$${available}.`, true); return; }
+  if(!service){ setCreditRedeemMsg('Selecciona el servicio donde quieres utilizar tu crédito.', true); return; }
+  setCreditRedeemMsg('Enviando solicitud…');
+  try{
+    const { data, error } = await supabaseClient.rpc('vp_solicitar_canje_credito', {p_monto: amount, p_servicio: service, p_nota: note || null});
+    if(error) throw error;
+    setCreditRedeemMsg('Solicitud enviada. Tu crédito se mantendrá disponible hasta que administración apruebe el canje.');
+    document.getElementById('vp23-redeem-amount').value='';
+    document.getElementById('vp23-redeem-service').value='';
+    document.getElementById('vp23-redeem-note').value='';
+  }catch(error){
+    console.error('Error solicitando canje:', error);
+    setCreditRedeemMsg(error?.message || 'No pudimos enviar la solicitud.', true);
+  }
+}
+
 function toggleReferralForm(forceOpen){
   const form = document.getElementById('v21-referral-form');
   if(!form) return;
@@ -4871,8 +5659,12 @@ async function submitReferral(){
   }
 }
 
+let vpReferralRows = [];
+
 async function loadMyReferrals(){
   const list = document.getElementById('v21-referrals-list');
+  const summary = document.getElementById('v26-referral-summary');
+  const allBtn = document.getElementById('v26-referrals-all');
   if(!list) return;
 
   try{
@@ -4880,32 +5672,76 @@ async function loadMyReferrals(){
     if(error) throw error;
 
     const rows = Array.isArray(data) ? data : [];
+    vpReferralRows = rows;
+
     if(!rows.length){
       list.innerHTML = '<div class="v21-referral-empty">Aún no hay recomendaciones registradas desde tu portal.</div>';
+      if(summary) summary.hidden = true;
+      if(allBtn) allBtn.hidden = true;
       return;
     }
 
-    list.innerHTML = rows.map(r => {
-      const state = String(r.estado || 'registrado').toLowerCase();
-      const label = state === 'confirmado'
-        ? 'Confirmado'
-        : state === 'beneficio_aplicado'
-          ? 'Beneficio aplicado'
-          : 'Registrado';
+    const confirmed = rows.filter(r => ['confirmado','beneficio_aplicado'].includes(String(r.estado || '').toLowerCase())).length;
+    const pending = rows.filter(r => String(r.estado || 'registrado').toLowerCase() === 'registrado').length;
 
-      return `
-        <div class="v21-referral-row">
-          <div>
-            <b>${escapeHtml(r.nombre || 'Referido')}</b>
-            <small>${escapeHtml(r.interes || 'Sin destino indicado')}</small>
-          </div>
-          <span class="v21-referral-status ${state}">${label}</span>
-        </div>
-      `;
-    }).join('');
+    if(summary){
+      summary.hidden = false;
+      document.getElementById('v26-ref-total').textContent = rows.length;
+      document.getElementById('v26-ref-confirmed').textContent = confirmed;
+      document.getElementById('v26-ref-pending').textContent = pending;
+    }
+
+    const preview = rows.slice(0,3);
+    list.innerHTML = preview.map((r,index) => referralRowHtml(r,index)).join('');
+
+    if(allBtn){
+      allBtn.hidden = rows.length <= 3;
+      allBtn.textContent = `Ver todos mis referidos (${rows.length})`;
+    }
   }catch(error){
     console.error('Error cargando referidos:', error);
   }
+}
+
+function referralRowHtml(r,index){
+  const state = String(r.estado || 'registrado').toLowerCase();
+  const label = state === 'confirmado'
+    ? 'Confirmado'
+    : state === 'beneficio_aplicado'
+      ? 'Beneficio aplicado'
+      : 'Registrado';
+
+  const number = String(index + 1).padStart(2,'0');
+  return `
+    <div class="v21-referral-row">
+      <div class="v26-referral-id"><span>#${number}</span></div>
+      <div class="v26-referral-copy">
+        <b>${escapeHtml(r.nombre || `Referido ${number}`)}</b>
+        <small>${escapeHtml(r.interes || 'Sin destino indicado')}</small>
+      </div>
+      <span class="v21-referral-status ${state}">${label}</span>
+    </div>
+  `;
+}
+
+function openReferralHistory(){
+  const modal = document.getElementById('v26-referral-history-modal');
+  const list = document.getElementById('v26-referral-history-list');
+  if(!modal || !list) return;
+  list.innerHTML = vpReferralRows.length
+    ? vpReferralRows.map((r,index)=>referralRowHtml(r,index)).join('')
+    : '<div class="v21-referral-empty">Aún no hay recomendaciones registradas.</div>';
+  modal.classList.add('show');
+  modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+
+function closeReferralHistory(){
+  const modal = document.getElementById('v26-referral-history-modal');
+  if(!modal) return;
+  modal.classList.remove('show');
+  modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
 }
 
 function escapeHtml(value){
@@ -4968,33 +5804,7 @@ function shareReferralTemplate(type){
     }
   }
 
-  function openAcademyModule(which){
-    toggleTraining(true);
-
-    const blocks = [...document.querySelectorAll('.training-block')];
-    blocks.forEach(b => b.open = false);
-
-    let target = null;
-    if(which === 'viaje') target = blocks[0];
-    if(which === 'antes') target = blocks[1];
-    if(which === 'aeropuerto') target = blocks[2];
-
-    if(which === 'llegada'){
-      target = blocks[2];
-      if(target) target.open = true;
-      const cards = [...target.querySelectorAll('.lesson-card')];
-      const arrival = cards.find(c => /Al llegar a destino|Qué harías si/i.test(c.textContent));
-      if(arrival){
-        requestAnimationFrame(() => arrival.scrollIntoView({behavior:'auto', block:'start'}));
-        return;
-      }
-    }
-
-    if(target){
-      target.open = true;
-      requestAnimationFrame(() => target.scrollIntoView({behavior:'auto', block:'start'}));
-    }
-  }
+  function openAcademyModule(which){ const map={viaje:1,antes:2,aeropuerto:3,llegada:5}; toggleTraining(true); openUltimateModule(map[which]||1); }
 
   function shareReferral(){
     if(!verifiedMemberId) return;
@@ -5007,78 +5817,20 @@ function shareReferralTemplate(type){
     }
   }
 
-  function trainingStorageKey(){
-    return verifiedMemberId ? `vp-training-${verifiedMemberId}` : null;
-  }
-
-  function toggleTraining(open){
-    if(!verifiedMemberId) return;
-    const shell = document.getElementById('training-shell');
-    shell.classList.toggle('show', open);
-    shell.setAttribute('aria-hidden', open ? 'false' : 'true');
-    if(open){
-      restoreTrainingProgress();
-      if(window.matchMedia('(max-width: 680px)').matches){
-        requestAnimationFrame(() => shell.scrollIntoView({behavior:'auto', block:'nearest'}));
-      }
-    }
-  }
-
-  function saveTrainingProgress(){
-    const key = trainingStorageKey();
-    if(!key) return;
-    const state = {};
-    document.querySelectorAll('[data-training-check]').forEach(input => {
-      state[input.dataset.trainingCheck] = input.checked;
-    });
-    localStorage.setItem(key, JSON.stringify(state));
-    updateTrainingProgress();
-  }
-
-  function restoreTrainingProgress(){
-    const key = trainingStorageKey();
-    const raw = key ? localStorage.getItem(key) : null;
-    let state = {};
-    try { state = raw ? JSON.parse(raw) : {}; } catch(e) { state = {}; }
-    document.querySelectorAll('[data-training-check]').forEach(input => {
-      input.checked = !!state[input.dataset.trainingCheck];
-    });
-    updateTrainingProgress();
-  }
-
-  function updateTrainingProgress(){
-    const checks = Array.from(document.querySelectorAll('[data-training-check]'));
-    const done = checks.filter(c => c.checked).length;
-    const percent = checks.length ? Math.round((done / checks.length) * 100) : 0;
-    document.getElementById('training-progress-bar').style.width = `${percent}%`;
-    document.getElementById('training-progress-text').textContent = `${percent}%`;
-
-    const b1 = checks.filter(c => c.dataset.trainingCheck.startsWith('b1-'));
-    const b2 = checks.filter(c => c.dataset.trainingCheck.startsWith('b2-'));
-    const b3 = checks.filter(c => c.dataset.trainingCheck.startsWith('b3-'));
-    const b1done = b1.filter(c => c.checked).length;
-    const b2done = b2.filter(c => c.checked).length;
-    const b3done = b3.filter(c => c.checked).length;
-
-    const b1status = b1done === b1.length ? '🟢 DOMINAS TU VIAJE' : b1done >= Math.ceil(b1.length * .65) ? '🟡 CASI LISTO' : '🔴 NECESITAS PREPARARTE';
-    const b2status = b2done === b2.length ? '🟢 PREPARADO PARA VIAJAR' : b2done >= Math.ceil(b2.length * .65) ? '🟡 CASI LISTO' : '🔴 NECESITAS PREPARARTE';
-    const b3status = b3done === b3.length ? '🟢 PUEDES MOVERTE CON AUTONOMÍA' : b3done >= Math.ceil(b3.length * .65) ? '🟡 CASI LISTO' : '🔴 NECESITAS REPASAR EL PROCESO';
-
-    document.getElementById('training-status-b1').textContent = `CONTROL DE CONVICCIÓN · ${b1status}`;
-    document.getElementById('training-status-b2').textContent = `CONTROL DE PREPARACIÓN · ${b2status}`;
-    document.getElementById('training-status-b3').textContent = `CONTROL DE AUTONOMÍA · ${b3status}`;
-  }
-
-  function resetTrainingProgress(){
-    const key = trainingStorageKey();
-    if(key) localStorage.removeItem(key);
-    document.querySelectorAll('[data-training-check]').forEach(input => input.checked = false);
-    updateTrainingProgress();
-  }
-
-  document.addEventListener('change', function(e){
-    if(e.target.matches('[data-training-check]')) saveTrainingProgress();
-  });
+  function trainingStorageKey(){ return verifiedMemberId ? `vp-training-ultimate-${verifiedMemberId}` : null; }
+  function getUltimateState(){ const key=trainingStorageKey(); try{return key?JSON.parse(localStorage.getItem(key)||'{}'):{};}catch(e){return{};} }
+  function setUltimateState(state){ const key=trainingStorageKey(); if(key)localStorage.setItem(key,JSON.stringify(state)); }
+  function toggleTraining(open){ if(!verifiedMemberId)return; const shell=document.getElementById('training-shell'); if(!shell)return; shell.classList.toggle('show',open); shell.setAttribute('aria-hidden',open?'false':'true'); if(open){restoreTrainingProgress();requestAnimationFrame(()=>shell.scrollIntoView({behavior:'smooth',block:'start'}));} }
+  function moduleChecks(n){return [...document.querySelectorAll(`[data-training-check^="m${n}-"]`)];}
+  function moduleDone(n){const c=moduleChecks(n);return c.length>0&&c.every(x=>x.checked);}
+  function unlockedModule(){let u=1;for(let n=1;n<=6;n++){if(moduleDone(n))u=Math.min(6,n+1);else break;}return u;}
+  function openUltimateModule(n){const u=unlockedModule();if(n>u)return;document.querySelectorAll('.ultimate-module').forEach(x=>x.classList.remove('open'));const el=document.querySelector(`.ultimate-module[data-module="${n}"]`);if(el){el.classList.add('open');requestAnimationFrame(()=>el.scrollIntoView({behavior:'smooth',block:'start'}));}}
+  function completeUltimateModule(n){const checks=moduleChecks(n);if(!checks.every(x=>x.checked)){const st=document.getElementById(`ultimate-status-${n}`);if(st)st.textContent='Aún tienes puntos pendientes. Revísalos antes de continuar.';const first=checks.find(x=>!x.checked);first?.closest('.ultimate-lesson')?.setAttribute('open','');return;}saveTrainingProgress();if(n<6)openUltimateModule(n+1);else document.getElementById('ultimate-final')?.scrollIntoView({behavior:'smooth',block:'center'});}
+  function saveTrainingProgress(){const state={};document.querySelectorAll('[data-training-check]').forEach(i=>state[i.dataset.trainingCheck]=i.checked);setUltimateState(state);updateTrainingProgress();}
+  function restoreTrainingProgress(){const state=getUltimateState();document.querySelectorAll('[data-training-check]').forEach(i=>i.checked=!!state[i.dataset.trainingCheck]);updateTrainingProgress();}
+  function updateTrainingProgress(){const checks=[...document.querySelectorAll('[data-training-check]')];const done=checks.filter(c=>c.checked).length;const pct=checks.length?Math.round(done/checks.length*100):0;const bar=document.getElementById('training-progress-bar'),txt=document.getElementById('training-progress-text'),score=document.getElementById('v21-ready-score');if(bar)bar.style.width=`${pct}%`;if(txt)txt.textContent=`${pct}%`;if(score)score.textContent=`${pct}%`;let completed=0;const u=unlockedModule();for(let n=1;n<=6;n++){const ok=moduleDone(n);if(ok)completed++;const sec=document.querySelector(`.ultimate-module[data-module="${n}"]`),badge=document.getElementById(`ultimate-lock-${n}`),st=document.getElementById(`ultimate-status-${n}`);const locked=n>u;sec?.classList.toggle('locked',locked);if(badge)badge.textContent=ok?'COMPLETADO ✓':locked?'BLOQUEADO':n===u?'CONTINUAR':'DISPONIBLE';if(st)st.textContent=ok?'Módulo superado.':locked?'Completa el módulo anterior para desbloquearlo.':'Completa todos los puntos para continuar.';}const count=document.getElementById('ultimate-module-count');if(count)count.textContent=`${completed} de 6 módulos`;const title=document.getElementById('ultimate-final-title'),copy=document.getElementById('ultimate-final-copy');if(title&&copy){if(pct===100){title.textContent='PREPARACIÓN ULTIMATE 100 % ✓';copy.textContent='Academia completada. Viaja informado, organizado y preparado. Recuerda: completar la Academia no garantiza la admisión; la decisión corresponde a las autoridades.';}else if(pct>=80){title.textContent='Casi listo';copy.textContent='Tienes una preparación avanzada. Completa y repasa los puntos pendientes.';}else if(pct>=60){title.textContent='En preparación';copy.textContent='Tienes una buena base, pero todavía quedan puntos por reforzar.';}else{title.textContent='Tu preparación está en progreso';copy.textContent='Avanza módulo por módulo y marca únicamente lo que realmente dominas.';}}}
+  function resetTrainingProgress(){const key=trainingStorageKey();if(key)localStorage.removeItem(key);document.querySelectorAll('[data-training-check]').forEach(i=>i.checked=false);document.querySelectorAll('.ultimate-module').forEach(x=>x.classList.remove('open'));updateTrainingProgress();openUltimateModule(1);}
+  document.addEventListener('change',e=>{if(e.target.matches('[data-training-check]'))saveTrainingProgress();});
 
   async function saveEmail() {
     const input = document.getElementById('member-email-input');
@@ -5269,21 +6021,21 @@ document.addEventListener('DOMContentLoaded', () => {
         <span>02</span>
         <div>
           <b>Activa tu membresía</b>
-          <p>Recibes un Member ID personal y acceso a tu panel privado.</p>
+          <p>Recibes un Member ID personal. Con él activas una sola vez tu cuenta y después ingresas con correo y contraseña.</p>
         </div>
       </article>
       <article>
         <span>03</span>
         <div>
           <b>Recomienda con confianza</b>
-          <p>Compartes tu experiencia con personas que puedan necesitar nuestros servicios.</p>
+          <p>Desde tu panel puedes compartir tu Member ID o registrar directamente una recomendación autorizada. La recomendación entra como Registrada.</p>
         </div>
       </article>
       <article>
         <span>04</span>
         <div>
           <b>Desbloquea tu recorrido</b>
-          <p>Tu panel muestra nivel, progreso y beneficios que realmente tienes disponibles.</p>
+          <p>Cuando una recomendación cumple las condiciones comerciales y pasa a Confirmada, el sistema actualiza automáticamente tu progreso, nivel y beneficios disponibles.</p>
         </div>
       </article>
     </div>
