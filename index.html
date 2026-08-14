@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Viajeros Preferentes — Portal de Miembros V9.1</title>
+<title>Viajeros Preferentes — Portal de Miembros V12</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -778,6 +778,250 @@ body:not(.vp-branch-new):not(.vp-branch-member) #faq{display:none}
   .v9-entry-actions .cta-gold,.v9-final-card .cta-gold{width:100%;justify-content:center}
 }
 </style>
+
+<style>
+  /* V10 — panel privado premium por nivel */
+  #auth-msg.verified-success{
+    color:#a8f0c8 !important;
+    border-color:rgba(84,211,160,.45) !important;
+    background:rgba(35,120,79,.16) !important;
+    box-shadow:0 0 24px rgba(84,211,160,.10);
+  }
+
+  #verified-block.level-themed{
+    --member-accent:var(--gold);
+    --member-glow:rgba(198,163,85,.16);
+  }
+  #verified-block[data-level="preferente"]{--member-accent:#d8b96f;--member-glow:rgba(216,185,111,.16);}
+  #verified-block[data-level="silver"]{--member-accent:#d9e1ec;--member-glow:rgba(217,225,236,.16);}
+  #verified-block[data-level="gold"]{--member-accent:#f0c75e;--member-glow:rgba(240,199,94,.18);}
+  #verified-block[data-level="platinum"]{--member-accent:#a98cff;--member-glow:rgba(169,140,255,.20);}
+  #verified-block[data-level="plus"]{--member-accent:#67d5ff;--member-glow:rgba(103,213,255,.22);}
+
+  #verified-block.level-themed .member-card,
+  #verified-block.level-themed .v2-dashboard,
+  #verified-block.level-themed .training-entry{
+    border-color:color-mix(in srgb,var(--member-accent) 45%,var(--navy-line));
+    box-shadow:0 24px 60px -38px var(--member-glow);
+  }
+  #verified-block.level-themed .v2-level-pill,
+  #verified-block.level-themed .training-badge{
+    color:var(--member-accent);
+    border-color:color-mix(in srgb,var(--member-accent) 48%,transparent);
+  }
+  #verified-block.level-themed .v2-progress-bar{
+    background:linear-gradient(90deg,var(--member-accent),var(--gold-bright));
+  }
+
+  /* Panel y progreso se sienten como una sola cabina */
+  #verified-block .member-card{margin-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0;}
+  #verified-block .v2-dashboard{margin-top:0;border-top:0;border-top-left-radius:0;border-top-right-radius:0;}
+
+  /* Perfil al final: más compacto y útil */
+  #profile-entry{margin-top:26px;}
+  #profile-entry .training-entry-top{align-items:center;}
+  #profile-entry p{max-width:720px;}
+
+  /* Academia con más presencia sin recargar */
+  #training-entry{
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 92% 8%,var(--member-glow,rgba(198,163,85,.12)),transparent 32%),
+      linear-gradient(145deg,rgba(17,28,50,.96),rgba(10,17,32,.96));
+  }
+  #training-entry:before{
+    content:"✈";
+    position:absolute;
+    right:24px;
+    bottom:-18px;
+    font-size:7rem;
+    opacity:.035;
+    transform:rotate(-10deg);
+    pointer-events:none;
+  }
+</style>
+
+
+<style>
+  /* V11 — panel privado simplificado y más redondeado */
+  #verified-block{
+    --member-accent:#d8b96f;
+    --member-soft:rgba(216,185,111,.14);
+  }
+  #verified-block[data-level="preferente"]{--member-accent:#d8b96f;--member-soft:rgba(216,185,111,.14);}
+  #verified-block[data-level="silver"]{--member-accent:#dbe4ef;--member-soft:rgba(219,228,239,.14);}
+  #verified-block[data-level="gold"]{--member-accent:#e8bd4f;--member-soft:rgba(232,189,79,.15);}
+  #verified-block[data-level="platinum"]{--member-accent:#a98cff;--member-soft:rgba(169,140,255,.18);}
+  #verified-block[data-level="plus"]{--member-accent:#67d5ff;--member-soft:rgba(103,213,255,.18);}
+
+  #verified-block .v2-dashboard{
+    margin-top:18px;
+    border-radius:24px;
+    border:1px solid color-mix(in srgb,var(--member-accent) 52%,transparent);
+    background:
+      radial-gradient(circle at 92% 4%,var(--member-soft),transparent 34%),
+      linear-gradient(145deg,rgba(17,28,50,.98),rgba(9,16,30,.98));
+    box-shadow:0 28px 70px -44px var(--member-accent);
+  }
+
+  #verified-block .training-entry,
+  #verified-block .training-shell,
+  #verified-block .v2-stat,
+  #verified-block .v2-action,
+  #verified-block .v2-progress-box{
+    border-radius:20px;
+  }
+
+  #verified-block .v2-level-pill,
+  #verified-block .training-badge{
+    color:var(--member-accent);
+    border-color:color-mix(in srgb,var(--member-accent) 52%,transparent);
+  }
+
+  #verified-block .v2-progress-bar{
+    background:linear-gradient(90deg,var(--member-accent),color-mix(in srgb,var(--member-accent) 60%,white));
+  }
+
+  /* Botones privados siguen el color del nivel */
+  #verified-block .cta-gold,
+  #verified-block .training-mini-btn,
+  #verified-block .v2-action{
+    border-radius:999px;
+  }
+  #verified-block .cta-gold{
+    background:linear-gradient(135deg,var(--member-accent),color-mix(in srgb,var(--member-accent) 72%,white));
+    color:#09101e;
+    border:0;
+    box-shadow:0 12px 28px -18px var(--member-accent);
+  }
+  #verified-block .training-mini-btn{
+    color:var(--member-accent);
+    border-color:color-mix(in srgb,var(--member-accent) 52%,transparent);
+  }
+
+  #training-entry{
+    border-radius:24px !important;
+    background:
+      radial-gradient(circle at 92% 8%,var(--member-soft),transparent 34%),
+      linear-gradient(145deg,rgba(17,28,50,.97),rgba(9,16,30,.97)) !important;
+  }
+
+  #profile-entry{
+    margin-top:24px !important;
+    border-radius:24px !important;
+  }
+
+  /* Botones generales: apariencia más amable sin perder estilo premium */
+  .cta-gold,.tc-btn,.logout-btn,.training-mini-btn,.auth-tab{
+    border-radius:999px;
+  }
+
+  @media(max-width:680px){
+    #verified-block .v2-dashboard,
+    #verified-block .training-entry,
+    #verified-block .training-shell{border-radius:18px;}
+  }
+</style>
+
+
+<style>
+  /* V12 — colores definitivos por nivel */
+  #verified-block[data-level="preferente"]{
+    --member-accent:#5b9cff;
+    --member-soft:rgba(91,156,255,.16);
+  }
+  #verified-block[data-level="silver"]{
+    --member-accent:#c2cad6;
+    --member-soft:rgba(194,202,214,.16);
+  }
+  #verified-block[data-level="gold"]{
+    --member-accent:#e8bd4f;
+    --member-soft:rgba(232,189,79,.17);
+  }
+  #verified-block[data-level="platinum"]{
+    --member-accent:#5fd2b3;
+    --member-soft:rgba(95,210,179,.18);
+  }
+  #verified-block[data-level="plus"]{
+    --member-accent:#a98cff;
+    --member-soft:rgba(169,140,255,.20);
+  }
+
+  #verified-block .v2-dashboard,
+  #verified-block #training-entry,
+  #verified-block #profile-entry{
+    border-color:color-mix(in srgb,var(--member-accent) 52%,transparent) !important;
+    box-shadow:0 24px 64px -42px var(--member-accent) !important;
+  }
+
+  #verified-block .v2-dashboard{
+    background:
+      radial-gradient(circle at 90% 0%,var(--member-soft),transparent 34%),
+      linear-gradient(145deg,rgba(17,28,50,.98),rgba(9,16,30,.98)) !important;
+  }
+
+  #verified-block .v2-level-pill,
+  #verified-block .training-badge{
+    color:var(--member-accent) !important;
+    border-color:color-mix(in srgb,var(--member-accent) 52%,transparent) !important;
+  }
+
+  #verified-block .cta-gold{
+    background:linear-gradient(135deg,var(--member-accent),color-mix(in srgb,var(--member-accent) 70%,white)) !important;
+    color:#08101c !important;
+  }
+
+  /* Mensaje de acceso: compacto, no protagonista */
+  #auth-msg.verified-success{
+    display:inline-flex !important;
+    width:auto !important;
+    max-width:max-content;
+    margin:10px auto 14px !important;
+    padding:7px 12px !important;
+    border-radius:999px !important;
+    font-size:.72rem !important;
+    letter-spacing:.03em;
+    color:#a8f0c8 !important;
+    border:1px solid rgba(84,211,160,.38) !important;
+    background:rgba(35,120,79,.12) !important;
+    box-shadow:none !important;
+  }
+
+  /* Contacto más pequeño y dentro del flujo privado */
+  #profile-entry{
+    padding:16px 18px !important;
+    margin-top:18px !important;
+    background:rgba(255,255,255,.025) !important;
+  }
+  #profile-entry .training-entry-top{
+    gap:12px !important;
+  }
+  #profile-entry h4{
+    font-size:1.05rem !important;
+    margin:3px 0 4px !important;
+  }
+  #profile-entry p{
+    font-size:.74rem !important;
+    line-height:1.45 !important;
+    max-width:62ch !important;
+  }
+  #profile-entry .training-mini-btn{
+    padding:8px 13px !important;
+    font-size:.72rem !important;
+  }
+
+  @media(max-width:680px){
+    #auth-msg.verified-success{
+      margin:8px auto 10px !important;
+      font-size:.68rem !important;
+    }
+    #profile-entry{
+      padding:14px !important;
+    }
+  }
+</style>
+
 </head>
 <body>
 
@@ -884,47 +1128,6 @@ body:not(.vp-branch-new):not(.vp-branch-member) #faq{display:none}
         <p class="auth-help">Tu Member ID lo entrega Viajeros Preferentes. La fecha de activación se registra automáticamente cuando creas tu cuenta. Después solo ingresarás con correo y contraseña.</p>
       </div>
       <div class="auth-msg" id="auth-msg"></div>
-      <div class="verified-block" id="verified-block">
-        <span class="stamp-mark">✓ Verificado</span>
-
-        <!-- Datos privados cargados desde Supabase para el usuario autenticado. -->
-        <div class="member-card" id="member-card">
-          <div class="member-card-top">
-            <div>
-              <div class="mc-label">Miembro</div>
-              <div class="mc-name" id="mc-name">—</div>
-            </div>
-            <div class="mc-level" id="mc-level">—</div>
-          </div>
-          <div class="mc-id" id="mc-id">—</div>
-          <div class="mc-grid">
-            <div><span class="mc-k">Estado</span><span class="mc-v" id="mc-status">—</span></div>
-            <div><span class="mc-k">Activación</span><span class="mc-v" id="mc-since">—</span></div>
-            <div><span class="mc-k">Referidos</span><span class="mc-v" id="mc-referrals">—</span></div>
-            <div><span class="mc-k">Bonos obtenidos</span><span class="mc-v" id="mc-bonuses">—</span></div>
-          </div>
-        </div>
-
-        <div class="training-entry" id="profile-entry" style="margin-top:18px">
-          <div class="training-entry-top">
-            <div>
-              <div class="training-badge">Mi información personal</div>
-              <h4>Actualizar mis datos</h4>
-              <p>Puedes actualizar tu nombre y WhatsApp cuando lo necesites. Para cambiar el correo, te enviaremos una confirmación de seguridad.</p>
-            </div>
-            <button class="training-mini-btn" type="button" onclick="toggleProfileEditor()">Editar mis datos</button>
-          </div>
-          <div class="training-shell" id="profile-shell" aria-hidden="true">
-            <div class="auth-grid">
-              <input class="id-input" id="profile-name" type="text" autocomplete="name" placeholder="Nombre y apellido">
-              <input class="id-input" id="profile-whatsapp" type="tel" autocomplete="tel" placeholder="WhatsApp">
-              <input class="id-input" id="profile-email" type="email" autocomplete="email" placeholder="Correo de acceso">
-              <button class="cta-gold" type="button" onclick="savePersonalProfile()">Guardar cambios →</button>
-            </div>
-            <p class="auth-help">Los campos oficiales de tu membresía —Member ID, nivel, estado, referidos, bonos y fecha de activación— no pueden modificarse desde aquí.</p>
-            <div class="auth-msg" id="profile-msg"></div>
-          </div>
-        </div>
 
 
         <div class="v2-dashboard" id="v2-dashboard">
@@ -1240,18 +1443,30 @@ body:not(.vp-branch-new):not(.vp-branch-member) #faq{display:none}
           </div>
         </div>
 
-        <div class="email-capture">
-          <p class="sub">Déjanos tu correo y te enviaremos tus descuentos y tu Bono Preferente directamente.</p>
-          <div class="id-row">
-            <input class="id-input" id="member-email-input" type="email" placeholder="tucorreo@ejemplo.com">
-            <button class="cta-gold" onclick="saveEmail()">Guardar correo</button>
-          </div>
-          <div class="email-msg" id="email-msg"></div>
-        </div>
       </div>
     </div>
   </div>
-</section>
+
+<div class="training-entry" id="profile-entry" style="margin-top:18px">
+          <div class="training-entry-top">
+            <div>
+              <div class="training-badge">Contacto</div>
+              <h4>Tus datos de contacto</h4>
+              <p>Mantén tu nombre completo, WhatsApp y correo actualizados para recibir comunicaciones de tu membresía, beneficios y bonos elegibles.</p>
+            </div>
+            <button class="training-mini-btn" type="button" onclick="toggleProfileEditor()">Editar mis datos</button>
+          </div>
+          <div class="training-shell" id="profile-shell" aria-hidden="true">
+            <div class="auth-grid">
+              <input class="id-input" id="profile-name" type="text" autocomplete="name" placeholder="Nombre y apellido">
+              <input class="id-input" id="profile-whatsapp" type="tel" autocomplete="tel" placeholder="WhatsApp">
+              <input class="id-input" id="profile-email" type="email" autocomplete="email" placeholder="Correo de acceso">
+              <button class="cta-gold" type="button" onclick="savePersonalProfile()">Guardar cambios →</button>
+            </div>
+            <p class="auth-help">Los campos oficiales de tu membresía —Member ID, nivel, estado, referidos, bonos y fecha de activación— no pueden modificarse desde aquí.</p>
+            <div class="auth-msg" id="profile-msg"></div>
+          </div>
+        </section>
 
 <!-- ================= EXPERIENCIA V2 ================= -->
 
@@ -1633,6 +1848,7 @@ body:not(.vp-branch-new):not(.vp-branch-member) #faq{display:none}
   ];
 
   function getLevel(referrals){
+    if(referrals >= 20) return 'Plus';
     if(referrals >= 10) return 'Platinum';
     if(referrals >= 5) return 'Gold';
     if(referrals >= 3) return 'Silver';
@@ -1703,26 +1919,35 @@ body:not(.vp-branch-new):not(.vp-branch-member) #faq{display:none}
     setText('mc-name', memberData.name || 'Miembro Preferente');
     setText('mc-level', level);
     setText('mc-id', memberData.memberId || '—');
-    setText('mc-status', memberData.status || 'Activa');
+    setText('mc-status', memberData.status || 'Activo');
     setText('mc-since', memberData.since || '—');
     setText('mc-referrals', referrals);
     setText('mc-bonuses', bonuses);
+    setText('v2-greeting', memberData.name ? `Hola, ${memberData.name.split(' ')[0]}` : 'Mi Panel Preferente');
+    setText('v2-level', level);
+    setText('v2-referrals', referrals);
+    setText('v2-credit', `US$${bonuses}`);
 
-    // Mantener el panel de progreso compatible con los elementos que existan en esta versión.
-    const unlocked = getUnlockedCredit(referrals);
-    const progressText = document.getElementById('reward-progress-text');
-    if(progressText){
-      progressText.textContent = next
-        ? `${referrals} referidos confirmados · siguiente hito: ${next.referrals}`
-        : `${referrals} referidos confirmados · nivel máximo base alcanzado`;
+    const nextGoal = document.getElementById('v2-next-goal');
+    if(nextGoal) nextGoal.textContent = next ? `${next.referrals} viajeros` : 'PLUS';
+
+    const pct = next ? Math.min(100, Math.round((referrals / next.referrals) * 100)) : 100;
+    setText('v2-progress-text', `${pct}%`);
+    const bar = document.getElementById('v2-progress-bar');
+    if(bar) bar.style.width = `${pct}%`;
+
+    const nextText = document.getElementById('v2-next-text');
+    if(nextText){
+      nextText.textContent = next
+        ? `Te faltan ${Math.max(0, next.referrals-referrals)} referido(s) confirmado(s) para tu próxima meta.`
+        : 'Has alcanzado PLUS. Tu recorrido puede seguir creciendo con beneficios y campañas especiales.';
     }
 
-    const creditEl = document.getElementById('reward-credit');
-    if(creditEl) creditEl.textContent = unlocked;
-
-    // Aplicar el nivel como dato visual sin depender de una clase concreta.
-    const card = document.getElementById('member-card');
-    if(card) card.dataset.level = String(level).toLowerCase();
+    const verified = document.getElementById('verified-block');
+    if(verified){
+      verified.dataset.level = String(level).toLowerCase();
+      verified.classList.add('level-themed');
+    }
   }
 
   async function loadPrivatePortal(){
@@ -1738,10 +1963,16 @@ body:not(.vp-branch-new):not(.vp-branch-member) #faq{display:none}
       document.getElementById('profile-whatsapp').value = memberData.whatsapp || '';
       document.getElementById('profile-email').value = memberData.email || '';
       document.getElementById('verified-block').classList.add('show');
+      const authMsg = document.getElementById('auth-msg');
+      const dashboard = document.getElementById('v2-dashboard');
+      if(authMsg && dashboard && dashboard.parentNode){
+        dashboard.insertAdjacentElement('afterend', authMsg);
+      }
       document.querySelector('.auth-tabs').style.display='none';
       document.getElementById('auth-login').classList.remove('show');
       document.getElementById('auth-activate').classList.remove('show');
-      setAuthMessage('Acceso privado verificado.');
+      setAuthMessage('✓ Acceso privado verificado');
+      document.getElementById('auth-msg')?.classList.add('verified-success');
       restoreTrainingProgress();
     }catch(error){
       console.error('Viajeros Preferentes · error al cargar portal:', error);
@@ -1755,16 +1986,8 @@ body:not(.vp-branch-new):not(.vp-branch-member) #faq{display:none}
     const password=document.getElementById('login-password').value;
     if(!email || !password){ setAuthMessage('Ingresa tu correo y contraseña.', true); return; }
     setAuthMessage('Verificando tu acceso…');
-    const { data, error } = await supabaseClient.auth.signInWithPassword({email,password});
-    if(error){
-      console.error('Viajeros Preferentes · error de inicio de sesión:', error);
-      setAuthMessage(`No pudimos iniciar sesión: ${error.message || 'revisa tu correo y contraseña.'}`, true);
-      return;
-    }
-    if(!data?.session){
-      setAuthMessage('La cuenta existe, pero Supabase no devolvió una sesión activa.', true);
-      return;
-    }
+    const { error } = await supabaseClient.auth.signInWithPassword({email,password});
+    if(error){ setAuthMessage('No pudimos iniciar sesión. Revisa el correo, la contraseña o la confirmación de tu cuenta.', true); return; }
     await loadPrivatePortal();
   }
 
