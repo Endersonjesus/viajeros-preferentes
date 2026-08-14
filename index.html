@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<!-- VIAJEROS PREFERENTES V3.0 · Mi Viaje + Experiencias + apoyo operativo -->
-<title>Viajeros Preferentes — V3.0</title>
+<!-- VIAJEROS PREFERENTES V3.1 · experiencia tipo app + acción siguiente + accesibilidad -->
+<title>Viajeros Preferentes — V3.1</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id=%22g%22%20x1=%220%22%20y1=%220%22%20x2=%221%22%20y2=%221%22%3E%0A%20%20%20%20%3Cstop%20offset=%220%22%20stop-color=%22%23162747%22/%3E%0A%20%20%20%20%3Cstop%20offset=%221%22%20stop-color=%22%230b1426%22/%3E%0A%20%20%3C/linearGradient%3E%0A%20%20%3ClinearGradient%20id=%22p%22%20x1=%220%22%20y1=%220%22%20x2=%221%22%20y2=%221%22%3E%0A%20%20%20%20%3Cstop%20offset=%220%22%20stop-color=%22%23dce7ff%22/%3E%0A%20%20%20%20%3Cstop%20offset=%221%22%20stop-color=%22%2389afff%22/%3E%0A%20%20%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Crect%20x=%223%22%20y=%223%22%20width=%2258%22%20height=%2258%22%20rx=%2218%22%20fill=%22url(%23g)%22%20stroke=%22%235876b5%22%20stroke-width=%222%22/%3E%0A%3Cpath%20d=%22M15%2034.2%2048.5%2018c1.7-.8%203.2.9%202.2%202.5L34.9%2048.9c-.8%201.5-3%20.9-3-0.8l-.2-10.2-9.9%204.1c-1.1.5-2.3-.1-2.6-1.2l-1.1-4.2c-.3-1%20.1-2%201-2.5l17.8-9-21.2%2011.1c-1.6.8-2.4-1.2-.7-2Z%22%20fill=%22url(%23p)%22/%3E%0A%3C/svg%3E">
 <meta name="theme-color" content="#0a1120">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -4423,6 +4423,352 @@ a[style*="#7197dd"]{
 @media(max-width:720px){.v30-trip-meta{grid-template-columns:1fr 1fr}.v30-steps{grid-template-columns:repeat(4,1fr);row-gap:11px}.v30-docs,.v30-public-grid{grid-template-columns:1fr}}
 </style>
 
+
+<style>
+/* ============================================================
+   V3.1 · EXPERIENCIA TIPO APP / ACCESIBILIDAD
+   ============================================================ */
+
+html{scroll-behavior:smooth}
+
+/* Más legible para pasajeros de todas las edades */
+#verified-block{
+  font-size:16px;
+}
+#verified-block p,
+#verified-block small,
+#verified-block label{
+  line-height:1.55 !important;
+}
+#verified-block button,
+#verified-block a.v17-secondary-btn,
+#verified-block .cta-gold{
+  min-height:48px !important;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible{
+  outline:3px solid rgba(137,176,235,.45) !important;
+  outline-offset:3px;
+}
+
+/* La zona privada respira más */
+#verified-block .v2-dashboard{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+#verified-block .v2-dashboard > *{
+  margin-top:0 !important;
+}
+
+/* Qué hago ahora */
+.v31-today{
+  display:grid;
+  grid-template-columns:52px minmax(0,1fr);
+  gap:14px;
+  align-items:start;
+  padding:18px;
+  border-radius:24px;
+  border:1px solid color-mix(in srgb,var(--member-accent) 24%,rgba(255,255,255,.06));
+  background:
+    radial-gradient(circle at 95% 0%,color-mix(in srgb,var(--member-accent) 10%,transparent),transparent 36%),
+    rgba(255,255,255,.023);
+  box-shadow:0 14px 42px rgba(0,0,0,.12);
+}
+.v31-today-icon{
+  width:52px;
+  height:52px;
+  display:grid;
+  place-items:center;
+  border-radius:18px;
+  background:color-mix(in srgb,var(--member-accent) 12%,#0e192b);
+  border:1px solid color-mix(in srgb,var(--member-accent) 24%,transparent);
+  color:var(--member-accent);
+  font-size:1.15rem;
+  font-weight:800;
+}
+.v31-today-copy h4{
+  margin:3px 0 5px;
+  font-family:'Jost',sans-serif !important;
+  font-size:1.08rem;
+  color:#f0f4fa;
+  letter-spacing:-.015em;
+}
+.v31-today-copy p{
+  margin:0;
+  color:#9ba8ba;
+  font-size:.75rem;
+  max-width:68ch;
+}
+.v31-today-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+.v31-main-action,
+.v31-help-action{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:10px 16px;
+  border-radius:999px !important;
+  font-size:.72rem !important;
+  font-weight:650;
+  text-decoration:none;
+}
+.v31-main-action{
+  border:1px solid color-mix(in srgb,var(--member-accent) 32%,transparent) !important;
+  background:color-mix(in srgb,var(--member-accent) 13%,#15233b) !important;
+  color:#f1f5fb !important;
+}
+.v31-help-action{
+  border:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.025);
+  color:#aeb9c8;
+}
+
+/* Navegación visual estilo aplicación */
+.v31-app-nav{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+}
+.v31-app-nav button{
+  min-height:78px !important;
+  padding:10px 8px !important;
+  border-radius:18px !important;
+  border:1px solid rgba(255,255,255,.055) !important;
+  background:rgba(255,255,255,.018) !important;
+  color:#dbe5f2 !important;
+  text-align:center;
+  cursor:pointer;
+}
+.v31-app-nav span{
+  display:block;
+  margin-bottom:4px;
+  color:var(--member-accent);
+  font-size:1rem;
+}
+.v31-app-nav b{
+  display:block;
+  font-size:.68rem;
+}
+.v31-app-nav small{
+  display:block;
+  margin-top:1px;
+  color:#718096;
+  font-size:.5rem;
+}
+
+/* MI VIAJE: información principal grande, historial secundario */
+.v30-trip{
+  padding:18px !important;
+}
+.v30-trip-head h4{
+  font-size:1.08rem !important;
+}
+.v30-trip-head p{
+  font-size:.7rem !important;
+}
+.v30-trip-state{
+  font-size:.62rem !important;
+  padding:8px 11px !important;
+}
+.v30-trip-meta>div{
+  padding:11px 12px !important;
+}
+.v30-trip-meta span{
+  font-size:.54rem !important;
+}
+.v30-trip-meta b{
+  font-size:.75rem !important;
+}
+.v30-step small{
+  font-size:.49rem !important;
+  line-height:1.35 !important;
+}
+.v30-doc-copy b{
+  font-size:.68rem !important;
+}
+.v30-doc-copy small{
+  font-size:.54rem !important;
+}
+
+/* Academia = acción primaria, no enterrada */
+#training-entry.v31-promoted-academy{
+  margin:0 !important;
+  border-radius:22px !important;
+  border:1px solid color-mix(in srgb,var(--member-accent) 20%,rgba(255,255,255,.06)) !important;
+  background:
+    radial-gradient(circle at 92% 8%,color-mix(in srgb,var(--member-accent) 10%,transparent),transparent 35%),
+    rgba(255,255,255,.018) !important;
+}
+#training-entry.v31-promoted-academy .training-entry-top{
+  padding:18px !important;
+}
+#training-entry.v31-promoted-academy h4{
+  font-family:'Jost',sans-serif !important;
+  font-size:1.05rem !important;
+}
+#training-entry.v31-promoted-academy p{
+  font-size:.72rem !important;
+}
+
+/* Secciones secundarias en cajones: menos ruido */
+.v31-drawer{
+  border:1px solid rgba(255,255,255,.055);
+  border-radius:20px;
+  background:rgba(255,255,255,.012);
+  overflow:hidden;
+}
+.v31-drawer>summary{
+  min-height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 14px;
+  cursor:pointer;
+  list-style:none;
+  border-radius:20px !important;
+}
+.v31-drawer>summary::-webkit-details-marker{display:none}
+.v31-drawer>summary .v31-summary-copy b{
+  display:block;
+  color:#e4ebf5;
+  font-size:.74rem;
+}
+.v31-drawer>summary .v31-summary-copy small{
+  display:block;
+  margin-top:2px;
+  color:#748297;
+  font-size:.55rem;
+}
+.v31-drawer>summary .v31-chevron{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:rgba(255,255,255,.025);
+  color:var(--member-accent);
+  font-size:.8rem;
+  transition:transform .18s ease;
+}
+.v31-drawer[open]>summary .v31-chevron{transform:rotate(90deg)}
+.v31-drawer>.v31-drawer-body{
+  padding:0 12px 12px;
+}
+.v31-drawer .v21-dynamic-benefits,
+.v31-drawer .v21-referrals-panel,
+.v31-drawer .v20-credit-card,
+.v31-drawer .v21-journey{
+  border:0 !important;
+  background:transparent !important;
+  padding:8px 0 !important;
+  margin:0 !important;
+}
+
+/* Acciones antiguas se vuelven más limpias */
+.v17-primary-zone{
+  display:none !important;
+}
+.v15-mobile-referral{
+  display:none !important;
+}
+
+/* El siguiente nivel no necesita competir con "Mi viaje" */
+.v20-next-card{
+  padding:14px !important;
+}
+.v20-next-head strong{
+  font-size:.85rem !important;
+}
+
+/* Reclutamiento / público: botones más obvios y bloques menos apretados */
+.vp-public-only .cta-gold,
+#panel-new .cta-gold,
+#panel-member .cta-gold{
+  min-height:50px !important;
+  padding:12px 18px !important;
+  font-size:.76rem !important;
+}
+.stub{
+  min-height:92px !important;
+  padding:15px 14px !important;
+}
+.stub-label{
+  font-size:.86rem !important;
+}
+.stub-eyebrow{
+  font-size:.58rem !important;
+}
+#panel-new .panel-inner,
+#panel-member .panel-inner{
+  padding:20px !important;
+}
+
+/* Legal: lectura cómoda */
+#modal-overlay .doc-body p,
+#modal-overlay .doc-body li{
+  font-size:.78rem !important;
+  line-height:1.75 !important;
+}
+#modal-overlay .doc-section summary{
+  min-height:52px;
+  font-size:.8rem !important;
+}
+
+/* Evitar mareo / ayudar accesibilidad */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+@media(max-width:720px){
+  #verified-block{font-size:16px}
+  .v31-today{
+    grid-template-columns:44px minmax(0,1fr);
+    padding:15px;
+  }
+  .v31-today-icon{
+    width:44px;height:44px;border-radius:15px;
+  }
+  .v31-today-actions{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+  .v31-main-action,.v31-help-action{
+    width:100%;
+  }
+  .v31-app-nav{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .v31-app-nav button{
+    min-height:72px !important;
+  }
+  .v30-trip-head{
+    display:grid !important;
+  }
+  .v30-trip-state{
+    width:max-content;
+  }
+  .v30-trip-meta{
+    grid-template-columns:1fr 1fr !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -4614,7 +4960,28 @@ a[style*="#7197dd"]{
 
           
 
-          <section class="v30-trip" id="v30-trip">
+          
+          <section class="v31-today" id="v31-today">
+            <div class="v31-today-icon" id="v31-today-icon">✓</div>
+            <div class="v31-today-copy">
+              <div class="v17-section-label">Lo importante ahora</div>
+              <h4 id="v31-today-title">Tu portal está listo</h4>
+              <p id="v31-today-text">Aquí te mostraremos el siguiente paso de tu viaje para que no tengas que buscarlo.</p>
+              <div class="v31-today-actions">
+                <button class="v31-main-action" id="v31-today-action" type="button" onclick="v31DoTodayAction()">Ver mi siguiente paso</button>
+                <a class="v31-help-action" href="https://wa.me/51920227246?text=Hola%2C%20soy%20miembro%20de%20Viajeros%20Preferentes%20y%20necesito%20ayuda%20con%20mi%20proceso" target="_blank" rel="noopener">Necesito ayuda</a>
+              </div>
+            </div>
+          </section>
+
+          <nav class="v31-app-nav" aria-label="Accesos rápidos">
+            <button type="button" onclick="v31ScrollTo('v31-today')"><span>◎</span><b>Ahora</b><small>Qué hacer</small></button>
+            <button type="button" onclick="v31ScrollTo('v30-trip')"><span>✈</span><b>Mi viaje</b><small>Estado</small></button>
+            <button type="button" onclick="toggleTraining(true)"><span>✓</span><b>Academia</b><small>Preparación</small></button>
+            <button type="button" onclick="v31OpenMore()"><span>•••</span><b>Más</b><small>Beneficios</small></button>
+          </nav>
+
+<section class="v30-trip" id="v30-trip">
             <div class="v30-trip-head">
               <div><div class="v17-section-label">Mi viaje</div><h4 id="v30-trip-title">Seguimiento de tu proceso</h4><p id="v30-trip-copy">Tu proceso aparecerá aquí cuando tu asesor active un viaje.</p></div>
               <span class="v30-trip-state" id="v30-trip-state">Sin viaje activo</span>
@@ -4661,17 +5028,17 @@ a[style*="#7197dd"]{
             </div>
           </div>
 
-          <div class="v21-dynamic-benefits">
+          <div class="v21-dynamic-benefits" id="v31-benefits-section">
             <div class="v17-section-label">Beneficios de tu nivel</div>
             <div class="v21-benefit-grid" id="v21-benefit-grid"></div>
           </div>
 
-          <div class="v21-referrals-panel">
+          <div class="v21-referrals-panel" id="v31-referrals-section">
             <div class="v21-referrals-head">
               <div>
                 <div class="v17-section-label">Mis referidos</div>
-                <h4>Registra una recomendación en menos de un minuto.</h4>
-                <p>La persona recomendada debe autorizarte a compartir sus datos de contacto.</p>
+                <h4>Tus recomendaciones</h4>
+                <p>Registra únicamente personas que te autorizaron a compartir sus datos.</p>
               </div>
               <button class="v21-referral-toggle" type="button" onclick="toggleReferralForm()">+ Registrar referido</button>
             </div>
@@ -4710,7 +5077,7 @@ a[style*="#7197dd"]{
 
           
           
-          <div class="v20-credit-card vp23-wallet">
+          <div class="v20-credit-card vp23-wallet" id="v31-credit-section">
             <div class="vp23-wallet-main">
               <span>CRÉDITO PREFERENTE DISPONIBLE</span>
               <strong id="v2-credit">US$0</strong>
@@ -4732,7 +5099,7 @@ a[style*="#7197dd"]{
           </div>
 
 
-          <div class="v21-journey">
+          <div class="v21-journey" id="v31-journey-section">
             <div class="v17-section-label">Tu recorrido</div>
             <div class="v21-journey-track" id="v17-achievement-track"></div>
           </div>
@@ -5062,6 +5429,208 @@ a[style*="#7197dd"]{
 
   let verifiedMemberId = null;
 
+
+  let v31TodayAction = { type:'none' };
+
+  function v31ScrollTo(id){
+    const el=document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  function v31DoTodayAction(){
+    const a=v31TodayAction || {};
+    if(a.type==='academy'){
+      toggleTraining(true);
+      return;
+    }
+    if(a.type==='experience'){
+      v31ScrollTo('v30-experience');
+      return;
+    }
+    if(a.type==='referrals'){
+      const d=document.getElementById('v31-drawer-referrals');
+      if(d) d.open=true;
+      setTimeout(()=>v31ScrollTo('v31-referrals-section'),80);
+      return;
+    }
+    if(a.type==='credit'){
+      const d=document.getElementById('v31-drawer-credit');
+      if(d) d.open=true;
+      setTimeout(()=>v31ScrollTo('v31-credit-section'),80);
+      return;
+    }
+    v31ScrollTo('v30-trip');
+  }
+
+  function v31SetToday(icon,title,text,label,type='trip'){
+    const iconEl=document.getElementById('v31-today-icon');
+    const titleEl=document.getElementById('v31-today-title');
+    const textEl=document.getElementById('v31-today-text');
+    const btn=document.getElementById('v31-today-action');
+    if(iconEl) iconEl.textContent=icon;
+    if(titleEl) titleEl.textContent=title;
+    if(textEl) textEl.textContent=text;
+    if(btn) btn.textContent=label;
+    v31TodayAction={type};
+  }
+
+  function v31UpdateToday(payload){
+    const trip=payload?.trip||null;
+    const docs=Array.isArray(payload?.documents)?payload.documents:[];
+    const academy=Number(payload?.academy_percent||0);
+    const exp=payload?.experience||null;
+
+    if(!trip){
+      if(academy<100){
+        v31SetToday('✓','Continúa tu Academia Ultimate',
+          `Llevas ${academy}% de preparación. Avanza a tu ritmo y vuelve cuando quieras.`,
+          'Continuar Academia','academy');
+      }else{
+        v31SetToday('✓','Tu preparación está disponible',
+          'No tienes un viaje activo en este momento. Tu Academia y tu membresía siguen disponibles.',
+          'Ver Academia','academy');
+      }
+      return;
+    }
+
+    const sentPending=docs.find(d=>d.aplica!==false && d.estado==='enviado' && !d.recibido_at);
+
+    if(sentPending){
+      v31SetToday('↓',`${sentPending.etiqueta || 'Tienes un documento'} listo para ti`,
+        'Confirma que lo recibiste para mantener tu proceso actualizado.',
+        'Revisar documento','trip');
+      return;
+    }
+
+    switch(trip.estado){
+      case 'cotizando':
+        v31SetToday('⌁','Estamos organizando tu viaje',
+          'Tu proceso está en cotización. Aquí verás los cambios importantes cuando tu asesor los confirme.',
+          'Ver mi viaje','trip');
+        break;
+      case 'reserva_confirmada':
+        v31SetToday('✓','Tu reserva está confirmada',
+          'El siguiente paso es preparar la documentación de tu viaje.',
+          'Ver mi viaje','trip');
+        break;
+      case 'documentacion_preparacion':
+        v31SetToday('▤','Tu documentación está en preparación',
+          'No necesitas hacer nada adicional ahora. Revisa aquí cuando aparezca un documento enviado.',
+          'Ver documentos','trip');
+        break;
+      case 'documentacion_lista':
+        if(academy<100){
+          v31SetToday('✓','Tu documentación principal está lista',
+            `Ahora enfócate en tu preparación. Academia Ultimate: ${academy}%.`,
+            'Continuar Academia','academy');
+        }else{
+          v31SetToday('✓','Documentación y preparación listas',
+            'Tu proceso avanza correctamente. Revisa tu viaje y mantente atento al siguiente paso.',
+            'Ver mi viaje','trip');
+        }
+        break;
+      case 'capacitacion':
+        if(academy<100){
+          v31SetToday('✓','Tu capacitación es el próximo paso',
+            `Antes de tu capacitación, continúa Academia Ultimate. Vas por ${academy}%.`,
+            'Prepararme ahora','academy');
+        }else{
+          v31SetToday('✓','Estás preparado para tu capacitación',
+            'Academia Ultimate está completa. Lleva tus dudas para revisarlas con tu asesor.',
+            'Revisar mi viaje','trip');
+        }
+        break;
+      case 'checkin':
+        v31SetToday('✈','Tu próximo paso es el check-in',
+          'Mantente atento a la documentación y al pase de abordar cuando sean enviados.',
+          'Ver mi viaje','trip');
+        break;
+      case 'en_viaje':
+        v31SetToday('✈','Tu viaje está en curso',
+          'Ten a mano tu documentación y utiliza Academia como apoyo si necesitas repasar algún procedimiento.',
+          'Abrir mi viaje','trip');
+        break;
+      case 'viaje_completado':
+        if(!exp){
+          v31SetToday('★','¡Viaje completado!',
+            'Nos gustaría conocer cómo fue tu experiencia. Tú decides si puede considerarse para publicación.',
+            'Contar mi experiencia','experience');
+        }else{
+          v31SetToday('✓','Gracias por compartir tu experiencia',
+            'Tu viaje está completado y tu experiencia quedó registrada.',
+            'Ver mi historial','trip');
+        }
+        break;
+      default:
+        v31SetToday('✓','Tu proceso está avanzando',
+          'Aquí encontrarás siempre el paso más importante de tu viaje.',
+          'Ver mi viaje','trip');
+    }
+  }
+
+  function v31MakeDrawer(id,title,subtitle,nodes){
+    const valid=nodes.filter(Boolean);
+    if(!valid.length) return null;
+    if(document.getElementById(id)) return document.getElementById(id);
+
+    const details=document.createElement('details');
+    details.className='v31-drawer';
+    details.id=id;
+
+    const summary=document.createElement('summary');
+    summary.innerHTML=`
+      <span class="v31-summary-copy"><b>${title}</b><small>${subtitle}</small></span>
+      <span class="v31-chevron">›</span>
+    `;
+    const body=document.createElement('div');
+    body.className='v31-drawer-body';
+
+    const first=valid[0];
+    first.parentNode.insertBefore(details,first);
+    details.appendChild(summary);
+    details.appendChild(body);
+    valid.forEach(n=>body.appendChild(n));
+    return details;
+  }
+
+  function v31OrganizePrivatePortal(){
+    const dashboard=document.querySelector('#verified-block .v2-dashboard');
+    const trip=document.getElementById('v30-trip');
+    const academy=document.getElementById('training-entry');
+    if(!dashboard || !trip || !academy) return;
+
+    /* Academia sube junto a Mi Viaje */
+    academy.classList.add('v31-promoted-academy');
+    if(academy.parentNode!==dashboard){
+      trip.insertAdjacentElement('afterend',academy);
+    }else{
+      trip.insertAdjacentElement('afterend',academy);
+    }
+
+    const benefits=document.getElementById('v31-benefits-section');
+    const referrals=document.getElementById('v31-referrals-section');
+    const credit=document.getElementById('v31-credit-section');
+    const redeem=document.getElementById('vp23-redeem');
+    const journey=document.getElementById('v31-journey-section');
+
+    v31MakeDrawer('v31-drawer-benefits','Mis beneficios','Ventajas disponibles según tu nivel',[benefits]);
+    v31MakeDrawer('v31-drawer-referrals','Referidos','Registrar y consultar recomendaciones',[referrals]);
+    v31MakeDrawer('v31-drawer-credit','Crédito Preferente','Saldo y solicitudes de canje',[credit,redeem]);
+    v31MakeDrawer('v31-drawer-journey','Mi membresía','Niveles, progreso y recorrido',[journey]);
+
+    /* Mueve los cajones después del próximo objetivo y antes del final del dashboard */
+    ['v31-drawer-benefits','v31-drawer-referrals','v31-drawer-credit','v31-drawer-journey']
+      .map(id=>document.getElementById(id))
+      .filter(Boolean)
+      .forEach(d=>dashboard.appendChild(d));
+  }
+
+  function v31OpenMore(){
+    const d=document.getElementById('v31-drawer-benefits');
+    if(d){ d.open=true; v31ScrollTo('v31-drawer-benefits'); }
+  }
+
+
   let vpCurrentTripId = null;
   let vpExperienceRating = 0;
   let vpTrainingSyncTimer = null;
@@ -5097,6 +5666,7 @@ a[style*="#7197dd"]{
     const docs=Array.isArray(payload?.documents)?payload.documents:[];
     const academy=Number(payload?.academy_percent||0);
     const experience=payload?.experience||null;
+    v31UpdateToday(payload);
 
     if(!trip){
       vpCurrentTripId=null;
@@ -5472,6 +6042,7 @@ function selectStub(which){
       setAuthMessage('');
       document.getElementById('auth-msg')?.classList.remove('verified-success');
       restoreTrainingProgress();
+      v31OrganizePrivatePortal();
       loadMyReferrals();
       loadMyTrip();
     }catch(error){
@@ -6027,7 +6598,7 @@ function shareReferralTemplate(type){
   function completeUltimateModule(n){const checks=moduleChecks(n);if(!checks.every(x=>x.checked)){const st=document.getElementById(`ultimate-status-${n}`);if(st)st.textContent='Aún tienes puntos pendientes. Revísalos antes de continuar.';const first=checks.find(x=>!x.checked);first?.closest('.ultimate-lesson')?.setAttribute('open','');return;}saveTrainingProgress();if(n<6)openUltimateModule(n+1);else document.getElementById('ultimate-final')?.scrollIntoView({behavior:'smooth',block:'center'});}
   function saveTrainingProgress(){const state={};document.querySelectorAll('[data-training-check]').forEach(i=>state[i.dataset.trainingCheck]=i.checked);setUltimateState(state);updateTrainingProgress();}
   function restoreTrainingProgress(){const state=getUltimateState();document.querySelectorAll('[data-training-check]').forEach(i=>i.checked=!!state[i.dataset.trainingCheck]);updateTrainingProgress();}
-  function updateTrainingProgress(){const checks=[...document.querySelectorAll('[data-training-check]')];const done=checks.filter(c=>c.checked).length;const pct=checks.length?Math.round(done/checks.length*100):0;const bar=document.getElementById('training-progress-bar'),txt=document.getElementById('training-progress-text'),score=document.getElementById('v21-ready-score');if(bar)bar.style.width=`${pct}%`;if(txt)txt.textContent=`${pct}%`;if(score)score.textContent=`${pct}%`;syncTrainingProgress(pct);let completed=0;const u=unlockedModule();for(let n=1;n<=6;n++){const ok=moduleDone(n);if(ok)completed++;const sec=document.querySelector(`.ultimate-module[data-module="${n}"]`),badge=document.getElementById(`ultimate-lock-${n}`),st=document.getElementById(`ultimate-status-${n}`);const locked=n>u;sec?.classList.toggle('locked',locked);if(badge)badge.textContent=ok?'COMPLETADO ✓':locked?'BLOQUEADO':n===u?'CONTINUAR':'DISPONIBLE';if(st)st.textContent=ok?'Módulo superado.':locked?'Completa el módulo anterior para desbloquearlo.':'Completa todos los puntos para continuar.';}const count=document.getElementById('ultimate-module-count');if(count)count.textContent=`${completed} de 6 módulos`;const title=document.getElementById('ultimate-final-title'),copy=document.getElementById('ultimate-final-copy');if(title&&copy){if(pct===100){title.textContent='PREPARACIÓN ULTIMATE 100 % ✓';copy.textContent='Academia completada. Viaja informado, organizado y preparado. Recuerda: completar la Academia no garantiza la admisión; la decisión corresponde a las autoridades.';}else if(pct>=80){title.textContent='Casi listo';copy.textContent='Tienes una preparación avanzada. Completa y repasa los puntos pendientes.';}else if(pct>=60){title.textContent='En preparación';copy.textContent='Tienes una buena base, pero todavía quedan puntos por reforzar.';}else{title.textContent='Tu preparación está en progreso';copy.textContent='Avanza módulo por módulo y marca únicamente lo que realmente dominas.';}}}
+  function updateTrainingProgress(){const checks=[...document.querySelectorAll('[data-training-check]')];const done=checks.filter(c=>c.checked).length;const pct=checks.length?Math.round(done/checks.length*100):0;const bar=document.getElementById('training-progress-bar'),txt=document.getElementById('training-progress-text'),score=document.getElementById('v21-ready-score');if(bar)bar.style.width=`${pct}%`;if(txt)txt.textContent=`${pct}%`;if(score)score.textContent=`${pct}%`;syncTrainingProgress(pct);if(v31TodayAction?.type==='academy'){const t=document.getElementById('v31-today-text');if(t&&/Academia|preparación/i.test(t.textContent))t.textContent=`Tu preparación está en ${pct}%. Continúa a tu ritmo y marca solo lo que realmente dominas.`;}let completed=0;const u=unlockedModule();for(let n=1;n<=6;n++){const ok=moduleDone(n);if(ok)completed++;const sec=document.querySelector(`.ultimate-module[data-module="${n}"]`),badge=document.getElementById(`ultimate-lock-${n}`),st=document.getElementById(`ultimate-status-${n}`);const locked=n>u;sec?.classList.toggle('locked',locked);if(badge)badge.textContent=ok?'COMPLETADO ✓':locked?'BLOQUEADO':n===u?'CONTINUAR':'DISPONIBLE';if(st)st.textContent=ok?'Módulo superado.':locked?'Completa el módulo anterior para desbloquearlo.':'Completa todos los puntos para continuar.';}const count=document.getElementById('ultimate-module-count');if(count)count.textContent=`${completed} de 6 módulos`;const title=document.getElementById('ultimate-final-title'),copy=document.getElementById('ultimate-final-copy');if(title&&copy){if(pct===100){title.textContent='PREPARACIÓN ULTIMATE 100 % ✓';copy.textContent='Academia completada. Viaja informado, organizado y preparado. Recuerda: completar la Academia no garantiza la admisión; la decisión corresponde a las autoridades.';}else if(pct>=80){title.textContent='Casi listo';copy.textContent='Tienes una preparación avanzada. Completa y repasa los puntos pendientes.';}else if(pct>=60){title.textContent='En preparación';copy.textContent='Tienes una buena base, pero todavía quedan puntos por reforzar.';}else{title.textContent='Tu preparación está en progreso';copy.textContent='Avanza módulo por módulo y marca únicamente lo que realmente dominas.';}}}
   function resetTrainingProgress(){const key=trainingStorageKey();if(key)localStorage.removeItem(key);document.querySelectorAll('[data-training-check]').forEach(i=>i.checked=false);document.querySelectorAll('.ultimate-module').forEach(x=>x.classList.remove('open'));updateTrainingProgress();openUltimateModule(1);}
   document.addEventListener('change',e=>{if(e.target.matches('[data-training-check]'))saveTrainingProgress();});
 
