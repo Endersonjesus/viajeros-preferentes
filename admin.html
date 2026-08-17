@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Viajeros Preferentes · Administración V3.1</title>
+<title>Viajeros Preferentes · Administración V3.5</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id=%22g%22%20x1=%220%22%20y1=%220%22%20x2=%221%22%20y2=%221%22%3E%3Cstop%20offset=%220%22%20stop-color=%22%23182b4c%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%2308111f%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20x=%223%22%20y=%223%22%20width=%2258%22%20height=%2258%22%20rx=%2218%22%20fill=%22url(%23g)%22%20stroke=%22%236386c5%22%20stroke-width=%222%22/%3E%0A%3Cpath%20d=%22M15%2034.2%2048.5%2018c1.7-.8%203.2.9%202.2%202.5L34.9%2048.9c-.8%201.5-3%20.9-3-0.8l-.2-10.2-9.9%204.1c-1.1.5-2.3-.1-2.6-1.2l-1.1-4.2c-.3-1%20.1-2%201-2.5l17.8-9-21.2%2011.1c-1.6.8-2.4-1.2-.7-2Z%22%20fill=%22%23b8cdf5%22/%3E%0A%3C/svg%3E">
 <meta name="theme-color" content="#07101d">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -35,7 +35,7 @@ input:focus,select:focus{border-color:rgba(143,178,235,.42);box-shadow:0 0 0 3px
 .hero-admin{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:end;margin-bottom:14px}
 .hero-admin h1{font-size:1.55rem;margin:0 0 4px;letter-spacing:-.03em}
 .hero-admin p{margin:0;color:var(--muted);font-size:.78rem;line-height:1.5}
-.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.summary{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px}
 .metric{padding:14px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.018)}
 .metric span{display:block;color:var(--muted);font-size:.58rem;margin-bottom:3px}
 .metric b{font-size:1.2rem}
@@ -104,14 +104,31 @@ input:focus,select:focus{border-color:rgba(143,178,235,.42);box-shadow:0 0 0 3px
  .form-grid{grid-template-columns:1fr}
  .member-overview{grid-template-columns:1fr 1fr}
 }
+
+/* ===== V3.2 · EXPEDIENTE OPERATIVO ===== */
+.op-shell{margin-top:18px;border-top:1px solid var(--line);padding-top:16px}
+.op-head{display:flex;justify-content:space-between;gap:12px;align-items:end;flex-wrap:wrap;margin-bottom:10px}.op-head h3{margin:0;font-size:1rem}.op-head p{margin:4px 0 0;color:var(--muted);font-size:.68rem;max-width:62ch}.op-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.op-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.op-card{margin-top:10px;padding:13px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.016)}.op-card h4{margin:0 0 4px;font-size:.78rem}.op-card>p{margin:0 0 10px;color:var(--muted);font-size:.62rem;line-height:1.45}.op-field label{display:block;margin:0 0 5px;color:#91a0b4;font-size:.55rem;font-weight:650}.op-field input,.op-field select,.op-field textarea{width:100%;min-height:42px;border-radius:12px;border:1px solid var(--line);background:#0c1829;color:var(--text);padding:9px 10px;outline:none}.op-field textarea{min-height:82px;resize:vertical;font:inherit}.op-field input:focus,.op-field select:focus,.op-field textarea:focus{border-color:rgba(143,178,235,.42);box-shadow:0 0 0 3px rgba(143,178,235,.08)}.op-docs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.op-doc{padding:9px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.014)}.op-doc b{display:block;font-size:.63rem;margin-bottom:5px}.op-doc select{width:100%;min-height:38px;font-size:.62rem}.copy-preview{white-space:pre-wrap;margin:9px 0 0;padding:11px;border-radius:14px;border:1px dashed rgba(143,178,235,.18);background:#07111e;color:#aebed3;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.62rem;line-height:1.6}.op-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.op-savebar{position:sticky;bottom:-18px;z-index:3;margin:14px -18px -18px;padding:12px 18px;background:linear-gradient(180deg,rgba(9,21,35,.2),#091523 28%);border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end;align-items:center}.op-status{margin-right:auto;color:var(--muted);font-size:.64rem}.attention{color:var(--warn)}
+@media(max-width:900px){.op-grid{grid-template-columns:1fr 1fr}.op-docs{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.op-grid,.op-grid.two,.op-docs{grid-template-columns:1fr}.op-savebar{bottom:-18px}.modal-card.wide{width:min(96vw,920px)}}
+
 </style>
+
+<style id="vp34-controls">
+.admin-danger-zone{margin:14px 0 2px;padding:13px 14px;border:1px solid rgba(255,255,255,.07);border-radius:18px;background:rgba(255,255,255,.014)}
+.admin-danger-zone>b,.admin-danger-zone>div>b{display:block;font-size:.72rem}
+.admin-danger-zone small{display:block;margin-top:3px;color:var(--muted);font-size:.58rem;line-height:1.45}
+.admin-danger-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.btn.reset-trip{border-color:rgba(217,190,127,.22);color:#dbc58e;background:rgba(217,190,127,.045)}
+.btn.delete-member{border-color:rgba(229,126,126,.22);color:#e7a5a5;background:rgba(229,126,126,.045)}
+</style>
+
 </head>
 <body>
 <div class="wrap">
 <header>
   <div class="brand">
     <div class="logo" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M15 34.2 48.5 18c1.7-.8 3.2.9 2.2 2.5L34.9 48.9c-.8 1.5-3 .9-3-.8l-.2-10.2-9.9 4.1c-1.1.5-2.3-.1-2.6-1.2l-1.1-4.2c-.3-1 .1-2 1-2.5l17.8-9-21.2 11.1c-1.6.8-2.4-1.2-.7-2Z" fill="#b8cdf5"/></svg></div>
-    <div><b>Viajeros Preferentes</b><small>Administración · V3.1</small></div>
+    <div><b>Viajeros Preferentes</b><small>Administración · V3.5</small></div>
   </div>
   <button class="btn" id="logout" onclick="logout()" style="display:none">Cerrar sesión</button>
 </header>
@@ -141,10 +158,12 @@ input:focus,select:focus{border-color:rgba(143,178,235,.42);box-shadow:0 0 0 3px
     <div class="metric"><span>CUENTAS ACTIVADAS</span><b id="m-active">0</b></div>
     <div class="metric"><span>VIAJES EN PROCESO</span><b id="m-trips">0</b></div>
     <div class="metric"><span>EXPERIENCIAS PENDIENTES</span><b id="m-exp">0</b></div>
+    <div class="metric"><span>SOLICITUDES DE DOCUMENTOS</span><b id="m-requests">0</b></div>
   </section>
 
   <div class="tabs">
     <button class="btn active" data-tab="miembros" onclick="showTab('miembros',this)">Miembros</button>
+    <button class="btn" data-tab="solicitudes" onclick="showTab('solicitudes',this)">Solicitudes</button>
     <button class="btn" data-tab="experiencias" onclick="showTab('experiencias',this)">Experiencias</button>
   </div>
 
@@ -155,6 +174,11 @@ input:focus,select:focus{border-color:rgba(143,178,235,.42);box-shadow:0 0 0 3px
     </div>
     <div class="member-list" id="members"></div>
     <div class="pagination" id="pagination"></div>
+  </section>
+
+  <section id="tab-solicitudes" class="tabpane">
+    <div class="toolbar"><input id="request-search" placeholder="Buscar solicitud por nombre o Member ID" oninput="renderRequests()"><button class="btn" onclick="loadRequests()">Actualizar</button></div>
+    <div class="member-list" id="requests"></div>
   </section>
 
   <section id="tab-experiencias" class="tabpane">
@@ -172,7 +196,7 @@ input:focus,select:focus{border-color:rgba(143,178,235,.42);box-shadow:0 0 0 3px
       <button class="close" onclick="closeNewMember()">✕</button>
     </div>
     <div class="new-grid">
-      <input id="new-member-name" placeholder="Nombre completo (opcional)">
+      <input id="new-member-name" placeholder="Nombre legal completo" required autocomplete="off">
       <button class="btn primary" onclick="createMember()">Generar Member ID</button>
     </div>
     <div class="msg" id="new-member-msg"></div>
@@ -210,14 +234,93 @@ input:focus,select:focus{border-color:rgba(143,178,235,.42);box-shadow:0 0 0 3px
     <button class="btn primary" onclick="saveManagedTrip()">Guardar datos del viaje</button>
 
     <div id="manage-after-trip"></div>
+
+
+    <section class="admin-danger-zone">
+      <div>
+        <b>Controles de la cuenta</b>
+        <small>Reinicia únicamente el viaje o elimina definitivamente este miembro.</small>
+      </div>
+      <div class="admin-danger-actions">
+        <button class="btn reset-trip" type="button" onclick="resetManagedTrip()">↻ Reiniciar viaje</button>
+        <button class="btn delete-member" type="button" onclick="deleteManagedMember()">Eliminar miembro</button>
+      </div>
+      <div class="msg" id="account-action-msg"></div>
+    </section>
+
+    <section class="op-shell" id="operational-file">
+      <div class="op-head"><div><h3>Expediente operativo</h3><p>Tu ficha única para preparar Seguro, RT24, documentación e itinerario sin volver a Excel.</p></div><span class="pill" id="op-load-state">Cargando…</span></div>
+
+      <div class="op-card">
+        <h4>Datos del viajero</h4><p>Se guardan una vez y se reutilizan en las demás secciones.</p>
+        <div class="op-grid">
+          <div class="op-field"><label>Nombre completo</label><input id="op-name"></div>
+          <div class="op-field"><label>Documento</label><input id="op-document"></div>
+          <div class="op-field"><label>Fecha de nacimiento</label><input id="op-birth" type="date"></div>
+          <div class="op-field"><label>Nacionalidad</label><input id="op-nationality"></div>
+          <div class="op-field"><label>Teléfono</label><input id="op-phone"></div>
+          <div class="op-field"><label>Email</label><input id="op-email" type="email"></div>
+          <div class="op-field"><label>Contacto de emergencia</label><input id="op-emergency-name"></div>
+          <div class="op-field"><label>Teléfono de emergencia</label><input id="op-emergency-phone"></div>
+        </div>
+      </div>
+
+      <div class="op-card">
+        <h4>Datos operativos del viaje</h4><p>Información que alimenta Seguro, RT24 e Itinerario.</p>
+        <div class="op-grid">
+          <div class="op-field"><label>Destino</label><input id="op-destination"></div>
+          <div class="op-field"><label>Fecha de viaje</label><input id="op-travel-date" type="date"></div>
+          <div class="op-field"><label>Retorno</label><input id="op-return-date" type="date"></div>
+          <div class="op-field"><label>Ida / ruta</label><input id="op-route" placeholder="Ej. Lima - Madrid - Zagreb"></div>
+          <div class="op-field"><label>Aerolínea</label><input id="op-airline"></div>
+          <div class="op-field"><label>Emisión RT24</label><input id="op-issue-date" type="date"></div>
+          <div class="op-field"><label>Puesto de la pasantía</label><input id="op-position"></div>
+          <div class="op-field"><label>Hora de llegada</label><input id="op-arrival-time" type="time"></div>
+        </div>
+      </div>
+
+      <div class="op-card">
+        <h4>Control de documentación</h4><p>Tu checklist administrativo completo.</p>
+        <div class="op-docs" id="op-docs"></div>
+      </div>
+
+      <div class="op-card">
+        <h4>Seguro de viaje</h4><p>Genera exactamente el bloque que puedes copiar y enviar a la aseguradora.</p>
+        <div class="op-actions"><button class="btn" onclick="copyInsurance()">Copiar datos del seguro</button></div>
+        <div class="copy-preview" id="insurance-preview"></div>
+      </div>
+
+      <div class="op-card">
+        <h4>RT24</h4><p>Bloque listo para copiar y enviar a administración.</p>
+        <div class="op-actions"><button class="btn" onclick="copyRT24()">Copiar datos RT24</button></div>
+        <div class="copy-preview" id="rt24-preview"></div>
+      </div>
+
+      <div class="op-card">
+        <h4>Itinerario</h4><p>Datos listos para pegar en tu prompt de generación de itinerario.</p>
+        <div class="op-actions"><button class="btn" onclick="copyItinerary()">Copiar datos del itinerario</button></div>
+        <div class="copy-preview" id="itinerary-preview"></div>
+      </div>
+
+      <div class="op-card">
+        <h4>Seguimiento administrativo</h4>
+        <div class="op-grid two">
+          <div class="op-field"><label>Próxima acción</label><input id="op-next-action" placeholder="Ej. Solicitar seguro / hacer check-in"></div>
+          <div class="op-field"><label>Notas internas</label><textarea id="op-notes" placeholder="Solo visible para administración"></textarea></div>
+        </div>
+      </div>
+
+      <div class="op-savebar"><span class="op-status" id="op-save-msg">Los cambios nuevos se guardan en el expediente.</span><button class="btn primary" onclick="saveOperationalFile()">Guardar expediente</button></div>
+    </section>
   </div>
 </div>
 
 <script>
 const supabaseClient=window.supabase.createClient('https://ohkfwtlsbrhqjhphytua.supabase.co','sb_publishable_zBXlRSgd3hIm7Fqky6Z5Ew_-8cAJPBp');
-let members=[],experiences=[],page=1;
+let members=[],experiences=[],requests=[],page=1;
 const PAGE_SIZE=8;
 let managedMemberId=null;
+let managedOperationalFile=null;
 
 function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
 function labelState(s){return {cotizando:'Cotizando',reserva_confirmada:'Reserva confirmada',documentacion_preparacion:'Documentación',documentacion_lista:'Documentación lista',capacitacion:'Capacitación',checkin:'Check-in',en_viaje:'En viaje',viaje_completado:'Completado'}[s]||s||'Sin viaje'}
@@ -240,7 +343,7 @@ async function openAdmin(){
     document.getElementById('login').classList.add('hide');
     document.getElementById('app').classList.add('show');
     document.getElementById('logout').style.display='';
-    await Promise.all([loadAll(),loadExperiences()]);
+    await Promise.all([loadAll(),loadExperiences(),loadRequests()]);
   }catch(e){msg('loginmsg',e.message||'No pudimos abrir administración.',true)}
 }
 
@@ -304,6 +407,7 @@ function updateMetrics(){
   document.getElementById('m-active').textContent=members.filter(m=>m.activado).length;
   document.getElementById('m-trips').textContent=members.filter(m=>m.trip && m.trip.estado!=='viaje_completado').length;
   document.getElementById('m-exp').textContent=experiences.filter(e=>e.estado==='pendiente_revision').length;
+  const rq=document.getElementById('m-requests');if(rq)rq.textContent=requests.filter(r=>r.estado==='pendiente'||r.estado==='en_proceso').length;
 }
 
 function openNewMember(){
@@ -318,7 +422,8 @@ function closeNewMember(){
   document.body.style.overflow='';
 }
 async function createMember(){
-  const nombre=document.getElementById('new-member-name').value.trim()||null;
+  const nombre=document.getElementById('new-member-name').value.trim();
+  if(!nombre){msg('new-member-msg','Escribe el nombre legal completo antes de generar el Member ID.',true);return}
   msg('new-member-msg','Generando Member ID…');
   try{
     const {data,error}=await supabaseClient.rpc('vp_admin_crear_miembro',{p_nombre:nombre});
@@ -340,9 +445,10 @@ async function copyNewMemberId(){
 }
 
 function getMember(id){return members.find(m=>m.member_id===id)}
-function openManage(id){
+async function openManage(id){
   const m=getMember(id);if(!m)return;
   managedMemberId=id;
+  msg('account-action-msg','');
   const t=m.trip||{},docs=Array.isArray(m.documents)?m.documents:[];
   document.getElementById('manage-name').textContent=m.nombre||'Miembro sin activar';
   document.getElementById('manage-id').textContent=m.member_id;
@@ -356,6 +462,8 @@ function openManage(id){
   document.getElementById('manage-return').value=t.fecha_retorno||'';
   document.getElementById('manage-rt24').checked=!!docs.find(d=>d.tipo==='rt24'&&d.aplica);
   renderManagedAfterTrip(m);
+  resetOperationalForm(m);
+  await loadOperationalFile(id,m);
   document.getElementById('manage-modal').classList.add('show');
   document.body.style.overflow='hidden';
 }
@@ -363,6 +471,7 @@ function closeManage(){
   document.getElementById('manage-modal').classList.remove('show');
   document.body.style.overflow='';
   managedMemberId=null;
+  managedOperationalFile=null;
 }
 
 function renderManagedAfterTrip(m){
@@ -384,9 +493,9 @@ function stateButtons(id,current){
   return `<div class="state-row">${s.map(x=>`<button class="${x[0]===current?'active':''}" onclick="setState('${id}','${x[0]}')">${x[1]}</button>`).join('')}</div>`;
 }
 function docsHtml(tripId,docs){
-  const order=['boleto','seguro','hotel','itinerario','rt24','checkin'],map=Object.fromEntries(docs.map(d=>[d.tipo,d]));
+  const order=['boleto','tkt_terrestre','seguro','hotel','itinerario','capacitacion','rt24','checkin'],map=Object.fromEntries(docs.map(d=>[d.tipo,d]));
   return `<div class="docs">${order.map(tipo=>{
-    const d=map[tipo]||{tipo,etiqueta:tipo,estado:'pendiente',aplica:tipo!=='rt24'};
+    const labels={boleto:'TKT Aéreo',tkt_terrestre:'TKT Terrestre',seguro:'Seguro',hotel:'Hotel',itinerario:'Itinerario',capacitacion:'Capacitación',rt24:'Boleto RT24',checkin:'Check-in'}; const d=map[tipo]||{tipo,etiqueta:labels[tipo]||tipo,estado:'pendiente',aplica:tipo!=='rt24'};
     return `<div class="doc">
       <b>${esc(d.etiqueta||tipo)}</b>
       <select onchange="setDoc('${tripId}','${tipo}',this.value,document.getElementById('ap-${tripId}-${tipo}').checked)">
@@ -396,6 +505,36 @@ function docsHtml(tripId,docs){
       ${d.recibido_at?'<small>Confirmado como recibido por el pasajero ✓</small>':''}
     </div>`;
   }).join('')}</div>`;
+}
+
+
+async function resetManagedTrip(){
+  if(!managedMemberId)return;
+  const m=getMember(managedMemberId);
+  const name=m?.nombre||managedMemberId;
+  if(!confirm(`¿Reiniciar el viaje de ${name}?\n\nSe eliminará el viaje actual, su documentación asociada y el progreso de Academia de ese viaje. La cuenta y la membresía permanecerán activas.`))return;
+  msg('account-action-msg','Reiniciando viaje…');
+  const {error}=await supabaseClient.rpc('vp_admin_reiniciar_viaje',{p_member_id:managedMemberId});
+  if(error){msg('account-action-msg','No se pudo reiniciar: '+error.message,true);return}
+  const id=managedMemberId;
+  await Promise.all([loadAll(),loadRequests()]);
+  msg('account-action-msg','Viaje reiniciado. Academia vuelve a quedar bloqueada hasta registrar un nuevo viaje.');
+  await openManage(id);
+}
+
+async function deleteManagedMember(){
+  if(!managedMemberId)return;
+  const m=getMember(managedMemberId);
+  const name=m?.nombre||managedMemberId;
+  const typed=prompt(`Esta acción elimina definitivamente a ${name} y sus datos relacionados.\n\nPara confirmar escribe exactamente: ELIMINAR`);
+  if(typed!=='ELIMINAR')return;
+  msg('account-action-msg','Eliminando miembro…');
+  const id=managedMemberId;
+  const {error}=await supabaseClient.rpc('vp_admin_eliminar_miembro',{p_member_id:id});
+  if(error){msg('account-action-msg','No se pudo eliminar: '+error.message,true);return}
+  closeManage();
+  await Promise.all([loadAll(),loadRequests(),loadExperiences()]);
+  alert('Miembro eliminado correctamente.');
 }
 
 async function saveManagedTrip(){
@@ -422,6 +561,118 @@ async function setDoc(id,tipo,state,aplica){
   const {error}=await supabaseClient.rpc('vp_admin_cambiar_documento',{p_trip_id:id,p_tipo:tipo,p_estado:state,p_aplica:aplica});
   if(error){alert(error.message);return}
   await loadAll();openManage(managedMemberId);
+}
+
+const OP_DOC_TYPES=[
+  ['tkt_aereo','TKT Aéreo'],['tkt_terrestre','TKT Terrestre'],['seguro','Seguro'],['itinerario','Itinerario'],
+  ['hotel','Hotel'],['capacitacion','Capacitación'],['checkin','Check-in'],['rt24','Boleto RT24']
+];
+const OP_DOC_STATES=[['pendiente','Pendiente'],['preparando','En preparación'],['listo','Listo'],['enviado','Enviado']];
+function opVal(id){return (document.getElementById(id)?.value||'').trim()}
+function opDate(v){if(!v)return '';const [y,m,d]=v.split('-');return y&&m&&d?`${d}/${m}/${y}`:v}
+function renderOperationalDocs(values={}){
+  const box=document.getElementById('op-docs');if(!box)return;
+  box.innerHTML=OP_DOC_TYPES.map(([key,label])=>`<div class="op-doc"><b>${label}</b><select id="op-doc-${key}" onchange="refreshOperationalPreviews()">${OP_DOC_STATES.map(([v,t])=>`<option value="${v}" ${String(values?.[key]||'pendiente')===v?'selected':''}>${t}</option>`).join('')}</select></div>`).join('');
+}
+function operationalDocsPayload(){return Object.fromEntries(OP_DOC_TYPES.map(([key])=>[key,document.getElementById(`op-doc-${key}`)?.value||'pendiente']))}
+function resetOperationalForm(m){
+  const t=m?.trip||{};
+  managedOperationalFile=null;
+  const defaults={
+    'op-name':m?.nombre||'','op-document':'','op-birth':'','op-nationality':'','op-phone':m?.whatsapp||'','op-email':m?.email||'',
+    'op-emergency-name':'','op-emergency-phone':'','op-destination':t.destino||'','op-travel-date':t.fecha_salida||'',
+    'op-return-date':t.fecha_retorno||'','op-route':'','op-airline':'','op-issue-date':'','op-position':'','op-arrival-time':'','op-next-action':'','op-notes':''
+  };
+  Object.entries(defaults).forEach(([id,v])=>{const el=document.getElementById(id);if(el)el.value=v||''});
+  renderOperationalDocs({});refreshOperationalPreviews();
+}
+async function loadOperationalFile(memberId,m){
+  const badge=document.getElementById('op-load-state');if(badge)badge.textContent='Cargando…';
+  try{
+    const {data,error}=await supabaseClient.rpc('vp_admin_expediente',{p_member_id:memberId});
+    if(error)throw error;
+    const o=data&&typeof data==='object'?data:{};managedOperationalFile=o;
+    const map={
+      'op-name':o.nombre_completo||m?.nombre||'','op-document':o.documento||'','op-birth':o.fecha_nacimiento||'',
+      'op-nationality':o.nacionalidad||'','op-phone':o.telefono||m?.whatsapp||'','op-email':o.email||m?.email||'',
+      'op-emergency-name':o.contacto_emergencia_nombre||'','op-emergency-phone':o.contacto_emergencia_telefono||'',
+      'op-destination':o.destino||m?.trip?.destino||'','op-travel-date':o.fecha_viaje||m?.trip?.fecha_salida||'',
+      'op-return-date':o.fecha_retorno||m?.trip?.fecha_retorno||'','op-route':o.ruta_ida||'','op-airline':o.aerolinea||'',
+      'op-issue-date':o.fecha_emision||'','op-position':o.puesto_pasantia||'','op-arrival-time':o.hora_llegada?String(o.hora_llegada).slice(0,5):'',
+      'op-next-action':o.proxima_accion||'','op-notes':o.notas_admin||''
+    };
+    Object.entries(map).forEach(([id,v])=>{const el=document.getElementById(id);if(el)el.value=v||''});
+    renderOperationalDocs(o.documentacion||{});refreshOperationalPreviews();
+    if(badge){badge.textContent=Object.keys(o).length?'Expediente cargado':'Nuevo expediente';badge.classList.add('ok')}
+  }catch(e){console.error(e);if(badge){badge.textContent='Falta instalar SQL';badge.classList.add('pending')}msg('op-save-msg','Primero ejecuta el SQL del expediente en Supabase.',true)}
+}
+function insuranceText(){return `Seguro de viaje\n\nNombre: ${opVal('op-name')}\nDocumento: ${opVal('op-document')}\nFec. Nac.: ${opDate(opVal('op-birth'))}\nTelefono: ${opVal('op-phone')}\nDestino: ${opVal('op-destination')}\nFec. Viaje: ${opDate(opVal('op-travel-date'))}\nRetorno: ${opDate(opVal('op-return-date'))}\nContacto de Emergencia\nNombre: ${opVal('op-emergency-name')}\nTelefono: ${opVal('op-emergency-phone')}`}
+function rt24Text(){return `RT24\n\nNombre: ${opVal('op-name')}\nDocumento: ${opVal('op-document')}\nIda: ${opVal('op-route')}\nAerolinea: ${opVal('op-airline')}\nFec. Viaje: ${opDate(opVal('op-travel-date'))}\nRetorno: ${opDate(opVal('op-return-date'))}\nEmisión: ${opDate(opVal('op-issue-date'))}\nNacionalidad: ${opVal('op-nationality')}`}
+function itineraryText(){return `Itinerario:\nDestino: ${opVal('op-destination')}\nFechas: ${opDate(opVal('op-travel-date'))}\nAL: ${opDate(opVal('op-return-date'))}\nPuesto de la pasantía: ${opVal('op-position')}\n\nHora de llegada: ${opVal('op-arrival-time')}`}
+function refreshOperationalPreviews(){
+  const a=document.getElementById('insurance-preview'),b=document.getElementById('rt24-preview'),c=document.getElementById('itinerary-preview');
+  if(a)a.textContent=insuranceText();if(b)b.textContent=rt24Text();if(c)c.textContent=itineraryText();
+}
+async function copyText(text,label){try{await navigator.clipboard.writeText(text);msg('op-save-msg',label+' copiados ✓')}catch(e){msg('op-save-msg','No se pudo copiar automáticamente. Mantén pulsado el bloque y copia.',true)}}
+function copyInsurance(){copyText(insuranceText(),'Datos del seguro')}
+function copyRT24(){copyText(rt24Text(),'Datos RT24')}
+function copyItinerary(){copyText(itineraryText(),'Datos del itinerario')}
+async function saveOperationalFile(){
+  if(!managedMemberId)return;
+  msg('op-save-msg','Guardando expediente…');
+  const args={
+    p_member_id:managedMemberId,p_nombre_completo:opVal('op-name')||null,p_documento:opVal('op-document')||null,
+    p_fecha_nacimiento:opVal('op-birth')||null,p_nacionalidad:opVal('op-nationality')||null,p_telefono:opVal('op-phone')||null,
+    p_email:opVal('op-email')||null,p_contacto_emergencia_nombre:opVal('op-emergency-name')||null,p_contacto_emergencia_telefono:opVal('op-emergency-phone')||null,
+    p_destino:opVal('op-destination')||null,p_fecha_viaje:opVal('op-travel-date')||null,p_fecha_retorno:opVal('op-return-date')||null,
+    p_ruta_ida:opVal('op-route')||null,p_aerolinea:opVal('op-airline')||null,p_fecha_emision:opVal('op-issue-date')||null,
+    p_puesto_pasantia:opVal('op-position')||null,p_hora_llegada:opVal('op-arrival-time')||null,p_documentacion:operationalDocsPayload(),
+    p_proxima_accion:opVal('op-next-action')||null,p_notas_admin:opVal('op-notes')||null
+  };
+  const {data,error}=await supabaseClient.rpc('vp_admin_guardar_expediente',args);
+  if(error){console.error(error);msg('op-save-msg','No se pudo guardar: '+error.message,true);return}
+  managedOperationalFile=data||args;refreshOperationalPreviews();msg('op-save-msg','Expediente guardado ✓');
+  const badge=document.getElementById('op-load-state');if(badge){badge.textContent='Guardado';badge.classList.add('ok')}
+}
+document.addEventListener('input',e=>{if(e.target?.closest?.('#operational-file'))refreshOperationalPreviews()});
+
+
+async function loadRequests(){
+  const box=document.getElementById('requests');
+  if(box)box.innerHTML='<div class="empty">Cargando solicitudes…</div>';
+  try{
+    const {data,error}=await supabaseClient.rpc('vp_admin_solicitudes_documentacion');
+    if(error)throw error;
+    requests=Array.isArray(data)?data:[];
+    renderRequests();updateMetrics();
+  }catch(e){
+    console.error(e);requests=[];
+    if(box)box.innerHTML='<div class="empty">No pudimos cargar solicitudes. Verifica que instalaste el SQL V3.3.</div>';
+    updateMetrics();
+  }
+}
+function requestStateLabel(s){return {pendiente:'Pendiente',en_proceso:'En preparación',completada:'Completada'}[s]||s||'Pendiente'}
+function renderRequests(){
+  const box=document.getElementById('requests');if(!box)return;
+  const q=(document.getElementById('request-search')?.value||'').trim().toLowerCase();
+  const rows=requests.filter(r=>[r.nombre,r.member_id,r.estado].join(' ').toLowerCase().includes(q));
+  box.innerHTML=rows.map(r=>`<article class="member-row">
+    <div class="member-name"><b>${esc(r.nombre||'Miembro')}</b><small>${esc(r.member_id||'')} · ${r.created_at?new Date(r.created_at).toLocaleString('es-PE'):''}</small></div>
+    <div class="desktop-only"><span class="pill ${r.estado==='completada'?'ok':r.estado==='pendiente'?'pending':''}">${esc(requestStateLabel(r.estado))}</span></div>
+    <div class="desktop-only"><span class="pill">Documentación</span></div>
+    <div class="actions">
+      ${r.estado==='pendiente'?`<button class="btn primary" onclick="setRequestState('${r.id}','en_proceso')">Preparar</button>`:''}
+      ${r.estado!=='completada'?`<button class="btn" onclick="setRequestState('${r.id}','completada')">Completar</button>`:'<span class="pill ok">Listo ✓</span>'}
+      <button class="btn" onclick="openManage('${esc(r.member_id)}')">Abrir miembro</button>
+    </div>
+  </article>`).join('')||'<div class="empty">No hay solicitudes de documentación.</div>';
+}
+async function setRequestState(id,state){
+  try{
+    const {error}=await supabaseClient.rpc('vp_admin_cambiar_solicitud_documentacion',{p_request_id:id,p_estado:state});
+    if(error)throw error;
+    await loadRequests();
+  }catch(e){alert(e.message||'No pudimos actualizar la solicitud.');}
 }
 
 async function loadExperiences(){
